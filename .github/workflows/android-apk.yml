@@ -49,7 +49,13 @@ jobs:
           STORE_PASS="$(trim "$IN_STORE_PASS")"
           KEY_ALIAS_V="$(trim "$IN_KEY_ALIAS")"
           KEY_PASS_V="$(trim "$IN_KEY_PASS")"
-          printf '%s' "$KS_B64" | tr -d '[:space:]' | base64 -d > "$RUNNER_TEMP/release.jks"
+          CLEAN_B64="$(printf '%s' "$KS_B64" | tr -d '[:space:]"')"
+          # Only length and a yes/no are printed, never the content.
+          echo "ANDROID_KEYSTORE_BASE64 length: ${#CLEAN_B64} characters (a normal key is about 2500-4000)"
+          if ! printf '%s' "$CLEAN_B64" | base64 -d > "$RUNNER_TEMP/release.jks" 2>/dev/null; then
+            echo "::error::ANDROID_KEYSTORE_BASE64 is not valid base64. It must be ONLY the text made by the PowerShell command (letters, numbers, + / =). Recreate the secret from a file, not from the terminal."
+            exit 1
+          fi
 
           # Fail fast with a clear message (nothing secret is printed).
           if ! keytool -list -keystore "$RUNNER_TEMP/release.jks" -storepass "$STORE_PASS" -alias "$KEY_ALIAS_V" >/dev/null 2>&1; then
