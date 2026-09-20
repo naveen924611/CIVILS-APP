@@ -9,3 +9,4 @@ Log build-time verifications here (model names, quotas, feed URLs, library versi
 | 2026-09-20 | Package name | `com.naveen.civilscompanion` (`in` is a Kotlin keyword). |
 | 2026-09-20 | Fonts | Fraunces, IBM Plex Sans, Noto Sans Telugu (all SIL OFL 1.1) from Fontsource npm packages, converted woff2 -> ttf; Latin/Telugu subsets only. Licences in app assets. |
 | 2026-09-20 | Vector search | Not needed until M4. Decide sqlite-vec vs ChromaDB then. |
+| 2026-09-20 | Server hosting | Oracle sign-up error. Laptop = default server via Tailscale (free personal plan, HTTPS certs, `tailscale serve`); cloud (Oracle/Hetzner ~EUR 5.49 CX23/GCP e2-micro US-only) is the later move. Free hosts (Render/Koyeb) rejected: sleep + no persistent disk. Tailscale commands not yet run by us; verify with `tailscale serve --help`. |

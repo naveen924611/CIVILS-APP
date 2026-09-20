@@ -1,0 +1,17 @@
+# Server on YOUR Windows laptop (default for now). Start:
+#   docker compose -f docker-compose.laptop.yml up -d --build
+# Only this laptop can reach port 8000 directly; Tailscale then publishes it as HTTPS (docs/laptop-server.md).
+services:
+  api:
+    build: ./backend
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      APP_ENV: prod
+      DATABASE_URL: sqlite:////app/data/civils.db
+      FCM_SERVICE_ACCOUNT_FILE: /secrets/firebase-service-account.json
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ./backend-data:/app/data
+      - ./secrets:/secrets:ro

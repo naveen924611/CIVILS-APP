@@ -14,6 +14,9 @@ Last updated: 2026-09-20
 - Files touched: everything under android/ (never compiled locally: no Android SDK or Maven access here)
 - Exact next step: owner creates the private GitHub repo and pushes; read the first `android-apk` run; fix any build errors (versions in android/gradle/libs.versions.toml are a conservative known-compatible set and are UNVERIFIED until the first run)
 
+## Server plan (2026-09-20)
+- Oracle sign-up failed (generic error). Hybrid decided: LAPTOP is the default server now (Docker + Tailscale HTTPS, docs/laptop-server.md); move to Oracle/other cloud later with `python -m app.tools.backup` create/restore. Only one active server at a time.
+
 ## Waiting on owner (one at a time, in this order)
 1. Create a private GitHub repository and give me the URL (or push this folder himself).
 2. Create the Android signing key (docs/setup-windows.md) and add the 4 keystore secrets to GitHub.
