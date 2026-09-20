@@ -1,5 +1,5 @@
 # Progress
-Current shoot: 1 | Current milestone: M2 (Briefs, audio, notifications) | Status: M2a server done (tests pass); M2b Android in progress
+Current shoot: 1 | Current milestone: M2 (Briefs, audio, notifications) | Status: M2a server + M2b Android code written; waiting for owner to update laptop server, build APK and test on the tablet
 Last updated: 2026-09-20
 
 ## Done
@@ -13,8 +13,16 @@ Last updated: 2026-09-20
 - LLM gateway (Gemini + Groq, fallback chain, own daily budgets, degrade levels, strict JSON), news pipeline (robots-aware feeds, dedup, extraction, summary, flashcards), Piper audio + ffmpeg, brief builder + scheduler (07:00 / 19:00 IST, editable), FCM silent push, API: /briefs, /sync/pull, /audio, /settings/briefs, /usage, /alerts. Migration 0002. 88% coverage, ruff clean.
 - Owner steps: docs/m2-server-steps.md
 
+## M2b Android (2026-09-20) - written, NOT YET COMPILED (GitHub Actions is the compiler)
+- Room database (news items, briefs, cards, alerts, per-item "heard"), sync (`GET /sync/pull`) via WorkManager (on push, at brief-time alarms, every 3 h, on app open), audio saved on the tablet for offline.
+- Briefs screen (6.2): item list, story detail, past briefs, "Prepare a brief now", player bar (-15/+15, speed, sleep timer, seek). Media3 `PlaybackService`: keeps playing with the screen off, lock-screen + headphone buttons.
+- Alerts screen (6.7), notification channels (briefs, player, answers, revision, summary, general), "brief ready" notification with Play now / Read / Remind in 30 min, alarms at brief times with boot re-register.
+- Settings: brief times, days, extra briefs, Wi-Fi-only downloads. First-run permissions setup (6.19 part): notifications, exact alarms, battery, offline voice.
+- Not done on purpose (later milestones): line-by-line highlight while audio plays (needs timestamps), "Say next / repeat" voice hint and mic button (M6), linked syllabus topic (M4), end-of-brief quiz (M5).
+- 3 JVM unit-test files (times, formats, server JSON parsing). Versions Room 2.8.0, Media3 1.8.0, WorkManager 2.10.3 are UNVERIFIED (no Maven access here); the first CI run is the check.
+
 ## In progress
-- Task: get the first APK build green in GitHub Actions
+- Task: M2 acceptance on the real tablet (see docs/tablet-test-checklist.md, M2 additions)
 - Files touched: everything under android/ (never compiled locally: no Android SDK or Maven access here)
 - Exact next step: owner creates the private GitHub repo and pushes; read the first `android-apk` run; fix any build errors (versions in android/gradle/libs.versions.toml are a conservative known-compatible set and are UNVERIFIED until the first run)
 

@@ -4,6 +4,7 @@ import com.naveen.civilscompanion.data.remote.AuthApi
 import com.naveen.civilscompanion.data.remote.BearerInterceptor
 import com.naveen.civilscompanion.data.remote.DeviceApi
 import com.naveen.civilscompanion.data.remote.ServerUrlInterceptor
+import com.naveen.civilscompanion.data.remote.SyncApi
 import com.naveen.civilscompanion.data.remote.TokenRefresher
 import dagger.Module
 import dagger.Provides
@@ -56,4 +57,8 @@ object NetworkModule {
     @Provides @Singleton
     fun deviceApi(@Named("authed") client: OkHttpClient, json: Json): DeviceApi =
         retrofit(client, json).create(DeviceApi::class.java)
+
+    @Provides @Singleton
+    fun syncApi(@Named("authed") client: OkHttpClient, json: Json): SyncApi =
+        retrofit(client, json).create(SyncApi::class.java)
 }

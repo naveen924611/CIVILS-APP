@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Civils Companion</string>
     <string name="channel_general">General</string>
+    <string name="channel_briefs">Daily briefs</string>
+    <string name="channel_player">Audio player</string>
+    <string name="channel_answers">Answers</string>
+    <string name="channel_revision">Revision reminders</string>
+    <string name="channel_summary">Day summary</string>
 </resources>

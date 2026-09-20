@@ -4,3 +4,5 @@
 -dontwarn org.bouncycastle.**
 -dontwarn org.conscrypt.**
 -dontwarn org.openjsse.**
+# Workers and receivers are created by name by Android / WorkManager.
+-keep class com.naveen.civilscompanion.sync.SyncWorker { *; }
