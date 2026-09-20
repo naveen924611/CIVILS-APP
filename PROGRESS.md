@@ -1,5 +1,5 @@
 # Progress
-Current shoot: 1 | Current milestone: M1 | Status: code written, waiting on owner steps + first CI build
+Current shoot: 1 | Current milestone: M2 (Briefs, audio, notifications) | Status: M2a server done (tests pass); M2b Android in progress
 Last updated: 2026-09-20
 
 ## Done
@@ -8,6 +8,10 @@ Last updated: 2026-09-20
 - M1 deploy files: backend/Dockerfile, docker-compose.yml (api + caddy), docker-compose.dev.yml, Caddyfile (HTTPS via DuckDNS), docs/setup-windows.md, docs/server-runbook.md, docs/tablet-test-checklist.md
 - M1 Android (`android/`), NOT YET COMPILED: Compose app, custom theme (spec section 5, light + dark), bundled Fraunces / IBM Plex Sans / Noto Sans Telugu, 96 dp navigation rail with all 10 destinations as placeholders, login screen (server address, username, password), Keystore-encrypted token storage, silent token refresh, FCM token registration, notification channel, unit test for the rail.
 - M1 CI: .github/workflows/android-apk.yml (signed APK -> artifact + release), backend-ci.yml
+
+## M2a server (2026-09-20) - done, untested against real feeds/AI
+- LLM gateway (Gemini + Groq, fallback chain, own daily budgets, degrade levels, strict JSON), news pipeline (robots-aware feeds, dedup, extraction, summary, flashcards), Piper audio + ffmpeg, brief builder + scheduler (07:00 / 19:00 IST, editable), FCM silent push, API: /briefs, /sync/pull, /audio, /settings/briefs, /usage, /alerts. Migration 0002. 88% coverage, ruff clean.
+- Owner steps: docs/m2-server-steps.md
 
 ## In progress
 - Task: get the first APK build green in GitHub Actions

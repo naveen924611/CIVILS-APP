@@ -8,9 +8,12 @@ services:
       APP_ENV: prod
       DATABASE_URL: sqlite:////app/data/civils.db
       FCM_SERVICE_ACCOUNT_FILE: /secrets/firebase-service-account.json
+      DATA_DIR: /app/data
+      FEEDS_FILE: /app/config/feeds.yaml
     volumes:
       - ./backend-data:/app/data
       - ./secrets:/secrets:ro
+      - ./data:/app/config:ro      # feeds.yaml (edit it to add or remove news sources)
     expose:
       - "8000"          # not published to the internet; only Caddy can reach it
     healthcheck:

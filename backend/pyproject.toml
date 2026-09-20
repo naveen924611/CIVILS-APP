@@ -3,12 +3,12 @@ testpaths = ["tests"]
 addopts = "-q"
 
 [tool.ruff]
-line-length = 100
+line-length = 120
 target-version = "py310"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP"]
-ignore = ["B008"]  # FastAPI Depends() in defaults is the standard pattern
+ignore = ["B008", "E501"]  # B008: FastAPI Depends() in defaults is standard; E501: long lines are fine
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["E501"]

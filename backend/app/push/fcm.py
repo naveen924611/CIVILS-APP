@@ -24,17 +24,28 @@ def _get_app():
     return _app
 
 
-def send_to_all(db: Session, title: str, body: str, data: dict[str, str] | None = None) -> int:
+def send_to_all(
+    db: Session, title: str, body: str, data: dict[str, str] | None = None, notify: bool = True
+) -> int:
+    """notify=False sends a silent data message; the app then shows its own notification (with buttons)."""
     from firebase_admin import messaging
 
     _get_app()
     sent = 0
     for dev in db.scalars(select(Device).where(Device.deleted.is_(False))):
-        msg = messaging.Message(
-            token=dev.fcm_token,
-            notification=messaging.Notification(title=title, body=body),
-            data=data or {},
-        )
+        payload = {"title": title, "body": body, **(data or {})}
+        if notify:
+            msg = messaging.Message(
+                token=dev.fcm_token,
+                notification=messaging.Notification(title=title, body=body),
+                data=data or {},
+            )
+        else:
+            msg = messaging.Message(
+                token=dev.fcm_token,
+                data=payload,
+                android=messaging.AndroidConfig(priority="high"),
+            )
         try:
             messaging.send(msg)
             sent += 1

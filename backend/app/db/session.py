@@ -48,3 +48,9 @@ def get_db() -> Iterator[Session]:
         yield db
     finally:
         db.close()
+
+
+def get_session_factory():
+    """For background jobs (scheduler, gateway) that open their own sessions."""
+    get_engine()
+    return _SessionLocal

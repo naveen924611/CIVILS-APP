@@ -1,0 +1,58 @@
+# News sources for the daily briefs.
+# Only the summary and link are stored, never the full article. Robots.txt is respected.
+# Run  python -m app.pipelines.news.verify_feeds  to test every URL (it writes docs/feeds-report.md).
+# A feed that fails is skipped on that run; the pipeline never stops because one source is down.
+#
+# priority: 1 (highest) to 3. Higher-priority sources are picked first when there are too many articles.
+# lang: en or te (Telugu items are translated to English by the AI step).
+feeds:
+  - name: PIB (Press Information Bureau)
+    url: https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3
+    lang: en
+    priority: 1
+    enabled: true
+  - name: The Hindu - Editorial
+    url: https://www.thehindu.com/opinion/editorial/feeder/default.rss
+    lang: en
+    priority: 1
+    enabled: true
+  - name: The Hindu - National
+    url: https://www.thehindu.com/news/national/feeder/default.rss
+    lang: en
+    priority: 2
+    enabled: true
+  - name: The Hindu - Andhra Pradesh
+    url: https://www.thehindu.com/news/national/andhra-pradesh/feeder/default.rss
+    lang: en
+    priority: 1
+    enabled: true
+  - name: The Hindu - Business
+    url: https://www.thehindu.com/business/feeder/default.rss
+    lang: en
+    priority: 2
+    enabled: true
+  - name: The Hindu - International
+    url: https://www.thehindu.com/news/international/feeder/default.rss
+    lang: en
+    priority: 3
+    enabled: true
+  - name: The Hindu - Science
+    url: https://www.thehindu.com/sci-tech/science/feeder/default.rss
+    lang: en
+    priority: 3
+    enabled: true
+  - name: Indian Express - Explained
+    url: https://indianexpress.com/section/explained/feed/
+    lang: en
+    priority: 1
+    enabled: true
+  - name: Indian Express - India
+    url: https://indianexpress.com/section/india/feed/
+    lang: en
+    priority: 2
+    enabled: true
+  - name: RBI - Press releases
+    url: https://www.rbi.org.in/pressreleases_rss.xml
+    lang: en
+    priority: 2
+    enabled: true
