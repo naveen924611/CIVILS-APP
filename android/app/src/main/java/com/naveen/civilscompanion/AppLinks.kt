@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 /** What a notification button asks the app to do when it opens. */
-data class PendingAction(val action: String, val briefId: String? = null)
+data class PendingAction(val action: String, val briefId: String? = null, val route: String? = null)
 
 object AppLinks {
     const val EXTRA_ACTION = "cc_action"
@@ -17,16 +17,19 @@ object AppLinks {
     const val ACTION_PLAY_BRIEF = "play_brief"
     const val ACTION_OPEN_BRIEF = "open_brief"
     const val ACTION_OPEN_ALERTS = "open_alerts"
+    const val ACTION_OPEN_ROUTE = "open_route"
+    const val EXTRA_ROUTE = "cc_route"
 
-    fun activityIntent(context: Context, action: String, briefId: String? = null): Intent =
+    fun activityIntent(context: Context, action: String, briefId: String? = null, route: String? = null): Intent =
         Intent(context, MainActivity::class.java)
             .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP)
             .putExtra(EXTRA_ACTION, action)
             .putExtra(EXTRA_BRIEF_ID, briefId)
+            .putExtra(EXTRA_ROUTE, route)
 
     fun fromIntent(intent: Intent?): PendingAction? {
         val action = intent?.getStringExtra(EXTRA_ACTION) ?: return null
-        return PendingAction(action, intent.getStringExtra(EXTRA_BRIEF_ID))
+        return PendingAction(action, intent.getStringExtra(EXTRA_BRIEF_ID), intent.getStringExtra(EXTRA_ROUTE))
     }
 }
 

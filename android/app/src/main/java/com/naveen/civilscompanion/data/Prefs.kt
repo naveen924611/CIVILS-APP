@@ -18,6 +18,11 @@ class Prefs @Inject constructor(@ApplicationContext context: Context, private va
         get() = p.getString("last_sync", null)
         set(v) = p.edit().putString("last_sync", v).apply()
 
+    /** Local database layout this tablet last used; when it changes the database is rebuilt and sync starts over. */
+    var dbSchema: Int
+        get() = p.getInt("db_schema", 0)
+        set(v) = p.edit().putInt("db_schema", v).apply()
+
     var wifiOnlyDownloads: Boolean
         get() = p.getBoolean("wifi_only", false)
         set(v) = p.edit().putBoolean("wifi_only", v).apply()

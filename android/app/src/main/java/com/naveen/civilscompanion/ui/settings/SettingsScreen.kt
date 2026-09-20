@@ -41,7 +41,12 @@ private val DAY_NAMES = listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Fr
 
 /** Settings. Milestone M2 adds "Daily briefs", downloads and phone setup; the rest arrives in M7. */
 @Composable
-fun SettingsScreen(onLogout: () -> Unit, onRunSetup: () -> Unit, vm: SettingsViewModel = hiltViewModel()) {
+fun SettingsScreen(
+    onLogout: () -> Unit,
+    onRunSetup: () -> Unit,
+    nav: androidx.navigation.NavHostController,
+    vm: SettingsViewModel = hiltViewModel(),
+) {
     val s by vm.state.collectAsStateWithLifecycle()
     val colors = Cc.colors
     Box(Modifier.fillMaxSize().background(colors.background), contentAlignment = Alignment.TopCenter) {

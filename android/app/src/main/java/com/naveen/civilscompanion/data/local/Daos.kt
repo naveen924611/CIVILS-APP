@@ -37,17 +37,6 @@ interface BriefDao {
 }
 
 @Dao
-interface CardDao {
-    @Upsert suspend fun upsert(items: List<CardEntity>)
-
-    @Query("DELETE FROM cards WHERE id IN (:ids)")
-    suspend fun delete(ids: List<String>)
-
-    @Query("SELECT sourceId AS sourceId, COUNT(*) AS n FROM cards WHERE sourceId IS NOT NULL GROUP BY sourceId")
-    fun observeSourceCounts(): Flow<List<SourceCount>>
-}
-
-@Dao
 interface AlertDao {
     @Upsert suspend fun upsert(items: List<AlertEntity>)
 

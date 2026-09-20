@@ -15,11 +15,14 @@ import javax.inject.Singleton
 object DatabaseModule {
     @Provides @Singleton
     fun database(@ApplicationContext context: Context): AppDatabase =
-        Room.databaseBuilder(context, AppDatabase::class.java, "civils.db").build()
+        Room.databaseBuilder(context, AppDatabase::class.java, "civils.db")
+            // Everything is a copy of the server (or waits in the dirty queue), so a schema change rebuilds it.
+            .fallbackToDestructiveMigration(true)
+            .build()
 
     @Provides fun newsItems(db: AppDatabase) = db.newsItems()
     @Provides fun briefs(db: AppDatabase) = db.briefs()
-    @Provides fun cards(db: AppDatabase) = db.cards()
+    @Provides fun records(db: AppDatabase) = db.records()
     @Provides fun alerts(db: AppDatabase) = db.alerts()
     @Provides fun progress(db: AppDatabase) = db.progress()
 }

@@ -23,7 +23,7 @@ class SyncWorker(context: Context, params: WorkerParameters) : CoroutineWorker(c
         val app = applicationContext.appEntryPoint()
         if (!app.tokens().loggedIn.value) return Result.success()
         return try {
-            app.sync().pull()
+            app.sync().sync()
             runCatching {
                 app.sync().refreshBriefSettings()
                 app.alarms().rescheduleAll()

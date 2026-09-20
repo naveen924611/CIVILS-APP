@@ -39,17 +39,6 @@ data class BriefEntity(
     val updatedAt: String,
 )
 
-@Entity(tableName = "cards")
-data class CardEntity(
-    @PrimaryKey val id: String,
-    val front: String,
-    val back: String,
-    val groupName: String,
-    val sourceId: String?,
-    val dueAt: Long?,
-    val updatedAt: String,
-)
-
 @Entity(tableName = "alerts")
 data class AlertEntity(
     @PrimaryKey val id: String,

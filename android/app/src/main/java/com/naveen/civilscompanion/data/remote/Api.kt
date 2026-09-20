@@ -2,12 +2,17 @@ package com.naveen.civilscompanion.data.remote
 
 import com.naveen.civilscompanion.data.remote.dto.BriefSettingsDto
 import com.naveen.civilscompanion.data.remote.dto.DeviceRequest
+import com.naveen.civilscompanion.data.remote.dto.KvPutDto
+import com.naveen.civilscompanion.data.remote.dto.KvValueDto
 import com.naveen.civilscompanion.data.remote.dto.LoginRequest
+import com.naveen.civilscompanion.data.remote.dto.PushBodyDto
+import com.naveen.civilscompanion.data.remote.dto.PushResultDto
 import com.naveen.civilscompanion.data.remote.dto.RefreshRequest
 import com.naveen.civilscompanion.data.remote.dto.RunBriefRequest
 import com.naveen.civilscompanion.data.remote.dto.RunBriefResponse
 import com.naveen.civilscompanion.data.remote.dto.SyncPullDto
 import com.naveen.civilscompanion.data.remote.dto.TokensDto
+import kotlinx.serialization.json.JsonObject
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -39,6 +44,18 @@ interface DeviceApi {
 interface SyncApi {
     @GET("sync/pull")
     suspend fun pull(@Query("since") since: String?): SyncPullDto
+
+    @POST("sync/push")
+    suspend fun push(@Body body: PushBodyDto): PushResultDto
+
+    @GET("kv")
+    suspend fun kvAll(): JsonObject
+
+    @GET("kv/{key}")
+    suspend fun kvGet(@Path("key") key: String): KvValueDto
+
+    @PUT("kv/{key}")
+    suspend fun kvPut(@Path("key") key: String, @Body body: KvPutDto): KvValueDto
 
     @POST("briefs/run")
     suspend fun runBrief(@Body body: RunBriefRequest): RunBriefResponse

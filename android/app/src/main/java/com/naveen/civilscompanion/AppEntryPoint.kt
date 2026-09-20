@@ -4,7 +4,11 @@ import android.content.Context
 import com.naveen.civilscompanion.alarms.BriefAlarmScheduler
 import com.naveen.civilscompanion.data.Prefs
 import com.naveen.civilscompanion.data.auth.TokenStore
+import com.naveen.civilscompanion.data.records.RecordStore
 import com.naveen.civilscompanion.data.repo.DownloadRepository
+import com.naveen.civilscompanion.data.repo.JobRepository
+import com.naveen.civilscompanion.data.repo.KvRepository
+import com.naveen.civilscompanion.speech.TtsSpeaker
 import com.naveen.civilscompanion.data.repo.SyncRepository
 import com.naveen.civilscompanion.notify.BriefNotifier
 import dagger.hilt.EntryPoint
@@ -22,6 +26,10 @@ interface AppEntryPoint {
     fun alarms(): BriefAlarmScheduler
     fun prefs(): Prefs
     fun tokens(): TokenStore
+    fun records(): RecordStore
+    fun jobs(): JobRepository
+    fun kv(): KvRepository
+    fun tts(): TtsSpeaker
 }
 
 fun Context.appEntryPoint(): AppEntryPoint =

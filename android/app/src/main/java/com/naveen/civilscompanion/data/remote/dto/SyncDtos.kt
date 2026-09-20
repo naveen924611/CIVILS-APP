@@ -54,19 +54,6 @@ data class BriefDto(
 )
 
 @Serializable
-data class CardDto(
-    val id: String,
-    val front: String,
-    val back: String,
-    val group: String = "Current affairs",
-    @SerialName("source_id") val sourceId: String? = null,
-    @SerialName("fsrs_state") val fsrsState: JsonElement? = null,
-    @SerialName("due_at") val dueAt: String? = null,
-    @SerialName("updated_at") val updatedAt: String,
-    val deleted: Boolean = false,
-)
-
-@Serializable
 data class AlertDto(
     val id: String,
     val kind: String,
@@ -82,12 +69,34 @@ data class AlertDto(
 @Serializable
 data class SyncPullDto(
     @SerialName("server_time") val serverTime: String,
+    /** Where the next request should start (the same as server_time once everything has been received). */
+    @SerialName("next_since") val nextSince: String? = null,
     val more: Boolean = false,
     @SerialName("news_items") val newsItems: List<NewsItemDto> = emptyList(),
     val briefs: List<BriefDto> = emptyList(),
-    val cards: List<CardDto> = emptyList(),
     val alerts: List<AlertDto> = emptyList(),
+    /** table name -> changed rows (see data/records/Tables.kt) */
+    val tables: Map<String, List<JsonObject>> = emptyMap(),
 )
+
+@Serializable
+data class PushBodyDto(val tables: Map<String, List<JsonObject>>)
+
+@Serializable
+data class PushRejectDto(val table: String = "", val id: String = "", val reason: String = "")
+
+@Serializable
+data class PushResultDto(
+    val accepted: Map<String, List<String>> = emptyMap(),
+    val rejected: List<PushRejectDto> = emptyList(),
+    @SerialName("server_time") val serverTime: String = "",
+)
+
+@Serializable
+data class KvValueDto(val key: String = "", val value: JsonElement? = null)
+
+@Serializable
+data class KvPutDto(val value: JsonElement?)
 
 @Serializable
 data class BriefSlotDto(

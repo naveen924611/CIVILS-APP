@@ -4,14 +4,11 @@ import com.naveen.civilscompanion.data.decodeFacts
 import com.naveen.civilscompanion.data.decodeStrings
 import com.naveen.civilscompanion.data.parseInstant
 import com.naveen.civilscompanion.data.payloadValue
-import com.naveen.civilscompanion.data.remote.dto.NewsItemDto
 import com.naveen.civilscompanion.data.remote.dto.SyncPullDto
-import com.naveen.civilscompanion.data.repo.SyncRepository
 import com.naveen.civilscompanion.data.toEntity
 import kotlinx.serialization.json.Json
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class SyncParsingTest {
@@ -36,11 +33,12 @@ class SyncParsingTest {
         "item_ids": ["i1"], "audio_seconds_total": 95, "note": "", "created_at": "2026-09-20T05:00:00Z",
         "updated_at": "2026-09-20T05:29:30Z", "deleted": false
       }],
-      "cards": [{
+      "next_since": "2026-09-20T05:30:00.123456Z",
+      "tables": {"cards": [{
         "id": "c1", "front": "Q?", "back": "A", "topic_id": null, "source_type": "news", "source_id": "i1",
-        "group": "Current affairs", "fsrs_state": null, "due_at": null,
+        "group": "Current affairs", "fsrs_state_json": null, "due_at": null,
         "updated_at": "2026-09-20T05:29:00Z", "deleted": false
-      }],
+      }]},
       "alerts": [{
         "id": "a1", "kind": "brief_ready", "title": "Your morning brief is ready", "body": "1 items · 2 min",
         "payload": {"brief_id": "b1", "kind": "morning"}, "read": false,
@@ -56,7 +54,8 @@ class SyncParsingTest {
         assertEquals("Repo rate held", page.newsItems.single().title)
         assertEquals("/audio/i1.mp3", page.newsItems.single().audioUrl)
         assertEquals(listOf("i1"), page.briefs.single().itemIds)
-        assertEquals("i1", page.cards.single().sourceId)
+        assertEquals("i1", page.tables.getValue("cards").single()["source_id"].toString().trim('"'))
+        assertEquals("2026-09-20T05:30:00.123456Z", page.nextSince)
         assertEquals("b1", page.alerts.single().payload["brief_id"].toString().trim('"'))
     }
 
@@ -79,16 +78,5 @@ class SyncParsingTest {
         assertEquals(1_758_346_200_123L, parseInstant("2025-09-20T05:30:00.123456Z"))
         assertNull(parseInstant("not a date"))
         assertNull(parseInstant(null))
-    }
-
-    @Test
-    fun nextCursorOnlyAppliesToFullLists() {
-        fun item(i: Int) = NewsItemDto(
-            id = "i$i", url = "u", title = "t", updatedAt = "2026-09-20T05:00:%02d.%06dZ".format(i / 1000, i % 1000),
-        )
-        val small = SyncPullDto(serverTime = "x", newsItems = List(10) { item(it) })
-        assertNull(SyncRepository.nextCursor(small))
-        val full = SyncPullDto(serverTime = "x", more = true, newsItems = List(500) { item(it) })
-        assertTrue(SyncRepository.nextCursor(full)!!.startsWith("2026-09-20T05:00:00.000499"))
     }
 }

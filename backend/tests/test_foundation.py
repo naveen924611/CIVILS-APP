@@ -221,3 +221,13 @@ def test_gateway_embedding_falls_back_then_gives_up(env):
 def test_topic_default_fields():
     t = Topic(title="x")
     assert t.title == "x"
+
+
+def test_kv_roundtrip(client, auth_header):
+    assert client.get("/kv/study.hours", headers=auth_header).json()["value"] is None
+    r = client.put("/kv/study.hours", json={"value": {"weekday": 4, "weekend": 8}}, headers=auth_header)
+    assert r.status_code == 200
+    assert client.get("/kv/study.hours", headers=auth_header).json()["value"]["weekend"] == 8
+    client.put("/kv/study.hours", json={"value": 3}, headers=auth_header)  # update path
+    assert client.get("/kv", headers=auth_header).json()["study.hours"] == 3
+    assert client.put("/kv/BAD KEY", json={"value": 1}, headers=auth_header).status_code in (400, 404)

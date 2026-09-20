@@ -3,6 +3,7 @@ package com.naveen.civilscompanion.data.repo
 import androidx.room.withTransaction
 import com.naveen.civilscompanion.data.Prefs
 import com.naveen.civilscompanion.data.local.AppDatabase
+import com.naveen.civilscompanion.data.records.RecordSync
 import com.naveen.civilscompanion.data.remote.SyncApi
 import com.naveen.civilscompanion.data.remote.dto.BriefSettingsDto
 import com.naveen.civilscompanion.data.remote.dto.RunBriefRequest
@@ -19,7 +20,18 @@ class SyncRepository @Inject constructor(
     private val db: AppDatabase,
     private val prefs: Prefs,
     private val json: Json,
+    private val records: RecordSync,
+    private val kv: KvRepository,
 ) {
+    /** Sends this tablet's changes, then fetches the server's. Returns how many rows came down. */
+    suspend fun sync(): Int {
+        records.pushDirty()
+        runCatching { kv.flushPending() }
+        val changed = pull()
+        runCatching { kv.refreshAll() }
+        return changed
+    }
+
     /** Pulls every change since the last sync. Returns how many rows changed. Throws on network errors. */
     suspend fun pull(): Int {
         var since = prefs.lastSync
@@ -31,7 +43,7 @@ class SyncRepository @Inject constructor(
             if (firstServerTime == null) firstServerTime = page.serverTime
             changed += applyPage(page)
             if (!page.more) break
-            since = nextCursor(page) ?: break
+            since = page.nextSince ?: break
         }
         firstServerTime?.let { prefs.lastSync = it }
         return changed
@@ -45,13 +57,10 @@ class SyncRepository @Inject constructor(
         db.briefs().upsert(page.briefs.filter { !it.deleted }.map { it.toEntity(json) })
         deleteChunked(page.briefs.filter { it.deleted }.map { it.id }) { db.briefs().delete(it) }
 
-        db.cards().upsert(page.cards.filter { !it.deleted }.map { it.toEntity() })
-        deleteChunked(page.cards.filter { it.deleted }.map { it.id }) { db.cards().delete(it) }
-
         db.alerts().upsert(page.alerts.filter { !it.deleted }.map { it.toEntity(json) })
         deleteChunked(page.alerts.filter { it.deleted }.map { it.id }) { db.alerts().delete(it) }
 
-        items.size + page.briefs.size + page.cards.size + page.alerts.size
+        items.size + page.briefs.size + page.alerts.size + records.applyPulled(page.tables)
     }
 
     private suspend fun deleteChunked(ids: List<String>, delete: suspend (List<String>) -> Unit) {
@@ -84,18 +93,6 @@ class SyncRepository @Inject constructor(
     }
 
     companion object {
-        private const val MAX_ROUNDS = 20
-
-        /** When a page was full, continue from the oldest "last row" among the full lists. */
-        fun nextCursor(page: SyncPullDto): String? {
-            val full = 500
-            val ends = buildList {
-                if (page.newsItems.size >= full) add(page.newsItems.last().updatedAt)
-                if (page.briefs.size >= full) add(page.briefs.last().updatedAt)
-                if (page.cards.size >= full) add(page.cards.last().updatedAt)
-                if (page.alerts.size >= full) add(page.alerts.last().updatedAt)
-            }
-            return ends.minOrNull()
-        }
+        private const val MAX_ROUNDS = 40
     }
 }

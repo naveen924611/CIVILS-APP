@@ -2,11 +2,9 @@ package com.naveen.civilscompanion.data
 
 import com.naveen.civilscompanion.data.local.AlertEntity
 import com.naveen.civilscompanion.data.local.BriefEntity
-import com.naveen.civilscompanion.data.local.CardEntity
 import com.naveen.civilscompanion.data.local.NewsItemEntity
 import com.naveen.civilscompanion.data.remote.dto.AlertDto
 import com.naveen.civilscompanion.data.remote.dto.BriefDto
-import com.naveen.civilscompanion.data.remote.dto.CardDto
 import com.naveen.civilscompanion.data.remote.dto.FactDto
 import com.naveen.civilscompanion.data.remote.dto.McqDto
 import com.naveen.civilscompanion.data.remote.dto.NewsItemDto
@@ -44,11 +42,6 @@ fun BriefDto.toEntity(json: Json) = BriefEntity(
     audioSecondsTotal = audioSecondsTotal, note = note,
     createdAt = parseInstant(createdAt) ?: 0L,
     updatedAt = updatedAt,
-)
-
-fun CardDto.toEntity() = CardEntity(
-    id = id, front = front, back = back, groupName = group, sourceId = sourceId,
-    dueAt = parseInstant(dueAt), updatedAt = updatedAt,
 )
 
 fun AlertDto.toEntity(json: Json) = AlertEntity(

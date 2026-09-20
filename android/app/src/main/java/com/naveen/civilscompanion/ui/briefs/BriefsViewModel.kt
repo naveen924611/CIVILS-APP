@@ -115,7 +115,7 @@ class BriefsViewModel @Inject constructor(
             if (b == null) flowOf(emptyList<NewsItemEntity>()) else db.newsItems().observe(decodeStrings(json, b.itemIdsJson))
         },
         db.progress().observeHeard(),
-        db.cards().observeSourceCounts(),
+        db.records().observeK2Counts("cards"),
         audio.downloaded,
     ) { brief, items, heard, counts, downloaded ->
         val order = brief?.let { decodeStrings(json, it.itemIdsJson) }.orEmpty()

@@ -9,6 +9,7 @@ import com.naveen.civilscompanion.CivilsApp
 import com.naveen.civilscompanion.R
 import com.naveen.civilscompanion.notify.BriefNotifier
 import com.naveen.civilscompanion.sync.SyncScheduler
+import com.naveen.civilscompanion.ui.nav.Routes
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
@@ -38,18 +39,26 @@ class CivilsMessagingService : FirebaseMessagingService() {
         when (data["type"]) {
             "brief_ready" -> notifier.showFromPush(data["brief_id"], title.ifBlank { "Your brief is ready" }, body)
             "brief_failed" -> showPlain(title, body)
+            "jobs_done" -> showPlain(
+                title.ifBlank { "Civils Companion" }, body.ifBlank { "Your answers are ready" },
+                CivilsApp.ANSWERS_CHANNEL, Routes.ASK,
+            )
         }
         if (data["type"] != null) SyncScheduler.syncNow(applicationContext)
     }
 
-    private fun showPlain(title: String, body: String) {
+    private fun showPlain(
+        title: String, body: String, channel: String = CivilsApp.GENERAL_CHANNEL, route: String? = null,
+    ) {
         val nm = NotificationManagerCompat.from(this)
         if (!nm.areNotificationsEnabled()) return
         val open = android.app.PendingIntent.getActivity(
-            this, 7, AppLinks.activityIntent(this, AppLinks.ACTION_OPEN_ALERTS),
+            this, if (route == null) 7 else route.hashCode(),
+            if (route == null) AppLinks.activityIntent(this, AppLinks.ACTION_OPEN_ALERTS)
+            else AppLinks.activityIntent(this, AppLinks.ACTION_OPEN_ROUTE, route = route),
             android.app.PendingIntent.FLAG_IMMUTABLE or android.app.PendingIntent.FLAG_UPDATE_CURRENT,
         )
-        val n = NotificationCompat.Builder(this, CivilsApp.GENERAL_CHANNEL)
+        val n = NotificationCompat.Builder(this, channel)
             .setSmallIcon(R.drawable.ic_notification)
             .setContentTitle(title)
             .setContentText(body)

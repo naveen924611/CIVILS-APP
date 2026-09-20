@@ -108,6 +108,14 @@ dependencies {
     implementation(libs.media3.datasource.okhttp)
     implementation(libs.work.runtime.ktx)
 
+    // M3+ : on-device OCR (Latin script), camera, home-screen widget
+    implementation(libs.mlkit.text.recognition)
+    implementation(libs.camerax.core)
+    implementation(libs.camerax.camera2)
+    implementation(libs.camerax.lifecycle)
+    implementation(libs.camerax.view)
+    implementation(libs.glance.appwidget)
+
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.messaging)
 

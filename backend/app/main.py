@@ -5,7 +5,7 @@ import httpx
 from apscheduler.schedulers.background import BackgroundScheduler
 from fastapi import Depends, FastAPI
 
-from app.api import audio, briefs, devices, health, sync
+from app.api import audio, briefs, devices, health, kv, sync
 from app.auth import router as auth_router
 from app.auth.deps import current_user
 from app.briefs.builder import BriefService
@@ -86,6 +86,7 @@ def create_app() -> FastAPI:
     app.include_router(briefs.router)
     app.include_router(sync.router)
     app.include_router(audio.router)
+    app.include_router(kv.router)
     for mod in load_features():
         router = getattr(mod, "router", None)
         if router is not None:

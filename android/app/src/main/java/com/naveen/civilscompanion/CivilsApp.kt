@@ -4,7 +4,9 @@ import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import com.naveen.civilscompanion.alarms.BriefAlarmScheduler
+import com.naveen.civilscompanion.data.Prefs
 import com.naveen.civilscompanion.data.auth.TokenStore
+import com.naveen.civilscompanion.data.local.DB_SCHEMA_VERSION
 import com.naveen.civilscompanion.sync.SyncScheduler
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
@@ -18,11 +20,16 @@ class CivilsApp : Application() {
 
     @Inject lateinit var tokens: TokenStore
     @Inject lateinit var alarms: BriefAlarmScheduler
+    @Inject lateinit var prefs: Prefs
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
     override fun onCreate() {
         super.onCreate()
         createChannels()
+        if (prefs.dbSchema != DB_SCHEMA_VERSION) {
+            prefs.lastSync = null // the local database was rebuilt: fetch everything again
+            prefs.dbSchema = DB_SCHEMA_VERSION
+        }
         // Log in -> start syncing and set the brief alarms. Log out -> stop everything.
         scope.launch {
             tokens.loggedIn.collect { loggedIn ->
