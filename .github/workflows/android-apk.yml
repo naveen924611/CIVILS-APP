@@ -38,12 +38,31 @@ jobs:
 
       - name: Signing key (only if the secret exists)
         if: ${{ env.KS_B64 != '' }}
+        env:
+          IN_STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          IN_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          IN_KEY_PASS: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: |
-          echo "$KS_B64" | base64 -d > "$RUNNER_TEMP/release.jks"
-          echo "KEYSTORE_PATH=$RUNNER_TEMP/release.jks" >> "$GITHUB_ENV"
-          echo "KEYSTORE_PASSWORD=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> "$GITHUB_ENV"
-          echo "KEY_ALIAS=${{ secrets.ANDROID_KEY_ALIAS }}" >> "$GITHUB_ENV"
-          echo "KEY_PASSWORD=${{ secrets.ANDROID_KEY_PASSWORD }}" >> "$GITHUB_ENV"
+          # Secrets come in through env vars (never pasted into the script) so symbols like $ " ` are safe.
+          # Leading/trailing spaces and line breaks from copy-paste are removed.
+          trim() { printf '%s' "$1" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'; }
+          STORE_PASS="$(trim "$IN_STORE_PASS")"
+          KEY_ALIAS_V="$(trim "$IN_KEY_ALIAS")"
+          KEY_PASS_V="$(trim "$IN_KEY_PASS")"
+          printf '%s' "$KS_B64" | tr -d '[:space:]' | base64 -d > "$RUNNER_TEMP/release.jks"
+
+          # Fail fast with a clear message (nothing secret is printed).
+          if ! keytool -list -keystore "$RUNNER_TEMP/release.jks" -storepass "$STORE_PASS" -alias "$KEY_ALIAS_V" >/dev/null 2>&1; then
+            echo "::error::Cannot open the keystore. Check the secrets ANDROID_KEYSTORE_PASSWORD (must be the keystore password), ANDROID_KEY_ALIAS (must match the alias, e.g. civils) and ANDROID_KEYSTORE_BASE64."
+            exit 1
+          fi
+
+          {
+            echo "KEYSTORE_PATH=$RUNNER_TEMP/release.jks"
+            echo "KEYSTORE_PASSWORD=$STORE_PASS"
+            echo "KEY_ALIAS=$KEY_ALIAS_V"
+            echo "KEY_PASSWORD=$KEY_PASS_V"
+          } >> "$GITHUB_ENV"
 
       - name: Unit tests and release APK
         run: gradle :app:testDebugUnitTest :app:assembleRelease --stacktrace
