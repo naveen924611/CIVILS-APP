@@ -32,7 +32,7 @@ class VoiceInput @Inject constructor(@ApplicationContext private val context: Co
 
     fun isAvailable(): Boolean = SpeechRecognizer.isRecognitionAvailable(context)
 
-    fun listen(language: String = "en-IN", preferOffline: Boolean = true): Flow<VoiceEvent> = callbackFlow {
+    fun listen(language: String = "en-IN", preferOffline: Boolean = true): Flow<VoiceEvent> = callbackFlow<VoiceEvent> {
         if (!isAvailable()) {
             trySend(VoiceEvent.Failed("Speech recognition is not available on this tablet."))
             close()

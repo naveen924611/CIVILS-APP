@@ -11,7 +11,9 @@ import com.naveen.civilscompanion.data.remote.dto.SyncPullDto
 import com.naveen.civilscompanion.data.toEntity
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
+import retrofit2.HttpException
 
 /** Copies what the server has that this tablet does not, and keeps it in the local database. */
 @Singleton
@@ -25,10 +27,19 @@ class SyncRepository @Inject constructor(
 ) {
     /** Sends this tablet's changes, then fetches the server's. Returns how many rows came down. */
     suspend fun sync(): Int {
-        records.pushDirty()
+        // A refused push (for example one bad row) must not stop briefs and alerts from arriving.
+        var pushProblem: Exception? = null
+        try {
+            records.pushDirty()
+        } catch (e: HttpException) {
+            pushProblem = e
+        } catch (e: SerializationException) {
+            pushProblem = e
+        }
         runCatching { kv.flushPending() }
         val changed = pull()
         runCatching { kv.refreshAll() }
+        pushProblem?.let { throw it } // let WorkManager retry the push later
         return changed
     }
 
@@ -38,14 +49,20 @@ class SyncRepository @Inject constructor(
         var firstServerTime: String? = null
         var changed = 0
         var rounds = 0
+        var finished = false
         while (rounds++ < MAX_ROUNDS) {
             val page = api.pull(since)
             if (firstServerTime == null) firstServerTime = page.serverTime
             changed += applyPage(page)
-            if (!page.more) break
+            if (!page.more) {
+                finished = true
+                break
+            }
             since = page.nextSince ?: break
         }
-        firstServerTime?.let { prefs.lastSync = it }
+        // Everything received: next time start from the first answer's time. Otherwise carry on from where we stopped.
+        val next = if (finished) firstServerTime else since
+        if (next != null) prefs.lastSync = next
         return changed
     }
 
