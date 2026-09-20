@@ -36,7 +36,11 @@ import com.naveen.civilscompanion.ui.login.LoginScreen
 import com.naveen.civilscompanion.ui.nav.Destination
 import com.naveen.civilscompanion.ui.nav.NavRail
 import com.naveen.civilscompanion.ui.nav.Routes
+import com.naveen.civilscompanion.ui.focus.focusRoutes
 import com.naveen.civilscompanion.ui.notes.notesRoutes
+import com.naveen.civilscompanion.ui.revise.reviseRoutes
+import com.naveen.civilscompanion.ui.telugu.teluguRoutes
+import com.naveen.civilscompanion.ui.tests.testsRoutes
 import com.naveen.civilscompanion.ui.settings.SettingsScreen
 import com.naveen.civilscompanion.ui.setup.SetupScreen
 import com.naveen.civilscompanion.ui.sheets.sheetsRoutes
@@ -131,9 +135,13 @@ private fun AppRoot(vm: MainViewModel) {
                 }
                 libraryRoutes(nav)
                 notesRoutes(nav)
+                reviseRoutes(nav)
                 todayRoutes(nav)
                 askRoutes(nav)
+                testsRoutes(nav)
                 sheetsRoutes(nav)
+                focusRoutes(nav)
+                teluguRoutes(nav)
             }
             FloatingMic(nav, Modifier.align(Alignment.BottomEnd).padding(20.dp))
         }

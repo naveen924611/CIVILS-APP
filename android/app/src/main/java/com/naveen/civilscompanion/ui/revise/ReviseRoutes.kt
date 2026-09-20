@@ -1,4 +1,4 @@
-package com.naveen.civilscompanion.ui.notes
+package com.naveen.civilscompanion.ui.revise
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
@@ -7,8 +7,8 @@ import com.naveen.civilscompanion.ui.nav.Destination
 import com.naveen.civilscompanion.ui.nav.Routes
 import com.naveen.civilscompanion.ui.placeholder.PlaceholderScreen
 
-/** OWNER: Syllabus + Notes (M4). Routes: notes, notes/{topicId}, syllabus, syllabus/{importId}. */
+/** OWNER: Revision + Planner + Today (M5). Routes: revise, revise/session, revise/rules. */
 @Suppress("UNUSED_PARAMETER")
-fun NavGraphBuilder.notesRoutes(nav: NavHostController) {
-    composable(Routes.NOTES) { PlaceholderScreen(Destination.Notes) }
+fun NavGraphBuilder.reviseRoutes(nav: NavHostController) {
+    composable(Routes.REVISE) { PlaceholderScreen(Destination.Revise) }
 }

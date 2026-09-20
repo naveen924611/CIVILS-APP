@@ -121,11 +121,15 @@ class RecordStore @Inject constructor(
     suspend fun delete(table: Table<*>, id: String) {
         db.withTransaction {
             val row = dao.get(table.name, id) ?: return@withTransaction
+            if (table.localOnly) {
+                dao.delete(table.name, listOf(id))
+                return@withTransaction
+            }
             val now = TimeUtil.nowIso()
             val obj = parse(row.json).toMutableMap()
             obj["deleted"] = JsonPrimitive(true)
             obj["updated_at"] = JsonPrimitive(now)
-            dao.upsertOne(row.copy(json = JsonObject(obj).toString(), updatedAt = now, dirty = true, deleted = true))
+            dao.upsertOne(row.copy(json = JsonObject(obj).toString(), updatedAt = now, dirty = !table.localOnly, deleted = true))
         }
         trigger.request()
     }
@@ -146,7 +150,7 @@ class RecordStore @Inject constructor(
         val idx = table.index(obj)
         dao.upsertOne(
             RecordEntity(
-                tbl = table.name, id = id, json = obj.toString(), updatedAt = now, dirty = true, deleted = false,
+                tbl = table.name, id = id, json = obj.toString(), updatedAt = now, dirty = !table.localOnly, deleted = false,
                 k1 = idx.k1, k2 = idx.k2, n1 = idx.n1, text = idx.text,
             ),
         )

@@ -1,4 +1,4 @@
-package com.naveen.civilscompanion.ui.notes
+package com.naveen.civilscompanion.ui.focus
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
@@ -7,8 +7,8 @@ import com.naveen.civilscompanion.ui.nav.Destination
 import com.naveen.civilscompanion.ui.nav.Routes
 import com.naveen.civilscompanion.ui.placeholder.PlaceholderScreen
 
-/** OWNER: Syllabus + Notes (M4). Routes: notes, notes/{topicId}, syllabus, syllabus/{importId}. */
+/** OWNER: Focus + Videos + Storage/Settings/Widget (M7, M11). Routes: focus, videos, video/{id}, storage. */
 @Suppress("UNUSED_PARAMETER")
-fun NavGraphBuilder.notesRoutes(nav: NavHostController) {
-    composable(Routes.NOTES) { PlaceholderScreen(Destination.Notes) }
+fun NavGraphBuilder.focusRoutes(nav: NavHostController) {
+    composable(Routes.FOCUS) { PlaceholderScreen(Destination.Focus) }
 }

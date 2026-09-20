@@ -27,6 +27,8 @@ class Table<T : Any>(
     val k2: String? = null,
     val n1: String? = null,
     val text: List<String> = emptyList(),
+    /** true = this tablet's private table: saved and read like the others but never sent to the server. */
+    val localOnly: Boolean = false,
 ) {
     fun index(obj: JsonObject): RecordIndex = RecordIndex(
         k1 = k1?.let { textOf(obj[it]) },

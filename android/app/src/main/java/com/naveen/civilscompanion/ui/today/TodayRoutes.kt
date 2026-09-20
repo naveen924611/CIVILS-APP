@@ -7,8 +7,8 @@ import com.naveen.civilscompanion.ui.nav.Destination
 import com.naveen.civilscompanion.ui.nav.Routes
 import com.naveen.civilscompanion.ui.placeholder.PlaceholderScreen
 
-/** OWNER: Today / Planner / Focus / Exams and Storage screens (M5, M7, M11). Routes: today, planner, focus, exams, storage. */
+/** OWNER: Today + Planner + exam dates + materials (M5). Routes: today, planner, exams, materials. */
+@Suppress("UNUSED_PARAMETER")
 fun NavGraphBuilder.todayRoutes(nav: NavHostController) {
     composable(Routes.TODAY) { PlaceholderScreen(Destination.Today) }
-    composable(Routes.FOCUS) { PlaceholderScreen(Destination.Focus) }
 }
