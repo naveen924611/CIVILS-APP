@@ -27,18 +27,26 @@ def prepare_cron(time_str: str, days: list[int], lead_minutes: int) -> tuple[int
 
 
 class BriefScheduler:
-    def __init__(self, settings: Settings, session_factory: Callable[[], Session], service: BriefService):
+    def __init__(
+        self,
+        settings: Settings,
+        session_factory: Callable[[], Session],
+        service: BriefService,
+        scheduler: BackgroundScheduler | None = None,
+    ):
         self.settings = settings
         self._session_factory = session_factory
         self.service = service
-        self.scheduler = BackgroundScheduler(timezone=settings.timezone)
+        self._owns = scheduler is None
+        self.scheduler = scheduler or BackgroundScheduler(timezone=settings.timezone)
 
     def start(self) -> None:
-        self.scheduler.start()
+        if not self.scheduler.running:
+            self.scheduler.start()
         self.reschedule()
 
     def shutdown(self) -> None:
-        if self.scheduler.running:
+        if self._owns and self.scheduler.running:
             self.scheduler.shutdown(wait=False)
 
     def reschedule(self) -> None:

@@ -49,6 +49,14 @@ class Settings(BaseSettings):
     brief_lead_minutes: int = 30
     scheduler_enabled: bool = True
 
+    # --- Retrieval, files and jobs (M3+) ---
+    embed_model: str = "gemini-embedding-2"
+    embed_fallback_model: str = "gemini-embedding-001"
+    embed_dims: int = 768
+    max_upload_mb: int = 60
+    job_retry_minutes: int = 10
+    job_max_attempts: int = 4
+
     # --- Audio (M2) ---
     piper_voice: str = "en_GB-alan-medium"
     piper_bin: str = "piper"

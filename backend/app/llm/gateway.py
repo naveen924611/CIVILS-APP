@@ -3,6 +3,7 @@
 Order comes from LLM_CHAIN (default Gemini free -> Groq free). There is no paid provider.
 Keys are read from the environment and are never logged.
 """
+import base64
 import json
 import logging
 import re
@@ -90,12 +91,14 @@ class LlmGateway:
         user: str,
         schema: type[BaseModel],
         max_output_tokens: int = 2048,
+        images: list[tuple[str, bytes]] | None = None,
     ) -> BaseModel | None:
-        """Returns a validated object, or None (the caller logs and skips the item)."""
+        """Returns a validated object, or None (the caller logs and skips the item).
+        `images` is a list of (mime_type, bytes) for pictures the model should look at (Gemini only)."""
         prompt = user
         for attempt in range(2):
             try:
-                done = self._complete(feature, system, prompt, max_output_tokens)
+                done = self._complete(feature, system, prompt, max_output_tokens, True, images)
             except LlmError as exc:
                 self.last_error = f"{exc.kind}: {exc}"
                 log.warning("LLM %s failed: %s", feature, self.last_error)
@@ -113,10 +116,87 @@ class LlmGateway:
                 )
         return None
 
+    def generate_text(
+        self,
+        *,
+        feature: str,
+        system: str,
+        user: str,
+        max_output_tokens: int = 2048,
+        images: list[tuple[str, bytes]] | None = None,
+    ) -> str | None:
+        """Plain text answer (tutor replies, OCR of a handwritten page, ...). None when every provider failed."""
+        try:
+            return self._complete(feature, system, user, max_output_tokens, False, images).text.strip()
+        except LlmError as exc:
+            self.last_error = f"{exc.kind}: {exc}"
+            log.warning("LLM %s failed: %s", feature, self.last_error)
+            return None
+
+    def embed_texts(self, texts: list[str], *, query: bool = False) -> list[list[float]] | None:
+        """One vector per text (Gemini embeddings, free tier). None means "use word search instead"."""
+        if not texts or not self.settings.gemini_api_key:
+            return None
+        if self.guard.provider_full("gemini"):
+            return None
+        models = [self.settings.embed_model, self.settings.embed_fallback_model]
+        for model in dict.fromkeys(m for m in models if m):
+            if self._cooldown_until.get(("embed", model), 0) > time.monotonic():
+                continue
+            try:
+                out: list[list[float]] = []
+                for i in range(0, len(texts), 64):
+                    out.extend(self._embed_batch(model, texts[i : i + 64], query))
+                return out
+            except LlmError as exc:
+                self.last_error = f"embed {model}: {exc.kind}: {exc}"
+                log.warning("embedding with %s failed: %s", model, self.last_error)
+                self._cooldown_until[("embed", model)] = time.monotonic() + (3600 if exc.kind != "quota" else 300)
+        return None
+
+    def _embed_batch(self, model: str, batch: list[str], query: bool) -> list[list[float]]:
+        requests = []
+        for t in batch:
+            req: dict = {
+                "model": f"models/{model}",
+                "content": {"parts": [{"text": t[:6000]}]},
+                "outputDimensionality": self.settings.embed_dims,
+            }
+            if model.endswith("-001"):  # the newer model takes no task type
+                req["taskType"] = "RETRIEVAL_QUERY" if query else "RETRIEVAL_DOCUMENT"
+            requests.append(req)
+        try:
+            resp = self._client.post(
+                f"https://generativelanguage.googleapis.com/v1beta/models/{model}:batchEmbedContents",
+                headers={"x-goog-api-key": self.settings.gemini_api_key},
+                json={"requests": requests},
+            )
+        except httpx.HTTPError as exc:
+            self._record("gemini", model, "embed", 0, 0, False)
+            raise LlmError("network", type(exc).__name__) from exc
+        if resp.status_code != 200:
+            self._record("gemini", model, "embed", 0, 0, False)
+            kind = "quota" if resp.status_code == 429 else "bad_request" if resp.status_code in (400, 404) else "server"
+            raise LlmError(kind, f"HTTP {resp.status_code}: {resp.text[:200]}")
+        try:
+            vectors = [e["values"] for e in resp.json()["embeddings"]]
+        except (KeyError, TypeError, ValueError) as exc:
+            self._record("gemini", model, "embed", 0, 0, False)
+            raise LlmError("parse", "unexpected embedding response") from exc
+        if len(vectors) != len(batch):
+            raise LlmError("parse", "embedding count mismatch")
+        self._record("gemini", model, "embed", sum(len(t) for t in batch) // 4, 0, True)
+        return vectors
+
     # ---------------------------------------------------------------- internals
 
-    def _complete(self, feature: str, system: str, user: str, max_tokens: int) -> Completion:
+    def _complete(
+        self, feature: str, system: str, user: str, max_tokens: int, json_mode: bool = True,
+        images: list[tuple[str, bytes]] | None = None,
+    ) -> Completion:
         chain = parse_chain(self.settings.llm_chain)
+        if images:  # only Gemini models here can look at pictures
+            chain = [c for c in chain if c[0] == "gemini"]
         last: LlmError | None = None
         now = time.monotonic()
         candidates = [
@@ -129,7 +209,7 @@ class LlmGateway:
             raise LlmError("auth", "No API key is configured (GEMINI_API_KEY / GROQ_API_KEY).")
         for provider, model in candidates:
             try:
-                return self._call_with_retries(provider, model, feature, system, user, max_tokens)
+                return self._call_with_retries(provider, model, feature, system, user, max_tokens, json_mode, images)
             except LlmError as exc:
                 last = exc
                 log.warning("%s/%s failed (%s), trying next", provider, model, exc.kind)
@@ -139,11 +219,11 @@ class LlmGateway:
     def _key(self, provider: str) -> str:
         return {"gemini": self.settings.gemini_api_key, "groq": self.settings.groq_api_key}.get(provider, "")
 
-    def _call_with_retries(self, provider, model, feature, system, user, max_tokens) -> Completion:
+    def _call_with_retries(self, provider, model, feature, system, user, max_tokens, json_mode=True, images=None) -> Completion:
         delays = [2, 6]
         for attempt in range(len(delays) + 1):
             try:
-                result = self._call_once(provider, model, system, user, max_tokens)
+                result = self._call_once(provider, model, system, user, max_tokens, json_mode, images)
                 self._record(provider, model, feature, result.tokens_in, result.tokens_out, True)
                 return result
             except LlmError as exc:
@@ -160,20 +240,22 @@ class LlmGateway:
                 raise
         raise LlmError("server", "unreachable")  # pragma: no cover
 
-    def _call_once(self, provider, model, system, user, max_tokens) -> Completion:
+    def _call_once(self, provider, model, system, user, max_tokens, json_mode=True, images=None) -> Completion:
         try:
             if provider == "gemini":
+                parts: list[dict] = [{"text": user}]
+                for mime, data in images or []:
+                    parts.append({"inlineData": {"mimeType": mime, "data": base64.b64encode(data).decode("ascii")}})
+                config: dict = {"temperature": 0.2, "maxOutputTokens": max_tokens}
+                if json_mode:
+                    config["responseMimeType"] = "application/json"
                 resp = self._client.post(
                     GEMINI_URL.format(model=model),
                     headers={"x-goog-api-key": self.settings.gemini_api_key},
                     json={
                         "systemInstruction": {"parts": [{"text": system}]},
-                        "contents": [{"role": "user", "parts": [{"text": user}]}],
-                        "generationConfig": {
-                            "responseMimeType": "application/json",
-                            "temperature": 0.2,
-                            "maxOutputTokens": max_tokens,
-                        },
+                        "contents": [{"role": "user", "parts": parts}],
+                        "generationConfig": config,
                     },
                 )
             elif provider == "groq":
@@ -186,7 +268,7 @@ class LlmGateway:
                             {"role": "system", "content": system},
                             {"role": "user", "content": user},
                         ],
-                        "response_format": {"type": "json_object"},
+                        **({"response_format": {"type": "json_object"}} if json_mode else {}),
                         "temperature": 0.2,
                         "max_tokens": max_tokens,
                     },

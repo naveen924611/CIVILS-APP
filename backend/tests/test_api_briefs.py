@@ -44,7 +44,7 @@ def test_sync_pull_is_incremental_and_skips_hidden(client, auth_header):
     seed(client)
     first = client.get("/sync/pull", headers=auth_header).json()
     assert [i["title"] for i in first["news_items"]] == ["Repo rate held"]
-    assert len(first["briefs"]) == len(first["cards"]) == len(first["alerts"]) == 1
+    assert len(first["briefs"]) == len(first["tables"]["cards"]) == len(first["alerts"]) == 1
     assert first["more"] is False and first["server_time"].endswith("Z")
     later = client.get("/sync/pull", params={"since": first["server_time"]}, headers=auth_header).json()
     assert later["news_items"] == [] and later["alerts"] == []

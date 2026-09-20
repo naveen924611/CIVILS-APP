@@ -56,3 +56,44 @@ def feed_client(content: bytes) -> httpx.Client:
         return httpx.Response(200, content=content)
 
     return httpx.Client(transport=httpx.MockTransport(handler))
+
+
+class FakeServices:
+    """Services for tests that need jobs / features without the web app."""
+
+    @staticmethod
+    def build(settings, factory, gateway=None):
+        from apscheduler.schedulers.background import BackgroundScheduler
+
+        from app.services import Services
+
+        pushed = []
+        svc = Services(settings=settings, session_factory=factory, gateway=gateway or FullFakeGateway([]),
+                       http=httpx.Client(transport=httpx.MockTransport(lambda r: httpx.Response(404))),
+                       scheduler=BackgroundScheduler(), push=lambda t, b, d: pushed.append((t, b, d)) or 1)
+        svc.extras["pushed"] = pushed
+        return svc
+
+
+class FullFakeGateway(FakeGateway):
+    """FakeGateway plus text, images and embeddings (embeddings default to 'not available')."""
+
+    def __init__(self, answers, level=0, texts=None, vectors=None):
+        super().__init__(answers, level)
+        self.texts = list(texts or [])
+        self.vectors = vectors  # callable(list[str]) -> list[list[float]] | None
+        self.text_calls = []
+        self.image_calls = []
+
+    def generate_json(self, *, feature, system, user, schema, max_output_tokens=2048, images=None):
+        if images:
+            self.image_calls.append((feature, len(images)))
+        return super().generate_json(feature=feature, system=system, user=user, schema=schema,
+                                     max_output_tokens=max_output_tokens)
+
+    def generate_text(self, *, feature, system, user, max_output_tokens=2048, images=None):
+        self.text_calls.append((feature, user))
+        return self.texts.pop(0) if self.texts else None
+
+    def embed_texts(self, texts, *, query=False):
+        return self.vectors(texts) if self.vectors else None

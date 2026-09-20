@@ -5,6 +5,7 @@ from sqlalchemy import JSON, Boolean, DateTime, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base
+from app.db.sync_mixin import SyncMixin
 
 
 def _uuid() -> str:
@@ -91,10 +92,14 @@ class Brief(Base):
     deleted: Mapped[bool] = mapped_column(Boolean, default=False)
 
 
-class Card(Base):
+class Card(SyncMixin, Base):
     """Flashcards. The spaced-repetition state (fsrs_state_json) is filled in from M5."""
 
     __tablename__ = "cards"
+    sync_name = "cards"
+    push_fields = frozenset(
+        {"front", "back", "topic_id", "source_type", "source_id", "group", "fsrs_state_json", "due_at"}
+    )
 
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
     front: Mapped[str] = mapped_column(Text)
@@ -150,3 +155,7 @@ class LlmUsage(Base):
     tokens_out: Mapped[int] = mapped_column(Integer, default=0)
     ok: Mapped[bool] = mapped_column(Boolean, default=True)
     at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now, index=True)
+
+
+# Tables for milestones M3-M12 live in models_v2.py; importing it registers them.
+from app.db import models_v2  # noqa: E402,F401
