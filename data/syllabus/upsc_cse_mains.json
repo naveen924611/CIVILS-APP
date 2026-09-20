@@ -1,0 +1,1616 @@
+{
+ "key": "upsc-cse-mains",
+ "exam": "UPSC CSE",
+ "title": "UPSC Civil Services Mains (starter outline, no optional)",
+ "verified": false,
+ "source_note": "Mains structure: Essay, GS I to IV and the two qualifying language papers, from the UPSC syllabus as known to the app author. The two Optional subject papers are NOT included (choose your optional later and add it as your own topics). NOT re-checked against upsc.gov.in in this build.",
+ "tree": [
+  {
+   "title": "Essay Paper",
+   "level": 0,
+   "exam_tags": [
+    "UPSC"
+   ],
+   "est_hours": 31.5,
+   "importance": 7,
+   "children": [
+    {
+     "title": "Essay",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 31.5,
+     "importance": 7,
+     "children": [
+      {
+       "title": "Essay themes",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 7.0,
+       "children": [
+        {
+         "title": "Society, education and culture",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 4.5,
+         "importance": 7.0,
+         "children": []
+        },
+        {
+         "title": "Economy, technology and environment",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 4.5,
+         "importance": 7.0,
+         "children": []
+        },
+        {
+         "title": "Polity, governance and ethics",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 4.5,
+         "importance": 7.0,
+         "children": []
+        },
+        {
+         "title": "Philosophical and abstract themes",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 4.5,
+         "importance": 7.0,
+         "children": []
+        }
+       ],
+       "est_hours": 18.0
+      },
+      {
+       "title": "Essay writing practice",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 8.0,
+       "children": [
+        {
+         "title": "Structure, introduction and conclusion",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 4.5,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Examples, data and quotations",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 4.5,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Timed practice and review",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 4.5,
+         "importance": 8.0,
+         "children": []
+        }
+       ],
+       "est_hours": 13.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "GS Paper I - Indian Heritage and Culture, History and Geography of the World and Society",
+   "level": 0,
+   "exam_tags": [
+    "UPSC"
+   ],
+   "est_hours": 169.0,
+   "importance": 8,
+   "children": [
+    {
+     "title": "Indian heritage and culture",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 30.0,
+     "importance": 8,
+     "children": [
+      {
+       "title": "Art forms, literature and architecture",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 8.0,
+       "children": [
+        {
+         "title": "Salient aspects of art forms",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 10.0,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Literature",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 10.0,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Architecture from ancient to modern times",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 10.0,
+         "importance": 8.0,
+         "children": []
+        }
+       ],
+       "est_hours": 30.0
+      }
+     ]
+    },
+    {
+     "title": "Modern Indian history and freedom struggle",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 40.5,
+     "importance": 9,
+     "children": [
+      {
+       "title": "Modern history from mid-18th century",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 9.0,
+       "children": [
+        {
+         "title": "Significant events, personalities and issues",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 13.5,
+         "importance": 9.0,
+         "children": []
+        },
+        {
+         "title": "Freedom struggle: stages and contributors",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 13.5,
+         "importance": 9.0,
+         "children": []
+        },
+        {
+         "title": "Post-independence consolidation and reorganisation",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 13.5,
+         "importance": 9.0,
+         "children": []
+        }
+       ],
+       "est_hours": 40.5
+      }
+     ]
+    },
+    {
+     "title": "World history",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 30.0,
+     "importance": 6,
+     "children": [
+      {
+       "title": "Events from the 18th century",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 6.0,
+       "children": [
+        {
+         "title": "Industrial revolution",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.0,
+         "importance": 6.0,
+         "children": []
+        },
+        {
+         "title": "World wars",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.0,
+         "importance": 6.0,
+         "children": []
+        },
+        {
+         "title": "Redrawal of national boundaries",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.0,
+         "importance": 6.0,
+         "children": []
+        },
+        {
+         "title": "Colonization and decolonization",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.0,
+         "importance": 6.0,
+         "children": []
+        },
+        {
+         "title": "Political philosophies: communism, capitalism, socialism",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.0,
+         "importance": 6.0,
+         "children": []
+        }
+       ],
+       "est_hours": 30.0
+      }
+     ]
+    },
+    {
+     "title": "Indian society",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 30.0,
+     "importance": 7,
+     "children": [
+      {
+       "title": "Society and social issues",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 7.0,
+       "children": [
+        {
+         "title": "Salient features of Indian society and diversity",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.0,
+         "importance": 7.0,
+         "children": []
+        },
+        {
+         "title": "Role of women and women's organisations",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.0,
+         "importance": 7.0,
+         "children": []
+        },
+        {
+         "title": "Population, poverty and developmental issues",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.0,
+         "importance": 7.0,
+         "children": []
+        },
+        {
+         "title": "Urbanization",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.0,
+         "importance": 7.0,
+         "children": []
+        },
+        {
+         "title": "Effects of globalization on Indian society",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.0,
+         "importance": 7.0,
+         "children": []
+        },
+        {
+         "title": "Social empowerment, communalism, regionalism and secularism",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.0,
+         "importance": 7.0,
+         "children": []
+        }
+       ],
+       "est_hours": 30.0
+      }
+     ]
+    },
+    {
+     "title": "Physical and human geography",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 38.5,
+     "importance": 8,
+     "children": [
+      {
+       "title": "Physical geography",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 8.0,
+       "children": [
+        {
+         "title": "Salient features of world's physical geography",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.5,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Distribution of key natural resources",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.5,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Geophysical phenomena: earthquakes, tsunami, volcanic activity, cyclones",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.5,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Geographical features and their location; changes in flora and fauna",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.5,
+         "importance": 8.0,
+         "children": []
+        }
+       ],
+       "est_hours": 22.0
+      },
+      {
+       "title": "Human and economic geography",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 7.0,
+       "children": [
+        {
+         "title": "Factors for location of industries",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.5,
+         "importance": 7.0,
+         "children": []
+        },
+        {
+         "title": "Urbanization patterns and problems",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.5,
+         "importance": 7.0,
+         "children": []
+        },
+        {
+         "title": "Climate change effects",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.5,
+         "importance": 7.0,
+         "children": []
+        }
+       ],
+       "est_hours": 16.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "GS Paper II - Governance, Constitution, Polity, Social Justice and International Relations",
+   "level": 0,
+   "exam_tags": [
+    "UPSC"
+   ],
+   "est_hours": 159.5,
+   "importance": 10,
+   "children": [
+    {
+     "title": "Constitution and polity",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 49.5,
+     "importance": 10,
+     "children": [
+      {
+       "title": "Indian Constitution",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 10.0,
+       "children": [
+        {
+         "title": "Historical underpinnings, evolution, features, amendments",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 4.5,
+         "importance": 10.0,
+         "children": []
+        },
+        {
+         "title": "Significant provisions and basic structure",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 4.5,
+         "importance": 10.0,
+         "children": []
+        },
+        {
+         "title": "Comparison with other countries' constitutional schemes",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 4.5,
+         "importance": 10.0,
+         "children": []
+        }
+       ],
+       "est_hours": 13.5
+      },
+      {
+       "title": "Federal structure",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 9.0,
+       "children": [
+        {
+         "title": "Functions and responsibilities of Union and States",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 4.5,
+         "importance": 9.0,
+         "children": []
+        },
+        {
+         "title": "Devolution of powers and finances to local levels",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 4.5,
+         "importance": 9.0,
+         "children": []
+        },
+        {
+         "title": "Dispute redressal mechanisms and institutions",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 4.5,
+         "importance": 9.0,
+         "children": []
+        }
+       ],
+       "est_hours": 13.5
+      },
+      {
+       "title": "Separation of powers",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 9.0,
+       "children": [
+        {
+         "title": "Legislature, executive and judiciary structure and functioning",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 4.5,
+         "importance": 9.0,
+         "children": []
+        },
+        {
+         "title": "Parliament and State legislatures: conduct of business, powers, privileges",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 4.5,
+         "importance": 9.0,
+         "children": []
+        }
+       ],
+       "est_hours": 9.0
+      },
+      {
+       "title": "Representation of People's Act",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 8.0,
+       "children": [
+        {
+         "title": "Salient features of the Act",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 4.5,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Appointment to constitutional posts and bodies",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 4.5,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Statutory, regulatory and quasi-judicial bodies",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 4.5,
+         "importance": 8.0,
+         "children": []
+        }
+       ],
+       "est_hours": 13.5
+      }
+     ]
+    },
+    {
+     "title": "Governance",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 40.0,
+     "importance": 9,
+     "children": [
+      {
+       "title": "Government policies and interventions",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 9.0,
+       "children": [
+        {
+         "title": "Policies for development in various sectors",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.0,
+         "importance": 9.0,
+         "children": []
+        },
+        {
+         "title": "Issues arising from design and implementation",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.0,
+         "importance": 9.0,
+         "children": []
+        }
+       ],
+       "est_hours": 10.0
+      },
+      {
+       "title": "Governance issues",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 9.0,
+       "children": [
+        {
+         "title": "Transparency and accountability",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.0,
+         "importance": 9.0,
+         "children": []
+        },
+        {
+         "title": "E-governance: applications, models, successes, limitations",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.0,
+         "importance": 9.0,
+         "children": []
+        },
+        {
+         "title": "Citizens charters and institutional measures",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.0,
+         "importance": 9.0,
+         "children": []
+        },
+        {
+         "title": "Role of civil services in a democracy",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.0,
+         "importance": 9.0,
+         "children": []
+        }
+       ],
+       "est_hours": 20.0
+      },
+      {
+       "title": "Welfare schemes",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 8.0,
+       "children": [
+        {
+         "title": "Welfare schemes for vulnerable sections",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.0,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Mechanisms, laws and institutions for their protection",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.0,
+         "importance": 8.0,
+         "children": []
+        }
+       ],
+       "est_hours": 10.0
+      }
+     ]
+    },
+    {
+     "title": "Social sector, health, education and poverty",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 30.0,
+     "importance": 8,
+     "children": [
+      {
+       "title": "Social sector services",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 8.0,
+       "children": [
+        {
+         "title": "Issues relating to development of health and education",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 10.0,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Human resources",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 10.0,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Poverty and hunger issues",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 10.0,
+         "importance": 8.0,
+         "children": []
+        }
+       ],
+       "est_hours": 30.0
+      }
+     ]
+    },
+    {
+     "title": "International relations",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 40.0,
+     "importance": 8,
+     "children": [
+      {
+       "title": "India and its neighbourhood",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 8.0,
+       "children": [
+        {
+         "title": "Relations with neighbours",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 8.0,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Bilateral, regional and global groupings and agreements",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 8.0,
+         "importance": 8.0,
+         "children": []
+        }
+       ],
+       "est_hours": 16.0
+      },
+      {
+       "title": "Global affairs",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 8.0,
+       "children": [
+        {
+         "title": "Policies of developed and developing countries affecting India",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 8.0,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Indian diaspora",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 8.0,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Important international institutions, agencies and fora",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 8.0,
+         "importance": 8.0,
+         "children": []
+        }
+       ],
+       "est_hours": 24.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "GS Paper III - Technology, Economic Development, Bio-diversity, Environment, Security and Disaster Management",
+   "level": 0,
+   "exam_tags": [
+    "UPSC"
+   ],
+   "est_hours": 168.5,
+   "importance": 9,
+   "children": [
+    {
+     "title": "Indian economy and development",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 58.5,
+     "importance": 9,
+     "children": [
+      {
+       "title": "Planning and resource mobilisation",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 9.0,
+       "children": [
+        {
+         "title": "Indian economy: planning, resource mobilisation, growth and development",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.5,
+         "importance": 9.0,
+         "children": []
+        },
+        {
+         "title": "Inclusive growth and issues arising from it",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.5,
+         "importance": 9.0,
+         "children": []
+        }
+       ],
+       "est_hours": 13.0
+      },
+      {
+       "title": "Budgeting and fiscal policy",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 9.0,
+       "children": [
+        {
+         "title": "Government budgeting",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.5,
+         "importance": 9.0,
+         "children": []
+        },
+        {
+         "title": "Effects of liberalization; industrial policy and investment models",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.5,
+         "importance": 9.0,
+         "children": []
+        }
+       ],
+       "est_hours": 13.0
+      },
+      {
+       "title": "Agriculture",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 9.0,
+       "children": [
+        {
+         "title": "Cropping patterns, irrigation and storage",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.5,
+         "importance": 9.0,
+         "children": []
+        },
+        {
+         "title": "Farm subsidies, MSP, PDS and food security",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.5,
+         "importance": 9.0,
+         "children": []
+        },
+        {
+         "title": "Animal rearing, food processing and land reforms",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.5,
+         "importance": 9.0,
+         "children": []
+        }
+       ],
+       "est_hours": 19.5
+      },
+      {
+       "title": "Infrastructure",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 8.0,
+       "children": [
+        {
+         "title": "Energy, ports, roads, airports, railways",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.5,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Investment models",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.5,
+         "importance": 8.0,
+         "children": []
+        }
+       ],
+       "est_hours": 13.0
+      }
+     ]
+    },
+    {
+     "title": "Science and technology",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 40.5,
+     "importance": 8,
+     "children": [
+      {
+       "title": "Developments and applications",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 8.0,
+       "children": [
+        {
+         "title": "Science and technology developments and applications in everyday life",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 13.5,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Achievements of Indians; indigenization of technology",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 13.5,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Awareness in IT, space, computers, robotics, nano-technology, biotechnology, IPR",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 13.5,
+         "importance": 8.0,
+         "children": []
+        }
+       ],
+       "est_hours": 40.5
+      }
+     ]
+    },
+    {
+     "title": "Environment and disaster management",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 34.5,
+     "importance": 8,
+     "children": [
+      {
+       "title": "Environment and biodiversity",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 8.0,
+       "children": [
+        {
+         "title": "Conservation and environmental pollution and degradation",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 11.5,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Environmental impact assessment",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 11.5,
+         "importance": 8.0,
+         "children": []
+        }
+       ],
+       "est_hours": 23.0
+      },
+      {
+       "title": "Disaster management",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 7.0,
+       "children": [
+        {
+         "title": "Disasters and disaster management",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 11.5,
+         "importance": 7.0,
+         "children": []
+        }
+       ],
+       "est_hours": 11.5
+      }
+     ]
+    },
+    {
+     "title": "Internal security",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 35.0,
+     "importance": 8,
+     "children": [
+      {
+       "title": "Security challenges",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 8.0,
+       "children": [
+        {
+         "title": "Linkages between development and spread of extremism",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 7.0,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "External state and non-state actors, communication networks",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 7.0,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Cyber security, money laundering, organized crime",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 7.0,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Security forces and agencies and their mandate",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 7.0,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Border areas security",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 7.0,
+         "importance": 8.0,
+         "children": []
+        }
+       ],
+       "est_hours": 35.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "GS Paper IV - Ethics, Integrity and Aptitude",
+   "level": 0,
+   "exam_tags": [
+    "UPSC"
+   ],
+   "est_hours": 89.0,
+   "importance": 8,
+   "children": [
+    {
+     "title": "Ethics and human interface",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 30.0,
+     "importance": 8,
+     "children": [
+      {
+       "title": "Essence and determinants of ethics",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 8.0,
+       "children": [
+        {
+         "title": "Ethics in human actions and its dimensions",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 10.0,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Role of family, society and educational institutions",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 10.0,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Human values: lessons from leaders and reformers",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 10.0,
+         "importance": 8.0,
+         "children": []
+        }
+       ],
+       "est_hours": 30.0
+      }
+     ]
+    },
+    {
+     "title": "Attitude and aptitude",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 24.0,
+     "importance": 8,
+     "children": [
+      {
+       "title": "Attitude",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 8.0,
+       "children": [
+        {
+         "title": "Content, structure and function of attitude",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.0,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Moral and political attitudes, persuasion",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.0,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Aptitude and foundational values for civil service",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.0,
+         "importance": 8.0,
+         "children": []
+        },
+        {
+         "title": "Emotional intelligence and its uses in administration",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.0,
+         "importance": 8.0,
+         "children": []
+        }
+       ],
+       "est_hours": 24.0
+      }
+     ]
+    },
+    {
+     "title": "Public/civil service values and ethics in governance",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 35.0,
+     "importance": 9,
+     "children": [
+      {
+       "title": "Values in governance",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 9.0,
+       "children": [
+        {
+         "title": "Integrity, impartiality, objectivity, dedication, empathy, tolerance",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.0,
+         "importance": 9.0,
+         "children": []
+        },
+        {
+         "title": "Ethical issues in international relations and funding",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.0,
+         "importance": 9.0,
+         "children": []
+        },
+        {
+         "title": "Corporate governance",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.0,
+         "importance": 9.0,
+         "children": []
+        },
+        {
+         "title": "Ethics in public administration: laws, rules, conscience, accountability",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.0,
+         "importance": 9.0,
+         "children": []
+        },
+        {
+         "title": "Probity in governance, information sharing, RTI, codes of conduct",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.0,
+         "importance": 9.0,
+         "children": []
+        },
+        {
+         "title": "Citizen's charters and quality of service delivery",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.0,
+         "importance": 9.0,
+         "children": []
+        },
+        {
+         "title": "Case studies",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 5.0,
+         "importance": 9.0,
+         "children": []
+        }
+       ],
+       "est_hours": 35.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Paper A - Indian Language (qualifying)",
+   "level": 0,
+   "exam_tags": [
+    "UPSC"
+   ],
+   "est_hours": 19.5,
+   "importance": 2,
+   "children": [
+    {
+     "title": "Language skills",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 19.5,
+     "importance": 2,
+     "children": [
+      {
+       "title": "Comprehension, precis and translation",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 2,
+       "children": [
+        {
+         "title": "Comprehension and precis",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.5,
+         "importance": 2,
+         "children": []
+        },
+        {
+         "title": "Essay and translation",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.5,
+         "importance": 2,
+         "children": []
+        },
+        {
+         "title": "Grammar and usage",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.5,
+         "importance": 2,
+         "children": []
+        }
+       ],
+       "est_hours": 19.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Paper B - English (qualifying)",
+   "level": 0,
+   "exam_tags": [
+    "UPSC"
+   ],
+   "est_hours": 19.5,
+   "importance": 2,
+   "children": [
+    {
+     "title": "Language skills",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 19.5,
+     "importance": 2,
+     "children": [
+      {
+       "title": "Comprehension, precis and composition",
+       "level": 2,
+       "exam_tags": [
+        "UPSC"
+       ],
+       "importance": 2,
+       "children": [
+        {
+         "title": "Reading comprehension and precis",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.5,
+         "importance": 2,
+         "children": []
+        },
+        {
+         "title": "Essay and composition",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.5,
+         "importance": 2,
+         "children": []
+        },
+        {
+         "title": "Grammar and vocabulary",
+         "level": 3,
+         "exam_tags": [
+          "UPSC"
+         ],
+         "est_hours": 6.5,
+         "importance": 2,
+         "children": []
+        }
+       ],
+       "est_hours": 19.5
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

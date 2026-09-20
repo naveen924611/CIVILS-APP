@@ -1,0 +1,182 @@
+# TELUGU PRACTICE: VOCABULARY (about 160 words)
+#
+# IMPORTANT (read this): the official 2026 APPSC Group-I Telugu qualifying paper syllabus was NOT available when
+# this file was written. These words are a GENERAL list of everyday, administration and civil-service Telugu that is
+# useful for any Telugu qualifying paper. Every item is marked `source: general`. Nothing here is copied from an
+# official syllabus or a past paper. When the official syllabus is published, add new items (see below) and, if you
+# like, delete the ones that do not fit.
+#
+# The Telugu was written by an AI assistant and has not been checked by a Telugu teacher. If you find a mistake, fix
+# it here (keep the `key` the same) and restart the server: the item is updated on the tablet at the next sync.
+#
+# HOW TO ADD ITEMS LATER
+#   * Add a line to `items:` here, or create another file in this folder (any name ending in .yaml, for example
+#     zz_my_words.yaml) with the same layout. Every *.yaml file in data/telugu/ is loaded when the server starts.
+#   * `key` must be unique and never change (it is the stable id). Use a new prefix for your own items, e.g. `my-001`.
+#   * `level` 1 = everyday, 2 = office and government words, 3 = formal or abstract words.
+#   * `source`: general (default) | syllabus (from the official syllabus) | pyq (past paper). Only use "syllabus"
+#     for items you have checked against the official document.
+#   * Fields: te (Telugu), roman (how to read it, simple letters), en (English meaning), ex_te (example sentence),
+#     ex_en (English of the example).
+version: 1
+items:
+  - {kind: vocab, key: v001, level: 1, source: general, te: "ప్రభుత్వం", roman: "prabhutvam", en: "government", ex_te: "ప్రభుత్వం కొత్త పథకాన్ని ప్రారంభించింది.", ex_en: "The government has started a new scheme."}
+  - {kind: vocab, key: v002, level: 2, source: general, te: "పాలన", roman: "paalana", en: "administration, governance", ex_te: "మంచి పాలన ప్రజలకు మేలు చేస్తుంది.", ex_en: "Good governance benefits the people."}
+  - {kind: vocab, key: v003, level: 1, source: general, te: "జిల్లా", roman: "jillaa", en: "district", ex_te: "మా జిల్లాలో వర్షాలు బాగా కురిశాయి.", ex_en: "It rained well in our district."}
+  - {kind: vocab, key: v004, level: 2, source: general, te: "మండలం", roman: "mandalam", en: "mandal (a block of villages in a district)", ex_te: "మండల కార్యాలయంలో సమావేశం జరిగింది.", ex_en: "A meeting was held at the mandal office."}
+  - {kind: vocab, key: v005, level: 1, source: general, te: "గ్రామం", roman: "graamam", en: "village", ex_te: "గ్రామంలో కొత్త పాఠశాల నిర్మించారు.", ex_en: "A new school was built in the village."}
+  - {kind: vocab, key: v006, level: 1, source: general, te: "పట్టణం", roman: "pattanam", en: "town", ex_te: "ఈ పట్టణంలో జనాభా పెరుగుతోంది.", ex_en: "The population of this town is growing."}
+  - {kind: vocab, key: v007, level: 1, source: general, te: "నగరం", roman: "nagaram", en: "city", ex_te: "హైదరాబాద్ ఒక పెద్ద నగరం.", ex_en: "Hyderabad is a big city."}
+  - {kind: vocab, key: v008, level: 1, source: general, te: "కార్యాలయం", roman: "kaaryaalayam", en: "office", ex_te: "కార్యాలయం ఉదయం పది గంటలకు తెరుస్తారు.", ex_en: "The office opens at ten in the morning."}
+  - {kind: vocab, key: v009, level: 1, source: general, te: "అధికారి", roman: "adhikaari", en: "officer, official", ex_te: "అధికారి ఫైలును పరిశీలించారు.", ex_en: "The officer examined the file."}
+  - {kind: vocab, key: v010, level: 1, source: general, te: "ఉద్యోగి", roman: "udyogi", en: "employee", ex_te: "ప్రభుత్వ ఉద్యోగి సమయానికి విధులకు హాజరయ్యాడు.", ex_en: "The government employee reported for duty on time."}
+  - {kind: vocab, key: v011, level: 1, source: general, te: "ఉద్యోగం", roman: "udyogam", en: "job, employment", ex_te: "అతనికి మంచి ఉద్యోగం దొరికింది.", ex_en: "He got a good job."}
+  - {kind: vocab, key: v012, level: 2, source: general, te: "ఉత్తర్వు", roman: "uttarvu", en: "order (an official order)", ex_te: "కలెక్టర్ ఉత్తర్వులు జారీ చేశారు.", ex_en: "The Collector issued orders."}
+  - {kind: vocab, key: v013, level: 2, source: general, te: "దరఖాస్తు", roman: "darakhaastu", en: "application", ex_te: "నేను ఉద్యోగానికి దరఖాస్తు పంపాను.", ex_en: "I sent an application for the job."}
+  - {kind: vocab, key: v014, level: 1, source: general, te: "సంతకం", roman: "santakam", en: "signature", ex_te: "దరఖాస్తు కింద మీ సంతకం చేయండి.", ex_en: "Sign below the application."}
+  - {kind: vocab, key: v015, level: 1, source: general, te: "తేదీ", roman: "teedi", en: "date", ex_te: "దరఖాస్తుపై తేదీ రాయండి.", ex_en: "Write the date on the application."}
+  - {kind: vocab, key: v016, level: 1, source: general, te: "చిరునామా", roman: "chirunaama", en: "address", ex_te: "మీ చిరునామా స్పష్టంగా రాయండి.", ex_en: "Write your address clearly."}
+  - {kind: vocab, key: v017, level: 2, source: general, te: "పత్రం", roman: "patram", en: "document, paper", ex_te: "అవసరమైన పత్రాలను జతచేయండి.", ex_en: "Attach the necessary documents."}
+  - {kind: vocab, key: v018, level: 2, source: general, te: "ధ్రువీకరణ పత్రం", roman: "dhruveekarana patram", en: "certificate", ex_te: "ధ్రువీకరణ పత్రం తహసీల్దార్ కార్యాలయంలో ఇస్తారు.", ex_en: "The certificate is issued at the tahsildar's office."}
+  - {kind: vocab, key: v019, level: 2, source: general, te: "నివేదిక", roman: "nivedika", en: "report", ex_te: "అధికారులు తమ నివేదికను సమర్పించారు.", ex_en: "The officials submitted their report."}
+  - {kind: vocab, key: v020, level: 1, source: general, te: "సమావేశం", roman: "samaavesham", en: "meeting", ex_te: "రేపు ఉదయం సమావేశం ఉంది.", ex_en: "There is a meeting tomorrow morning."}
+  - {kind: vocab, key: v021, level: 3, source: general, te: "తీర్మానం", roman: "teermaanam", en: "resolution", ex_te: "సభ ఈ తీర్మానాన్ని ఆమోదించింది.", ex_en: "The house passed this resolution."}
+  - {kind: vocab, key: v022, level: 2, source: general, te: "నిర్ణయం", roman: "nirnayam", en: "decision", ex_te: "ప్రభుత్వం ముఖ్యమైన నిర్ణయం తీసుకుంది.", ex_en: "The government took an important decision."}
+  - {kind: vocab, key: v023, level: 2, source: general, te: "అనుమతి", roman: "anumati", en: "permission", ex_te: "కార్యక్రమానికి అనుమతి లభించింది.", ex_en: "Permission was granted for the event."}
+  - {kind: vocab, key: v024, level: 2, source: general, te: "అభ్యర్థన", roman: "abhyarthana", en: "request", ex_te: "మా అభ్యర్థనను దయచేసి పరిశీలించండి.", ex_en: "Please consider our request."}
+  - {kind: vocab, key: v025, level: 2, source: general, te: "ఫిర్యాదు", roman: "phiryaadu", en: "complaint", ex_te: "ప్రజలు నీటి సమస్యపై ఫిర్యాదు చేశారు.", ex_en: "The people complained about the water problem."}
+  - {kind: vocab, key: v026, level: 2, source: general, te: "పరిష్కారం", roman: "parishkaaram", en: "solution, settlement", ex_te: "సమస్యకు త్వరగా పరిష్కారం కనుగొనాలి.", ex_en: "A solution to the problem must be found quickly."}
+  - {kind: vocab, key: v027, level: 2, source: general, te: "విచారణ", roman: "vichaarana", en: "inquiry, hearing", ex_te: "ఈ ఘటనపై విచారణ జరుగుతోంది.", ex_en: "An inquiry is under way on this incident."}
+  - {kind: vocab, key: v028, level: 1, source: general, te: "చట్టం", roman: "chattam", en: "law", ex_te: "చట్టం ముందు అందరూ సమానులే.", ex_en: "Everyone is equal before the law."}
+  - {kind: vocab, key: v029, level: 2, source: general, te: "రాజ్యాంగం", roman: "raajyaangam", en: "constitution", ex_te: "భారత రాజ్యాంగం 1950 జనవరి 26న అమల్లోకి వచ్చింది.", ex_en: "The Indian Constitution came into force on 26 January 1950."}
+  - {kind: vocab, key: v030, level: 1, source: general, te: "హక్కు", roman: "hakku", en: "right", ex_te: "ప్రతి పౌరుడికి ఓటు హక్కు ఉంది.", ex_en: "Every citizen has the right to vote."}
+  - {kind: vocab, key: v031, level: 2, source: general, te: "బాధ్యత", roman: "baadhyata", en: "responsibility", ex_te: "తన పనిని సక్రమంగా చేయడం ప్రతి ఉద్యోగి బాధ్యత.", ex_en: "Doing one's work properly is every employee's responsibility."}
+  - {kind: vocab, key: v032, level: 2, source: general, te: "కర్తవ్యం", roman: "kartavyam", en: "duty", ex_te: "దేశాన్ని ప్రేమించడం మన కర్తవ్యం.", ex_en: "Loving the country is our duty."}
+  - {kind: vocab, key: v033, level: 2, source: general, te: "స్వేచ్ఛ", roman: "sweccha", en: "freedom", ex_te: "భావ ప్రకటనా స్వేచ్ఛ ప్రజాస్వామ్యానికి పునాది.", ex_en: "Freedom of expression is the foundation of democracy."}
+  - {kind: vocab, key: v034, level: 3, source: general, te: "సమానత్వం", roman: "samaanatvam", en: "equality", ex_te: "సమాజంలో సమానత్వం ఉండాలి.", ex_en: "There should be equality in society."}
+  - {kind: vocab, key: v035, level: 2, source: general, te: "న్యాయం", roman: "nyaayam", en: "justice", ex_te: "ప్రతి ఒక్కరికీ న్యాయం అందాలి.", ex_en: "Justice should reach everyone."}
+  - {kind: vocab, key: v036, level: 2, source: general, te: "న్యాయస్థానం", roman: "nyaayasthaanam", en: "court", ex_te: "న్యాయస్థానం కేసును విచారించింది.", ex_en: "The court heard the case."}
+  - {kind: vocab, key: v037, level: 2, source: general, te: "తీర్పు", roman: "teerpu", en: "judgment, verdict", ex_te: "న్యాయమూర్తి తీర్పు ప్రకటించారు.", ex_en: "The judge announced the judgment."}
+  - {kind: vocab, key: v038, level: 1, source: general, te: "ఎన్నికలు", roman: "ennikalu", en: "elections", ex_te: "వచ్చే నెలలో ఎన్నికలు జరుగుతాయి.", ex_en: "Elections will be held next month."}
+  - {kind: vocab, key: v039, level: 1, source: general, te: "ఓటు", roman: "otu", en: "vote", ex_te: "ప్రతి ఓటు విలువైనది.", ex_en: "Every vote is valuable."}
+  - {kind: vocab, key: v040, level: 2, source: general, te: "అభ్యర్థి", roman: "abhyarthi", en: "candidate", ex_te: "అభ్యర్థి నామినేషన్ దాఖలు చేశారు.", ex_en: "The candidate filed the nomination."}
+  - {kind: vocab, key: v041, level: 1, source: general, te: "ప్రజలు", roman: "prajalu", en: "people, public", ex_te: "ప్రజల సమస్యలను ప్రభుత్వం వినాలి.", ex_en: "The government must listen to the people's problems."}
+  - {kind: vocab, key: v042, level: 2, source: general, te: "ప్రజాస్వామ్యం", roman: "prajaaswaamyam", en: "democracy", ex_te: "భారతదేశం అతిపెద్ద ప్రజాస్వామ్య దేశం.", ex_en: "India is the largest democratic country."}
+  - {kind: vocab, key: v043, level: 2, source: general, te: "పార్లమెంటు", roman: "paarlamentu", en: "Parliament", ex_te: "పార్లమెంటు సమావేశాలు ఢిల్లీలో జరుగుతాయి.", ex_en: "Parliament sessions are held in Delhi."}
+  - {kind: vocab, key: v044, level: 2, source: general, te: "శాసనసభ", roman: "saasanasabha", en: "legislative assembly", ex_te: "శాసనసభలో బడ్జెట్ ప్రవేశపెట్టారు.", ex_en: "The budget was presented in the legislative assembly."}
+  - {kind: vocab, key: v045, level: 1, source: general, te: "ముఖ్యమంత్రి", roman: "mukhyamantri", en: "Chief Minister", ex_te: "ముఖ్యమంత్రి జిల్లాలో పర్యటించారు.", ex_en: "The Chief Minister toured the district."}
+  - {kind: vocab, key: v046, level: 2, source: general, te: "గవర్నర్", roman: "gavarnar", en: "Governor", ex_te: "గవర్నర్ కొత్త మంత్రులతో ప్రమాణం చేయించారు.", ex_en: "The Governor administered the oath to the new ministers."}
+  - {kind: vocab, key: v047, level: 1, source: general, te: "మంత్రి", roman: "mantri", en: "minister", ex_te: "విద్యాశాఖ మంత్రి పాఠశాలను సందర్శించారు.", ex_en: "The Education Minister visited the school."}
+  - {kind: vocab, key: v048, level: 1, source: general, te: "ప్రధానమంత్రి", roman: "pradhaanamantri", en: "Prime Minister", ex_te: "ప్రధానమంత్రి జాతినుద్దేశించి ప్రసంగించారు.", ex_en: "The Prime Minister addressed the nation."}
+  - {kind: vocab, key: v049, level: 2, source: general, te: "రాష్ట్రపతి", roman: "raashtrapati", en: "President", ex_te: "రాష్ట్రపతి భారతదేశానికి రాజ్యాంగ అధిపతి.", ex_en: "The President is the constitutional head of India."}
+  - {kind: vocab, key: v050, level: 1, source: general, te: "రాష్ట్రం", roman: "raashtram", en: "state", ex_te: "రాష్ట్ర ప్రభుత్వం రైతులకు సహాయం ప్రకటించింది.", ex_en: "The state government announced help for farmers."}
+  - {kind: vocab, key: v051, level: 1, source: general, te: "దేశం", roman: "desam", en: "country", ex_te: "భారతదేశం వైవిధ్యానికి పేరుగాంచింది.", ex_en: "India is famous for its diversity."}
+  - {kind: vocab, key: v052, level: 2, source: general, te: "కేంద్ర ప్రభుత్వం", roman: "kendra prabhutvam", en: "central government", ex_te: "కేంద్ర ప్రభుత్వం కొత్త నిధులు విడుదల చేసింది.", ex_en: "The central government released new funds."}
+  - {kind: vocab, key: v053, level: 1, source: general, te: "పన్ను", roman: "pannu", en: "tax", ex_te: "ప్రజలు సకాలంలో పన్ను చెల్లించాలి.", ex_en: "People should pay tax on time."}
+  - {kind: vocab, key: v054, level: 2, source: general, te: "బడ్జెట్", roman: "badjet", en: "budget", ex_te: "ఈ ఏడాది బడ్జెట్‌లో విద్యకు ఎక్కువ నిధులు కేటాయించారు.", ex_en: "More funds were allotted to education in this year's budget."}
+  - {kind: vocab, key: v055, level: 2, source: general, te: "ఆదాయం", roman: "aadaayam", en: "income, revenue", ex_te: "ప్రభుత్వ ఆదాయం పెరిగింది.", ex_en: "The government's revenue increased."}
+  - {kind: vocab, key: v056, level: 1, source: general, te: "ఖర్చు", roman: "kharchu", en: "expense, expenditure", ex_te: "అనవసర ఖర్చులను తగ్గించాలి.", ex_en: "Unnecessary expenses should be reduced."}
+  - {kind: vocab, key: v057, level: 1, source: general, te: "అప్పు", roman: "appu", en: "loan, debt", ex_te: "రైతులు బ్యాంకు నుంచి అప్పు తీసుకున్నారు.", ex_en: "The farmers took a loan from the bank."}
+  - {kind: vocab, key: v058, level: 2, source: general, te: "పెట్టుబడి", roman: "pettubadi", en: "investment", ex_te: "కొత్త పరిశ్రమల్లో పెట్టుబడి పెరిగింది.", ex_en: "Investment in new industries increased."}
+  - {kind: vocab, key: v059, level: 1, source: general, te: "వ్యాపారం", roman: "vyaapaaram", en: "business, trade", ex_te: "ఆయన చిన్న వ్యాపారం చేస్తున్నారు.", ex_en: "He is running a small business."}
+  - {kind: vocab, key: v060, level: 2, source: general, te: "పరిశ్రమ", roman: "parishrama", en: "industry", ex_te: "విశాఖపట్నంలో అనేక పరిశ్రమలు ఉన్నాయి.", ex_en: "There are many industries in Visakhapatnam."}
+  - {kind: vocab, key: v061, level: 1, source: general, te: "వ్యవసాయం", roman: "vyavasaayam", en: "agriculture, farming", ex_te: "మన రాష్ట్రంలో వ్యవసాయం ప్రధాన వృత్తి.", ex_en: "Agriculture is the main occupation in our state."}
+  - {kind: vocab, key: v062, level: 1, source: general, te: "రైతు", roman: "raitu", en: "farmer", ex_te: "రైతు దేశానికి వెన్నెముక.", ex_en: "The farmer is the backbone of the country."}
+  - {kind: vocab, key: v063, level: 1, source: general, te: "పంట", roman: "panta", en: "crop", ex_te: "ఈ ఏడాది వరి పంట బాగా పండింది.", ex_en: "The paddy crop yielded well this year."}
+  - {kind: vocab, key: v064, level: 3, source: general, te: "నీటిపారుదల", roman: "neetipaarudala", en: "irrigation", ex_te: "నీటిపారుదల ప్రాజెక్టులు పొలాలకు నీరు అందిస్తాయి.", ex_en: "Irrigation projects supply water to the fields."}
+  - {kind: vocab, key: v065, level: 2, source: general, te: "ప్రాజెక్టు", roman: "praajektu", en: "project", ex_te: "పోలవరం ఒక పెద్ద ప్రాజెక్టు.", ex_en: "Polavaram is a big project."}
+  - {kind: vocab, key: v066, level: 2, source: general, te: "పథకం", roman: "pathakam", en: "scheme", ex_te: "ఈ పథకం పేదలకు ఉపయోగపడుతుంది.", ex_en: "This scheme is useful to the poor."}
+  - {kind: vocab, key: v067, level: 3, source: general, te: "సంక్షేమం", roman: "sankshemam", en: "welfare", ex_te: "ప్రభుత్వం సంక్షేమ కార్యక్రమాలను అమలు చేస్తోంది.", ex_en: "The government is implementing welfare programmes."}
+  - {kind: vocab, key: v068, level: 2, source: general, te: "అభివృద్ధి", roman: "abhivriddhi", en: "development", ex_te: "దేశ అభివృద్ధికి విద్య అవసరం.", ex_en: "Education is necessary for the country's development."}
+  - {kind: vocab, key: v069, level: 2, source: general, te: "పేదరికం", roman: "pedarikam", en: "poverty", ex_te: "పేదరికాన్ని తగ్గించడం ప్రభుత్వ లక్ష్యం.", ex_en: "Reducing poverty is the government's aim."}
+  - {kind: vocab, key: v070, level: 3, source: general, te: "నిరుద్యోగం", roman: "nirudyogam", en: "unemployment", ex_te: "నిరుద్యోగం యువతకు పెద్ద సమస్య.", ex_en: "Unemployment is a big problem for the youth."}
+  - {kind: vocab, key: v071, level: 1, source: general, te: "విద్య", roman: "vidya", en: "education", ex_te: "విద్య ప్రతి ఒక్కరి హక్కు.", ex_en: "Education is everyone's right."}
+  - {kind: vocab, key: v072, level: 1, source: general, te: "పాఠశాల", roman: "paathasaala", en: "school", ex_te: "పాఠశాలలో పిల్లలు చదువుకుంటున్నారు.", ex_en: "The children are studying in the school."}
+  - {kind: vocab, key: v073, level: 2, source: general, te: "విశ్వవిద్యాలయం", roman: "viswavidyaalayam", en: "university", ex_te: "విశ్వవిద్యాలయంలో కొత్త కోర్సులు ప్రారంభమయ్యాయి.", ex_en: "New courses started in the university."}
+  - {kind: vocab, key: v074, level: 1, source: general, te: "ఉపాధ్యాయుడు", roman: "upaadhyaayudu", en: "teacher", ex_te: "ఉపాధ్యాయుడు విద్యార్థులకు పాఠం చెప్పారు.", ex_en: "The teacher taught the lesson to the students."}
+  - {kind: vocab, key: v075, level: 1, source: general, te: "విద్యార్థి", roman: "vidyaarthi", en: "student", ex_te: "విద్యార్థులు కష్టపడి చదవాలి.", ex_en: "Students should study hard."}
+  - {kind: vocab, key: v076, level: 1, source: general, te: "పరీక్ష", roman: "pareeksha", en: "examination", ex_te: "పరీక్ష ఆదివారం జరుగుతుంది.", ex_en: "The examination will be held on Sunday."}
+  - {kind: vocab, key: v077, level: 1, source: general, te: "ఫలితాలు", roman: "phalitaalu", en: "results", ex_te: "పరీక్ష ఫలితాలు రేపు విడుదలవుతాయి.", ex_en: "The exam results will be released tomorrow."}
+  - {kind: vocab, key: v078, level: 1, source: general, te: "ఆరోగ్యం", roman: "aarogyam", en: "health", ex_te: "ఆరోగ్యమే మహాభాగ్యం.", ex_en: "Health is the greatest wealth."}
+  - {kind: vocab, key: v079, level: 1, source: general, te: "ఆసుపత్రి", roman: "aasupatri", en: "hospital", ex_te: "రోగిని వెంటనే ఆసుపత్రికి తీసుకెళ్లారు.", ex_en: "The patient was taken to the hospital immediately."}
+  - {kind: vocab, key: v080, level: 1, source: general, te: "వైద్యుడు", roman: "vaidyudu", en: "doctor", ex_te: "వైద్యుడు రోగిని పరీక్షించారు.", ex_en: "The doctor examined the patient."}
+  - {kind: vocab, key: v081, level: 2, source: general, te: "పర్యావరణం", roman: "paryaavaranam", en: "environment", ex_te: "పర్యావరణాన్ని కాపాడటం మనందరి బాధ్యత.", ex_en: "Protecting the environment is everyone's responsibility."}
+  - {kind: vocab, key: v082, level: 2, source: general, te: "కాలుష్యం", roman: "kaalushyam", en: "pollution", ex_te: "వాహనాల వల్ల కాలుష్యం పెరుగుతోంది.", ex_en: "Pollution is increasing because of vehicles."}
+  - {kind: vocab, key: v083, level: 1, source: general, te: "అడవి", roman: "adavi", en: "forest", ex_te: "అడవులను నరకకూడదు.", ex_en: "Forests should not be cut down."}
+  - {kind: vocab, key: v084, level: 1, source: general, te: "నది", roman: "nadi", en: "river", ex_te: "గోదావరి ఒక పెద్ద నది.", ex_en: "The Godavari is a big river."}
+  - {kind: vocab, key: v085, level: 1, source: general, te: "సముద్రం", roman: "samudram", en: "sea", ex_te: "సముద్రంలో అలలు ఎగసిపడుతున్నాయి.", ex_en: "Waves are rising in the sea."}
+  - {kind: vocab, key: v086, level: 2, source: general, te: "తీరం", roman: "teeram", en: "coast, shore", ex_te: "ఆంధ్రప్రదేశ్‌కు పొడవైన తీరం ఉంది.", ex_en: "Andhra Pradesh has a long coast."}
+  - {kind: vocab, key: v087, level: 1, source: general, te: "వర్షం", roman: "varsham", en: "rain", ex_te: "ఈ సంవత్సరం వర్షాలు సకాలంలో కురిశాయి.", ex_en: "The rains fell on time this year."}
+  - {kind: vocab, key: v088, level: 1, source: general, te: "వరద", roman: "varada", en: "flood", ex_te: "వరదల వల్ల అనేక గ్రామాలు మునిగాయి.", ex_en: "Many villages were submerged because of floods."}
+  - {kind: vocab, key: v089, level: 1, source: general, te: "కరువు", roman: "karuvu", en: "drought", ex_te: "కరువు వల్ల రైతులు నష్టపోయారు.", ex_en: "Farmers suffered losses because of the drought."}
+  - {kind: vocab, key: v090, level: 1, source: general, te: "తుఫాను", roman: "tuphaanu", en: "cyclone", ex_te: "తుఫాను తీరాన్ని తాకింది.", ex_en: "The cyclone hit the coast."}
+  - {kind: vocab, key: v091, level: 2, source: general, te: "విపత్తు", roman: "vipattu", en: "disaster", ex_te: "విపత్తు సమయంలో అధికారులు అప్రమత్తంగా ఉండాలి.", ex_en: "Officials must be alert during a disaster."}
+  - {kind: vocab, key: v092, level: 1, source: general, te: "సహాయం", roman: "sahaayam", en: "help, aid", ex_te: "బాధితులకు ప్రభుత్వం సహాయం అందించింది.", ex_en: "The government provided help to the victims."}
+  - {kind: vocab, key: v093, level: 2, source: general, te: "రక్షణ", roman: "rakshana", en: "protection, defence", ex_te: "ప్రజల రక్షణ ప్రభుత్వ ప్రాథమిక బాధ్యత.", ex_en: "Protection of the people is the government's basic responsibility."}
+  - {kind: vocab, key: v094, level: 2, source: general, te: "భద్రత", roman: "bhadrata", en: "security, safety", ex_te: "ప్రజల భద్రతకు ప్రాధాన్యం ఇవ్వాలి.", ex_en: "Priority should be given to the safety of the people."}
+  - {kind: vocab, key: v095, level: 1, source: general, te: "పోలీసు", roman: "poleesu", en: "police", ex_te: "పోలీసులు నేరస్థుడిని పట్టుకున్నారు.", ex_en: "The police caught the criminal."}
+  - {kind: vocab, key: v096, level: 1, source: general, te: "నేరం", roman: "neram", en: "crime", ex_te: "నేరాలను అరికట్టడానికి కఠిన చర్యలు అవసరం.", ex_en: "Strict measures are needed to prevent crimes."}
+  - {kind: vocab, key: v097, level: 1, source: general, te: "శిక్ష", roman: "siksha", en: "punishment", ex_te: "తప్పు చేసిన వారికి శిక్ష పడుతుంది.", ex_en: "Those who do wrong get punished."}
+  - {kind: vocab, key: v098, level: 2, source: general, te: "అవినీతి", roman: "avineeti", en: "corruption", ex_te: "అవినీతిని అరికట్టాలి.", ex_en: "Corruption must be curbed."}
+  - {kind: vocab, key: v099, level: 3, source: general, te: "పారదర్శకత", roman: "paaradarsakata", en: "transparency", ex_te: "పాలనలో పారదర్శకత ఉండాలి.", ex_en: "There must be transparency in administration."}
+  - {kind: vocab, key: v100, level: 3, source: general, te: "జవాబుదారీతనం", roman: "javaabudaareetanam", en: "accountability", ex_te: "అధికారులకు జవాబుదారీతనం అవసరం.", ex_en: "Officials need accountability."}
+  - {kind: vocab, key: v101, level: 2, source: general, te: "సామర్థ్యం", roman: "saamarthyam", en: "capacity, ability", ex_te: "ఈ సంస్థ సామర్థ్యం పెరిగింది.", ex_en: "The capacity of this organisation has increased."}
+  - {kind: vocab, key: v102, level: 2, source: general, te: "నైపుణ్యం", roman: "naipunyam", en: "skill", ex_te: "నైపుణ్యం ఉన్నవారికి మంచి అవకాశాలు ఉంటాయి.", ex_en: "Skilled people get good opportunities."}
+  - {kind: vocab, key: v103, level: 2, source: general, te: "శిక్షణ", roman: "sikshana", en: "training", ex_te: "ఉద్యోగులకు శిక్షణ కార్యక్రమం నిర్వహించారు.", ex_en: "A training programme was held for the employees."}
+  - {kind: vocab, key: v104, level: 1, source: general, te: "అనుభవం", roman: "anubhavam", en: "experience", ex_te: "అనుభవం ఉన్న అధికారులు సలహా ఇచ్చారు.", ex_en: "Experienced officers gave advice."}
+  - {kind: vocab, key: v105, level: 2, source: general, te: "సూచన", roman: "soochana", en: "suggestion, notice, instruction", ex_te: "ప్రజలకు ముఖ్యమైన సూచనలు జారీ చేశారు.", ex_en: "Important notices were issued to the public."}
+  - {kind: vocab, key: v106, level: 2, source: general, te: "ప్రకటన", roman: "prakatana", en: "announcement, advertisement", ex_te: "ఉద్యోగాల ప్రకటన వెలువడింది.", ex_en: "The job advertisement was released."}
+  - {kind: vocab, key: v107, level: 2, source: general, te: "నోటిఫికేషన్", roman: "notiphikeshan", en: "notification", ex_te: "కమిషన్ కొత్త నోటిఫికేషన్ విడుదల చేసింది.", ex_en: "The commission released a new notification."}
+  - {kind: vocab, key: v108, level: 2, source: general, te: "గడువు", roman: "gaduvu", en: "deadline, time limit", ex_te: "దరఖాస్తు చేసుకోవడానికి చివరి గడువు రేపే.", ex_en: "Tomorrow is the last deadline to apply."}
+  - {kind: vocab, key: v109, level: 2, source: general, te: "అర్హత", roman: "arhata", en: "eligibility, qualification", ex_te: "ఈ పోస్టుకు డిగ్రీ అర్హత కావాలి.", ex_en: "A degree qualification is required for this post."}
+  - {kind: vocab, key: v110, level: 2, source: general, te: "ఎంపిక", roman: "empika", en: "selection", ex_te: "అభ్యర్థుల ఎంపిక పరీక్ష ద్వారా జరుగుతుంది.", ex_en: "The selection of candidates is done through an exam."}
+  - {kind: vocab, key: v111, level: 2, source: general, te: "నియామకం", roman: "niyaamakam", en: "appointment", ex_te: "ఆయన నియామక పత్రం అందుకున్నారు.", ex_en: "He received his appointment letter."}
+  - {kind: vocab, key: v112, level: 2, source: general, te: "బదిలీ", roman: "badilee", en: "transfer", ex_te: "ఆమెను వేరే జిల్లాకు బదిలీ చేశారు.", ex_en: "She was transferred to another district."}
+  - {kind: vocab, key: v113, level: 3, source: general, te: "పదవీ విరమణ", roman: "padavee viramana", en: "retirement", ex_te: "ఆయన ఈ నెలలో పదవీ విరమణ చేస్తారు.", ex_en: "He will retire this month."}
+  - {kind: vocab, key: v114, level: 1, source: general, te: "జీతం", roman: "jeetam", en: "salary", ex_te: "ఉద్యోగులకు ప్రతి నెలా జీతం ఇస్తారు.", ex_en: "Employees are paid a salary every month."}
+  - {kind: vocab, key: v115, level: 1, source: general, te: "సెలవు", roman: "selavu", en: "leave, holiday", ex_te: "నేను రెండు రోజులు సెలవు తీసుకున్నాను.", ex_en: "I took two days' leave."}
+  - {kind: vocab, key: v116, level: 1, source: general, te: "సేవ", roman: "seva", en: "service", ex_te: "ప్రజలకు సేవ చేయడమే అధికారి ధ్యేయం.", ex_en: "Serving the people is the officer's aim."}
+  - {kind: vocab, key: v117, level: 3, source: general, te: "ప్రజాసేవ", roman: "prajaaseva", en: "public service", ex_te: "ప్రజాసేవ పట్ల అంకితభావం ఉండాలి.", ex_en: "One must have dedication to public service."}
+  - {kind: vocab, key: v118, level: 2, source: general, te: "నిజాయితీ", roman: "nijaayitee", en: "honesty, integrity", ex_te: "నిజాయితీగా పనిచేసేవారిని అందరూ గౌరవిస్తారు.", ex_en: "Everyone respects those who work honestly."}
+  - {kind: vocab, key: v119, level: 3, source: general, te: "క్రమశిక్షణ", roman: "kramasikshana", en: "discipline", ex_te: "క్రమశిక్షణ విజయానికి మూలం.", ex_en: "Discipline is the root of success."}
+  - {kind: vocab, key: v120, level: 3, source: general, te: "సమయపాలన", roman: "samayapaalana", en: "punctuality", ex_te: "సమయపాలన ఉద్యోగికి ముఖ్యమైన లక్షణం.", ex_en: "Punctuality is an important quality for an employee."}
+  - {kind: vocab, key: v121, level: 2, source: general, te: "సహకారం", roman: "sahakaaram", en: "cooperation", ex_te: "అందరి సహకారంతో ఈ పని పూర్తయింది.", ex_en: "This work was completed with everyone's cooperation."}
+  - {kind: vocab, key: v122, level: 3, source: general, te: "ఐకమత్యం", roman: "aikamatyam", en: "unity", ex_te: "ఐకమత్యమే బలం.", ex_en: "Unity is strength."}
+  - {kind: vocab, key: v123, level: 2, source: general, te: "సంస్కృతి", roman: "samskriti", en: "culture", ex_te: "తెలుగు సంస్కృతి చాలా గొప్పది.", ex_en: "Telugu culture is very rich."}
+  - {kind: vocab, key: v124, level: 2, source: general, te: "సంప్రదాయం", roman: "sampradaayam", en: "tradition", ex_te: "పండుగలు మన సంప్రదాయంలో భాగం.", ex_en: "Festivals are part of our tradition."}
+  - {kind: vocab, key: v125, level: 1, source: general, te: "భాష", roman: "bhaasha", en: "language", ex_te: "ప్రతి భాషకు దాని స్వంత అందం ఉంది.", ex_en: "Every language has its own beauty."}
+  - {kind: vocab, key: v126, level: 2, source: general, te: "సాహిత్యం", roman: "saahityam", en: "literature", ex_te: "తెలుగు సాహిత్యంలో అనేక గొప్ప గ్రంథాలు ఉన్నాయి.", ex_en: "Telugu literature has many great works."}
+  - {kind: vocab, key: v127, level: 1, source: general, te: "కవి", roman: "kavi", en: "poet", ex_te: "నన్నయ ఆదికవిగా ప్రసిద్ధి చెందారు.", ex_en: "Nannaya is famous as the Adikavi (the first poet)."}
+  - {kind: vocab, key: v128, level: 1, source: general, te: "చరిత్ర", roman: "charitra", en: "history", ex_te: "చరిత్ర మనకు గతాన్ని నేర్పుతుంది.", ex_en: "History teaches us about the past."}
+  - {kind: vocab, key: v129, level: 3, source: general, te: "స్వాతంత్ర్యం", roman: "swaatantryam", en: "independence", ex_te: "భారతదేశానికి 1947 ఆగస్టు 15న స్వాతంత్ర్యం వచ్చింది.", ex_en: "India got independence on 15 August 1947."}
+  - {kind: vocab, key: v130, level: 2, source: general, te: "ఉద్యమం", roman: "udyamam", en: "movement", ex_te: "స్వాతంత్ర్య ఉద్యమంలో ఎందరో పాల్గొన్నారు.", ex_en: "Many people took part in the freedom movement."}
+  - {kind: vocab, key: v131, level: 1, source: general, te: "శాంతి", roman: "saanti", en: "peace", ex_te: "దేశంలో శాంతి నెలకొనాలి.", ex_en: "Peace should prevail in the country."}
+  - {kind: vocab, key: v132, level: 1, source: general, te: "యుద్ధం", roman: "yuddham", en: "war", ex_te: "యుద్ధం వల్ల ఎప్పుడూ నష్టమే జరుగుతుంది.", ex_en: "War always causes loss."}
+  - {kind: vocab, key: v133, level: 1, source: general, te: "సైనికుడు", roman: "sainikudu", en: "soldier", ex_te: "సైనికులు దేశాన్ని కాపాడతారు.", ex_en: "Soldiers protect the country."}
+  - {kind: vocab, key: v134, level: 2, source: general, te: "శాస్త్రవేత్త", roman: "saastravetta", en: "scientist", ex_te: "శాస్త్రవేత్తలు కొత్త ఉపగ్రహాన్ని ప్రయోగించారు.", ex_en: "The scientists launched a new satellite."}
+  - {kind: vocab, key: v135, level: 3, source: general, te: "సాంకేతికత", roman: "saankethikata", en: "technology", ex_te: "సాంకేతికత పాలనను సులభం చేసింది.", ex_en: "Technology has made administration easier."}
+  - {kind: vocab, key: v136, level: 3, source: general, te: "ఆవిష్కరణ", roman: "aavishkarana", en: "invention, innovation", ex_te: "కొత్త ఆవిష్కరణలు సమాజానికి ఉపయోగపడతాయి.", ex_en: "New innovations are useful to society."}
+  - {kind: vocab, key: v137, level: 2, source: general, te: "రవాణా", roman: "ravaanaa", en: "transport", ex_te: "మంచి రవాణా సౌకర్యాలు అభివృద్ధికి తోడ్పడతాయి.", ex_en: "Good transport facilities help development."}
+  - {kind: vocab, key: v138, level: 1, source: general, te: "రహదారి", roman: "rahadaari", en: "road, highway", ex_te: "కొత్త రహదారి నిర్మాణం పూర్తయింది.", ex_en: "Construction of the new road is complete."}
+  - {kind: vocab, key: v139, level: 1, source: general, te: "రైలు", roman: "railu", en: "train", ex_te: "రైలు సమయానికి చేరుకుంది.", ex_en: "The train arrived on time."}
+  - {kind: vocab, key: v140, level: 2, source: general, te: "విద్యుత్తు", roman: "vidyuttu", en: "electricity", ex_te: "గ్రామాలకు విద్యుత్తు సరఫరా పెరిగింది.", ex_en: "Electricity supply to the villages has increased."}
+  - {kind: vocab, key: v141, level: 1, source: general, te: "తాగునీరు", roman: "taagu neeru", en: "drinking water", ex_te: "ప్రతి ఇంటికి తాగునీరు అందించాలి.", ex_en: "Drinking water should be supplied to every home."}
+  - {kind: vocab, key: v142, level: 1, source: general, te: "ఇల్లు", roman: "illu", en: "house, home", ex_te: "మా ఇల్లు గ్రామం చివర ఉంది.", ex_en: "Our house is at the edge of the village."}
+  - {kind: vocab, key: v143, level: 1, source: general, te: "కుటుంబం", roman: "kutumbam", en: "family", ex_te: "కుటుంబం సమాజానికి పునాది.", ex_en: "The family is the foundation of society."}
+  - {kind: vocab, key: v144, level: 2, source: general, te: "మహిళ", roman: "mahila", en: "woman", ex_te: "మహిళల సాధికారత దేశ అభివృద్ధికి అవసరం.", ex_en: "Women's empowerment is necessary for the country's development."}
+  - {kind: vocab, key: v145, level: 1, source: general, te: "బాలికలు", roman: "baalikalu", en: "girls", ex_te: "బాలికల విద్యను ప్రోత్సహించాలి.", ex_en: "Girls' education should be encouraged."}
+  - {kind: vocab, key: v146, level: 1, source: general, te: "వృద్ధులు", roman: "vriddhulu", en: "elderly people", ex_te: "వృద్ధులకు పింఛను ఇస్తారు.", ex_en: "Pension is given to the elderly."}
+  - {kind: vocab, key: v147, level: 3, source: general, te: "దివ్యాంగులు", roman: "divyaangulu", en: "persons with disabilities", ex_te: "దివ్యాంగులకు ప్రత్యేక సౌకర్యాలు కల్పించాలి.", ex_en: "Special facilities should be provided for persons with disabilities."}
+  - {kind: vocab, key: v148, level: 2, source: general, te: "గ్రామ సచివాలయం", roman: "graama sachivaalayam", en: "village secretariat", ex_te: "గ్రామ సచివాలయంలో అనేక సేవలు అందుబాటులో ఉన్నాయి.", ex_en: "Many services are available at the village secretariat."}
+  - {kind: vocab, key: v149, level: 2, source: general, te: "వాలంటీరు", roman: "vaalanteeru", en: "volunteer", ex_te: "వాలంటీరు ప్రజలకు సమాచారం అందించారు.", ex_en: "The volunteer gave information to the people."}
+  - {kind: vocab, key: v150, level: 1, source: general, te: "ఆంధ్రప్రదేశ్", roman: "aandhrapradesh", en: "Andhra Pradesh", ex_te: "ఆంధ్రప్రదేశ్ ప్రజలు శ్రమజీవులు.", ex_en: "The people of Andhra Pradesh are hard-working."}
+  - {kind: vocab, key: v151, level: 1, source: general, te: "తెలుగు", roman: "telugu", en: "Telugu", ex_te: "తెలుగు మాట్లాడేవారు ప్రపంచమంతటా ఉన్నారు.", ex_en: "Telugu speakers are all over the world."}
+  - {kind: vocab, key: v152, level: 2, source: general, te: "సచివాలయం", roman: "sachivaalayam", en: "secretariat", ex_te: "సచివాలయంలో ముఖ్యమైన సమావేశం జరిగింది.", ex_en: "An important meeting was held at the secretariat."}
+  - {kind: vocab, key: v153, level: 1, source: general, te: "కానీ", roman: "kaanee", en: "but", ex_te: "నేను వెళ్లాలనుకున్నాను, కానీ సమయం లేదు.", ex_en: "I wanted to go, but there was no time."}
+  - {kind: vocab, key: v154, level: 2, source: general, te: "అందువల్ల", roman: "anduvalla", en: "therefore", ex_te: "వర్షం పడింది, అందువల్ల సభ వాయిదా పడింది.", ex_en: "It rained, therefore the meeting was postponed."}
+  - {kind: vocab, key: v155, level: 1, source: general, te: "ఎందుకంటే", roman: "endukante", en: "because", ex_te: "నేను రాలేను, ఎందుకంటే నాకు పని ఉంది.", ex_en: "I cannot come, because I have work."}
+  - {kind: vocab, key: v156, level: 1, source: general, te: "మరియు", roman: "mariyu", en: "and", ex_te: "విద్య మరియు ఆరోగ్యం ముఖ్యమైనవి.", ex_en: "Education and health are important."}
+  - {kind: vocab, key: v157, level: 2, source: general, te: "అయితే", roman: "ayite", en: "however", ex_te: "అయితే, ఈ విషయాన్ని మళ్లీ ఆలోచించాలి.", ex_en: "However, this matter must be thought over again."}
+  - {kind: vocab, key: v158, level: 1, source: general, te: "దయచేసి", roman: "dayachesi", en: "please", ex_te: "దయచేసి ఈ దరఖాస్తును పరిశీలించండి.", ex_en: "Please look into this application."}
+  - {kind: vocab, key: v159, level: 2, source: general, te: "కృతజ్ఞతలు", roman: "kritajnyatalu", en: "thanks, gratitude", ex_te: "మీ సహాయానికి కృతజ్ఞతలు.", ex_en: "Thanks for your help."}
+  - {kind: vocab, key: v160, level: 2, source: general, te: "విన్నపం", roman: "vinnapam", en: "a humble request", ex_te: "ఇది నా విన్నపం.", ex_en: "This is my humble request."}

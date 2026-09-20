@@ -1,0 +1,211 @@
+# TELUGU PRACTICE: COMPREHENSION PASSAGES (8 short passages, 3-4 questions each)
+#
+# IMPORTANT: the official 2026 APPSC Group-I Telugu qualifying paper syllabus was NOT available when this file was
+# written. These passages are GENERAL practice reading, written for this app. They are not copied from any book, past
+# paper or official source, and they are marked `source: general`. The Telugu has not been checked by a teacher.
+#
+# Layout of one item (add your own later, in this file or in a new *.yaml file in this folder):
+#   key       unique and never changing (for example p009 or my-p001)
+#   level     1 easy, 2 medium, 3 harder
+#   source    general | syllabus | pyq   (use "syllabus" only for items checked against the official document)
+#   title     Telugu title;  title_en English title
+#   text_te   the passage;   text_en  an English version (shown only after the student has tried)
+#   questions list of {q_te, q_en, options: [4 Telugu options], answer: index of the right option, 0 to 3}
+version: 1
+items:
+  - kind: passage
+    key: p001
+    level: 1
+    source: general
+    title: "సమయం విలువ"
+    title_en: "The value of time"
+    text_te: "సమయం చాలా విలువైనది. గడిచిన సమయం తిరిగి రాదు. కాబట్టి ప్రతి విద్యార్థి ప్రతి రోజూ ఒక ప్రణాళిక ప్రకారం చదవాలి. ఉదయం లేచి కొంతసేపు వ్యాయామం చేస్తే శరీరం ఆరోగ్యంగా ఉంటుంది. తరువాత కష్టమైన పాఠాలను చదవాలి. సాయంత్రం ఆటలు ఆడితే మనసుకు ఉల్లాసం కలుగుతుంది. సమయాన్ని వృథా చేసేవారు జీవితంలో వెనుకబడతారు."
+    text_en: "Time is very valuable. Time that has passed never returns. So every student should study daily according to a plan. If one gets up in the morning and exercises for a while, the body stays healthy. After that, the difficult lessons should be studied. Playing games in the evening refreshes the mind. Those who waste time fall behind in life."
+    questions:
+      - q_te: "గడిచిన సమయం ఏమవుతుంది?"
+        q_en: "What happens to time that has passed?"
+        options: ["తిరిగి వస్తుంది", "తిరిగి రాదు", "రెట్టింపు అవుతుంది", "ఆగిపోతుంది"]
+        answer: 1
+      - q_te: "ఉదయం వ్యాయామం చేస్తే ఏమవుతుంది?"
+        q_en: "What happens if one exercises in the morning?"
+        options: ["నిద్ర వస్తుంది", "శరీరం ఆరోగ్యంగా ఉంటుంది", "అలసట పెరుగుతుంది", "ఆకలి తగ్గుతుంది"]
+        answer: 1
+      - q_te: "కష్టమైన పాఠాలను ఎప్పుడు చదవాలని చెప్పారు?"
+        q_en: "When should the difficult lessons be studied, according to the passage?"
+        options: ["రాత్రి పడుకునే ముందు", "వ్యాయామం తరువాత", "ఆటలు ఆడిన తరువాత", "సాయంత్రం"]
+        answer: 1
+      - q_te: "సమయాన్ని వృథా చేసేవారు ఏమవుతారు?"
+        q_en: "What happens to those who waste time?"
+        options: ["ధనవంతులవుతారు", "ఆరోగ్యంగా ఉంటారు", "జీవితంలో వెనుకబడతారు", "త్వరగా ముందుకు వెళ్తారు"]
+        answer: 2
+  - kind: passage
+    key: p002
+    level: 1
+    source: general
+    title: "రైతు"
+    title_en: "The farmer"
+    text_te: "రైతు మన అన్నదాత. ఆయన ఎండలో, వానలో కష్టపడి పొలంలో పనిచేస్తాడు. రైతు పండించిన పంటల వల్లే మనకు ఆహారం దొరుకుతుంది. అయితే, వర్షాలు సరిగా కురవకపోతే రైతు నష్టపోతాడు. అందుకే ప్రభుత్వం రైతులకు విత్తనాలు, ఎరువులు, రుణాలు అందిస్తుంది. మనం రైతుల శ్రమను గౌరవించాలి."
+    text_en: "The farmer is our provider of food. He works hard in the field in sun and rain. We get food only because of the crops the farmer grows. However, if the rains do not fall properly, the farmer suffers losses. That is why the government provides farmers with seeds, fertilisers and loans. We should respect the hard work of farmers."
+    questions:
+      - q_te: "రైతును ఏమని పిలిచారు?"
+        q_en: "What is the farmer called in the passage?"
+        options: ["అన్నదాత", "వ్యాపారి", "అధికారి", "కూలీ"]
+        answer: 0
+      - q_te: "మనకు ఆహారం ఎలా దొరుకుతుంది?"
+        q_en: "How do we get food?"
+        options: ["పరిశ్రమల వల్ల", "రైతు పండించిన పంటల వల్ల", "ప్రభుత్వ కార్యాలయాల వల్ల", "నదుల వల్ల"]
+        answer: 1
+      - q_te: "రైతు ఎప్పుడు నష్టపోతాడు?"
+        q_en: "When does the farmer suffer losses?"
+        options: ["వర్షాలు సరిగా కురవకపోతే", "పంట బాగా పండితే", "విత్తనాలు దొరికితే", "ఎండ ఎక్కువైతే మాత్రమే"]
+        answer: 0
+      - q_te: "ప్రభుత్వం రైతులకు ఏమి అందిస్తుంది?"
+        q_en: "What does the government give farmers?"
+        options: ["కార్లు", "విత్తనాలు, ఎరువులు, రుణాలు", "ఇళ్లు మాత్రమే", "పుస్తకాలు"]
+        answer: 1
+  - kind: passage
+    key: p003
+    level: 2
+    source: general
+    title: "నీటిని ఆదా చేద్దాం"
+    title_en: "Let us save water"
+    text_te: "నీరు లేకుండా జీవితం లేదు. కానీ ఇటీవల భూగర్భ జలాలు తగ్గిపోతున్నాయి. వర్షపు నీటిని ఇంకుడు గుంతల ద్వారా భూమిలోకి ఇంకేలా చేయాలి. చెరువులను, కుంటలను శుభ్రంగా ఉంచాలి. పంటలకు బిందు సేద్యం వాడితే నీరు ఆదా అవుతుంది. ప్రతి ఒక్కరూ నీటిని పొదుపుగా వాడాలి."
+    text_en: "There is no life without water. But groundwater has been falling recently. Rainwater should be made to seep into the ground through recharge pits. Ponds and tanks should be kept clean. If drip irrigation is used for crops, water is saved. Everyone should use water carefully."
+    questions:
+      - q_te: "ఇటీవల ఏవి తగ్గిపోతున్నాయి?"
+        q_en: "What has been decreasing recently?"
+        options: ["వర్షాలు", "భూగర్భ జలాలు", "పంటలు", "చెరువులు మాత్రమే"]
+        answer: 1
+      - q_te: "వర్షపు నీరు భూమిలోకి ఇంకడానికి ఏమి చేయాలి?"
+        q_en: "What should be done so that rainwater seeps into the ground?"
+        options: ["ఇంకుడు గుంతలు తవ్వాలి", "నీటిని అమ్మాలి", "బావులను మూసేయాలి", "కాలువలు కట్టాలి"]
+        answer: 0
+      - q_te: "బిందు సేద్యం వల్ల ఏమవుతుంది?"
+        q_en: "What is the result of drip irrigation?"
+        options: ["నీరు ఆదా అవుతుంది", "పంటలు తగ్గుతాయి", "నీరు కలుషితమవుతుంది", "ఖర్చు పెరుగుతుంది"]
+        answer: 0
+      - q_te: "ఈ పేరాకు సరైన శీర్షిక ఏది?"
+        q_en: "Which is the best title for this passage?"
+        options: ["పంటల రకాలు", "నీటిని పొదుపు చేద్దాం", "చెరువుల చరిత్ర", "వర్షాకాలం"]
+        answer: 1
+  - kind: passage
+    key: p004
+    level: 2
+    source: general
+    title: "డిజిటల్ పాలన"
+    title_en: "Digital governance"
+    text_te: "ఇప్పుడు అనేక ప్రభుత్వ సేవలు ఆన్‌లైన్‌లో లభిస్తున్నాయి. ప్రజలు ఇంటి నుంచే దరఖాస్తులు పంపవచ్చు, ధ్రువీకరణ పత్రాలు పొందవచ్చు. దీనివల్ల సమయం, డబ్బు ఆదా అవుతాయి. అవినీతి కూడా తగ్గుతుంది. అయితే, గ్రామాల్లో ఇంటర్నెట్ సౌకర్యం, డిజిటల్ అక్షరాస్యత ఇంకా పెరగాలి."
+    text_en: "Many government services are now available online. People can send applications and get certificates from their homes. This saves time and money. Corruption also reduces. However, internet facilities and digital literacy in villages still need to grow."
+    questions:
+      - q_te: "ప్రజలు దరఖాస్తులను ఎక్కడి నుంచి పంపవచ్చు?"
+        q_en: "From where can people send applications?"
+        options: ["కార్యాలయం నుంచి మాత్రమే", "ఇంటి నుంచే", "బ్యాంకు నుంచి", "పాఠశాల నుంచి"]
+        answer: 1
+      - q_te: "డిజిటల్ సేవల వల్ల ఏవి ఆదా అవుతాయి?"
+        q_en: "What is saved because of digital services?"
+        options: ["సమయం, డబ్బు", "కాగితం మాత్రమే", "విద్యుత్తు", "నీరు"]
+        answer: 0
+      - q_te: "డిజిటల్ సేవల వల్ల ఏది తగ్గుతుంది?"
+        q_en: "What reduces because of digital services?"
+        options: ["జనాభా", "అవినీతి", "పన్నులు", "వర్షాలు"]
+        answer: 1
+      - q_te: "గ్రామాల్లో ఇంకా ఏమి పెరగాలి?"
+        q_en: "What still needs to grow in villages?"
+        options: ["ఇంటర్నెట్ సౌకర్యం, డిజిటల్ అక్షరాస్యత", "కార్యాలయాల సంఖ్య", "వాహనాలు", "పన్నులు"]
+        answer: 0
+  - kind: passage
+    key: p005
+    level: 2
+    source: general
+    title: "గోదావరి నది"
+    title_en: "The Godavari river"
+    text_te: "గోదావరి దక్షిణ భారతదేశంలోని అతి పొడవైన నది. దీనిని దక్షిణ గంగ అని కూడా పిలుస్తారు. ఇది మహారాష్ట్రలో పుట్టి, తెలంగాణ, ఆంధ్రప్రదేశ్ మీదుగా ప్రవహించి బంగాళాఖాతంలో కలుస్తుంది. ఈ నది నీటితో లక్షలాది ఎకరాలకు సాగునీరు అందుతుంది."
+    text_en: "The Godavari is the longest river in South India. It is also called the Dakshina Ganga. It rises in Maharashtra, flows through Telangana and Andhra Pradesh, and joins the Bay of Bengal. Irrigation water reaches lakhs of acres from this river."
+    questions:
+      - q_te: "గోదావరిని ఏమని కూడా పిలుస్తారు?"
+        q_en: "What else is the Godavari called?"
+        options: ["దక్షిణ గంగ", "ఉత్తర యమున", "తూర్పు కృష్ణ", "పశ్చిమ నర్మద"]
+        answer: 0
+      - q_te: "గోదావరి ఏ రాష్ట్రంలో పుడుతుంది?"
+        q_en: "In which state does the Godavari rise?"
+        options: ["ఆంధ్రప్రదేశ్", "తెలంగాణ", "మహారాష్ట్ర", "కర్ణాటక"]
+        answer: 2
+      - q_te: "గోదావరి చివరకు ఎక్కడ కలుస్తుంది?"
+        q_en: "Where does the Godavari finally join?"
+        options: ["అరేబియా సముద్రంలో", "హిందూ మహాసముద్రంలో", "బంగాళాఖాతంలో", "కృష్ణా నదిలో"]
+        answer: 2
+      - q_te: "ఈ నది నీటితో ఏమి అందుతుంది?"
+        q_en: "What does this river's water provide?"
+        options: ["సాగునీరు", "ఉప్పు", "విద్యుత్తు మాత్రమే", "చేపలు మాత్రమే"]
+        answer: 0
+  - kind: passage
+    key: p006
+    level: 2
+    source: general
+    title: "బాలికల విద్య"
+    title_en: "Girls' education"
+    text_te: "ఒక అమ్మాయి చదువుకుంటే ఆ కుటుంబమే కాదు, సమాజం మొత్తం అభివృద్ధి చెందుతుంది. చదువుకున్న మహిళలు ఆర్థికంగా స్వతంత్రంగా ఉంటారు. వారు తమ పిల్లల ఆరోగ్యం, చదువుపై శ్రద్ధ చూపుతారు. అందుకే బాలికల విద్యను ప్రోత్సహించడానికి ప్రభుత్వం ఉపకార వేతనాలు ఇస్తోంది."
+    text_en: "When one girl is educated, not only her family but the whole society develops. Educated women are financially independent. They pay attention to their children's health and education. That is why the government gives scholarships to encourage girls' education."
+    questions:
+      - q_te: "ఒక అమ్మాయి చదువుకుంటే ఏమవుతుంది?"
+        q_en: "What happens when a girl is educated?"
+        options: ["కుటుంబం, సమాజం అభివృద్ధి చెందుతాయి", "కుటుంబం మాత్రమే అభివృద్ధి చెందుతుంది", "ఏమీ మారదు", "ఖర్చులు పెరుగుతాయి"]
+        answer: 0
+      - q_te: "చదువుకున్న మహిళలు ఎలా ఉంటారు?"
+        q_en: "How are educated women?"
+        options: ["ఆర్థికంగా స్వతంత్రంగా", "ఇతరులపై ఆధారపడి", "ఇంటికే పరిమితమై", "భయపడుతూ"]
+        answer: 0
+      - q_te: "బాలికల విద్యను ప్రోత్సహించడానికి ప్రభుత్వం ఏమి ఇస్తోంది?"
+        q_en: "What does the government give to encourage girls' education?"
+        options: ["ఉపకార వేతనాలు", "వాహనాలు", "భూములు", "ఇళ్లు"]
+        answer: 0
+  - kind: passage
+    key: p007
+    level: 2
+    source: general
+    title: "చెట్లు - మన నేస్తాలు"
+    title_en: "Trees, our friends"
+    text_te: "చెట్లు మనకు ప్రాణవాయువును ఇస్తాయి. అవి నీడనిస్తాయి, పండ్లను ఇస్తాయి, వర్షాలకు కూడా కారణమవుతాయి. కానీ మనుషులు స్వార్థం కోసం అడవులను నరికేస్తున్నారు. దీనివల్ల కాలుష్యం పెరుగుతోంది. ప్రతి ఒక్కరూ కనీసం ఒక మొక్క నాటి, దానిని కాపాడాలి."
+    text_en: "Trees give us oxygen. They give shade and fruits, and they also help bring rain. But people are cutting down forests for selfish reasons. Because of this, pollution is increasing. Everyone should plant at least one sapling and protect it."
+    questions:
+      - q_te: "చెట్లు మనకు ఏమి ఇస్తాయి?"
+        q_en: "What do trees give us?"
+        options: ["ప్రాణవాయువు", "విద్యుత్తు", "పెట్రోలు", "ఇనుము"]
+        answer: 0
+      - q_te: "మనుషులు అడవులను ఎందుకు నరికేస్తున్నారు?"
+        q_en: "Why are people cutting down forests?"
+        options: ["పర్యావరణాన్ని కాపాడటానికి", "స్వార్థం కోసం", "వర్షాల కోసం", "నీడ కోసం"]
+        answer: 1
+      - q_te: "అడవులను నరకడం వల్ల ఏమి పెరుగుతోంది?"
+        q_en: "What is increasing because forests are cut?"
+        options: ["పంటలు", "కాలుష్యం", "చెరువులు", "పండ్లు"]
+        answer: 1
+      - q_te: "ప్రతి ఒక్కరూ ఏమి చేయాలని చెప్పారు?"
+        q_en: "What should everyone do, according to the passage?"
+        options: ["అడవులను అమ్మాలి", "కనీసం ఒక మొక్క నాటి కాపాడాలి", "చెట్లను కొట్టాలి", "పండ్లు తినకూడదు"]
+        answer: 1
+  - kind: passage
+    key: p008
+    level: 3
+    source: general
+    title: "గ్రామ పంచాయతీ"
+    title_en: "The village panchayat"
+    text_te: "గ్రామ పంచాయతీ గ్రామ పాలనకు పునాది. గ్రామ ప్రజలు ఎన్నుకున్న సర్పంచ్ దీనికి అధిపతి. పంచాయతీ గ్రామంలో రోడ్లు, తాగునీరు, పారిశుద్ధ్యం వంటి సౌకర్యాలను చూస్తుంది. గ్రామసభలో ప్రజలు తమ సమస్యలను చెప్పవచ్చు. బలమైన పంచాయతీలు ఉంటేనే గ్రామాలు అభివృద్ధి చెందుతాయి."
+    text_en: "The gram panchayat is the foundation of village administration. The sarpanch, elected by the villagers, is its head. The panchayat looks after facilities such as roads, drinking water and sanitation in the village. In the gram sabha, people can state their problems. Villages develop only when panchayats are strong."
+    questions:
+      - q_te: "గ్రామ పంచాయతీ అధిపతి ఎవరు?"
+        q_en: "Who is the head of the gram panchayat?"
+        options: ["కలెక్టర్", "సర్పంచ్", "ముఖ్యమంత్రి", "ఉపాధ్యాయుడు"]
+        answer: 1
+      - q_te: "సర్పంచ్‌ను ఎవరు ఎన్నుకుంటారు?"
+        q_en: "Who elects the sarpanch?"
+        options: ["గ్రామ ప్రజలు", "గవర్నర్", "పోలీసులు", "మంత్రులు"]
+        answer: 0
+      - q_te: "పంచాయతీ ఏ సౌకర్యాలను చూస్తుంది?"
+        q_en: "Which facilities does the panchayat look after?"
+        options: ["విమానాశ్రయాలు", "రోడ్లు, తాగునీరు, పారిశుద్ధ్యం", "రైలు మార్గాలు", "విశ్వవిద్యాలయాలు"]
+        answer: 1
+      - q_te: "ప్రజలు తమ సమస్యలను ఎక్కడ చెప్పవచ్చు?"
+        q_en: "Where can people state their problems?"
+        options: ["గ్రామసభలో", "పార్లమెంటులో", "న్యాయస్థానంలో మాత్రమే", "సచివాలయంలో మాత్రమే"]
+        answer: 0
