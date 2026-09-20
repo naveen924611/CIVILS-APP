@@ -175,7 +175,7 @@ def pace_factor(sessions: list[tuple[float, float]]) -> float:
 def minutes_per_card(review_times: list[datetime]) -> float:
     """Median seconds between consecutive reviews inside one sitting (gaps under 3 minutes) -> minutes per card."""
     ts = sorted(review_times)
-    gaps = [(b - a).total_seconds() for a, b in zip(ts, ts[1:]) if 0 < (b - a).total_seconds() <= 180]
+    gaps = [(b - a).total_seconds() for a, b in zip(ts, ts[1:], strict=False) if 0 < (b - a).total_seconds() <= 180]
     if len(gaps) < 20:
         return DEFAULT_MINUTES_PER_CARD
     return min(max(statistics.median(gaps) / 60.0, 0.25), 2.0)
@@ -218,7 +218,6 @@ def _allocate(d: DayInput) -> dict[str, int]:
     """Minutes per kind for the day. Keys: brief_m, brief_e, core, library, telugu, revision, practice."""
     total = int(round(d.hours * 60))
     shares = SUNDAY_SHARES if d.day.weekday() == 6 else SHARES
-    have_kind = {b.get("kind") for b in d.preserved}
     brief_m = round5(total * shares["brief_m"]) if d.morning and d.morning[1] else 0
     brief_e = round5(total * shares["brief_e"]) if d.evening and d.evening[1] else 0
     core = total * shares["core"] + (total * shares["brief_m"] - brief_m) + (total * shares["brief_e"] - brief_e)
@@ -337,6 +336,11 @@ def plan_day(
         else:
             pending.append(block("study", "study", mins["core"], "Core study",
                                  "Pick a topic from the syllabus map and read or listen", None, "syllabus", 0))
+    leftover = mins["core"] - sum(m for _, m in picks)
+    if picks and leftover >= 15:  # the list of topics ran short: keep the time, but say so honestly
+        pending.append(block("study", "study-extra", leftover, "Extra study time",
+                             "Not many topics are left to plan: read your notes on a weak topic, or add topics in the syllabus map",
+                             None, "syllabus", 0))
     if mins["telugu"]:
         pending.append(block("telugu", "telugu", mins["telugu"], "Telugu practice",
                              "Vocabulary, reading and one short writing task", None, "telugu", 0))

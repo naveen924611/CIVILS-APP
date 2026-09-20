@@ -138,3 +138,36 @@ def chunk_text(text: str, max_chars: int = 6000) -> list[str]:
         if current.strip():
             chunks.append(current.strip())
     return chunks
+
+
+COVERED = frozenset({"studied", "revised", "strong"})
+
+
+def nest_topics(rows: list[dict]) -> list[dict]:
+    """Flat topic rows (dicts with id, parent_id, title, position) -> nested tree with `children`. Orphans become roots."""
+    ids = {r["id"] for r in rows}
+    by_parent: dict[str | None, list[dict]] = {}
+    for r in rows:
+        parent = r.get("parent_id")
+        by_parent.setdefault(parent if parent in ids else None, []).append(r)
+
+    def build(parent_id: str | None, seen: frozenset) -> list[dict]:
+        kids = sorted(by_parent.get(parent_id, []), key=lambda r: (r.get("position") or 0, r.get("title") or ""))
+        return [dict(r, children=build(r["id"], seen | {r["id"]})) for r in kids if r["id"] not in seen]
+
+    return build(None, frozenset())
+
+
+def add_coverage(nodes: list[dict]) -> tuple[int, int]:
+    """Adds `leaves` and `coverage` (0-100, share of leaf topics studied or better) to every node. Returns (covered, leaves)."""
+    total_covered = total_leaves = 0
+    for n in nodes:
+        if n.get("children"):
+            covered, leaves = add_coverage(n["children"])
+        else:
+            leaves, covered = 1, 1 if n.get("status") in COVERED else 0
+        n["leaves"] = leaves
+        n["coverage"] = round(100.0 * covered / leaves) if leaves else 0
+        total_covered += covered
+        total_leaves += leaves
+    return total_covered, total_leaves

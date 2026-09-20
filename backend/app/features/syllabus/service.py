@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 
 from app.config import Settings
 from app.db.models_v2 import SyllabusImport, Topic
+from app.features.notes import service as notes_service
 from app.features.syllabus import importance
 from app.features.syllabus.trees import clean_tree, count_nodes, exam_tags_for, filter_tree, norm
 
@@ -91,6 +92,7 @@ def approve(db: Session, imp: SyllabusImport, exam_filter: str | None = None, me
         nodes = filter_tree(nodes, exam_filter)
     stats = {"created": 0, "merged": 0}
     priors: dict[str, float] = {}
+    touched: list[str] = []
 
     def walk(children: list[dict], parent: Topic | None, paper: str) -> None:
         for pos, node in enumerate(children):
@@ -116,11 +118,14 @@ def approve(db: Session, imp: SyllabusImport, exam_filter: str | None = None, me
                 if not row.paper:
                     row.paper = paper_name
                 stats["merged"] += 1
+            if level >= 1:
+                touched.append(row.id)
             if node["importance"] is not None:
                 priors.setdefault(row.id, node["importance"])
             walk(node.get("children", []), row, paper_name)
 
     walk(nodes, None, "")
+    notes_service.ensure_notes(db, touched)  # every topic gets its (empty) note row: the tablet edits notes, it cannot create them
     imp.status = "approved"
     imp.note = f"Approved: {stats['created']} new, {stats['merged']} already there."[:300]
     db.commit()

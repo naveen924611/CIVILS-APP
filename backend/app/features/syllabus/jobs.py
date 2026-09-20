@@ -40,6 +40,8 @@ def run(ctx: JobContext) -> dict:
         imp = SyllabusImport(exam=exam[:80], title=title[:200], status="processing", document_id=payload.get("document_id"))
         db.add(imp)
         db.commit()
+        ctx.job.payload_json = {**payload, "import_id": imp.id}  # a retry must continue with this import, not make another
+        db.commit()
     text = str(payload.get("text") or "").strip()
     doc_id = payload.get("document_id") or imp.document_id
     if not text and doc_id:

@@ -1,4 +1,4 @@
-"""Job handler `tutor_question`: payload {conversation_id, question, topic_ids?, via} -> assistant ChatMessage."""
+"""Job handler `tutor_question`: payload {conversation_id, question, topic_ids?, via, mode?: simple|depth|quiz|evaluate} -> assistant ChatMessage."""
 from sqlalchemy import select
 
 from app.db.models_v2 import ChatMessage
@@ -22,7 +22,8 @@ def tutor_question(ctx: JobContext) -> dict:
     )
     if existing is not None:
         return {"message_id": existing.id, "answer": existing.content, "sources": existing.sources or []}
-    result = service.answer(ctx.db, ctx.gateway, question, topic_ids or None)
+    mode = str(ctx.payload.get("mode") or "")
+    result = service.answer(ctx.db, ctx.gateway, question, topic_ids or None, mode)
     if result is None:
         raise AiUnavailable("The AI was busy")
     text, sources = result

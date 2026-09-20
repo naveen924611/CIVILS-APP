@@ -18,6 +18,16 @@ _TELUGU = re.compile(r"[ఀ-౿]")
 _CITE = re.compile(r"\[(\d{1,2})\]")
 MAX_PASSAGE_CHARS = 900
 MAX_QUESTION_CHARS = 1500
+# Tutor modes chosen on the Ask screen (spec 7.8). Empty style = the default short exam answer.
+MODE_STYLES = {
+    "simple": "Style for this reply: explain very simply, as to a beginner, with one everyday example.",
+    "depth": "Style for this reply: go in depth. Give a fuller explanation (up to 8 short bullet points), "
+             "including the Mains angle. This overrides the length rule.",
+    "quiz": "Style for this reply: do NOT explain. Ask the student 3 short exam-style questions on this topic, "
+            "numbered, and do not give the answers. This overrides the answer-format rules.",
+    "evaluate": "Style for this reply: the student's own answer is inside the question text. Evaluate it: what is good, "
+                "what is missing, one improved line, and a mark out of 10. Use only the material for facts.",
+}
 
 
 @dataclass
@@ -77,7 +87,7 @@ def note_passages(db: Session, question: str, topic_ids: list[str] | None, limit
     for _score, note in scored[:limit]:
         topic = db.get(Topic, note.topic_id)
         title = topic.title if topic else "Notes"
-        out.append(Passage(_best_slice(note.content_md, qset), {"note_id": note.id, "topic": title}))
+        out.append(Passage(_best_slice(note.content_md, qset), {"note_id": note.id, "topic": title, "topic_id": note.topic_id}))
     return out
 
 
@@ -132,9 +142,12 @@ def cited_sources(answer: str, passages: list[Passage]) -> list[dict]:
     return out
 
 
-def answer(db: Session, gateway, question: str, topic_ids: list[str] | None) -> tuple[str, list[dict]] | None:
+def answer(
+    db: Session, gateway, question: str, topic_ids: list[str] | None, mode: str = ""
+) -> tuple[str, list[dict]] | None:
     """Returns (answer text, sources) or None when the AI is not available."""
     question = question.strip()[:MAX_QUESTION_CHARS]
+    style = MODE_STYLES.get(mode, "")
     lang = "Telugu" if is_telugu(question) else "English"
     found = retrieve(db, gateway, question, topic_ids)
     if found.passages:
@@ -142,7 +155,8 @@ def answer(db: Session, gateway, question: str, topic_ids: list[str] | None) -> 
         text = gateway.generate_text(
             feature="tutor_answer",
             system=system,
-            user=promptlib.render(user, question=question, passages=build_passages_text(found.passages), language=lang),
+            user=promptlib.render(user, question=question, passages=build_passages_text(found.passages),
+                                   language=lang, style=style),
             max_output_tokens=900,
         )
         if not text:
@@ -152,7 +166,7 @@ def answer(db: Session, gateway, question: str, topic_ids: list[str] | None) -> 
     text = gateway.generate_text(
         feature="tutor_answer",
         system=system,
-        user=promptlib.render(user, question=question, language=lang),
+        user=promptlib.render(user, question=question, language=lang, style=style),
         max_output_tokens=500,
     )
     if not text:

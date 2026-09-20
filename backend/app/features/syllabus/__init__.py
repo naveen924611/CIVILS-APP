@@ -4,6 +4,7 @@ Routes (all behind login):
   POST /syllabus/import                  {exam, title, text?, document_id?}  -> {import_id, job_id}
   POST /syllabus/seed                    (re)adds any starter outline that is missing (normally done at start-up)
   POST /syllabus/recompute-importance    -> {topics, with_pyq, changed}
+  GET  /syllabus/tree?exam=UPSC|APPSC    the approved topics as a nested tree with coverage % and importance
   GET  /syllabus/{id}                    the import row
   PUT  /syllabus/{id}/tree               {tree, title?}  save the owner's edits to a pending import
   POST /syllabus/{id}/approve            {exam_filter?, merge_into_existing?, tree?}  -> {created, merged, total, ...}
@@ -11,13 +12,14 @@ Routes (all behind login):
 import logging
 
 from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.db.models_v2 import Job, SyllabusImport
+from app.db.models_v2 import Job, Note, SyllabusImport, Topic
 from app.db.session import get_db
 from app.features.syllabus import importance, service
 from app.features.syllabus.schemas import ApproveIn, ImportIn, TreeIn
-from app.features.syllabus.trees import clean_tree, count_nodes
+from app.features.syllabus.trees import add_coverage, clean_tree, count_nodes, filter_tree, nest_topics
 from app.services import Services, get_services
 
 log = logging.getLogger(__name__)
@@ -59,6 +61,20 @@ def recompute(db: Session = Depends(get_db)):
     return importance.recompute(db)
 
 
+@router.get("/tree")
+def topic_tree(exam: str | None = None, db: Session = Depends(get_db)):
+    """The approved syllabus as one nested tree (the tablet builds the same tree itself from the synced topics)."""
+    rows = [t.to_dict() for t in db.scalars(select(Topic).where(Topic.deleted.is_(False), Topic.approved.is_(True)))]
+    have_note = {n.topic_id for n in db.scalars(select(Note).where(Note.deleted.is_(False))) if (n.content_md or "").strip()}
+    for r in rows:
+        r["has_note"] = r["id"] in have_note
+    nodes = nest_topics(rows)
+    if exam:
+        nodes = filter_tree(nodes, exam)
+    covered, leaves = add_coverage(nodes)
+    return {"exam": exam, "coverage": round(100.0 * covered / leaves) if leaves else 0, "leaves": leaves, "tree": nodes}
+
+
 @router.get("/{import_id}")
 def get_import(import_id: str, db: Session = Depends(get_db)):
     row = _row(db, import_id)
@@ -93,8 +109,20 @@ def approve(import_id: str, body: ApproveIn | None = None, db: Session = Depends
     return service.approve(db, row, exam_filter=body.exam_filter, merge=body.merge_into_existing, tree=body.tree)
 
 
+def _nightly(services: Services) -> None:
+    """Importance moves with past papers and the news, so it is recomputed every night."""
+    try:
+        with services.session_factory() as db:
+            importance.recompute(db)
+    except Exception:  # never let a scheduled run stop the server
+        log.exception("importance recompute failed")
+
+
 def setup(services: Services) -> None:
-    """Adds the starter outlines (as pending imports) once; safe to run at every start."""
+    """Adds the starter outlines (as pending imports) once (safe at every start) and schedules the nightly importance update."""
+    if services.settings.scheduler_enabled:
+        services.scheduler.add_job(_nightly, "cron", hour=4, minute=10, id="syllabus:importance", replace_existing=True,
+                                   args=[services])
     try:
         with services.session_factory() as db:
             added = service.seed_starters(db, services.settings)

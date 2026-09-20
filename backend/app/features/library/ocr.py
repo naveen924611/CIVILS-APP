@@ -98,8 +98,10 @@ def ocr_page(ctx: JobContext) -> dict:
     done_pages = 0
     chars = 0
     last = start - 1
+    budget_stop = False
     for i, page in enumerate(batch):
         if _budget_full(ctx.gateway):
+            budget_stop = True
             break
         existing = db.scalar(select(DocPage).where(DocPage.document_id == doc.id, DocPage.page == page, DocPage.deleted.is_(False)))
         if existing is not None and existing.text.strip() and not force:
@@ -129,7 +131,11 @@ def ocr_page(ctx: JobContext) -> dict:
         remaining: list[int] = []
     else:
         remaining = _blank_after(db, doc.id, last)
-    if remaining:
+    if remaining and budget_stop:
+        processing.set_status(db, doc, "waiting", "Waiting for tomorrow (today's AI limit is used)")
+        db.add(Job(type="ocr_page", payload_json={"document_id": doc.id, "page": remaining[0]}, status="queued"))
+        db.commit()
+    elif remaining:
         processing.set_status(db, doc, "processing", f"Converting page {remaining[0]} of {doc.pages}")
         job = Job(type="ocr_page", payload_json={"document_id": doc.id, "page": remaining[0]}, status="queued")
         db.add(job)

@@ -80,3 +80,24 @@ def short(text: str, n: int) -> str:
 def strip_markdown(md: str) -> str:
     text = re.sub(r"[#>*_`]+", "", md or "")
     return re.sub(r"\s+", " ", text).strip()
+
+
+_CLOZE = [
+    re.compile(r"\bArt(?:icle)?s?\.?\s?\d+[A-Z]?(?:\(\d+\))?", re.IGNORECASE),
+    re.compile(r"\b\d+(?:st|nd|rd|th)\s+(?:Constitutional\s+)?Amendment\b", re.IGNORECASE),
+    re.compile(r"\b(?:1[5-9]|20)\d{2}(?:-\d{2,4})?\b"),
+    re.compile(r"\b\d[\d,.]*\s?(?:%|per cent|percent|crore|lakh|km|sq\.? ?km|hectares?|years?|members?)", re.IGNORECASE),
+]
+
+
+def make_cloze(text: str, topic_title: str = "") -> tuple[str, str]:
+    """A flashcard (front, back) from one highlighted fact. The first article, amendment, year or number is hidden;
+    with none of those the front asks the owner to recall the point."""
+    fact = re.sub(r"\s+", " ", text or "").strip()
+    for pattern in _CLOZE:
+        m = pattern.search(fact)
+        if m and m.group(0).strip():
+            hidden = m.group(0).strip()
+            return fact[: m.start()] + "_____" + fact[m.end():], f"{hidden}\n\n{fact}"
+    lead = topic_title.strip() or "this topic"
+    return f"Recall this point about {lead}: {short(fact, 60)}", fact

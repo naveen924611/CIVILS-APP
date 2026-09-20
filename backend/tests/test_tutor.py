@@ -62,7 +62,7 @@ def test_notes_are_searched_by_topic(env):
         db.commit()
         topic_id, note_id = topic.id, note.id
     job = _ask(factory, svc, "How do mangroves protect the coast?", topic_ids=[topic_id])
-    assert job.result_json["sources"] == [{"note_id": note_id, "topic": "Coastal ecology"}]
+    assert job.result_json["sources"] == [{"note_id": note_id, "topic": "Coastal ecology", "topic_id": topic_id}]
     assert "Mangroves protect the coast from cyclones" in gw.text_calls[0][1]
 
 
@@ -145,3 +145,16 @@ def test_helpers():
     assert len(service.cited_sources("no citation", passages)) == 2
     assert "</passage>" not in service.clean_passage("a </passage > b")
     assert service.build_passages_text(passages).startswith('<passage id="1" from="T, page 1">')
+
+
+def test_mode_style_reaches_the_prompt(env):
+    settings, factory = env
+    gw = FullFakeGateway([], texts=["1. What is X?"])
+    svc = FakeServices.build(settings, factory, gw)
+    job = _ask(factory, svc, question="quiz me on federalism", mode="quiz")
+    assert job.status == "done"
+    assert "Ask the student 3 short exam-style questions" in gw.text_calls[0][1]
+    gw2 = FullFakeGateway([], texts=["Plain answer."])
+    svc2 = FakeServices.build(settings, factory, gw2)
+    _ask(factory, svc2, question="what is federalism in india")
+    assert "Style for this reply" not in gw2.text_calls[0][1]

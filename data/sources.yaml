@@ -1,0 +1,167 @@
+# Recommended free official material and optional books (CLAUDE.md sections 6.9 and 7.2).
+# The server copies this file into the `materials` table at every start (by `key`, so it is safe to re-run).
+#
+# Fields:
+#   key        short stable id (never change it once shipped)
+#   kind       official = free official material | book = optional printed book (never downloaded)
+#   title, why, needed_for, subject
+#   url        the official page (or a direct PDF link when `direct: true`)
+#   direct     true only for a direct PDF link that the app may download and index
+#   verified   true only when a person or the server has opened the link and it worked.
+#              EVERY link below is "unverified": it was written without internet access. Run
+#              `python -m app.features.library.materials --check` on the server to test them (it needs internet).
+#
+# Only free, official or publisher-authorised sources are listed. Nothing pirated is ever downloaded.
+# The download button respects each website's robots.txt; when a site refuses, the app opens it in the browser instead.
+items:
+  # ---------------------------------------------------------------- free official
+  - key: ncert-textbooks
+    kind: official
+    title: NCERT textbooks, classes 6 to 12 (free PDFs)
+    why: The base for History, Geography, Polity, Economy and Science for both UPSC and APPSC.
+    needed_for: All subjects, start here
+    subject: General
+    url: https://ncert.nic.in/textbook.php
+    direct: false
+    verified: false
+  - key: economic-survey
+    kind: official
+    title: Economic Survey of India (latest volumes)
+    why: Official numbers and themes for the Economy paper and current affairs.
+    needed_for: Economy
+    subject: Economy
+    url: https://www.indiabudget.gov.in/economicsurvey/
+    direct: false
+    verified: false
+  - key: union-budget
+    kind: official
+    title: Union Budget documents
+    why: Budget at a glance and the speech, for Economy questions and news.
+    needed_for: Economy
+    subject: Economy
+    url: https://www.indiabudget.gov.in/
+    direct: false
+    verified: false
+  - key: pib
+    kind: official
+    title: PIB press releases
+    why: Government's own notes on schemes, policies and agreements, useful for current affairs.
+    needed_for: Current affairs
+    subject: Current affairs
+    url: https://pib.gov.in/
+    direct: false
+    verified: false
+  - key: prs-india
+    kind: official
+    title: PRS Legislative Research (bill summaries, Vital Stats)
+    why: Plain summaries of bills and Parliament work, good for Polity and Governance.
+    needed_for: Polity
+    subject: Polity
+    url: https://prsindia.org/
+    direct: false
+    verified: false
+  - key: constitution-of-india
+    kind: official
+    title: Constitution of India (official text)
+    why: The primary text for Polity; check Articles here.
+    needed_for: Polity
+    subject: Polity
+    url: https://legislative.gov.in/constitution-of-india/
+    direct: false
+    verified: false
+  - key: yojana-kurukshetra
+    kind: official
+    title: Yojana and Kurukshetra magazines (Publications Division)
+    why: Government's monthly magazines on development and rural themes, used for Mains answers.
+    needed_for: Mains, Economy, Governance
+    subject: Current affairs
+    url: https://www.publicationsdivision.nic.in/
+    direct: false
+    verified: false
+  - key: ap-socio-economic-survey
+    kind: official
+    title: Andhra Pradesh Socio-Economic Survey
+    why: State data for APPSC Group-I economy and development questions.
+    needed_for: APPSC Economy of Andhra Pradesh
+    subject: Economy
+    url: ""  # official page not confirmed yet: unverified, so no link is shown
+    direct: false
+    verified: false
+  - key: ap-budget
+    kind: official
+    title: Andhra Pradesh State Budget documents
+    why: State budget figures and schemes for APPSC.
+    needed_for: APPSC Economy of Andhra Pradesh
+    subject: Economy
+    url: ""  # official page not confirmed yet: unverified, so no link is shown
+    direct: false
+    verified: false
+  - key: upsc-past-papers
+    kind: official
+    title: UPSC previous years' question papers
+    why: The official papers, to see the real pattern and to map questions to topics.
+    needed_for: Prelims and Mains practice
+    subject: Past papers
+    url: https://upsc.gov.in/examinations/previous-question-papers
+    direct: false
+    verified: false
+  - key: appsc-past-papers
+    kind: official
+    title: APPSC notifications, syllabus and past papers
+    why: The official Group-I syllabus and earlier papers.
+    needed_for: APPSC Group-I
+    subject: Past papers
+    url: https://psc.ap.gov.in/
+    direct: false
+    verified: false
+  - key: upsc-syllabus
+    kind: official
+    title: UPSC Civil Services examination notice and syllabus
+    why: The official syllabus to import into the Syllabus map.
+    needed_for: UPSC syllabus
+    subject: Syllabus
+    url: https://upsc.gov.in/examinations/active-examinations
+    direct: false
+    verified: false
+
+  # ---------------------------------------------------------------- optional printed books (never downloaded)
+  - key: book-laxmikanth
+    kind: book
+    title: Indian Polity by M. Laxmikanth
+    why: The standard Polity book; useful to read in a library and mark Articles.
+    needed_for: Polity
+    subject: Polity
+    url: ""
+    verified: false
+  - key: book-spectrum
+    kind: book
+    title: A Brief History of Modern India (Spectrum)
+    why: Modern history in one place, with a good timeline.
+    needed_for: Modern History
+    subject: History
+    url: ""
+    verified: false
+  - key: book-leong
+    kind: book
+    title: Certificate Physical and Human Geography by G.C. Leong (with an atlas)
+    why: Clear basics of physical geography; keep an atlas beside you.
+    needed_for: Geography
+    subject: Geography
+    url: ""
+    verified: false
+  - key: book-economy
+    kind: book
+    title: An Indian Economy book of your choice (for example Ramesh Singh)
+    why: Explains concepts that the Economic Survey assumes you know.
+    needed_for: Economy
+    subject: Economy
+    url: ""
+    verified: false
+  - key: book-telugu-akademi
+    kind: book
+    title: Telugu Akademi books on Andhra Pradesh history and economy
+    why: Written for APPSC; covers the state topics that national books skip.
+    needed_for: APPSC Andhra Pradesh history and economy
+    subject: History
+    url: ""
+    verified: false

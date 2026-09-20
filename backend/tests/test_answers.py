@@ -269,3 +269,16 @@ def test_plan_block_only_with_a_draft(env):
         late = [dict(base[0], start="21:30", minutes=60)]
         assert plan.add_answer_block(db, today, late, ctx)[1]["start"] == "21:00"
         assert plan.add_answer_block(db, today, [], ctx)[0]["start"] == "17:00"
+
+
+def test_typed_answer_is_evaluated_without_photos(client):
+    aid = _make_answer(status="queued")
+    typed = "The Preamble states the ideals of the Constitution: justice, liberty, equality and fraternity."
+    gw = FullFakeGateway([EvalOut(transcript=typed, score=6.0, content_coverage="Ok")])
+    svc = FakeServices.build(get_settings(), get_session_factory(), gw)
+    job = _run(get_session_factory(), svc, "answer_eval", {"answer_id": aid, "text": typed})
+    assert job.status == "done" and job.result_json["score"] == 6.0
+    assert gw.image_calls == []
+    assert "<answer>" in gw.calls[0][1] and "justice, liberty" in gw.calls[0][1]
+    short = _make_answer(status="queued")
+    assert _run(get_session_factory(), svc, "answer_eval", {"answer_id": short, "text": "too short"}).status == "failed"

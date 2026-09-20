@@ -36,9 +36,9 @@ def answer_eval(ctx: JobContext) -> dict:
     if answer is None or answer.deleted:
         raise JobFailed("That answer was not found.")
     try:
-        feedback = evaluation.evaluate(ctx.settings, ctx.gateway, answer)
+        feedback = evaluation.evaluate(ctx.settings, ctx.gateway, answer, str(ctx.payload.get("text") or ""))
     except ValueError:
-        _fail(ctx, answer, "No photos of the answer reached the server. Please add the photos again.")
+        _fail(ctx, answer, "No photos or typed text of the answer reached the server. Please send the answer again.")
         return {}  # unreachable, keeps type checkers happy
     if feedback is None:
         raise AiUnavailable("The AI was busy")
