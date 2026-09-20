@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Revision queue</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<style>body{margin:0;background:#F6F3EC}a{color:#0F5E5A}a:hover{color:#0A4441}</style>
+</helmet>
+<div style="width: 1280px; height: 800px; display: flex; background: #F6F3EC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1C1B19;">
+<dc-import name="Nav" active="revise" hint-size="96px,800px"></dc-import>
+<main style="flex-grow: 1; box-sizing: border-box; padding: 24px 32px; display: flex; flex-direction: column; gap: 14px;">
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 28px; font-weight: 500;">Revision</h1>
+<a href="Revise.dc.html" style="padding: 12px 20px; border-radius: 10px; background: #0F5E5A; color: #FFFFFF; text-decoration: none; font-weight: 600;">Start revision · 45 min</a>
+</div>
+<nav aria-label="Revision sections" style="display: flex; gap: 4px; border-bottom: 1px solid #E2DACB;">
+<a href="RevisionPlan.dc.html" style="padding: 10px 16px; border-bottom: 3px solid #0F5E5A; font-weight: 600; color: #0A4441; text-decoration: none;">Today's queue</a>
+<a href="MockTest.dc.html" style="padding: 10px 16px; color: #5E5A52; text-decoration: none;">Mock tests</a>
+<a href="ExplainBack.dc.html" style="padding: 10px 16px; color: #5E5A52; text-decoration: none;">Explain it back</a>
+<a href="Sheets.dc.html" style="padding: 10px 16px; color: #5E5A52; text-decoration: none;">Revision sheets</a>
+</nav>
+<div style="display: flex; gap: 22px; flex-grow: 1;">
+<section style="flex-grow: 1; display: flex; flex-direction: column; gap: 10px;">
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<div style="font-size: 14px; color: #5E5A52;">{{orderNote}}</div>
+<div style="display: flex; background: #EFEADF; border-radius: 10px; padding: 3px;">
+<button type="button" aria-pressed="{{smartOn}}" onClick="{{setSmart}}" style="{{smartStyle}}">Smart order</button>
+<button type="button" aria-pressed="{{mineOn}}" onClick="{{setMine}}" style="{{mineStyle}}">My order</button>
+</div>
+</div>
+<sc-for list="{{items}}" as="item" hint-placeholder-count="5">
+<div style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; gap: 14px;">
+<div style="width: 30px; height: 30px; border-radius: 50%; background: #DCEBE8; color: #0A4441; display: flex; align-items: center; justify-content: center; font-weight: 600;">{{item.rank}}</div>
+<div style="flex-grow: 1;"><div style="font-weight: 600;">{{item.name}}</div><div style="font-size: 13px; color: #5E5A52;">{{item.reason}}</div></div>
+<div style="font-size: 14px; color: #3F3C36; width: 110px; text-align: right;">{{item.meta}}</div>
+<button type="button" aria-label="Move up" onClick="{{item.up}}" style="width: 44px; height: 44px; border-radius: 10px; border: 1px solid #CFC6B4; background: #FFFFFF; font: inherit;">↑</button>
+<button type="button" aria-label="Move down" onClick="{{item.down}}" style="width: 44px; height: 44px; border-radius: 10px; border: 1px solid #CFC6B4; background: #FFFFFF; font: inherit;">↓</button>
+</div>
+</sc-for>
+<div style="font-size: 13px; color: #5E5A52;">Tip: long-press and drag a row to reorder. Moving anything switches to “My order” for today.</div>
+</section>
+<aside style="width: 340px; display: flex; flex-direction: column; gap: 12px;">
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 8px;">
+<div style="font-weight: 600;">How smart order ranks</div>
+<div style="font-size: 14px; color: #3F3C36; line-height: 1.5;">Cards you're about to forget first, then weak topics, then topics often asked in past papers, then whichever exam is nearer.</div>
+</section>
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px;">
+<div style="font-weight: 600;">My schedule rules</div>
+<div style="font-size: 14px; display: flex; justify-content: space-between;"><span>Revision slot</span><span style="font-weight: 500;">6:00–6:45 PM</span></div>
+<div style="font-size: 14px; display: flex; justify-content: space-between;"><span>Polity</span><span style="font-weight: 500;">Always first</span></div>
+<div style="font-size: 14px; display: flex; justify-content: space-between;"><span>Current affairs cards</span><span style="font-weight: 500;">Every day</span></div>
+<div style="font-size: 14px; display: flex; justify-content: space-between;"><span>Max per day</span><span style="font-weight: 500;">60 cards</span></div>
+<div style="font-size: 14px; display: flex; justify-content: space-between;"><span>Sunday</span><span style="font-weight: 500;">Full-week review</span></div>
+<button type="button" style="align-self: flex-start; padding: 8px 12px; border-radius: 8px; border: 1px dashed #0F5E5A; background: transparent; color: #0F5E5A; font: inherit; font-size: 14px;">+ Add rule</button>
+</section>
+<section style="background: #F6E7D2; border-radius: 14px; padding: 16px; font-size: 14px; color: #3D2A0C; line-height: 1.5;">Too busy today? Snooze a topic to tomorrow, and the app spreads it so nothing piles up.</section>
+</aside>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { mode: 'smart', order: [0,1,2,3,4] };
+}
+renderVals() {
+const base = [
+{ name: 'Writs', reason: 'Weak · wrong 3 times in quizzes', meta: '6 cards · 5 min' },
+{ name: 'Fundamental Rights', reason: 'Due today · about to fade', meta: '12 cards · 10 min' },
+{ name: 'Current affairs · last 2 weeks', reason: 'From your briefs', meta: '8 cards · 6 min' },
+{ name: 'AP river systems', reason: 'Fading · APPSC-heavy topic', meta: '7 cards · 6 min' },
+{ name: 'Indian monsoon', reason: 'Due today · often in past papers', meta: '5 cards · 4 min' }
+];
+const order = this.state.order;
+const move = (i, d) => () => {
+const j = i + d;
+if (j < 0 || j >= order.length) return;
+const next = order.slice();
+const t = next[i]; next[i] = next[j]; next[j] = t;
+this.setState({ order: next, mode: 'mine' });
+};
+const items = order.map((k, i) => ({ ...base[k], rank: i + 1, up: move(i, -1), down: move(i, 1) }));
+const on = 'padding:8px 14px;border-radius:8px;border:0;background:#0F5E5A;color:#FFFFFF;font:inherit;font-size:14px;font-weight:600;';
+const off = 'padding:8px 14px;border-radius:8px;border:0;background:transparent;color:#3F3C36;font:inherit;font-size:14px;';
+const smart = this.state.mode === 'smart';
+return {
+items,
+smartOn: smart ? 'true' : 'false',
+mineOn: smart ? 'false' : 'true',
+smartStyle: smart ? on : off,
+mineStyle: smart ? off : on,
+orderNote: smart ? '38 cards in 5 groups · ranked by the app' : '38 cards in 5 groups · your order for today',
+setSmart: () => this.setState({ mode: 'smart', order: [0,1,2,3,4] }),
+setMine: () => this.setState({ mode: 'mine' })
+};
+}
+}
+</script>
+</body>
+</html>

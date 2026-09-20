@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Videos</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<style>body{margin:0;background:#F6F3EC}a{color:#0F5E5A}a:hover{color:#0A4441}</style>
+</helmet>
+<div style="width: 1280px; height: 800px; display: flex; background: #F6F3EC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1C1B19;">
+<dc-import name="Nav" active="library" hint-size="96px,800px"></dc-import>
+<main style="flex-grow: 1; box-sizing: border-box; padding: 28px 32px; display: flex; gap: 24px;">
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 14px;">
+<div style="font-size: 14px; color: #5E5A52;"><a href="Notes.dc.html">Fundamental Rights</a> · Videos</div>
+<div style="height: 380px; background: #1C1B19; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: #F6F3EC;">
+<button type="button" aria-label="Play video" style="width: 76px; height: 76px; border-radius: 50%; border: 0; background: #F6F3EC; color: #1C1B19; font: inherit; font-size: 24px;">▶</button>
+<div style="font-size: 14px; color: #B8B2A6;">YouTube player inside the app</div>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: flex-start;">
+<div><div style="font-weight: 600; font-size: 18px;">[Video title] Fundamental Rights explained</div><div style="font-size: 14px; color: #5E5A52;">[Channel] · 28 min · plays in app · needs internet</div></div>
+<button type="button" style="padding: 10px 14px; border-radius: 10px; border: 1px solid #CFC6B4; background: #FFFDF8; font: inherit;">Open in YouTube</button>
+</div>
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px;">
+<div style="display: flex; justify-content: space-between; align-items: center;"><div style="font-weight: 600;">My notes on this video</div><button type="button" style="padding: 8px 12px; border-radius: 8px; border: 0; background: #0F5E5A; color: #FFFFFF; font: inherit; font-size: 14px;">+ Note at 12:40</button></div>
+<div style="font-size: 15px;"><span style="color: #0F5E5A; font-weight: 600;">04:12</span> · Difference between Article 32 and 226</div>
+<div style="font-size: 15px;"><span style="color: #0F5E5A; font-weight: 600;">09:55</span> · Five types of writs, one-line meaning each</div>
+<div style="font-size: 13px; color: #5E5A52;">Tap a time to jump back. Notes are saved into the topic and work offline.</div>
+</section>
+</div>
+<aside style="width: 360px; display: flex; flex-direction: column; gap: 12px;">
+<div style="font-weight: 600;">Suggested for this topic</div>
+<div style="background: #FFFDF8; border: 2px solid #0F5E5A; border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px;"><div style="font-weight: 500;">[Video title] Fundamental Rights explained</div><div style="font-size: 13px; color: #5E5A52;">[Channel] · 28 min</div><span style="align-self: flex-start; padding: 3px 8px; border-radius: 999px; background: #DCEBE8; color: #0A4441; font-size: 12px;">Plays in app · now playing</span></div>
+<div style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px;"><div style="font-weight: 500;">[Video title] Writs in 15 minutes</div><div style="font-size: 13px; color: #5E5A52;">[Channel] · 15 min</div><span style="align-self: flex-start; padding: 3px 8px; border-radius: 999px; background: #DCEBE8; color: #0A4441; font-size: 12px;">Plays in app</span></div>
+<div style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px;"><div style="font-weight: 500;">[Video title] Past-paper questions on Part III</div><div style="font-size: 13px; color: #5E5A52;">[Channel] · 41 min</div><span style="align-self: flex-start; padding: 3px 8px; border-radius: 999px; background: #F6E7D2; color: #7A4A0E; font-size: 12px;">Opens in YouTube · link saved here</span></div>
+<button type="button" style="padding: 12px; border-radius: 10px; border: 1px dashed #0F5E5A; background: transparent; color: #0F5E5A; font: inherit;">+ Paste a YouTube link</button>
+<div style="font-size: 13px; color: #5E5A52; line-height: 1.5;">Watched videos are ticked in your plan. Offline, you still see the list and your timestamped notes.</div>
+</aside>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

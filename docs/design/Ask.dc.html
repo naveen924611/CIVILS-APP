@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ask by voice</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<style>body{margin:0;background:#F6F3EC}a{color:#0F5E5A}a:hover{color:#0A4441}</style>
+</helmet>
+<div style="width: 1280px; height: 800px; display: flex; background: #F6F3EC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1C1B19;">
+<dc-import name="Nav" active="ask" hint-size="96px,800px"></dc-import>
+<main style="flex-grow: 1; box-sizing: border-box; padding: 28px 36px; display: flex; flex-direction: column; gap: 16px;">
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 28px; font-weight: 500;">Ask</h1>
+<div style="display: flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: #F6E7D2; color: #7A4A0E; font-size: 14px; font-weight: 500;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #B3701A;"></span>Offline</div>
+</div>
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 14px;">
+<div style="align-self: flex-end; max-width: 520px; background: #0F5E5A; color: #FFFFFF; padding: 14px 18px; border-radius: 16px 16px 4px 16px; font-size: 17px;">What is Article 32 about?</div>
+<div style="align-self: flex-start; max-width: 600px; background: #FFFDF8; border: 1px solid #E2DACB; padding: 16px 18px; border-radius: 16px 16px 16px 4px; display: flex; flex-direction: column; gap: 10px;">
+<div style="font-size: 17px; line-height: 1.55;">Article 32 gives you the right to go directly to the Supreme Court if your Fundamental Rights are violated. The court can issue writs to enforce them.</div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap;"><span style="padding: 4px 10px; border-radius: 999px; background: #DCEBE8; color: #0A4441; font-size: 13px;">Answered offline from your notes</span><span style="padding: 4px 10px; border-radius: 999px; background: #EFEADF; color: #3F3C36; font-size: 13px;">Source: NCERT Class 11 ch. 2, p. 36</span></div>
+</div>
+<div style="align-self: flex-end; max-width: 520px; background: #0F5E5A; color: #FFFFFF; padding: 14px 18px; border-radius: 16px 16px 4px 16px; font-size: 17px;">Compare the writ jurisdiction of Supreme Court and High Courts with recent examples</div>
+<div style="align-self: flex-start; max-width: 600px; background: #F6E7D2; padding: 14px 18px; border-radius: 16px 16px 16px 4px; font-size: 16px; color: #3D2A0C;">This needs the online tutor. I've saved your question and will answer it as soon as you're connected. You'll get a notification.</div>
+</div>
+<div style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 20px; padding: 16px 20px; display: flex; align-items: center; gap: 18px;">
+<button type="button" aria-label="Hold to speak" style="width: 72px; height: 72px; border-radius: 50%; border: 0; background: #0F5E5A; color: #FFFFFF; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3zM5 11a7 7 0 0 0 14 0M12 18v3"></path></svg></button>
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 6px;">
+<label for="askbox" style="font-size: 14px; color: #5E5A52;">Hold the mic and speak, or type</label>
+<input id="askbox" type="text" placeholder="Ask anything about your syllabus…" style="font: inherit; font-size: 17px; padding: 12px 14px; border-radius: 10px; border: 1px solid #CFC6B4; background: #FFFFFF;">
+</div>
+</div>
+</main>
+<aside style="width: 360px; box-sizing: border-box; border-left: 1px solid #E2DACB; padding: 28px 22px; display: flex; flex-direction: column; gap: 14px; background: #EFEADF;">
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 20px; font-weight: 500;">Waiting for internet · 3</h2>
+<div style="font-size: 14px; color: #5E5A52; line-height: 1.5;">Saved on this tablet. Sent automatically when you're online.</div>
+<div style="background: #FFFDF8; border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-size: 15px; font-weight: 500;">Compare writ jurisdiction of SC and HCs</div><div style="font-size: 13px; color: #7A4A0E;">Queued · asked 9:12 AM · by voice</div></div>
+<div style="background: #FFFDF8; border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-size: 15px; font-weight: 500;">Explain the AP Reorganisation Act simply</div><div style="font-size: 13px; color: #7A4A0E;">Queued · asked 8:40 AM · from Reader</div></div>
+<div style="background: #FFFDF8; border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-size: 15px; font-weight: 500;">Make 10 MCQs on today's brief</div><div style="font-size: 13px; color: #7A4A0E;">Queued · asked 7:35 AM</div></div>
+<h2 style="margin: 12px 0 0; font-size: 16px; font-weight: 600;">You can say, even offline</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 8px;">
+<span style="padding: 8px 12px; border-radius: 999px; background: #FFFDF8; border: 1px solid #DDD5C4; font-size: 14px;">“Read today's brief”</span>
+<span style="padding: 8px 12px; border-radius: 999px; background: #FFFDF8; border: 1px solid #DDD5C4; font-size: 14px;">“What's next?”</span>
+<span style="padding: 8px 12px; border-radius: 999px; background: #FFFDF8; border: 1px solid #DDD5C4; font-size: 14px;">“Start revision”</span>
+<span style="padding: 8px 12px; border-radius: 999px; background: #FFFDF8; border: 1px solid #DDD5C4; font-size: 14px;">“Read this page”</span>
+<span style="padding: 8px 12px; border-radius: 999px; background: #FFFDF8; border: 1px solid #DDD5C4; font-size: 14px;">“Mark done”</span>
+<span style="padding: 8px 12px; border-radius: 999px; background: #FFFDF8; border: 1px solid #DDD5C4; font-size: 14px;">“Pause”</span>
+</div>
+</aside>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

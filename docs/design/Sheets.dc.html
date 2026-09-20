@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Revision sheets</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<style>body{margin:0;background:#F6F3EC}a{color:#0F5E5A}a:hover{color:#0A4441}</style>
+</helmet>
+<div style="width: 1280px; height: 800px; display: flex; background: #F6F3EC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1C1B19;">
+<dc-import name="Nav" active="revise" hint-size="96px,800px"></dc-import>
+<main style="flex-grow: 1; box-sizing: border-box; padding: 24px 32px; display: flex; flex-direction: column; gap: 14px;">
+<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 28px; font-weight: 500;">Revision</h1>
+<nav aria-label="Revision sections" style="display: flex; gap: 4px; border-bottom: 1px solid #E2DACB;">
+<a href="RevisionPlan.dc.html" style="padding: 10px 16px; color: #5E5A52; text-decoration: none;">Today's queue</a>
+<a href="MockTest.dc.html" style="padding: 10px 16px; color: #5E5A52; text-decoration: none;">Mock tests</a>
+<a href="ExplainBack.dc.html" style="padding: 10px 16px; color: #5E5A52; text-decoration: none;">Explain it back</a>
+<a href="Sheets.dc.html" style="padding: 10px 16px; border-bottom: 3px solid #0F5E5A; font-weight: 600; color: #0A4441; text-decoration: none;">Revision sheets</a>
+</nav>
+<div style="display: flex; gap: 22px; flex-grow: 1;">
+<aside style="width: 250px; display: flex; flex-direction: column; gap: 8px;">
+<div style="font-size: 14px; color: #5E5A52;">One page per topic · updates as your notes grow</div>
+<div style="padding: 10px 12px; border-radius: 10px; background: #DCEBE8; color: #0A4441; font-weight: 600;">Fundamental Rights</div>
+<div style="padding: 10px 12px; color: #3F3C36;">Directive Principles</div>
+<div style="padding: 10px 12px; color: #3F3C36;">Indian monsoon</div>
+<div style="padding: 10px 12px; color: #3F3C36;">AP river systems</div>
+<div style="padding: 10px 12px; color: #3F3C36;">Current affairs · September</div>
+<div style="margin-top: auto; background: #F6E7D2; border-radius: 12px; padding: 12px; font-size: 13px; color: #3D2A0C; line-height: 1.5;">Last-month mode: 30 days before an exam, revision switches to these sheets, 8–10 a day.</div>
+</aside>
+<article style="flex-grow: 1; background: #FFFFFF; border: 1px solid #E2DACB; border-radius: 12px; padding: 26px 30px; display: flex; flex-direction: column; gap: 14px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline;">
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 26px; font-weight: 500;">Fundamental Rights · one-page sheet</h2>
+<div style="display: flex; gap: 8px;"><button type="button" style="padding: 8px 12px; border-radius: 8px; border: 0; background: #0F5E5A; color: #FFFFFF; font: inherit; font-size: 14px;">Listen · 3 min</button><button type="button" style="padding: 8px 12px; border-radius: 8px; border: 1px solid #CFC6B4; background: #FFFFFF; font: inherit; font-size: 14px;">Save as PDF</button></div>
+</div>
+<div style="font-size: 15px; color: #3F3C36;">Part III · Articles 12–35 · UPSC GS-2 · APPSC Paper II</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+<section style="display: flex; flex-direction: column; gap: 6px; font-size: 15px;">
+<div style="font-weight: 600;">Key articles</div>
+<div>14 · Equality before law</div>
+<div>17 · Untouchability abolished</div>
+<div>19 · Six freedoms for citizens</div>
+<div>21 · Life and personal liberty</div>
+<div>21A · Right to education (86th Amendment, 2002)</div>
+<div>32 · Remedies in the Supreme Court</div>
+</section>
+<section style="background: #F6E7D2; border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 6px; font-size: 15px; color: #3D2A0C;">
+<div style="font-weight: 600; color: #7A4A0E;">Must remember</div>
+<div>Right to property removed from Part III by the 44th Amendment (1978)</div>
+<div>Articles 20 and 21 cannot be suspended during an emergency</div>
+<div>Five writs: habeas corpus, mandamus, prohibition, certiorari, quo warranto</div>
+</section>
+<section style="display: flex; flex-direction: column; gap: 6px; font-size: 15px;">
+<div style="font-weight: 600;">Past-paper themes</div>
+<div style="color: #3F3C36;">[Themes from mapped past questions appear here]</div>
+</section>
+<section style="display: flex; flex-direction: column; gap: 6px; font-size: 15px;">
+<div style="font-weight: 600;">In the news · mains angle</div>
+<div style="color: #3F3C36;">[Linked brief items and one line on how to use them in answers]</div>
+</section>
+</div>
+</article>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

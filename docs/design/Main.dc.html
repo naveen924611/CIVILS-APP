@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Today</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<style>body{margin:0;background:#F6F3EC}a{color:#0F5E5A}a:hover{color:#0A4441}</style>
+</helmet>
+<div style="width: 1280px; height: 800px; display: flex; position: relative; background: #F6F3EC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1C1B19;">
+<dc-import name="Nav" active="today" hint-size="96px,800px"></dc-import>
+<main style="flex-grow: 1; box-sizing: border-box; padding: 32px 40px; display: flex; flex-direction: column; gap: 24px;">
+<header style="display: flex; justify-content: space-between; align-items: flex-start;">
+<div style="display: flex; flex-direction: column; gap: 6px;">
+<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 36px; font-weight: 500;">Good morning, Naveen</h1>
+<div style="font-size: 16px; color: #5E5A52;">Monday, 21 September · 4 hours planned</div>
+</div>
+<div style="display: flex; gap: 10px; align-items: center;">
+<div style="display: flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: #F6E7D2; color: #7A4A0E; font-size: 14px; font-weight: 500;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #B3701A;"></span>Offline · using saved content</div>
+<a href="Ask.dc.html" style="padding: 8px 14px; border-radius: 999px; background: #FFFDF8; border: 1px solid #E2DACB; font-size: 14px; text-decoration: none; color: #1C1B19;">3 questions waiting for internet</a>
+</div>
+</header>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; flex-grow: 1;">
+<section style="grid-column: span 2; background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 4px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 22px; font-weight: 500;">Today's plan</h2>
+<span style="font-size: 14px; color: #5E5A52;">1 of 5 done · 40 min</span>
+</div>
+<div style="display: flex; align-items: center; gap: 16px; padding: 14px 0; border-bottom: 1px solid #EEE8DC;">
+<span style="width: 28px; height: 28px; border-radius: 50%; background: #0F5E5A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 14px;">✓</span>
+<div style="width: 84px; font-size: 14px; color: #5E5A52;">7:00 AM</div>
+<div style="flex-grow: 1;"><div style="font-weight: 500; text-decoration: line-through; color: #5E5A52;">Morning brief</div><div style="font-size: 14px; color: #5E5A52;">12 items · listened 22 min · 4 of 5 MCQs right</div></div>
+</div>
+<div style="display: flex; align-items: center; gap: 16px; padding: 14px 0; border-bottom: 1px solid #EEE8DC; background: #F1F7F5; margin: 0 -12px; padding-left: 12px; padding-right: 12px; border-radius: 10px;">
+<span style="width: 26px; height: 26px; border-radius: 50%; border: 2px solid #0F5E5A;"></span>
+<div style="width: 84px; font-size: 14px; color: #5E5A52;">Now · 2 h</div>
+<div style="flex-grow: 1;"><div style="font-weight: 600;">Polity: Fundamental Rights (Art. 12–35)</div><div style="font-size: 14px; color: #5E5A52;">Core study · Laxmikanth ch. 7 + NCERT Class 11 ch. 2 · both exams</div></div>
+<a href="Reader.dc.html" style="padding: 12px 20px; border-radius: 10px; background: #0F5E5A; color: #FFFFFF; text-decoration: none; font-weight: 500;">Start</a>
+</div>
+<div style="display: flex; align-items: center; gap: 16px; padding: 14px 0; border-bottom: 1px solid #EEE8DC;">
+<span style="width: 26px; height: 26px; border-radius: 50%; border: 2px solid #CFC6B4;"></span>
+<div style="width: 84px; font-size: 14px; color: #5E5A52;">45 min</div>
+<div style="flex-grow: 1;"><div style="font-weight: 500;">Revision</div><div style="font-size: 14px; color: #5E5A52;">38 cards due · Polity, Geography, current affairs</div></div>
+<a href="Revise.dc.html" style="padding: 12px 20px; border-radius: 10px; border: 1px solid #0F5E5A; color: #0F5E5A; text-decoration: none; font-weight: 500;">Revise</a>
+</div>
+<div style="display: flex; align-items: center; gap: 16px; padding: 14px 0; border-bottom: 1px solid #EEE8DC;">
+<span style="width: 26px; height: 26px; border-radius: 50%; border: 2px solid #CFC6B4;"></span>
+<div style="width: 84px; font-size: 14px; color: #5E5A52;">30 min</div>
+<div style="flex-grow: 1;"><div style="font-weight: 500;">Practice</div><div style="font-size: 14px; color: #5E5A52;">20 past-paper MCQs on Polity (APPSC + UPSC)</div></div>
+</div>
+<div style="display: flex; align-items: center; gap: 16px; padding: 14px 0;">
+<span style="width: 26px; height: 26px; border-radius: 50%; border: 2px solid #CFC6B4;"></span>
+<div style="width: 84px; font-size: 14px; color: #5E5A52;">7:00 PM</div>
+<div style="flex-grow: 1;"><div style="font-weight: 500;">Evening brief</div><div style="font-size: 14px; color: #5E5A52;">Recap + 5-question quiz · you'll get a notification</div></div>
+</div>
+</section>
+<div style="display: flex; flex-direction: column; gap: 24px;">
+<section style="background: #0F5E5A; color: #FFFFFF; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 12px;">
+<div style="font-size: 14px; color: #CFE6E1;">Continue listening</div>
+<div style="font-weight: 500; font-size: 17px;">NCERT Class 11 Polity · ch. 2, page 31</div>
+<div style="height: 6px; background: #3E807B; border-radius: 3px;"><div style="width: 42%; height: 6px; background: #FFFFFF; border-radius: 3px;"></div></div>
+<button type="button" style="align-self: flex-start; padding: 12px 20px; border-radius: 10px; border: 0; background: #FFFFFF; color: #0F5E5A; font: inherit; font-weight: 600;">Play from here</button>
+</section>
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 14px;">
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 20px; font-weight: 500;">Exam countdown</h2>
+<div style="display: flex; justify-content: space-between;"><span>APPSC Group-I Prelims</span><span style="color: #7A4A0E; font-weight: 500;">Date not announced</span></div>
+<div style="display: flex; justify-content: space-between;"><span>UPSC CSE Prelims 2027</span><span style="color: #7A4A0E; font-weight: 500;">[DATE]</span></div>
+</section>
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 12px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline;"><h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 20px; font-weight: 500;">This week</h2><a href="Report.dc.html" style="font-size: 14px; font-weight: 500;">Weekly report</a></div>
+<div style="display: flex; justify-content: space-between; font-size: 15px;"><span style="color: #5E5A52;">Study hours</span><span>[HOURS] / 28 h</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 15px;"><span style="color: #5E5A52;">Syllabus covered</span><span>[%]</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 15px;"><span style="color: #5E5A52;">MCQ accuracy</span><span>[%]</span></div>
+</section>
+</div>
+</div>
+</main>
+<a href="Ask.dc.html" aria-label="Ask by voice" style="position: absolute; right: 36px; bottom: 32px; width: 68px; height: 68px; border-radius: 50%; background: #0F5E5A; color: #FFFFFF; display: flex; align-items: center; justify-content: center;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3zM5 11a7 7 0 0 0 14 0M12 18v3"></path></svg></a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

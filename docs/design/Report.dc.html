@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Weekly report</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<style>body{margin:0;background:#F6F3EC}a{color:#0F5E5A}a:hover{color:#0A4441}</style>
+</helmet>
+<div style="width: 1280px; height: 800px; display: flex; background: #F6F3EC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1C1B19;">
+<dc-import name="Nav" active="today" hint-size="96px,800px"></dc-import>
+<main style="flex-grow: 1; box-sizing: border-box; padding: 28px 36px; display: flex; flex-direction: column; gap: 18px;">
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<div><h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 30px; font-weight: 500;">Your week</h1><div style="font-size: 15px; color: #5E5A52;">Ready every Sunday evening · [WEEK DATES]</div></div>
+<button type="button" style="padding: 12px 18px; border-radius: 10px; border: 0; background: #0F5E5A; color: #FFFFFF; font: inherit; font-weight: 500;">Listen to report</button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px;">
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 14px; padding: 16px;"><div style="font-size: 14px; color: #5E5A52;">Hours studied</div><div style="font-family: Fraunces, Georgia, serif; font-size: 30px;">[H] / 27</div></section>
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 14px; padding: 16px;"><div style="font-size: 14px; color: #5E5A52;">Topics finished</div><div style="font-family: Fraunces, Georgia, serif; font-size: 30px;">[N]</div></section>
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 14px; padding: 16px;"><div style="font-size: 14px; color: #5E5A52;">Cards revised</div><div style="font-family: Fraunces, Georgia, serif; font-size: 30px;">[N]</div></section>
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 14px; padding: 16px;"><div style="font-size: 14px; color: #5E5A52;">MCQ accuracy</div><div style="font-family: Fraunces, Georgia, serif; font-size: 30px;">[%]</div></section>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; flex-grow: 1;">
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 10px;">
+<div style="font-weight: 600;">Covered this week</div>
+<div style="font-size: 15px;">Fundamental Rights · done</div>
+<div style="font-size: 15px;">Directive Principles · done</div>
+<div style="font-size: 15px;">Physical geography of AP · half done</div>
+<div style="font-size: 15px;">Current affairs · 6 of 7 briefs</div>
+</section>
+<section style="background: #F6E7D2; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 10px;">
+<div style="font-weight: 600; color: #7A4A0E;">Weak spots</div>
+<div style="font-size: 15px; color: #3D2A0C;">Writs · wrong 3 times in quizzes</div>
+<div style="font-size: 15px; color: #3D2A0C;">AP river systems · cards fading</div>
+<div style="font-size: 15px; color: #3D2A0C;">Wednesday and Thursday · under 2 h</div>
+</section>
+<section style="background: #DCEBE8; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 10px;">
+<div style="font-weight: 600; color: #0A4441;">Next week adjusts</div>
+<div style="font-size: 15px; color: #0A4441;">Extra 20 min on writs, Monday</div>
+<div style="font-size: 15px; color: #0A4441;">AP geography finished before new topics</div>
+<div style="font-size: 15px; color: #0A4441;">Lighter Wednesday plan to match your pace</div>
+<a href="Main.dc.html" style="margin-top: auto; align-self: flex-start; padding: 10px 14px; border-radius: 10px; background: #0F5E5A; color: #FFFFFF; text-decoration: none; font-weight: 500;">Accept next week's plan</a>
+</section>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

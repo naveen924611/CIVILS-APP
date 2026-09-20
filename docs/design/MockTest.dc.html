@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mock tests</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<style>body{margin:0;background:#F6F3EC}a{color:#0F5E5A}a:hover{color:#0A4441}</style>
+</helmet>
+<div style="width: 1280px; height: 800px; display: flex; background: #F6F3EC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1C1B19;">
+<dc-import name="Nav" active="revise" hint-size="96px,800px"></dc-import>
+<main style="flex-grow: 1; box-sizing: border-box; padding: 24px 32px; display: flex; flex-direction: column; gap: 14px;">
+<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 28px; font-weight: 500;">Revision</h1>
+<nav aria-label="Revision sections" style="display: flex; gap: 4px; border-bottom: 1px solid #E2DACB;">
+<a href="RevisionPlan.dc.html" style="padding: 10px 16px; color: #5E5A52; text-decoration: none;">Today's queue</a>
+<a href="MockTest.dc.html" style="padding: 10px 16px; border-bottom: 3px solid #0F5E5A; font-weight: 600; color: #0A4441; text-decoration: none;">Mock tests</a>
+<a href="ExplainBack.dc.html" style="padding: 10px 16px; color: #5E5A52; text-decoration: none;">Explain it back</a>
+<a href="Sheets.dc.html" style="padding: 10px 16px; color: #5E5A52; text-decoration: none;">Revision sheets</a>
+</nav>
+<div style="display: flex; gap: 22px; flex-grow: 1;">
+<section style="width: 400px; display: flex; flex-direction: column; gap: 14px;">
+<div style="background: #0F5E5A; color: #FFFFFF; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 10px;">
+<div style="font-size: 14px; color: #CFE6E1;">This Sunday · ready offline</div>
+<div style="font-family: Fraunces, Georgia, serif; font-size: 24px;">Weekly mock test</div>
+<div style="font-size: 15px; color: #E8F3F1;">25 questions · 30 min · only topics you studied this week, in past-paper style</div>
+<div style="font-size: 15px; color: #E8F3F1;">Polity 10 · Geography 7 · Current affairs 8</div>
+<div style="font-size: 14px; color: #CFE6E1;">Negative marking on, as in UPSC prelims</div>
+<button type="button" style="align-self: flex-start; padding: 12px 20px; border-radius: 10px; border: 0; background: #FFFFFF; color: #0F5E5A; font: inherit; font-weight: 600;">Start test</button>
+</div>
+<div style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 10px;">
+<div style="font-weight: 600;">Other tests</div>
+<div style="font-size: 15px; display: flex; justify-content: space-between;"><span>Topic test · any topic</span><span style="color: #0F5E5A;">Start</span></div>
+<div style="font-size: 15px; display: flex; justify-content: space-between;"><span>Past paper · APPSC [YEAR]</span><span style="color: #0F5E5A;">Start</span></div>
+<div style="font-size: 15px; display: flex; justify-content: space-between;"><span>Past paper · UPSC [YEAR]</span><span style="color: #0F5E5A;">Start</span></div>
+<div style="font-size: 15px; display: flex; justify-content: space-between;"><span>Mistakes-only retest</span><span style="color: #0F5E5A;">Start</span></div>
+</div>
+</section>
+<section style="flex-grow: 1; background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 14px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline;"><div style="font-weight: 600; font-size: 18px;">Last week's analysis</div><div style="font-family: Fraunces, Georgia, serif; font-size: 28px;">[SCORE] / 50</div></div>
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<div style="font-size: 14px;">Polity</div><div style="height: 10px; background: #E2DACB; border-radius: 5px;"><div style="width: 75%; height: 10px; background: #0F5E5A; border-radius: 5px;"></div></div>
+<div style="font-size: 14px;">Geography</div><div style="height: 10px; background: #E2DACB; border-radius: 5px;"><div style="width: 50%; height: 10px; background: #0F5E5A; border-radius: 5px;"></div></div>
+<div style="font-size: 14px;">Current affairs</div><div style="height: 10px; background: #E2DACB; border-radius: 5px;"><div style="width: 38%; height: 10px; background: #B3701A; border-radius: 5px;"></div></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;">
+<div style="background: #F6F3EC; border-radius: 12px; padding: 12px;"><div style="font-size: 13px; color: #5E5A52;">Didn't know</div><div style="font-weight: 600; font-size: 20px;">[N]</div><div style="font-size: 13px; color: #5E5A52;">→ added to study plan</div></div>
+<div style="background: #F6F3EC; border-radius: 12px; padding: 12px;"><div style="font-size: 13px; color: #5E5A52;">Confused two options</div><div style="font-weight: 600; font-size: 20px;">[N]</div><div style="font-size: 13px; color: #5E5A52;">→ comparison cards</div></div>
+<div style="background: #F6F3EC; border-radius: 12px; padding: 12px;"><div style="font-size: 13px; color: #5E5A52;">Silly mistakes</div><div style="font-weight: 600; font-size: 20px;">[N]</div><div style="font-size: 13px; color: #5E5A52;">→ read-slowly tip</div></div>
+</div>
+<div style="font-size: 14px; color: #3F3C36;">Guessing: you attempted [N] you weren't sure of and got [N] right. The app suggests when guessing pays off with negative marking.</div>
+<a href="Report.dc.html" style="align-self: flex-start; font-weight: 500;">Included in your weekly report</a>
+</section>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

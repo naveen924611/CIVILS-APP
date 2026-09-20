@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Focus timer</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<style>body{margin:0;background:#F6F3EC}a{color:#0F5E5A}a:hover{color:#0A4441}</style>
+</helmet>
+<div style="width: 1280px; height: 800px; display: flex; background: #F6F3EC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1C1B19;">
+<dc-import name="Nav" active="focus" hint-size="96px,800px"></dc-import>
+<main style="flex-grow: 1; box-sizing: border-box; padding: 32px 40px; display: flex; gap: 32px;">
+<section style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px;">
+<div style="display: flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: #DCEBE8; color: #0A4441; font-size: 14px; font-weight: 500;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #0F5E5A;"></span>Do Not Disturb is on</div>
+<div style="font-size: 16px; color: #5E5A52;">Studying now</div>
+<div style="font-size: 22px; font-weight: 600; text-align: center;">Polity: Fundamental Rights</div>
+<div style="width: 320px; height: 320px; border-radius: 50%; border: 14px solid #0F5E5A; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;">
+<div style="font-family: Fraunces, Georgia, serif; font-size: 72px; font-weight: 500;">32:18</div>
+<div style="font-size: 15px; color: #5E5A52;">of 50 min · break next</div>
+</div>
+<div style="display: flex; gap: 12px;">
+<button type="button" style="padding: 14px 24px; border-radius: 12px; border: 0; background: #0F5E5A; color: #FFFFFF; font: inherit; font-weight: 600;">Pause</button>
+<button type="button" style="padding: 14px 24px; border-radius: 12px; border: 1px solid #CFC6B4; background: #FFFDF8; font: inherit;">Finish early</button>
+<a href="Reader.dc.html" style="padding: 14px 24px; border-radius: 12px; border: 1px solid #CFC6B4; background: #FFFDF8; text-decoration: none; color: #1C1B19;">Open material</a>
+</div>
+<div style="font-size: 14px; color: #5E5A52;">Only study alarms and your briefs can interrupt</div>
+</section>
+<aside style="width: 340px; display: flex; flex-direction: column; gap: 14px;">
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 10px;">
+<div style="font-weight: 600;">Session style</div>
+<div style="display: flex; gap: 8px;"><button type="button" aria-pressed="true" style="flex-grow: 1; padding: 10px; border-radius: 10px; border: 0; background: #0F5E5A; color: #FFFFFF; font: inherit; font-size: 14px;">50 + 10</button><button type="button" style="flex-grow: 1; padding: 10px; border-radius: 10px; border: 1px solid #CFC6B4; background: #FFFFFF; font: inherit; font-size: 14px;">25 + 5</button><button type="button" style="flex-grow: 1; padding: 10px; border-radius: 10px; border: 1px solid #CFC6B4; background: #FFFFFF; font: inherit; font-size: 14px;">Custom</button></div>
+</section>
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 10px;">
+<div style="font-weight: 600;">Today's focused time</div>
+<div style="display: flex; justify-content: space-between; font-size: 15px;"><span>Morning brief</span><span>22 min</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 15px;"><span>Fundamental Rights</span><span>18 min so far</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 15px; font-weight: 600;"><span>Total</span><span>40 min</span></div>
+</section>
+<section style="background: #EFEADF; border-radius: 16px; padding: 18px; font-size: 14px; color: #3F3C36; line-height: 1.55;">When the timer ends, the app asks how much you finished. The planner uses your real pace to size tomorrow's tasks.</section>
+</aside>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Notes</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<style>body{margin:0;background:#F6F3EC}a{color:#0F5E5A}a:hover{color:#0A4441}</style>
+</helmet>
+<div style="width: 1280px; height: 800px; display: flex; background: #F6F3EC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1C1B19;">
+<dc-import name="Nav" active="notes" hint-size="96px,800px"></dc-import>
+<aside style="width: 300px; box-sizing: border-box; border-right: 1px solid #E2DACB; padding: 24px 18px; display: flex; flex-direction: column; gap: 6px;">
+<label for="notesearch" style="font-size: 13px; color: #5E5A52;">Search all notes (works offline)</label>
+<input id="notesearch" type="search" placeholder="e.g. Article 21" style="font: inherit; padding: 10px 12px; border-radius: 10px; border: 1px solid #CFC6B4; background: #FFFFFF; margin-bottom: 8px;">
+<div style="display: flex; gap: 6px; margin-bottom: 10px;">
+<button type="button" aria-pressed="true" style="flex-grow: 1; padding: 8px; border-radius: 999px; border: 0; background: #0F5E5A; color: #FFFFFF; font: inherit; font-size: 14px;">Both</button>
+<button type="button" style="flex-grow: 1; padding: 8px; border-radius: 999px; border: 1px solid #CFC6B4; background: #FFFDF8; font: inherit; font-size: 14px;">APPSC</button>
+<button type="button" style="flex-grow: 1; padding: 8px; border-radius: 999px; border: 1px solid #CFC6B4; background: #FFFDF8; font: inherit; font-size: 14px;">UPSC</button>
+</div>
+<div style="font-weight: 600; padding: 8px 6px;">Polity</div>
+<div style="padding: 9px 12px 9px 20px; border-radius: 10px; font-size: 15px; background: #DCEBE8; color: #0A4441; font-weight: 600;">Fundamental Rights</div>
+<div style="padding: 9px 12px 9px 20px; font-size: 15px; color: #3F3C36;">Directive Principles</div>
+<div style="padding: 9px 12px 9px 20px; font-size: 15px; color: #3F3C36;">Parliament</div>
+<div style="font-weight: 600; padding: 8px 6px;">Economy</div>
+<div style="font-weight: 600; padding: 8px 6px;">History</div>
+<div style="padding: 9px 12px 9px 20px; font-size: 15px; color: #3F3C36;">Modern India</div>
+<div style="padding: 9px 12px 9px 20px; font-size: 15px; color: #3F3C36;">AP history &amp; culture</div>
+<div style="font-weight: 600; padding: 8px 6px;">Geography</div>
+<div style="font-weight: 600; padding: 8px 6px;">Current affairs by month</div>
+</aside>
+<main style="flex-grow: 1; box-sizing: border-box; padding: 28px 40px; display: flex; flex-direction: column; gap: 16px;">
+<div style="display: flex; justify-content: space-between; align-items: flex-start;">
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 32px; font-weight: 500;">Fundamental Rights</h1>
+<div style="display: flex; gap: 8px; flex-wrap: wrap;"><span style="padding: 5px 11px; border-radius: 999px; background: #DCEBE8; color: #0A4441; font-size: 13px;">UPSC GS-2</span><span style="padding: 5px 11px; border-radius: 999px; background: #DCEBE8; color: #0A4441; font-size: 13px;">APPSC Paper II</span><span style="padding: 5px 11px; border-radius: 999px; background: #F6E7D2; color: #7A4A0E; font-size: 13px;">High importance · often in past papers</span></div>
+</div>
+<div style="display: flex; gap: 10px;">
+<button type="button" style="padding: 10px 16px; border-radius: 10px; border: 0; background: #0F5E5A; color: #FFFFFF; font: inherit; font-weight: 500;">Listen</button>
+<button type="button" style="padding: 10px 16px; border-radius: 10px; border: 1px solid #CFC6B4; background: #FFFDF8; font: inherit;">Edit</button>
+<button type="button" style="padding: 10px 16px; border-radius: 10px; border: 1px solid #CFC6B4; background: #FFFDF8; font: inherit;">Report error</button>
+</div>
+</div>
+<div style="display: flex; gap: 4px; border-bottom: 1px solid #E2DACB;">
+<span style="padding: 10px 16px; border-bottom: 3px solid #0F5E5A; font-weight: 600; color: #0A4441;">Notes</span>
+<span style="padding: 10px 16px; color: #5E5A52;">In the news · 4</span>
+<span style="padding: 10px 16px; color: #5E5A52;">Questions · 25</span>
+<a href="Videos.dc.html" style="padding: 10px 16px; color: #5E5A52; text-decoration: none;">Videos · 3</a>
+<span style="padding: 10px 16px; color: #5E5A52;">My doubts · 2</span>
+<span style="padding: 10px 16px; color: #5E5A52;">Sources</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; flex-grow: 1;">
+<section style="grid-column: span 2; display: flex; flex-direction: column; gap: 14px; font-size: 17px; line-height: 1.65;">
+<p style="margin: 0;">Part III of the Constitution (Articles 12–35) lists the Fundamental Rights. They protect individuals against the State and are enforceable in court.</p>
+<div style="font-weight: 600;">Key points</div>
+<div>Right to equality · Articles 14–18</div>
+<div>Right to freedom · Articles 19–22</div>
+<div>Right against exploitation · Articles 23–24</div>
+<div>Freedom of religion · Articles 25–28</div>
+<div>Cultural and educational rights · Articles 29–30</div>
+<div>Right to constitutional remedies · Article 32</div>
+<div style="font-size: 14px; color: #5E5A52;">From: NCERT Class 11 ch. 2 · your photo notes of Laxmikanth ch. 7</div>
+</section>
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<section style="background: #F6E7D2; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 8px;">
+<div style="font-weight: 600; color: #7A4A0E;">Must remember</div>
+<div style="font-size: 15px; color: #3D2A0C;">Article 12 defines “State”</div>
+<div style="font-size: 15px; color: #3D2A0C;">Article 17 abolishes untouchability</div>
+<div style="font-size: 15px; color: #3D2A0C;">Article 32 · the “heart and soul” of the Constitution (Ambedkar)</div>
+</section>
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 8px;">
+<div style="font-weight: 600;">Your progress</div>
+<div style="font-size: 15px; color: #3F3C36;">Studied · revise again in 4 days</div>
+<div style="font-size: 15px; color: #3F3C36;">14 flashcards · 2 weak</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

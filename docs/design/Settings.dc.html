@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Settings</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<style>body{margin:0;background:#F6F3EC}a{color:#0F5E5A}a:hover{color:#0A4441}</style>
+</helmet>
+<div style="width: 1280px; height: 880px; display: flex; background: #F6F3EC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1C1B19;">
+<dc-import name="Nav" active="settings" hint-size="96px,800px"></dc-import>
+<main style="flex-grow: 1; box-sizing: border-box; padding: 28px 36px; display: flex; flex-direction: column; gap: 18px;">
+<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 28px; font-weight: 500;">Settings</h1>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: start;">
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+<h2 style="margin: 0; font-size: 18px; font-weight: 600;">Daily briefs</h2>
+<div style="display: flex; align-items: center; justify-content: space-between;"><div><div style="font-weight: 500;">Morning brief</div><button type="button" style="margin-top: 4px; padding: 6px 12px; border-radius: 8px; border: 1px solid #CFC6B4; background: #FFFFFF; font: inherit; font-size: 15px;">7:00 AM</button></div><button type="button" aria-pressed="true" aria-label="Morning brief on" style="width: 48px; height: 28px; border-radius: 14px; border: 0; background: #0F5E5A; position: relative;"><span style="position: absolute; right: 3px; top: 3px; width: 22px; height: 22px; border-radius: 50%; background: #FFFFFF;"></span></button></div>
+<div style="display: flex; align-items: center; justify-content: space-between;"><div><div style="font-weight: 500;">Evening brief</div><button type="button" style="margin-top: 4px; padding: 6px 12px; border-radius: 8px; border: 1px solid #CFC6B4; background: #FFFFFF; font: inherit; font-size: 15px;">7:00 PM</button></div><button type="button" aria-pressed="true" aria-label="Evening brief on" style="width: 48px; height: 28px; border-radius: 14px; border: 0; background: #0F5E5A; position: relative;"><span style="position: absolute; right: 3px; top: 3px; width: 22px; height: 22px; border-radius: 50%; background: #FFFFFF;"></span></button></div>
+<button type="button" style="align-self: flex-start; padding: 10px 14px; border-radius: 10px; border: 1px dashed #0F5E5A; background: transparent; color: #0F5E5A; font: inherit;">+ Add another brief</button>
+<div style="font-size: 14px; color: #5E5A52;">Days</div>
+<div style="display: flex; gap: 6px;">
+<span style="width: 34px; height: 34px; border-radius: 50%; background: #0F5E5A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 14px;">M</span><span style="width: 34px; height: 34px; border-radius: 50%; background: #0F5E5A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 14px;">T</span><span style="width: 34px; height: 34px; border-radius: 50%; background: #0F5E5A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 14px;">W</span><span style="width: 34px; height: 34px; border-radius: 50%; background: #0F5E5A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 14px;">T</span><span style="width: 34px; height: 34px; border-radius: 50%; background: #0F5E5A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 14px;">F</span><span style="width: 34px; height: 34px; border-radius: 50%; background: #0F5E5A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 14px;">S</span><span style="width: 34px; height: 34px; border-radius: 50%; background: #0F5E5A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 14px;">S</span>
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 15px;"><span>Download only on Wi-Fi</span><span style="color: #0F5E5A; font-weight: 500;">On</span></div>
+</section>
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+<h2 style="margin: 0; font-size: 18px; font-weight: 600;">Voice and reading</h2>
+<div style="display: flex; justify-content: space-between; font-size: 15px;"><span>Voice</span><span style="font-weight: 500;">English (India) · offline</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 15px;"><span>Speed</span><span style="font-weight: 500;">1.0×</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 15px;"><span>Text size</span><span style="font-weight: 500;">Large</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 15px;"><span>Speak alerts when headphones are in</span><span style="color: #0F5E5A; font-weight: 500;">On</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 15px;"><span>Hands-free revision</span><span style="color: #5E5A52;">Off</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px; font-size: 15px;"><div style="display: flex; justify-content: space-between;"><span>Wake phrase “Hey Companion”</span><span style="color: #5E5A52;">Off</span></div><span style="font-size: 13px; color: #7A4A0E;">Uses more battery; works only while the app is open</span></div>
+<button type="button" style="align-self: flex-start; padding: 10px 14px; border-radius: 10px; border: 1px solid #CFC6B4; background: #FFFFFF; font: inherit;">Test offline voice</button>
+</section>
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+<h2 style="margin: 0; font-size: 18px; font-weight: 600;">Study plan</h2>
+<div style="display: flex; justify-content: space-between; font-size: 15px;"><span>APPSC Group-I Prelims</span><span style="color: #7A4A0E; font-weight: 500;">Not announced · Edit</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 15px;"><span>UPSC CSE Prelims 2027</span><span style="color: #7A4A0E; font-weight: 500;">[DATE] · Edit</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 15px;"><span>Exam priority</span><span style="font-weight: 500;">Both equal</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 15px;"><span>Mon–Sat</span><span style="font-weight: 500;">4 h a day</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 15px;"><span>Sunday</span><span style="font-weight: 500;">3 h · revision + mock</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 15px;"><span>Telugu paper practice</span><span style="font-weight: 500;">20 min a day</span></div>
+</section>
+<section style="grid-column: span 2; background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+<h2 style="margin: 0; font-size: 18px; font-weight: 600;">Stored on this tablet</h2>
+<div style="display: flex; justify-content: space-between; font-size: 15px;"><span>[USED] GB of 20 GB limit</span><span style="color: #5E5A52;">Last synced 8:02 AM</span></div>
+<div style="height: 10px; background: #E2DACB; border-radius: 5px; display: flex; overflow: hidden;"><div style="width: 12%; background: #0F5E5A;"></div><div style="width: 3%; background: #7FC4B8;"></div><div style="width: 1%; background: #B3701A;"></div></div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; font-size: 14px; color: #3F3C36;">
+<div><div style="font-weight: 600; color: #1C1B19;">Audio</div>Briefs and notes read aloud</div>
+<div><div style="font-weight: 600; color: #1C1B19;">Documents</div>PDFs and scanned pages</div>
+<div><div style="font-weight: 600; color: #1C1B19;">Study data</div>Notes, cards, plans, progress</div>
+<div><div style="font-weight: 600; color: #1C1B19;">Waiting to send</div>3 questions, 12 reviews</div>
+</div>
+<div style="display: flex; gap: 10px;"><button type="button" style="padding: 10px 16px; border-radius: 10px; border: 0; background: #0F5E5A; color: #FFFFFF; font: inherit; font-weight: 500;">Sync now</button><button type="button" style="padding: 10px 16px; border-radius: 10px; border: 1px solid #CFC6B4; background: #FFFFFF; font: inherit;">Delete audio older than 60 days</button><button type="button" style="padding: 10px 16px; border-radius: 10px; border: 1px solid #CFC6B4; background: #FFFFFF; font: inherit;">Export my data</button></div>
+</section>
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+<h2 style="margin: 0; font-size: 18px; font-weight: 600;">AI usage</h2>
+<div style="display: flex; justify-content: space-between; font-size: 15px;"><span>Free quota used today</span><span style="font-weight: 500;">[%]</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 15px;"><span>Paid usage</span><span style="font-weight: 500;">Off</span></div>
+<div style="font-size: 13px; color: #5E5A52;">If free limits run out, briefs are protected first.</div>
+</section>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":880}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

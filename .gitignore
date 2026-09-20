@@ -1,0 +1,31 @@
+# secrets
+.env
+*.jks
+*.keystore
+google-services.json
+*service-account*.json
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+.coverage*
+# data
+*.db
+*.db-wal
+*.db-shm
+backend/data/
+# android
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+*.apk
+*.aab
+.idea/
+# os
+.DS_Store
+Thumbs.db
+secrets/
+backend-data/

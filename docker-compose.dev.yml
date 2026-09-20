@@ -1,0 +1,14 @@
+# Local development on your laptop:  docker compose -f docker-compose.dev.yml up --build
+# API is then at http://localhost:8000 (docs at /docs). No HTTPS needed locally.
+services:
+  api:
+    build: ./backend
+    env_file: .env
+    environment:
+      APP_ENV: dev
+      DATABASE_URL: sqlite:////app/data/civils.db
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend-data:/app/data
+      - ./backend/app:/app/app

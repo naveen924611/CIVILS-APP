@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Library</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<style>body{margin:0;background:#F6F3EC}a{color:#0F5E5A}a:hover{color:#0A4441}</style>
+</helmet>
+<div style="width: 1280px; height: 800px; display: flex; background: #F6F3EC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1C1B19;">
+<dc-import name="Nav" active="library" hint-size="96px,800px"></dc-import>
+<main style="flex-grow: 1; box-sizing: border-box; padding: 28px 32px; display: flex; flex-direction: column; gap: 16px;">
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 28px; font-weight: 500;">Library</h1>
+<div style="display: flex; gap: 10px;">
+<button type="button" style="padding: 10px 16px; border-radius: 10px; border: 0; background: #0F5E5A; color: #FFFFFF; font: inherit; font-weight: 500;">Upload PDF</button>
+<button type="button" style="padding: 10px 16px; border-radius: 10px; border: 1px solid #0F5E5A; background: #FFFDF8; color: #0F5E5A; font: inherit; font-weight: 500;">Upload images</button>
+<button type="button" style="padding: 10px 16px; border-radius: 10px; border: 1px solid #0F5E5A; background: #FFFDF8; color: #0F5E5A; font: inherit; font-weight: 500;">Scan with camera</button>
+</div>
+</div>
+<div style="display: flex; gap: 4px; border-bottom: 1px solid #E2DACB;">
+<span style="padding: 10px 16px; border-bottom: 3px solid #0F5E5A; font-weight: 600; color: #0A4441;">Recommended</span>
+<span style="padding: 10px 16px; color: #5E5A52;">My uploads · 14</span>
+<span style="padding: 10px 16px; color: #5E5A52;">Videos</span>
+</div>
+<div style="font-weight: 600;">Free official material · downloads inside the app, then reads offline</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px;">
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 8px;"><span style="font-size: 12px; color: #0A4441; font-weight: 600;">NCERT · FREE</span><div style="font-weight: 500;">Class 11 · Indian Constitution at Work</div><div style="font-size: 13px; color: #5E5A52;">Needed for: Polity · this week</div><button type="button" style="padding: 8px 12px; border-radius: 8px; border: 1px solid #CFC6B4; background: #FFFFFF; font: inherit; font-size: 14px;">Open · downloaded</button></section>
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 8px;"><span style="font-size: 12px; color: #0A4441; font-weight: 600;">NCERT · FREE</span><div style="font-weight: 500;">Class 8 · Our Pasts III</div><div style="font-size: 13px; color: #5E5A52;">Needed for: Modern India · next week</div><button type="button" style="padding: 8px 12px; border-radius: 8px; border: 1px solid #CFC6B4; background: #FFFFFF; font: inherit; font-size: 14px;">Download</button></section>
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 8px;"><span style="font-size: 12px; color: #0A4441; font-weight: 600;">GOVT · FREE</span><div style="font-weight: 500;">Economic Survey (latest)</div><div style="font-size: 13px; color: #5E5A52;">Chapter summaries made by AI</div><button type="button" style="padding: 8px 12px; border-radius: 8px; border: 1px solid #CFC6B4; background: #FFFFFF; font: inherit; font-size: 14px;">Download</button></section>
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 8px;"><span style="font-size: 12px; color: #0A4441; font-weight: 600;">AP GOVT · FREE</span><div style="font-weight: 500;">AP Socio-Economic Survey</div><div style="font-size: 13px; color: #5E5A52;">Needed for: APPSC Paper III</div><button type="button" style="padding: 8px 12px; border-radius: 8px; border: 1px solid #CFC6B4; background: #FFFFFF; font: inherit; font-size: 14px;">Download</button></section>
+</div>
+<div style="display: flex; gap: 20px; flex-grow: 1;">
+<section style="flex-grow: 1; display: flex; flex-direction: column; gap: 10px;">
+<div style="font-weight: 600;">Standard books · <span style="color: #7A4A0E;">optional</span></div>
+<div style="font-size: 14px; color: #5E5A52;">Your plan works without them. If you get them (buy or library), the app adds their chapters to your notes.</div>
+<div style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 12px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center;"><div><div style="font-weight: 500;">Laxmikanth · Indian Polity</div><div style="font-size: 13px; color: #5E5A52;">Adds depth to Polity · ch. 7–9 match this week</div></div><button type="button" style="padding: 8px 12px; border-radius: 8px; border: 1px solid #0F5E5A; background: #FFFFFF; color: #0F5E5A; font: inherit; font-size: 14px;">Add to library-day list</button></div>
+<div style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 12px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center;"><div><div style="font-weight: 500;">Spectrum · Modern India</div><div style="font-size: 13px; color: #5E5A52;">Adds depth to Modern India</div></div><button type="button" style="padding: 8px 12px; border-radius: 8px; border: 1px solid #0F5E5A; background: #FFFFFF; color: #0F5E5A; font: inherit; font-size: 14px;">Add to library-day list</button></div>
+<div style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 12px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center;"><div><div style="font-weight: 500;">Telugu Akademi · AP History</div><div style="font-size: 13px; color: #5E5A52;">APPSC-specific · check for English edition</div></div><button type="button" style="padding: 8px 12px; border-radius: 8px; border: 1px solid #0F5E5A; background: #FFFFFF; color: #0F5E5A; font: inherit; font-size: 14px;">Add to library-day list</button></div>
+</section>
+<aside style="width: 340px; background: #EFEADF; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 10px;">
+<div style="font-weight: 600;">Library day · optional</div>
+<div style="font-size: 14px; color: #3F3C36;">Next visit: <span style="font-weight: 500;">not set</span> · <a href="Settings.dc.html">set a day</a></div>
+<div style="background: #FFFDF8; border-radius: 10px; padding: 10px 12px; font-size: 14px;">Laxmikanth ch. 7 · Fundamental Rights</div>
+<div style="background: #FFFDF8; border-radius: 10px; padding: 10px 12px; font-size: 14px;">Laxmikanth ch. 8 · DPSP</div>
+<div style="font-size: 13px; color: #5E5A52; line-height: 1.5;">At the library, photograph the key pages. They turn into text on the tablet and join your notes.</div>
+</aside>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Smart note capture</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<style>body{margin:0;background:#F6F3EC}a{color:#0F5E5A}a:hover{color:#0A4441}</style>
+</helmet>
+<div style="width: 1280px; height: 800px; display: flex; background: #F6F3EC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1C1B19;">
+<dc-import name="Nav" active="read" hint-size="96px,800px"></dc-import>
+<main style="flex-grow: 1; box-sizing: border-box; padding: 32px 48px; display: flex; flex-direction: column; gap: 20px;">
+<div style="font-size: 14px; color: #5E5A52;">Photo of Laxmikanth ch. 7, page 3 · converted to text on the tablet</div>
+<p style="margin: 0; font-size: 20px; line-height: 1.75; max-width: 760px;">Your scanned page appears here as text. <span style="background: #CDE6E1; border-radius: 4px;">Select any sentence you want to keep, and a menu appears.</span> Articles, dates and numbers on the page are spotted automatically.</p>
+<div style="display: flex; gap: 8px; background: #1C1B19; border-radius: 14px; padding: 8px; align-self: flex-start;">
+<button type="button" style="padding: 10px 14px; border-radius: 10px; border: 0; background: #0F5E5A; color: #FFFFFF; font: inherit;">Save as point</button>
+<button type="button" style="padding: 10px 14px; border-radius: 10px; border: 0; background: #3F3C36; color: #F6F3EC; font: inherit;">Must remember</button>
+<button type="button" style="padding: 10px 14px; border-radius: 10px; border: 0; background: #3F3C36; color: #F6F3EC; font: inherit;">Make flashcard</button>
+<button type="button" style="padding: 10px 14px; border-radius: 10px; border: 0; background: #3F3C36; color: #F6F3EC; font: inherit;">Explain simply</button>
+<button type="button" style="padding: 10px 14px; border-radius: 10px; border: 0; background: #3F3C36; color: #F6F3EC; font: inherit;">Voice note</button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 8px;">
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 8px;">
+<div style="font-weight: 600;">Spotted on this page</div>
+<div style="font-size: 13px; color: #0A4441;">Done on the tablet · no internet needed</div>
+<div style="font-size: 15px;">Art. 14 · Art. 15 · Art. 16 · Art. 17</div>
+<div style="font-size: 15px;">2 dates · 1 committee name</div>
+<button type="button" style="align-self: flex-start; padding: 8px 12px; border-radius: 8px; border: 1px solid #CFC6B4; background: #FFFFFF; font: inherit; font-size: 14px;">Turn into flashcards</button>
+</section>
+<section style="background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 8px;">
+<div style="font-weight: 600;">Already in your notes</div>
+<div style="font-size: 13px; color: #0A4441;">Matched with local search</div>
+<div style="font-size: 15px;">3 of these points already exist from NCERT. Only 2 new points will be added, so nothing repeats.</div>
+</section>
+<section style="background: #F6E7D2; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 8px;">
+<div style="font-weight: 600; color: #7A4A0E;">Waiting for internet</div>
+<div style="font-size: 15px; color: #3D2A0C;">AI will merge this page into your Fundamental Rights note, write a one-line summary, and link past-paper questions.</div>
+<div style="font-size: 13px; color: #7A4A0E;">You'll be notified when it's done</div>
+</section>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>
