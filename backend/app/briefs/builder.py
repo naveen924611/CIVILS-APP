@@ -1,5 +1,6 @@
 """Puts a brief together: run the news pipeline, pick the best items, make audio, notify."""
 import logging
+import subprocess
 import threading
 from collections.abc import Callable
 from datetime import datetime, time, timedelta, timezone
@@ -87,6 +88,13 @@ class BriefService:
 
         total = 0
         tts_ok = True
+        if self.synth is piper.synthesize_mp3:
+            # Fetch the reading voice the first time, so the owner does not have to remember a manual step.
+            try:
+                piper.ensure_voice(self.settings, self.settings.piper_voice)
+            except (piper.TtsError, subprocess.TimeoutExpired, OSError) as exc:
+                log.warning("reading voice unavailable (%s); the brief will be text only", exc)
+                tts_ok = False
         for item in items:
             if tts_ok:
                 try:

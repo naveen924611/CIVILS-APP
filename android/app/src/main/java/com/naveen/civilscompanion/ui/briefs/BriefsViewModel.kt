@@ -17,6 +17,7 @@ import com.naveen.civilscompanion.data.repo.SyncRepository
 import com.naveen.civilscompanion.playback.PlayerConnection
 import com.naveen.civilscompanion.playback.PlayerUiState
 import com.naveen.civilscompanion.playback.QueueItem
+import com.naveen.civilscompanion.speech.TtsSpeaker
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.io.IOException
 import javax.inject.Inject
@@ -92,6 +93,7 @@ class BriefsViewModel @Inject constructor(
     audio: AudioStore,
     private val navEvents: NavEvents,
     private val json: Json,
+    private val tts: TtsSpeaker,
 ) : ViewModel() {
 
     private val selectedBriefId = MutableStateFlow<String?>(null)
@@ -152,7 +154,10 @@ class BriefsViewModel @Inject constructor(
         pickedItemId.value = itemId
         val s = state.value
         val item = s.items.firstOrNull { it.id == itemId } ?: return
-        if (!item.hasAudio) return
+        if (!item.hasAudio) {
+            readWithTablet(itemId)
+            return
+        }
         if (s.playingThisBrief && player.jumpTo(itemId)) return
         playFrom(itemId)
     }
@@ -166,10 +171,54 @@ class BriefsViewModel @Inject constructor(
         }
         val start = s.items.firstOrNull { it.hasAudio && !it.heard } ?: s.items.firstOrNull { it.hasAudio }
         if (start == null) {
-            say("This brief has no audio. You can still read it.")
+            // No audio file from the server: use the tablet's own voice instead.
+            if (tts.speaking.value) {
+                tts.stop()
+                return
+            }
+            readWithTablet(pickedItemId.value)
             return
         }
         playFrom(start.id)
+    }
+
+    /** Fallback when a brief has no audio file: the tablet's own speech engine reads the items one after another. */
+    private fun readWithTablet(startId: String?) {
+        val brief = state.value.selected ?: return
+        viewModelScope.launch {
+            val entity = db.briefs().get(brief.id) ?: return@launch
+            val items = orderedItems(entity)
+            if (items.isEmpty()) {
+                say("This brief has no items yet.")
+                return@launch
+            }
+            val first = items.indexOfFirst { it.id == startId }.coerceAtLeast(0)
+            val texts = items.map { itemScript(it) }
+            say("No audio file for this brief, so the tablet's voice is reading it. Tap play to stop.")
+            tts.speakSentences(
+                texts,
+                startIndex = first,
+                onSentence = { index -> items.getOrNull(index)?.let { pickedItemId.value = it.id } },
+            )
+        }
+    }
+
+    private fun itemScript(item: NewsItemEntity): String {
+        val parts = ArrayList<String>()
+        parts.add(item.title.trimEnd('.') + ".")
+        parts.add(item.summary.trim())
+        val facts = decodeFacts(json, item.prelimsFactsJson)
+        if (facts.isNotEmpty()) {
+            parts.add("Must remember.")
+            for (f in facts) parts.add(f.q.trimEnd('?', '.') + "? " + f.a.trimEnd('.') + ".")
+        }
+        if (item.mainsAngle.isNotBlank()) parts.add("Mains angle. " + item.mainsAngle.trim())
+        return parts.joinToString(" ")
+    }
+
+    override fun onCleared() {
+        tts.stop()
+        super.onCleared()
     }
 
     fun back15() = player.seekBy(-15_000)
@@ -248,7 +297,7 @@ class BriefsViewModel @Inject constructor(
     private fun play(brief: BriefEntity, items: List<NewsItemEntity>, startId: String) {
         val queue = items.map { QueueItem(it.id, it.title, it.audioUrl) }
         val ok = player.playQueue(BriefTimes.label(brief.kind), queue, startId)
-        if (!ok) say("This brief has no audio. You can still read it.")
+        if (!ok) readWithTablet(startId)
     }
 
     private suspend fun orderedItems(brief: BriefEntity): List<NewsItemEntity> {

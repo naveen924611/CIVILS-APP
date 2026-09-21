@@ -81,11 +81,20 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+/**
+ * Taps on the left rail always land on that section's first screen. Nothing is "restored": a screen you opened from
+ * Today (for example a brief) must not come back when you tap Home or another section.
+ */
 private fun NavHostController.goTo(dest: Destination) {
+    if (dest.route == Routes.TODAY) {
+        if (!popBackStack(Routes.TODAY, false)) {
+            navigate(Routes.TODAY) { launchSingleTop = true }
+        }
+        return
+    }
     navigate(dest.route) {
-        popUpTo(Destination.Today.route) { saveState = true }
+        popUpTo(Routes.TODAY) { inclusive = false }
         launchSingleTop = true
-        restoreState = true
     }
 }
 

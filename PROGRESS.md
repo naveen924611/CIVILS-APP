@@ -37,6 +37,12 @@ Foundation: generic Room `records` store (31 tables) + generic `/sync/pull` and 
 - Reviewed by "human compiler" agents (no Android SDK here): a handful of likely compile errors fixed.
 - Integration edits: `CivilsMessagingService` shows `weekly_report` and `mock_ready` pushes; `CivilsApp` schedules day notifications after login; `SyncWorker` refreshes the widget after each sync.
 
+## Fixes after first tablet test (2026-09-21)
+- Rail taps (Home etc.) no longer restore a previously opened screen (MainActivity.goTo).
+- Briefs without an audio file are now read aloud by the tablet's own voice (BriefsViewModel.readWithTablet); the server now downloads the Piper voice by itself the first time it builds a brief (before, it needed the manual voice-download step).
+- Screen orientation is no longer locked to landscape.
+- Fixed a Kotlin build error (`/*` inside a KDoc comment in TeluguContent.kt).
+
 ## Waiting on owner now
 1. `git push` and read the first `android-apk` run; send me the red lines (docs/m3-m12-owner-steps.md).
 2. Update the laptop server (same file, step 3).
