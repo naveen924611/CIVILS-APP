@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -35,6 +37,7 @@ import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.Pill
 import com.naveen.civilscompanion.ui.common.ScreenTitle
 import com.naveen.civilscompanion.ui.common.SectionLabel
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.nav.Routes
 import com.naveen.civilscompanion.ui.today.PlanBlocks
 
@@ -47,8 +50,10 @@ private fun navigateTo(nav: NavHostController, route: String) {
 fun ReviseScreen(nav: NavHostController, vm: ReviseViewModel = hiltViewModel()) {
     val q by vm.queue.collectAsStateWithLifecycle()
     val settings by vm.settings.collectAsStateWithLifecycle()
+    val compact = isCompact()
     Column(
-        modifier = Modifier.fillMaxSize().background(Cc.colors.background).padding(horizontal = 32.dp, vertical = 24.dp),
+        modifier = Modifier.fillMaxSize().background(Cc.colors.background)
+            .padding(horizontal = if (compact) 20.dp else 32.dp, vertical = 24.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         ScreenTitle(
@@ -56,9 +61,17 @@ fun ReviseScreen(nav: NavHostController, vm: ReviseViewModel = hiltViewModel()) 
             subtitle = if (q.totalCards == 0) "Nothing due right now" else "${q.totalCards} cards · about ${q.minutes} min",
         )
         RevTabs(nav)
-        Row(Modifier.weight(1f).fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(24.dp)) {
-            QueueList(q, vm, Modifier.weight(1f))
-            SidePanel(q, settings, nav, vm, Modifier.width(340.dp))
+        if (compact) {
+            // Upright tablet: the Start card and rules first, then the queue, all on one scrolling page.
+            Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                SidePanel(q, settings, nav, vm, Modifier.fillMaxWidth())
+                QueueList(q, vm, Modifier.fillMaxWidth(), inScroll = true)
+            }
+        } else {
+            Row(Modifier.weight(1f).fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(24.dp)) {
+                QueueList(q, vm, Modifier.weight(1f))
+                SidePanel(q, settings, nav, vm, Modifier.width(340.dp))
+            }
         }
     }
 }
@@ -90,7 +103,7 @@ private fun TabLabel(text: String, selected: Boolean, onClick: () -> Unit) {
 }
 
 @Composable
-private fun QueueList(q: QueueState, vm: ReviseViewModel, modifier: Modifier) {
+private fun QueueList(q: QueueState, vm: ReviseViewModel, modifier: Modifier, inScroll: Boolean = false) {
     if (q.groups.isEmpty()) {
         CcCard(modifier.fillMaxWidth()) {
             Text(
@@ -103,6 +116,15 @@ private fun QueueList(q: QueueState, vm: ReviseViewModel, modifier: Modifier) {
                 style = MaterialTheme.typography.bodyMedium,
                 color = Cc.colors.muted,
             )
+        }
+        return
+    }
+    if (inScroll) {
+        // Already inside a scrolling page: a plain Column (a LazyColumn here would crash).
+        Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            q.groups.forEachIndexed { index, g ->
+                GroupRow(index, g, isFirst = index == 0, isLast = index == q.groups.lastIndex, vm = vm, perCard = q.config.minutesPerCard)
+            }
         }
         return
     }

@@ -29,6 +29,7 @@ import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.Pill
 import com.naveen.civilscompanion.ui.common.ScreenTitle
 import com.naveen.civilscompanion.ui.common.SectionLabel
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.nav.Routes
 import com.naveen.civilscompanion.ui.tests.TAction
 import com.naveen.civilscompanion.ui.tests.TNotice
@@ -43,7 +44,7 @@ fun SheetsScreen(nav: NavHostController, vm: SheetsViewModel = hiltViewModel()) 
 
     LazyColumn(
         Modifier.fillMaxSize().background(Cc.colors.background),
-        contentPadding = androidx.compose.foundation.layout.PaddingValues(24.dp),
+        contentPadding = androidx.compose.foundation.layout.PaddingValues(start = if (isCompact()) 16.dp else 24.dp, top = if (isCompact()) 16.dp else 24.dp, end = if (isCompact()) 16.dp else 24.dp, bottom = if (isCompact()) 88.dp else 24.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         item {

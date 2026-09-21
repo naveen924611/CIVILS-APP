@@ -53,30 +53,63 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.naveen.civilscompanion.theme.Cc
 import com.naveen.civilscompanion.theme.Fraunces
+import com.naveen.civilscompanion.ui.common.isCompact
 import kotlin.math.abs
 
 /** Briefs (spec 6.2): item list on the left, the story on the right, the audio player along the bottom. */
 @Composable
 fun BriefsScreen(vm: BriefsViewModel = hiltViewModel()) {
     val s by vm.state.collectAsStateWithLifecycle()
+    val compact = isCompact()
+    var showDetail by remember { mutableStateOf(false) }
     Column(Modifier.fillMaxSize().background(Cc.colors.background)) {
-        Row(Modifier.weight(1f).fillMaxWidth()) {
-            ItemListPane(s, vm, Modifier.width(380.dp).fillMaxHeight())
-            DetailPane(s, Modifier.weight(1f).fillMaxHeight())
+        if (compact) {
+            // Upright tablet: one pane at a time. The list first; a tap opens the story with a Back button.
+            Box(Modifier.weight(1f).fillMaxWidth()) {
+                if (showDetail && s.detail != null) {
+                    Column(Modifier.fillMaxSize()) {
+                        OutlinedButton(
+                            onClick = { showDetail = false },
+                            shape = MaterialTheme.shapes.small,
+                            modifier = Modifier.padding(start = 20.dp, top = 12.dp).heightIn(min = 48.dp),
+                        ) { Text("Back to the list") }
+                        DetailPane(s, Modifier.weight(1f).fillMaxWidth(), compact = true)
+                    }
+                } else {
+                    ItemListPane(s, vm, Modifier.fillMaxSize(), compact = true, onOpen = { showDetail = true })
+                }
+            }
+        } else {
+            Row(Modifier.weight(1f).fillMaxWidth()) {
+                ItemListPane(s, vm, Modifier.width(380.dp).fillMaxHeight())
+                DetailPane(s, Modifier.weight(1f).fillMaxHeight())
+            }
         }
         PlayerBar(s, vm)
     }
 }
 
 @Composable
-private fun ItemListPane(s: BriefsUiState, vm: BriefsViewModel, modifier: Modifier) {
+private fun ItemListPane(
+    s: BriefsUiState,
+    vm: BriefsViewModel,
+    modifier: Modifier,
+    compact: Boolean = false,
+    onOpen: () -> Unit = {},
+) {
     val colors = Cc.colors
     Column(
         modifier = modifier
-            .drawBehind {
-                drawLine(colors.border, Offset(size.width, 0f), Offset(size.width, size.height), strokeWidth = 1.dp.toPx())
-            }
-            .padding(horizontal = 20.dp, vertical = 24.dp),
+            .then(
+                if (compact) {
+                    Modifier
+                } else {
+                    Modifier.drawBehind {
+                        drawLine(colors.border, Offset(size.width, 0f), Offset(size.width, size.height), strokeWidth = 1.dp.toPx())
+                    }
+                },
+            )
+            .padding(horizontal = 20.dp, vertical = if (compact) 16.dp else 24.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
         Text(s.selected?.title ?: "Briefs", style = MaterialTheme.typography.displaySmall, color = colors.ink)
@@ -117,7 +150,10 @@ private fun ItemListPane(s: BriefsUiState, vm: BriefsViewModel, modifier: Modifi
         } else {
             LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 items(s.items, key = { it.id }) { item ->
-                    ItemCard(item, selected = item.id == s.detail?.id, onClick = { vm.selectItem(item.id) })
+                    ItemCard(item, selected = item.id == s.detail?.id, onClick = {
+                        vm.selectItem(item.id)
+                        onOpen()
+                    })
                 }
             }
         }
@@ -203,7 +239,7 @@ private fun ItemCard(item: ItemUi, selected: Boolean, onClick: () -> Unit) {
 // ------------------------------------------------------------------------------------ detail
 
 @Composable
-private fun DetailPane(s: BriefsUiState, modifier: Modifier) {
+private fun DetailPane(s: BriefsUiState, modifier: Modifier, compact: Boolean = false) {
     val colors = Cc.colors
     val d = s.detail
     if (d == null) {
@@ -218,7 +254,8 @@ private fun DetailPane(s: BriefsUiState, modifier: Modifier) {
     }
     val uri = LocalUriHandler.current
     Column(
-        modifier.verticalScroll(rememberScrollState()).padding(horizontal = 40.dp, vertical = 32.dp),
+        modifier.verticalScroll(rememberScrollState())
+            .padding(horizontal = if (compact) 20.dp else 40.dp, vertical = if (compact) 16.dp else 32.dp),
         verticalArrangement = Arrangement.spacedBy(18.dp),
     ) {
         Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -296,10 +333,11 @@ private fun PlayerBar(s: BriefsUiState, vm: BriefsViewModel) {
     val colors = Cc.colors
     val p = if (s.playingThisBrief) s.player else null
     val fraction = if (p != null && p.durationMs > 0) (p.positionMs.toFloat() / p.durationMs).coerceIn(0f, 1f) else 0f
+    val compact = isCompact()
     Row(
-        Modifier.fillMaxWidth().height(96.dp).background(colors.playerBar).padding(horizontal = 32.dp),
+        Modifier.fillMaxWidth().height(96.dp).background(colors.playerBar).padding(horizontal = if (compact) 16.dp else 32.dp),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(20.dp),
+        horizontalArrangement = Arrangement.spacedBy(if (compact) 12.dp else 20.dp),
     ) {
         RoundButton("−15", 48.dp, filled = false, description = "Back 15 seconds", enabled = p != null) { vm.back15() }
         RoundButton(

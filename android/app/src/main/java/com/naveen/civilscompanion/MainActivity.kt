@@ -8,14 +8,17 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Density
@@ -33,7 +36,10 @@ import com.naveen.civilscompanion.ui.ask.askRoutes
 import com.naveen.civilscompanion.ui.briefs.BriefsScreen
 import com.naveen.civilscompanion.ui.library.libraryRoutes
 import com.naveen.civilscompanion.ui.login.LoginScreen
+import com.naveen.civilscompanion.ui.common.COMPACT_BELOW_DP
+import com.naveen.civilscompanion.ui.common.LocalCompact
 import com.naveen.civilscompanion.ui.nav.Destination
+import com.naveen.civilscompanion.ui.nav.NavBottomBar
 import com.naveen.civilscompanion.ui.nav.NavRail
 import com.naveen.civilscompanion.ui.nav.Routes
 import com.naveen.civilscompanion.ui.focus.focusRoutes
@@ -133,26 +139,49 @@ private fun AppRoot(vm: MainViewModel) {
         }
     }
 
-    Row(Modifier.fillMaxSize().background(Cc.colors.background)) {
-        NavRail(selected = selected, onSelect = { nav.goTo(it) })
-        Box(Modifier.weight(1f).fillMaxSize()) {
-            NavHost(nav, startDestination = Routes.TODAY, modifier = Modifier.fillMaxSize()) {
-                composable(Routes.BRIEFS) { BriefsScreen() }
-                composable(Routes.ALERTS) { AlertsScreen(onOpenBriefs = { nav.goTo(Destination.Briefs) }) }
-                composable(Routes.SETTINGS) {
-                    SettingsScreen(onLogout = vm::logout, onRunSetup = vm::reopenSetup, nav = nav)
+    val compact = LocalConfiguration.current.screenWidthDp < COMPACT_BELOW_DP
+    CompositionLocalProvider(LocalCompact provides compact) {
+        AppShell(compact = compact, selected = selected, onSelect = { nav.goTo(it) }) {
+            Box(Modifier.fillMaxSize()) {
+                NavHost(nav, startDestination = Routes.TODAY, modifier = Modifier.fillMaxSize()) {
+                    composable(Routes.BRIEFS) { BriefsScreen() }
+                    composable(Routes.ALERTS) { AlertsScreen(onOpenBriefs = { nav.goTo(Destination.Briefs) }) }
+                    composable(Routes.SETTINGS) {
+                        SettingsScreen(onLogout = vm::logout, onRunSetup = vm::reopenSetup, nav = nav)
+                    }
+                    libraryRoutes(nav)
+                    notesRoutes(nav)
+                    reviseRoutes(nav)
+                    todayRoutes(nav)
+                    askRoutes(nav)
+                    testsRoutes(nav)
+                    sheetsRoutes(nav)
+                    focusRoutes(nav)
+                    teluguRoutes(nav)
                 }
-                libraryRoutes(nav)
-                notesRoutes(nav)
-                reviseRoutes(nav)
-                todayRoutes(nav)
-                askRoutes(nav)
-                testsRoutes(nav)
-                sheetsRoutes(nav)
-                focusRoutes(nav)
-                teluguRoutes(nav)
+                FloatingMic(nav, Modifier.align(Alignment.BottomEnd).padding(20.dp))
             }
-            FloatingMic(nav, Modifier.align(Alignment.BottomEnd).padding(20.dp))
+        }
+    }
+}
+
+/** Wide window (landscape): navigation rail on the left. Narrow window (upright): navigation bar at the bottom. */
+@Composable
+private fun AppShell(
+    compact: Boolean,
+    selected: Destination,
+    onSelect: (Destination) -> Unit,
+    content: @Composable () -> Unit,
+) {
+    if (compact) {
+        Column(Modifier.fillMaxSize().background(Cc.colors.background)) {
+            Box(Modifier.weight(1f).fillMaxWidth()) { content() }
+            NavBottomBar(selected = selected, onSelect = onSelect)
+        }
+    } else {
+        Row(Modifier.fillMaxSize().background(Cc.colors.background)) {
+            NavRail(selected = selected, onSelect = onSelect)
+            Box(Modifier.weight(1f).fillMaxSize()) { content() }
         }
     }
 }

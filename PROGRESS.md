@@ -40,7 +40,7 @@ Foundation: generic Room `records` store (31 tables) + generic `/sync/pull` and 
 ## Fixes after first tablet test (2026-09-21)
 - Rail taps (Home etc.) no longer restore a previously opened screen (MainActivity.goTo).
 - Briefs without an audio file are now read aloud by the tablet's own voice (BriefsViewModel.readWithTablet); the server now downloads the Piper voice by itself the first time it builds a brief (before, it needed the manual voice-download step).
-- Screen orientation is no longer locked to landscape.
+- Screen orientation is no longer locked to landscape. Upright (narrow, under 900 dp) layout: bottom navigation bar instead of the left rail, and panes stack or show one at a time (`isCompact()` in ui/common/Adaptive.kt). Not seen on a real tablet yet.
 - Fixed a Kotlin build error (`/*` inside a KDoc comment in TeluguContent.kt).
 
 ## Waiting on owner now

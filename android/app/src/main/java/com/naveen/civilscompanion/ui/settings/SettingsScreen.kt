@@ -36,6 +36,7 @@ import com.naveen.civilscompanion.data.BriefTimes
 import com.naveen.civilscompanion.data.remote.dto.BriefSlotDto
 import com.naveen.civilscompanion.theme.Cc
 import com.naveen.civilscompanion.ui.ask.AskSettingsSection
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.library.LibrarySettingsSection
 import com.naveen.civilscompanion.ui.nav.Routes
 import com.naveen.civilscompanion.ui.revise.ReviseSettingsSection
@@ -60,10 +61,11 @@ fun SettingsScreen(
 ) {
     val s by vm.state.collectAsStateWithLifecycle()
     val colors = Cc.colors
+    val compact = isCompact()
     Box(Modifier.fillMaxSize().background(colors.background), contentAlignment = Alignment.TopCenter) {
         Column(
             Modifier.widthIn(max = 760.dp).fillMaxWidth().verticalScroll(rememberScrollState())
-                .padding(horizontal = 24.dp, vertical = 28.dp),
+                .padding(horizontal = if (compact) 20.dp else 24.dp, vertical = 28.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             Text("Settings", style = MaterialTheme.typography.displaySmall, color = colors.ink)

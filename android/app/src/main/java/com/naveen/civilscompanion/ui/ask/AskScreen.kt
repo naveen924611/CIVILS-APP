@@ -48,6 +48,7 @@ import com.naveen.civilscompanion.theme.Cc
 import com.naveen.civilscompanion.ui.common.BigButton
 import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.ScreenTitle
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.common.rememberMicPermission
 import com.naveen.civilscompanion.ui.nav.Routes
 import com.naveen.civilscompanion.ui.voice.CcPaths
@@ -76,28 +77,44 @@ fun AskScreen(nav: NavHostController, vm: AskViewModel = hiltViewModel()) {
     val requestMic = rememberMicPermission(onDenied = vm::micDenied) { vm.toggleListening(nav) }
     var showHistory by remember { mutableStateOf(false) }
     val listState = rememberLazyListState()
+    val compact = isCompact()
+    val emptyScroll = rememberScrollState()
 
     LaunchedEffect(bubbles.size) {
         if (bubbles.isNotEmpty()) listState.animateScrollToItem(bubbles.lastIndex)
     }
 
     Row(Modifier.fillMaxSize().background(Cc.colors.background)) {
-        Column(Modifier.weight(1f).fillMaxHeight().padding(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            ScreenTitle(
-                "Ask",
-                subtitle = "Type or speak. Answers come from your own notes and books.",
-                actions = {
+        Column(Modifier.weight(1f).fillMaxHeight().padding(if (compact) 16.dp else 24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            if (compact) {
+                ScreenTitle("Ask", subtitle = "Type or speak. Answers come from your own notes and books.")
+                Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                     ActionText("Explain it back", onClick = { nav.navigate(Routes.EXPLAIN) })
                     ActionText("Answer writing", onClick = { nav.navigate(Routes.ANSWERS) })
                     ActionText("Earlier chats", onClick = { showHistory = true })
                     ActionText("New chat", onClick = vm::newChat)
-                },
-            )
+                }
+            } else {
+                ScreenTitle(
+                    "Ask",
+                    subtitle = "Type or speak. Answers come from your own notes and books.",
+                    actions = {
+                        ActionText("Explain it back", onClick = { nav.navigate(Routes.EXPLAIN) })
+                        ActionText("Answer writing", onClick = { nav.navigate(Routes.ANSWERS) })
+                        ActionText("Earlier chats", onClick = { showHistory = true })
+                        ActionText("New chat", onClick = vm::newChat)
+                    },
+                )
+            }
             ModeRow(mode, onPick = vm::setMode)
             if (bubbles.isEmpty()) {
-                Column(Modifier.weight(1f).fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                Column(
+                    Modifier.weight(1f).fillMaxWidth().then(if (compact) Modifier.verticalScroll(emptyScroll) else Modifier),
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
                     Text("Try asking", style = MaterialTheme.typography.titleMedium, color = Cc.colors.muted)
                     EXAMPLES.forEach { q -> CcCard(onClick = { vm.setInput(q) }, modifier = Modifier.fillMaxWidth()) { Text(q, style = MaterialTheme.typography.bodyLarge, color = Cc.colors.ink) } }
+                    if (compact) WaitingPanel(rows = waiting, count = waitingCount, modifier = Modifier.fillMaxWidth())
                 }
             } else {
                 LazyColumn(
@@ -126,6 +143,9 @@ fun AskScreen(nav: NavHostController, vm: AskViewModel = hiltViewModel()) {
                     ActionText("OK", onClick = vm::clearNotice)
                 }
             }
+            if (compact && bubbles.isNotEmpty() && waitingCount > 0) {
+                Text("$waitingCount waiting for internet", style = MaterialTheme.typography.labelLarge, color = Cc.colors.muted)
+            }
             if (topic != null || draftNote != null) {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
                     val t = topic
@@ -145,10 +165,12 @@ fun AskScreen(nav: NavHostController, vm: AskViewModel = hiltViewModel()) {
                 onMic = { if (voice.listening) vm.toggleListening(nav) else requestMic() },
             )
         }
-        WaitingPanel(
-            rows = waiting, count = waitingCount,
-            modifier = Modifier.width(300.dp).fillMaxHeight().verticalScroll(rememberScrollState()).padding(top = 24.dp, end = 24.dp, bottom = 24.dp),
-        )
+        if (!compact) {
+            WaitingPanel(
+                rows = waiting, count = waitingCount,
+                modifier = Modifier.width(300.dp).fillMaxHeight().verticalScroll(rememberScrollState()).padding(top = 24.dp, end = 24.dp, bottom = 24.dp),
+            )
+        }
     }
 
     if (showHistory) {

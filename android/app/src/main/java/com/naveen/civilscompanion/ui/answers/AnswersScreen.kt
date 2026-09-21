@@ -41,6 +41,7 @@ import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.Pill
 import com.naveen.civilscompanion.ui.common.ScreenTitle
 import com.naveen.civilscompanion.ui.common.SectionLabel
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.nav.Routes
 
 /** Answer writing, first page: practice questions to write, answers waiting for feedback, and the history of scores. */
@@ -58,8 +59,9 @@ fun AnswersScreen(nav: NavHostController, vm: AnswersViewModel = hiltViewModel()
     val done = answers.filter { it.status == "done" }
     val failed = answers.filter { it.status == "failed" }
 
+    val compact = isCompact()
     Column(
-        Modifier.fillMaxSize().background(Cc.colors.background).verticalScroll(rememberScrollState()).padding(24.dp),
+        Modifier.fillMaxSize().background(Cc.colors.background).verticalScroll(rememberScrollState()).padding(if (compact) 16.dp else 24.dp).padding(bottom = if (compact) 80.dp else 0.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
         ScreenTitle("Answer writing", subtitle = "Practise Mains answers: write, take a photo, get feedback.")
@@ -78,8 +80,9 @@ fun AnswersScreen(nav: NavHostController, vm: AnswersViewModel = hiltViewModel()
                 ChipButton(if (busy) "Please wait..." else "Short (150 words)", selected = false, onClick = { if (!busy) vm.generate("short") })
                 ChipButton("Mains (250 words)", selected = false, onClick = { if (!busy) vm.generate("mains") })
                 ChipButton("Essay (1000 words)", selected = false, onClick = { if (!busy) vm.generate("essay") })
-                ActionText("Write my own question", onClick = { showOwn = true })
+                if (!compact) ActionText("Write my own question", onClick = { showOwn = true })
             }
+            if (compact) ActionText("Write my own question", onClick = { showOwn = true })
             Text("New questions need the internet. Your own questions work offline.", style = MaterialTheme.typography.bodySmall, color = Cc.colors.muted)
         }
         ScoreTrend(done)

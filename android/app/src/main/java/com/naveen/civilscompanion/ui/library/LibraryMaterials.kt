@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -30,35 +31,48 @@ import com.naveen.civilscompanion.ui.common.BigButton
 import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.Pill
 import com.naveen.civilscompanion.ui.common.SectionLabel
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.nav.Routes
 
 /** "Recommended" tab: free official material, optional books, and the library-day panel on the right. */
 @Composable
 internal fun RecommendedPane(s: LibraryUiState, vm: LibraryViewModel, nav: NavHostController) {
+    if (isCompact()) {
+        // Upright tablet: one scrolling list, the library-day panel at the end.
+        LazyColumn(Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            recommendedItems(s, vm, nav)
+            item(key = "library-day-panel") { LibraryDayPanel(s, vm, nav, Modifier.fillMaxWidth(), scrollable = false) }
+        }
+        return
+    }
     Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
         LazyColumn(Modifier.weight(1f).fillMaxHeight(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            item(key = "official-label") { SectionLabel("Free official material") }
-            if (s.official.isEmpty()) {
-                item(key = "official-empty") {
-                    Text(
-                        "The list arrives from the server with the next sync. Connect to the internet and check again in a minute.",
-                        style = MaterialTheme.typography.bodyMedium, color = Cc.colors.muted,
-                    )
-                }
-            }
-            items(s.official, key = { it.material.id }) { row -> OfficialCard(row, vm, nav) }
-            if (s.books.isNotEmpty()) {
-                item(key = "books-label") { SectionLabel("Standard books · optional") }
-                item(key = "books-note") {
-                    Text(
-                        "These are printed books. Your plan never depends on them. Add one to the library-day list if you want to read it in a library.",
-                        style = MaterialTheme.typography.bodySmall, color = Cc.colors.muted,
-                    )
-                }
-                items(s.books, key = { it.material.id }) { row -> BookCard(row, vm) }
-            }
+            recommendedItems(s, vm, nav)
         }
         LibraryDayPanel(s, vm, nav, Modifier.width(340.dp).fillMaxHeight())
+    }
+}
+
+private fun LazyListScope.recommendedItems(s: LibraryUiState, vm: LibraryViewModel, nav: NavHostController) {
+    item(key = "official-label") { SectionLabel("Free official material") }
+    if (s.official.isEmpty()) {
+        item(key = "official-empty") {
+            Text(
+                "The list arrives from the server with the next sync. Connect to the internet and check again in a minute.",
+                style = MaterialTheme.typography.bodyMedium, color = Cc.colors.muted,
+            )
+        }
+    }
+    items(s.official, key = { it.material.id }) { row -> OfficialCard(row, vm, nav) }
+    if (s.books.isNotEmpty()) {
+        item(key = "books-label") { SectionLabel("Standard books · optional") }
+        item(key = "books-note") {
+            Text(
+                "These are printed books. Your plan never depends on them. Add one to the library-day list if you want to read it in a library.",
+                style = MaterialTheme.typography.bodySmall, color = Cc.colors.muted,
+            )
+        }
+        items(s.books, key = { it.material.id }) { row -> BookCard(row, vm) }
     }
 }
 
@@ -124,8 +138,8 @@ private fun BookCard(row: MaterialRow, vm: LibraryViewModel) {
 
 /** "Library day · optional": next visit, the books to read, and a tip. */
 @Composable
-private fun LibraryDayPanel(s: LibraryUiState, vm: LibraryViewModel, nav: NavHostController, modifier: Modifier) {
-    CcCard(modifier.verticalScroll(rememberScrollState())) {
+private fun LibraryDayPanel(s: LibraryUiState, vm: LibraryViewModel, nav: NavHostController, modifier: Modifier, scrollable: Boolean = true) {
+    CcCard(if (scrollable) modifier.verticalScroll(rememberScrollState()) else modifier) {
         SectionLabel("Library day · optional")
         val visit = if (s.libraryDay.enabled) libraryDayLabel(s.libraryDay.date) else "Not planned"
         Text("Next visit: $visit", style = MaterialTheme.typography.titleMedium, color = Cc.colors.ink)

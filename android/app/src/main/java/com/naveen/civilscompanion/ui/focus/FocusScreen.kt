@@ -37,6 +37,7 @@ import com.naveen.civilscompanion.ui.common.BigButton
 import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.Pill
 import com.naveen.civilscompanion.ui.common.ScreenTitle
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.nav.Routes
 import kotlinx.coroutines.delay
 
@@ -76,9 +77,30 @@ fun FocusScreen(nav: NavHostController, vm: FocusViewModel = hiltViewModel()) {
     var style by remember { mutableStateOf(FocusLogic.STYLE_50) }
     var customFocus by remember { mutableIntStateOf(40) }
     var customBreak by remember { mutableIntStateOf(10) }
+    val compact = isCompact()
+
+    val mainPane: @Composable () -> Unit = {
+        when (state.phase) {
+            FocusPhase.Idle -> StartPanel(
+                task = task, onTask = { task = it; vm.searchTopics(it); topicId = null; blockId = null },
+                style = style, onStyle = { style = it },
+                customFocus = customFocus, customBreak = customBreak,
+                onCustom = { f, b -> customFocus = f.coerceIn(FocusLogic.MIN_MINUTES, FocusLogic.MAX_MINUTES); customBreak = b.coerceIn(0, 60) },
+                ui = ui,
+                onPickTask = { block -> task = block.title; topicId = block.topicId; blockId = block.id; vm.searchTopics("") },
+                onPickTopic = { topic -> task = topic.title; topicId = topic.id; blockId = null; vm.searchTopics("") },
+                onStart = {
+                    val (f, b) = FocusLogic.lengths(style, customFocus, customBreak)
+                    vm.start(style, f, b, task, topicId, blockId)
+                },
+            )
+            FocusPhase.Asking -> AskProgress(onAnswer = vm::answer)
+            FocusPhase.Focus, FocusPhase.Break -> RunningPanel(state, now, vm, nav)
+        }
+    }
 
     Column(
-        Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 32.dp, vertical = 28.dp),
+        Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = if (compact) 20.dp else 32.dp, vertical = 28.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         ScreenTitle(
@@ -90,28 +112,18 @@ fun FocusScreen(nav: NavHostController, vm: FocusViewModel = hiltViewModel()) {
         )
         DndChip(state.phase, dndOn, hasAccess) { runCatching { context.startActivity(vm.dndSettingsIntent()) } }
 
-        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(24.dp)) {
-            Column(Modifier.weight(1.4f), verticalArrangement = Arrangement.spacedBy(14.dp)) {
-                when (state.phase) {
-                    FocusPhase.Idle -> StartPanel(
-                        task = task, onTask = { task = it; vm.searchTopics(it); topicId = null; blockId = null },
-                        style = style, onStyle = { style = it },
-                        customFocus = customFocus, customBreak = customBreak,
-                        onCustom = { f, b -> customFocus = f.coerceIn(FocusLogic.MIN_MINUTES, FocusLogic.MAX_MINUTES); customBreak = b.coerceIn(0, 60) },
-                        ui = ui,
-                        onPickTask = { block -> task = block.title; topicId = block.topicId; blockId = block.id; vm.searchTopics("") },
-                        onPickTopic = { topic -> task = topic.title; topicId = topic.id; blockId = null; vm.searchTopics("") },
-                        onStart = {
-                            val (f, b) = FocusLogic.lengths(style, customFocus, customBreak)
-                            vm.start(style, f, b, task, topicId, blockId)
-                        },
-                    )
-                    FocusPhase.Asking -> AskProgress(onAnswer = vm::answer)
-                    FocusPhase.Focus, FocusPhase.Break -> RunningPanel(state, now, vm, nav)
-                }
-            }
-            Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        if (compact) {
+            // upright tablet: the timer or the start form on top, today's log below
+            Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(14.dp)) { mainPane() }
                 TodayLog(ui.todayMinutes, ui.sessions)
+            }
+        } else {
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(24.dp)) {
+                Column(Modifier.weight(1.4f), verticalArrangement = Arrangement.spacedBy(14.dp)) { mainPane() }
+                Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    TodayLog(ui.todayMinutes, ui.sessions)
+                }
             }
         }
     }

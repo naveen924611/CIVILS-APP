@@ -29,6 +29,7 @@ import com.naveen.civilscompanion.ui.common.BigButton
 import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.MarkdownText
 import com.naveen.civilscompanion.ui.common.SectionLabel
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.syllabus.TopicTree
 
 /** The "Notes" tab: the note (or the editor), suggestions from new material, and the boxes on the right. */
@@ -48,26 +49,41 @@ fun NoteBodyTab(
         )
         return
     }
+    if (isCompact()) {
+        // Upright tablet: the boxes go under the note instead of beside it.
+        Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+            NoteMainColumn(note, topic.id, editing, onEditDone, vm)
+            MustRememberBox(NoteLogic.mustRemember(note.sections))
+            ProgressBox(d, vm)
+        }
+        return
+    }
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(20.dp)) {
         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(14.dp)) {
-            if (editing) {
-                NoteEditor(
-                    initial = note.contentMd,
-                    ownerEdited = note.ownerEdited,
-                    onSave = { text ->
-                        vm.saveText(note, text)
-                        onEditDone()
-                    },
-                    onCancel = onEditDone,
-                )
-            } else {
-                NoteText(note, topic.id, vm)
-            }
+            NoteMainColumn(note, topic.id, editing, onEditDone, vm)
         }
         Column(Modifier.width(300.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
             MustRememberBox(NoteLogic.mustRemember(note.sections))
             ProgressBox(d, vm)
         }
+    }
+}
+
+/** The note itself: the editor while editing, otherwise the text with its suggestions. */
+@Composable
+private fun NoteMainColumn(note: Note, topicId: String, editing: Boolean, onEditDone: () -> Unit, vm: NotesViewModel) {
+    if (editing) {
+        NoteEditor(
+            initial = note.contentMd,
+            ownerEdited = note.ownerEdited,
+            onSave = { text ->
+                vm.saveText(note, text)
+                onEditDone()
+            },
+            onCancel = onEditDone,
+        )
+    } else {
+        NoteText(note, topicId, vm)
     }
 }
 

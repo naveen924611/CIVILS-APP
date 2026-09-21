@@ -39,6 +39,7 @@ import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.EmptyState
 import com.naveen.civilscompanion.ui.common.Pill
 import com.naveen.civilscompanion.ui.common.ScreenTitle
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.nav.Routes
 
 /** Syllabus map (spec 6.20). */
@@ -52,9 +53,11 @@ fun SyllabusScreen(nav: NavHostController, vm: SyllabusViewModel = hiltViewModel
     val allIds = remember(s.topics) { s.topics.map { it.id }.toSet() }
     val rows = remember(s.tree, expanded, allIds) { TopicTree.rows(s.tree, allIds - expanded) }
     val selected = selectedId?.let { TopicTree.find(s.tree, it) }
+    val compact = isCompact()
 
     Row(Modifier.fillMaxSize().background(Cc.colors.background)) {
-        Column(Modifier.weight(1f).fillMaxHeight().padding(horizontal = 24.dp, vertical = 20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        // Upright tablet: the map and the topic's panel take turns.
+        if (!(compact && selected != null)) Column(Modifier.weight(1f).fillMaxHeight().padding(horizontal = 24.dp, vertical = 20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             ScreenTitle(
                 "Syllabus map",
                 subtitle = if (s.tree.isEmpty()) "Approve a syllabus to see your topics here" else "${s.overall}% of your topics are studied",
@@ -88,17 +91,30 @@ fun SyllabusScreen(nav: NavHostController, vm: SyllabusViewModel = hiltViewModel
         }
         if (selected != null) {
             val topic = selected.topic
-            TopicDetailPanel(
-                node = selected,
-                path = TopicTree.path(s.topics, topic.id),
-                onStatus = { vm.setStatus(topic.id, it) },
-                onOpenNotes = { nav.navigate(Routes.noteTopic(topic.id)) },
-                onAsk = {
-                    vm.askAbout(topic)
-                    nav.navigate(Routes.ASK)
-                },
-                modifier = Modifier.width(340.dp).fillMaxHeight().background(Cc.colors.surface),
-            )
+            val panel: @Composable (Modifier) -> Unit = { panelModifier ->
+                TopicDetailPanel(
+                    node = selected,
+                    path = TopicTree.path(s.topics, topic.id),
+                    onStatus = { vm.setStatus(topic.id, it) },
+                    onOpenNotes = { nav.navigate(Routes.noteTopic(topic.id)) },
+                    onAsk = {
+                        vm.askAbout(topic)
+                        nav.navigate(Routes.ASK)
+                    },
+                    modifier = panelModifier,
+                )
+            }
+            if (compact) {
+                Column(Modifier.weight(1f).fillMaxHeight().background(Cc.colors.surface)) {
+                    BigButton(
+                        "Back to the map", onClick = { selectedId = null }, filled = false,
+                        modifier = Modifier.padding(start = 16.dp, top = 12.dp, end = 16.dp),
+                    )
+                    panel(Modifier.weight(1f).fillMaxWidth())
+                }
+            } else {
+                panel(Modifier.width(340.dp).fillMaxHeight().background(Cc.colors.surface))
+            }
         }
     }
     if (showImport) {

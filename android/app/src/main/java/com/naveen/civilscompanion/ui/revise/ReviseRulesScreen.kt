@@ -33,15 +33,17 @@ import com.naveen.civilscompanion.theme.Cc
 import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.ScreenTitle
 import com.naveen.civilscompanion.ui.common.SectionLabel
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.exams.Stepper
 import com.naveen.civilscompanion.ui.nav.Routes
 
 /** My schedule rules (spec 6.15): revision time, cards a day, Sunday review, subject first, daily current affairs. */
 @Composable
 fun ReviseRulesScreen(nav: NavHostController, vm: ReviseViewModel = hiltViewModel()) {
+    val compact = isCompact()
     Column(
         modifier = Modifier.fillMaxSize().background(Cc.colors.background).verticalScroll(rememberScrollState())
-            .padding(horizontal = 32.dp, vertical = 24.dp).widthIn(max = 900.dp),
+            .padding(horizontal = if (compact) 20.dp else 32.dp, vertical = 24.dp).widthIn(max = 900.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         ScreenTitle(

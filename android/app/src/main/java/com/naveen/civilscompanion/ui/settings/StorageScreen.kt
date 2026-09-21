@@ -42,14 +42,16 @@ import com.naveen.civilscompanion.ui.common.BigButton
 import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.ScreenTitle
 import com.naveen.civilscompanion.ui.common.SectionLabel
+import com.naveen.civilscompanion.ui.common.isCompact
 
 /** Storage page: everything in the Settings storage section, plus backups. */
 @Composable
 fun StorageScreen(nav: NavHostController, vm: StorageViewModel = hiltViewModel()) {
+    val compact = isCompact()
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
         Column(
             Modifier.widthIn(max = 760.dp).fillMaxWidth().verticalScroll(rememberScrollState())
-                .padding(horizontal = 24.dp, vertical = 28.dp),
+                .padding(horizontal = if (compact) 20.dp else 24.dp, vertical = 28.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             ScreenTitle(

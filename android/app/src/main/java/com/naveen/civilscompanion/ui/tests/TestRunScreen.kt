@@ -29,6 +29,7 @@ import androidx.navigation.NavHostController
 import com.naveen.civilscompanion.theme.Cc
 import com.naveen.civilscompanion.ui.common.BigButton
 import com.naveen.civilscompanion.ui.common.EmptyState
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.nav.Routes
 import kotlinx.coroutines.delay
 
@@ -94,7 +95,25 @@ private fun RunPage(nav: NavHostController, state: RunState, run: LocalTestRun, 
     val q = questions[index]
     val unanswered = questions.count { !run.chosen.containsKey(it.id) }
 
-    Row(Modifier.fillMaxSize().padding(24.dp), horizontalArrangement = Arrangement.spacedBy(20.dp)) {
+    if (isCompact()) {
+        Column(Modifier.fillMaxSize().padding(start = 16.dp, top = 16.dp, end = 16.dp, bottom = 88.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Text(state.title, style = MaterialTheme.typography.labelLarge, color = Cc.colors.muted)
+            RunSidePanel(questions, run, secondsLeft, onGoTo = vm::goTo, modifier = Modifier.fillMaxWidth())
+            QuestionView(
+                number = index + 1, total = questions.size, q = q, chosen = run.chosen[q.id], confidence = run.confidence[q.id],
+                flagged = q.id in run.flagged, onChoose = { vm.choose(q.id, it) }, onConfidence = { vm.setConfidence(q.id, it) },
+                modifier = Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),
+            )
+            Row(horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.CenterVertically) {
+                BigButton("Previous", onClick = { vm.goTo(index - 1) }, filled = false, enabled = index > 0)
+                BigButton("Next", onClick = { vm.goTo(index + 1) }, filled = false, enabled = index < questions.size - 1)
+                BigButton(if (q.id in run.flagged) "Unmark" else "Mark to look again", onClick = { vm.toggleFlag(q.id) }, filled = false)
+                Row(Modifier.weight(1f), horizontalArrangement = Arrangement.End) {
+                    BigButton("Finish test", onClick = { confirm = true })
+                }
+            }
+        }
+    } else Row(Modifier.fillMaxSize().padding(24.dp), horizontalArrangement = Arrangement.spacedBy(20.dp)) {
         Column(Modifier.weight(1f).fillMaxSize(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Text(state.title, style = MaterialTheme.typography.labelLarge, color = Cc.colors.muted)
             QuestionView(

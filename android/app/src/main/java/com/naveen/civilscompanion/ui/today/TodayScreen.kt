@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,6 +13,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -29,6 +32,7 @@ import com.naveen.civilscompanion.ui.common.BigButton
 import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.Pill
 import com.naveen.civilscompanion.ui.common.SectionLabel
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.nav.Routes
 
 /** Opens the screen a plan block points to (its ref, or the topic's notes). Unknown screens are ignored. */
@@ -41,6 +45,34 @@ internal fun startBlock(nav: NavHostController, block: PlanBlock) {
 @Composable
 fun TodayScreen(nav: NavHostController, vm: TodayViewModel = hiltViewModel()) {
     val s by vm.ui.collectAsStateWithLifecycle()
+    if (isCompact()) {
+        // Upright tablet: one scrolling page, plan first, then the countdown and week cards underneath.
+        Column(
+            modifier = Modifier.fillMaxSize().background(Cc.colors.background).verticalScroll(rememberScrollState())
+                .padding(start = 20.dp, end = 20.dp, top = 20.dp, bottom = 24.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Header(s, vm, nav)
+            Chips(s)
+            s.message?.let { MessageBar(it, vm::dismissMessage) }
+            SectionLabel("Today's plan")
+            if (s.loaded && s.blocks.isEmpty()) {
+                CcCard(Modifier.fillMaxWidth()) {
+                    Text("Rest day: nothing is planned.", style = MaterialTheme.typography.titleMedium, color = Cc.colors.ink)
+                    Text(
+                        "You can change the hours for each day in Settings, under Study plan.",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = Cc.colors.muted,
+                    )
+                }
+            }
+            s.blocks.forEach { b ->
+                BlockRow(b, onStart = { startBlock(nav, b.block) }, onToggle = { vm.setDone(b, !b.done) })
+            }
+            RightColumn(s, nav, Modifier.fillMaxWidth())
+        }
+        return
+    }
     Row(
         modifier = Modifier.fillMaxSize().background(Cc.colors.background).padding(start = 32.dp, end = 32.dp, top = 24.dp, bottom = 24.dp),
         horizontalArrangement = Arrangement.spacedBy(24.dp),
@@ -113,6 +145,16 @@ private fun MessageBar(text: String, onDismiss: () -> Unit) {
 @Composable
 private fun BlockRow(b: TodayBlockUi, onStart: () -> Unit, onToggle: () -> Unit) {
     val block = b.block
+    val compact = isCompact()
+    val actions: @Composable RowScope.() -> Unit = {
+        if (b.done) {
+            Pill("Done", tone = 1)
+            TextButton(onClick = onToggle, modifier = Modifier.heightIn(min = 48.dp)) { Text("Undo") }
+        } else {
+            BigButton(PlanBlocks.startLabel(block.kind), onClick = onStart)
+            TextButton(onClick = onToggle, modifier = Modifier.heightIn(min = 48.dp)) { Text("Mark done") }
+        }
+    }
     CcCard(Modifier.fillMaxWidth()) {
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             Text(
@@ -126,13 +168,14 @@ private fun BlockRow(b: TodayBlockUi, onStart: () -> Unit, onToggle: () -> Unit)
                 if (block.detail.isNotBlank()) Text(block.detail, style = MaterialTheme.typography.bodySmall, color = Cc.colors.muted)
             }
             Pill("${block.minutes} min")
-            if (b.done) {
-                Pill("Done", tone = 1)
-                TextButton(onClick = onToggle, modifier = Modifier.heightIn(min = 48.dp)) { Text("Undo") }
-            } else {
-                BigButton(PlanBlocks.startLabel(block.kind), onClick = onStart)
-                TextButton(onClick = onToggle, modifier = Modifier.heightIn(min = 48.dp)) { Text("Mark done") }
-            }
+            if (!compact) actions()
+        }
+        if (compact) {
+            Row(
+                Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.End),
+            ) { actions() }
         }
     }
 }

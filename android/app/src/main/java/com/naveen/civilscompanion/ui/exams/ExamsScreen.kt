@@ -36,6 +36,7 @@ import com.naveen.civilscompanion.ui.common.BigButton
 import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.ScreenTitle
 import com.naveen.civilscompanion.ui.common.SectionLabel
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.today.ExamDates
 import com.naveen.civilscompanion.ui.today.PlanBlocks
 import com.naveen.civilscompanion.ui.today.StudyPrefs
@@ -45,9 +46,10 @@ import java.time.LocalDate
 @Composable
 fun ExamsScreen(nav: NavHostController, vm: ExamsViewModel = hiltViewModel()) {
     val ui by vm.ui.collectAsStateWithLifecycle()
+    val compact = isCompact()
     Column(
         modifier = Modifier.fillMaxSize().background(Cc.colors.background).verticalScroll(rememberScrollState())
-            .padding(horizontal = 32.dp, vertical = 24.dp).widthIn(max = 900.dp),
+            .padding(horizontal = if (compact) 20.dp else 32.dp, vertical = 24.dp).widthIn(max = 900.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         ScreenTitle(
@@ -102,11 +104,8 @@ private fun ExamRow(exam: Exam, vm: ExamsViewModel) {
     var text by remember(exam.id, exam.date) { mutableStateOf(ExamDates.parseDay(exam.date)?.toString() ?: "") }
     val invalid = text.isNotBlank() && parseDay(text) == null
     val today = remember { LocalDate.now(com.naveen.civilscompanion.ui.revise.ReviseData.INDIA) }
-    Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
-        Column(Modifier.weight(1f)) {
-            Text("${exam.name} · ${exam.stage}", style = MaterialTheme.typography.titleMedium, color = Cc.colors.ink)
-            Text(ExamDates.countdownText(exam.date, today), style = MaterialTheme.typography.bodySmall, color = Cc.colors.muted)
-        }
+    val compact = isCompact()
+    val dateField: @Composable (Modifier) -> Unit = { fieldModifier ->
         OutlinedTextField(
             value = text,
             onValueChange = {
@@ -118,12 +117,37 @@ private fun ExamRow(exam: Exam, vm: ExamsViewModel) {
             placeholder = { Text("2027-02-14") },
             isError = invalid,
             singleLine = true,
-            modifier = Modifier.width(230.dp),
+            modifier = fieldModifier,
         )
+    }
+    val tentative: @Composable () -> Unit = {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text("Tentative", style = MaterialTheme.typography.labelSmall, color = Cc.colors.muted)
             Switch(checked = exam.isTentative, onCheckedChange = { vm.setTentative(exam.id, it) })
         }
+    }
+    if (compact) {
+        // Upright tablet: name on one line, the date field and buttons on the next.
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Column {
+                Text("${exam.name} · ${exam.stage}", style = MaterialTheme.typography.titleMedium, color = Cc.colors.ink)
+                Text(ExamDates.countdownText(exam.date, today), style = MaterialTheme.typography.bodySmall, color = Cc.colors.muted)
+            }
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
+                dateField(Modifier.weight(1f))
+                tentative()
+                TextButton(onClick = { vm.deleteExam(exam.id) }, modifier = Modifier.heightIn(min = 48.dp)) { Text("Remove") }
+            }
+        }
+        return
+    }
+    Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
+        Column(Modifier.weight(1f)) {
+            Text("${exam.name} · ${exam.stage}", style = MaterialTheme.typography.titleMedium, color = Cc.colors.ink)
+            Text(ExamDates.countdownText(exam.date, today), style = MaterialTheme.typography.bodySmall, color = Cc.colors.muted)
+        }
+        dateField(Modifier.width(230.dp))
+        tentative()
         TextButton(onClick = { vm.deleteExam(exam.id) }, modifier = Modifier.heightIn(min = 48.dp)) { Text("Remove") }
     }
 }

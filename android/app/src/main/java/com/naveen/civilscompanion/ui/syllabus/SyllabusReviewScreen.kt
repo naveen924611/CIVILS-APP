@@ -37,6 +37,7 @@ import com.naveen.civilscompanion.ui.common.BigButton
 import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.EmptyState
 import com.naveen.civilscompanion.ui.common.ScreenTitle
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.nav.Routes
 
 /** Import review (spec 6.20 "approval mode"): check the topics the server found, fix them, then approve. */
@@ -49,7 +50,7 @@ fun SyllabusReviewScreen(nav: NavHostController, importId: String, vm: SyllabusR
         if (!nav.popBackStack()) nav.navigate(Routes.SYLLABUS)
     }
 
-    Column(Modifier.fillMaxSize().background(Cc.colors.background).padding(horizontal = 24.dp, vertical = 20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+    Column(Modifier.fillMaxSize().background(Cc.colors.background).padding(horizontal = if (isCompact()) 16.dp else 24.dp, vertical = 20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         ScreenTitle(
             imp?.title ?: "Check a syllabus",
             subtitle = imp?.let { "${it.exam}  |  ${SyllabusTree.count(s.tree)} lines" },
@@ -146,6 +147,40 @@ private fun ColumnScope.ReviewBody(s: ReviewState, vm: SyllabusReviewViewModel) 
 private fun BottomBar(s: ReviewState, vm: SyllabusReviewViewModel) {
     val colors = Cc.colors
     val shape = RoundedCornerShape(12.dp)
+    if (isCompact()) {
+        // Upright tablet: three short rows instead of one crowded row.
+        Column(
+            Modifier.fillMaxWidth().clip(shape).background(colors.surface).border(1.dp, colors.border, shape).padding(12.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text("Use:", style = MaterialTheme.typography.labelLarge, color = colors.muted)
+                listOf<Pair<String?, String>>(null to "Both exams", "APPSC" to "APPSC only", "UPSC" to "UPSC only").forEach { (value, label) ->
+                    val chosen = value == s.examFilter
+                    Text(
+                        label,
+                        style = MaterialTheme.typography.labelLarge,
+                        color = if (chosen) colors.onPrimary else colors.ink,
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(50))
+                            .background(if (chosen) colors.primary else colors.rail)
+                            .clickable { vm.setExamFilter(value) }
+                            .heightIn(min = 48.dp)
+                            .padding(horizontal = 16.dp, vertical = 12.dp),
+                    )
+                }
+            }
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                Switch(checked = s.mergeWithExisting, onCheckedChange = vm::setMerge)
+                Text("Join topics I already have", style = MaterialTheme.typography.bodySmall, color = colors.muted, modifier = Modifier.weight(1f))
+            }
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                BigButton("Save for later", onClick = vm::saveDraft, filled = false, enabled = !s.busy && s.edited, modifier = Modifier.weight(1f))
+                BigButton(if (s.busy) "Working..." else "Approve ${s.approveCount} topics", onClick = vm::approve, enabled = !s.busy, modifier = Modifier.weight(1f))
+            }
+        }
+        return
+    }
     Row(
         Modifier.fillMaxWidth().clip(shape).background(colors.surface).border(1.dp, colors.border, shape).padding(12.dp),
         verticalAlignment = Alignment.CenterVertically,

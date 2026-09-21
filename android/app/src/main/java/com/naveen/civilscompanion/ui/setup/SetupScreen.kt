@@ -25,6 +25,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -32,6 +33,7 @@ import com.naveen.civilscompanion.data.BriefTimes
 import com.naveen.civilscompanion.data.remote.dto.BriefSlotDto
 import com.naveen.civilscompanion.theme.Cc
 import com.naveen.civilscompanion.ui.common.BigButton
+import com.naveen.civilscompanion.ui.common.COMPACT_BELOW_DP
 import com.naveen.civilscompanion.ui.exams.ExamSetupStep
 import com.naveen.civilscompanion.ui.syllabus.SyllabusSetupStep
 
@@ -47,19 +49,36 @@ fun SetupScreen(onFinished: () -> Unit, vm: SetupViewModel = hiltViewModel()) {
     var step by remember { mutableIntStateOf(0) }
     val next = { step = (step + 1).coerceAtMost(STEPS.lastIndex) }
     val colors = Cc.colors
+    val compact = LocalConfiguration.current.screenWidthDp < COMPACT_BELOW_DP
 
     Box(Modifier.fillMaxSize().background(colors.background), contentAlignment = Alignment.TopCenter) {
         Column(
             Modifier.widthIn(max = 960.dp).fillMaxWidth().verticalScroll(rememberScrollState())
-                .padding(horizontal = 24.dp, vertical = 24.dp),
+                .padding(horizontal = if (compact) 20.dp else 24.dp, vertical = 24.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                STEPS.forEachIndexed { i, label ->
-                    FilterChip(
-                        selected = i == step, onClick = { step = i }, label = { Text("${i + 1}. $label") },
-                        modifier = Modifier.heightIn(min = 48.dp),
-                    )
+            if (compact) {
+                // upright tablet: six chips do not fit in one row, so show two rows of three
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    STEPS.indices.chunked(3).forEach { rowSteps ->
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            rowSteps.forEach { i ->
+                                FilterChip(
+                                    selected = i == step, onClick = { step = i }, label = { Text("${i + 1}. ${STEPS[i]}") },
+                                    modifier = Modifier.heightIn(min = 48.dp),
+                                )
+                            }
+                        }
+                    }
+                }
+            } else {
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    STEPS.forEachIndexed { i, label ->
+                        FilterChip(
+                            selected = i == step, onClick = { step = i }, label = { Text("${i + 1}. $label") },
+                            modifier = Modifier.heightIn(min = 48.dp),
+                        )
+                    }
                 }
             }
             when (step) {

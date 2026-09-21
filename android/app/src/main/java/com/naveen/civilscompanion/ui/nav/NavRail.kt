@@ -6,6 +6,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -108,5 +112,23 @@ private fun RailItem(dest: Destination, selected: Boolean, onClick: () -> Unit) 
             fontSize = 12.sp,
             fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
         )
+    }
+}
+
+/** Bottom navigation bar for the upright (narrow) layout. Same ten destinations as the rail; swipe sideways for more. */
+@Composable
+fun NavBottomBar(selected: Destination, onSelect: (Destination) -> Unit, modifier: Modifier = Modifier) {
+    val colors = Cc.colors
+    Box(modifier = modifier.fillMaxWidth().background(colors.rail)) {
+        Box(Modifier.align(Alignment.TopCenter).fillMaxWidth().height(1.dp).background(colors.border))
+        Row(
+            modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal = 8.dp, vertical = 8.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Destination.entries.forEach { dest ->
+                RailItem(dest, selected = dest == selected, onClick = { onSelect(dest) })
+            }
+        }
     }
 }

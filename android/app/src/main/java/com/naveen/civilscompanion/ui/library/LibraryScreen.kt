@@ -37,6 +37,7 @@ import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.EmptyState
 import com.naveen.civilscompanion.ui.common.ScreenTitle
 import com.naveen.civilscompanion.ui.common.SectionLabel
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.nav.Routes
 
 /** Library (spec 6.9): my uploads by subject, recommended free material, optional books and the library-day list. */
@@ -52,19 +53,29 @@ fun LibraryScreen(nav: NavHostController, vm: LibraryViewModel = hiltViewModel()
         vm.uploadImages(uris)
     }
 
+    val compact = isCompact()
     Column(
-        Modifier.fillMaxSize().background(Cc.colors.background).padding(horizontal = 24.dp, vertical = 20.dp),
+        Modifier.fillMaxSize().background(Cc.colors.background).padding(horizontal = if (compact) 16.dp else 24.dp, vertical = 20.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        ScreenTitle(
-            title = "Library",
-            subtitle = "Your books and notes, and free official material",
-            actions = {
-                BigButton("Upload PDF", onClick = { pickPdf.launch(arrayOf("application/pdf")) }, filled = false, enabled = !s.busy)
-                BigButton("Upload images", onClick = { pickImages.launch(arrayOf("image/*")) }, filled = false, enabled = !s.busy)
-                BigButton("Scan with camera", onClick = { nav.navigate(Routes.CAPTURE) })
-            },
-        )
+        if (compact) {
+            ScreenTitle(title = "Library", subtitle = "Your books and notes, and free official material")
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                BigButton("Upload PDF", onClick = { pickPdf.launch(arrayOf("application/pdf")) }, filled = false, enabled = !s.busy, modifier = Modifier.weight(1f))
+                BigButton("Upload images", onClick = { pickImages.launch(arrayOf("image/*")) }, filled = false, enabled = !s.busy, modifier = Modifier.weight(1f))
+                BigButton("Scan with camera", onClick = { nav.navigate(Routes.CAPTURE) }, modifier = Modifier.weight(1f))
+            }
+        } else {
+            ScreenTitle(
+                title = "Library",
+                subtitle = "Your books and notes, and free official material",
+                actions = {
+                    BigButton("Upload PDF", onClick = { pickPdf.launch(arrayOf("application/pdf")) }, filled = false, enabled = !s.busy)
+                    BigButton("Upload images", onClick = { pickImages.launch(arrayOf("image/*")) }, filled = false, enabled = !s.busy)
+                    BigButton("Scan with camera", onClick = { nav.navigate(Routes.CAPTURE) })
+                },
+            )
+        }
         if (s.busy) LinearProgressIndicator(Modifier.fillMaxWidth())
         s.message?.let { Notice(it, onDismiss = vm::dismissMessage) }
         if (s.pending.isNotEmpty()) {

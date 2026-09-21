@@ -36,6 +36,7 @@ import com.naveen.civilscompanion.ui.common.BigButton
 import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.Pill
 import com.naveen.civilscompanion.ui.common.SectionLabel
+import com.naveen.civilscompanion.ui.common.isCompact
 
 /** One video (spec 6.10): official YouTube player, "+ Note at mm:ss", notes you can tap to jump, Open in YouTube. */
 @Composable
@@ -64,53 +65,69 @@ fun VideoPlayerScreen(nav: NavHostController, videoId: String, vm: VideoPlayerVi
         runCatching { context.startActivity(intent) }
     }
 
-    Row(
-        Modifier.fillMaxSize().padding(horizontal = 24.dp, vertical = 20.dp),
-        horizontalArrangement = Arrangement.spacedBy(20.dp),
-    ) {
-        Column(Modifier.weight(1.4f).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            TextButton(onClick = { nav.popBackStack() }, modifier = Modifier.heightIn(min = 48.dp)) { Text("← Videos") }
-            Text(current.title.ifBlank { "YouTube video" }, style = MaterialTheme.typography.headlineSmall, color = Cc.colors.ink)
-            HeaderLine(current)
-            if (current.embeddable) {
-                YouTubePlayer(
-                    youtubeId = current.youtubeId,
-                    controller = controller,
-                    onBlocked = vm::markNotEmbeddable,
-                    onEnded = { vm.markWatched(true) },
-                    modifier = Modifier.fillMaxWidth().aspectRatio(16f / 9f),
-                )
-                if (controller.errorCode != 0) {
-                    Text(VideoLogic.errorText(controller.errorCode), style = MaterialTheme.typography.bodyMedium, color = Cc.colors.onDangerTint)
-                }
+    val compact = isCompact()
+    val mainPane: @Composable () -> Unit = {
+        TextButton(onClick = { nav.popBackStack() }, modifier = Modifier.heightIn(min = 48.dp)) { Text("← Videos") }
+        Text(current.title.ifBlank { "YouTube video" }, style = MaterialTheme.typography.headlineSmall, color = Cc.colors.ink)
+        HeaderLine(current)
+        if (current.embeddable) {
+            YouTubePlayer(
+                youtubeId = current.youtubeId,
+                controller = controller,
+                onBlocked = vm::markNotEmbeddable,
+                onEnded = { vm.markWatched(true) },
+                modifier = Modifier.fillMaxWidth().aspectRatio(16f / 9f),
+            )
+            if (controller.errorCode != 0) {
+                Text(VideoLogic.errorText(controller.errorCode), style = MaterialTheme.typography.bodyMedium, color = Cc.colors.onDangerTint)
+            }
+            Text(
+                "The video needs internet. Your notes below work offline.",
+                style = MaterialTheme.typography.bodySmall, color = Cc.colors.muted,
+            )
+        } else {
+            CcCard(Modifier.fillMaxWidth()) {
+                Text("This video opens in YouTube", style = MaterialTheme.typography.titleMedium, color = Cc.colors.ink)
                 Text(
-                    "The video needs internet. Your notes below work offline.",
-                    style = MaterialTheme.typography.bodySmall, color = Cc.colors.muted,
+                    "Its owner does not allow playing it inside other apps. The link is saved here, and you can still write notes with times.",
+                    style = MaterialTheme.typography.bodyMedium, color = Cc.colors.muted,
                 )
-            } else {
-                CcCard(Modifier.fillMaxWidth()) {
-                    Text("This video opens in YouTube", style = MaterialTheme.typography.titleMedium, color = Cc.colors.ink)
-                    Text(
-                        "Its owner does not allow playing it inside other apps. The link is saved here, and you can still write notes with times.",
-                        style = MaterialTheme.typography.bodyMedium, color = Cc.colors.muted,
-                    )
-                }
             }
-            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                BigButton("Open in YouTube", onClick = ::openInYouTube, filled = !current.embeddable)
-                BigButton(if (current.watched) "Mark as not watched" else "Mark as watched", onClick = { vm.markWatched(!current.watched) }, filled = false)
-                BigButton("Refresh details", onClick = vm::refreshDetails, filled = false)
-            }
-            message?.let {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(it, style = MaterialTheme.typography.bodyMedium, color = Cc.colors.onAccentTint, modifier = Modifier.weight(1f))
-                    TextButton(onClick = vm::dismissMessage, modifier = Modifier.heightIn(min = 48.dp)) { Text("OK") }
-                }
-            }
-            SummaryCard(summary, vm)
         }
-        Column(Modifier.weight(1f).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+            BigButton("Open in YouTube", onClick = ::openInYouTube, filled = !current.embeddable)
+            BigButton(if (current.watched) "Mark as not watched" else "Mark as watched", onClick = { vm.markWatched(!current.watched) }, filled = false)
+            BigButton("Refresh details", onClick = vm::refreshDetails, filled = false)
+        }
+        message?.let {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(it, style = MaterialTheme.typography.bodyMedium, color = Cc.colors.onAccentTint, modifier = Modifier.weight(1f))
+                TextButton(onClick = vm::dismissMessage, modifier = Modifier.heightIn(min = 48.dp)) { Text("OK") }
+            }
+        }
+        SummaryCard(summary, vm)
+    }
+
+    if (compact) {
+        // upright tablet: the video and its details first, the notes below, all in one scrolling column
+        Column(
+            Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 20.dp, vertical = 20.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            mainPane()
             NotesPanel(controller, notes, vm, current.embeddable)
+        }
+    } else {
+        Row(
+            Modifier.fillMaxSize().padding(horizontal = 24.dp, vertical = 20.dp),
+            horizontalArrangement = Arrangement.spacedBy(20.dp),
+        ) {
+            Column(Modifier.weight(1.4f).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                mainPane()
+            }
+            Column(Modifier.weight(1f).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                NotesPanel(controller, notes, vm, current.embeddable)
+            }
         }
     }
 }

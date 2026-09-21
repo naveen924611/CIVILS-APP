@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
@@ -37,7 +37,9 @@ fun LoginScreen(vm: LoginViewModel = hiltViewModel()) {
     Box(Modifier.fillMaxSize().background(colors.background), contentAlignment = Alignment.Center) {
         Column(
             modifier = Modifier
-                .width(520.dp)
+                .padding(16.dp)
+                .widthIn(max = 520.dp)
+                .fillMaxWidth()
                 .verticalScroll(rememberScrollState())
                 .background(colors.surface, MaterialTheme.shapes.large)
                 .border(1.dp, colors.border, MaterialTheme.shapes.large)

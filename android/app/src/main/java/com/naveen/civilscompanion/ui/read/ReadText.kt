@@ -33,6 +33,7 @@ import com.naveen.civilscompanion.reader.SentenceSplitter
 import com.naveen.civilscompanion.reader.paragraphIndexAt
 import com.naveen.civilscompanion.theme.Cc
 import com.naveen.civilscompanion.theme.NotoSansTelugu
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.common.BigButton
 import com.naveen.civilscompanion.ui.common.CcCard
 
@@ -61,7 +62,7 @@ internal fun PageText(s: ReadUiState, onTap: (Int) -> Unit, modifier: Modifier =
     LazyColumn(
         modifier = modifier,
         state = listState,
-        contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 32.dp, vertical = 20.dp),
+        contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = if (isCompact()) 20.dp else 32.dp, vertical = 20.dp),
         verticalArrangement = Arrangement.spacedBy(18.dp),
     ) {
         itemsIndexed(s.paragraphs, key = { i, p -> "${s.pageNumber}-$i-${p.start}" }) { _, paragraph ->

@@ -9,10 +9,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
@@ -47,6 +49,7 @@ import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.Pill
 import com.naveen.civilscompanion.ui.common.ScreenTitle
 import com.naveen.civilscompanion.ui.common.SectionLabel
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.common.rememberCameraPermission
 import com.naveen.civilscompanion.ui.library.Notice
 import com.naveen.civilscompanion.ui.nav.Routes
@@ -80,76 +83,118 @@ fun CaptureScreen(nav: NavHostController, vm: CaptureViewModel = hiltViewModel()
     LaunchedEffect(s.version) { textBox = TextFieldValue(s.text) }
     val selection = if (textBox.selection.collapsed) "" else textBox.text.substring(textBox.selection.min.coerceAtLeast(0), textBox.selection.max.coerceAtMost(textBox.text.length))
 
+    val onTextChange: (TextFieldValue) -> Unit = { textBox = it; vm.setText(it.text) }
+
+    if (isCompact()) {
+        // Upright tablet: everything in one column that scrolls: photo, text, then what was found.
+        Column(
+            Modifier.fillMaxSize().background(Cc.colors.background).verticalScroll(rememberScrollState()).padding(horizontal = 16.dp, vertical = 20.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            CapturePhotoPane(s, vm, onTake = askCamera, onChoose = { pick.launch("image/*") }, modifier = Modifier.fillMaxWidth())
+            CaptureTextPane(s, vm, nav, textBox, onTextChange, selection, compact = true, modifier = Modifier.fillMaxWidth())
+            SpottedPanel(s, vm)
+            KnownPanel(s)
+            WaitingPanel(s, vm, selection)
+            Spacer(Modifier.height(80.dp))
+        }
+        return
+    }
+
     Row(
         Modifier.fillMaxSize().background(Cc.colors.background).padding(horizontal = 24.dp, vertical = 20.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         // ---- left: the photo
-        Column(Modifier.width(340.dp).fillMaxHeight().verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            ScreenTitle("Scan a page", subtitle = if (s.documentId != null) "Adding to: ${s.docTitle ?: "this scan"}" else "A new scan is made in your library")
-            Box(
-                Modifier.fillMaxWidth().height(300.dp).clip(RoundedCornerShape(12.dp)).background(Cc.colors.rail),
-                contentAlignment = Alignment.Center,
-            ) {
-                val bitmap = s.preview
-                if (bitmap != null) {
-                    Image(bitmap.asImageBitmap(), "The photo you took", contentScale = ContentScale.Fit, modifier = Modifier.fillMaxSize())
-                } else {
-                    Text("No photo yet", style = MaterialTheme.typography.bodyMedium, color = Cc.colors.muted)
-                }
-            }
-            BigButton("Take a photo", onClick = askCamera, modifier = Modifier.fillMaxWidth())
-            BigButton("Choose a photo", onClick = { pick.launch("image/*") }, filled = false, modifier = Modifier.fillMaxWidth())
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                Switch(checked = s.telugu, onCheckedChange = vm::setTelugu)
-                Text("This page is in Telugu", style = MaterialTheme.typography.bodyMedium, color = Cc.colors.ink)
-            }
-            Text(
-                if (s.telugu) "The tablet cannot read Telugu by itself. Save the page and the server's AI reads it when you are online."
-                else "English pages are read on the tablet, with no internet.",
-                style = MaterialTheme.typography.bodySmall, color = Cc.colors.muted,
-            )
-            if (s.pagesSaved > 0) Pill("${s.pagesSaved} page${if (s.pagesSaved == 1) "" else "s"} saved in this scan", tone = 1)
-        }
+        CapturePhotoPane(
+            s, vm, onTake = askCamera, onChoose = { pick.launch("image/*") },
+            modifier = Modifier.width(340.dp).fillMaxHeight().verticalScroll(rememberScrollState()),
+        )
 
         // ---- middle: the text
-        Column(Modifier.weight(1f).fillMaxHeight(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            s.message?.let { Notice(it, onDismiss = vm::dismissMessage) }
-            if (s.reading) {
-                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                    CircularProgressIndicator(Modifier.height(28.dp).width(28.dp))
-                    Text("Reading the page...", style = MaterialTheme.typography.bodyMedium, color = Cc.colors.muted)
-                }
-            }
-            OutlinedTextField(
-                value = textBox,
-                onValueChange = { textBox = it; vm.setText(it.text) },
-                label = { Text("Text from the photo (fix any mistakes; select words to save just those)") },
-                enabled = s.photoPath != null && !s.reading,
-                modifier = Modifier.weight(1f).fillMaxWidth(),
-            )
-            Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                BigButton("Save as point", onClick = { vm.saveHighlight("point", selection) }, filled = false)
-                BigButton("Must remember", onClick = { vm.saveHighlight("must", selection) }, filled = false)
-                BigButton("Make flashcard", onClick = { vm.saveHighlight("card", selection) }, filled = false)
-                BigButton("Explain simply", onClick = { if (vm.prepareAsk(selection)) nav.navigate(Routes.ASK) }, filled = false)
-            }
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.padding(end = 96.dp)) {
-                BigButton("Save this page", onClick = vm::savePage, enabled = s.photoPath != null && !s.saving)
-                val docId = s.documentId
-                if (docId != null) {
-                    BigButton("Finish and read", onClick = { nav.navigate(Routes.readDoc(docId)) }, filled = false)
-                } else {
-                    BigButton("Back to the Library", onClick = { nav.navigate(Routes.LIBRARY) }, filled = false)
-                }
-            }
-        }
+        CaptureTextPane(s, vm, nav, textBox, onTextChange, selection, compact = false, modifier = Modifier.weight(1f).fillMaxHeight())
 
         // ---- right: what was found
         Column(Modifier.width(340.dp).fillMaxHeight().verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             SpottedPanel(s, vm)
             KnownPanel(s)
             WaitingPanel(s, vm, selection)
+        }
+    }
+}
+
+/** The photo, the buttons that get one, and the Telugu switch. */
+@Composable
+private fun CapturePhotoPane(s: CaptureUiState, vm: CaptureViewModel, onTake: () -> Unit, onChoose: () -> Unit, modifier: Modifier) {
+    Column(modifier, verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        ScreenTitle("Scan a page", subtitle = if (s.documentId != null) "Adding to: ${s.docTitle ?: "this scan"}" else "A new scan is made in your library")
+        Box(
+            Modifier.fillMaxWidth().height(300.dp).clip(RoundedCornerShape(12.dp)).background(Cc.colors.rail),
+            contentAlignment = Alignment.Center,
+        ) {
+            val bitmap = s.preview
+            if (bitmap != null) {
+                Image(bitmap.asImageBitmap(), "The photo you took", contentScale = ContentScale.Fit, modifier = Modifier.fillMaxSize())
+            } else {
+                Text("No photo yet", style = MaterialTheme.typography.bodyMedium, color = Cc.colors.muted)
+            }
+        }
+        BigButton("Take a photo", onClick = onTake, modifier = Modifier.fillMaxWidth())
+        BigButton("Choose a photo", onClick = onChoose, filled = false, modifier = Modifier.fillMaxWidth())
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            Switch(checked = s.telugu, onCheckedChange = vm::setTelugu)
+            Text("This page is in Telugu", style = MaterialTheme.typography.bodyMedium, color = Cc.colors.ink)
+        }
+        Text(
+            if (s.telugu) "The tablet cannot read Telugu by itself. Save the page and the server's AI reads it when you are online."
+            else "English pages are read on the tablet, with no internet.",
+            style = MaterialTheme.typography.bodySmall, color = Cc.colors.muted,
+        )
+        if (s.pagesSaved > 0) Pill("${s.pagesSaved} page${if (s.pagesSaved == 1) "" else "s"} saved in this scan", tone = 1)
+    }
+}
+
+/** The text read from the photo, the buttons to save parts of it, and Save this page. */
+@Composable
+private fun CaptureTextPane(
+    s: CaptureUiState,
+    vm: CaptureViewModel,
+    nav: NavHostController,
+    textBox: TextFieldValue,
+    onTextChange: (TextFieldValue) -> Unit,
+    selection: String,
+    compact: Boolean,
+    modifier: Modifier,
+) {
+    Column(modifier, verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        s.message?.let { Notice(it, onDismiss = vm::dismissMessage) }
+        if (s.reading) {
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                CircularProgressIndicator(Modifier.height(28.dp).width(28.dp))
+                Text("Reading the page...", style = MaterialTheme.typography.bodyMedium, color = Cc.colors.muted)
+            }
+        }
+        OutlinedTextField(
+            value = textBox,
+            onValueChange = onTextChange,
+            label = { Text("Text from the photo (fix any mistakes; select words to save just those)") },
+            enabled = s.photoPath != null && !s.reading,
+            modifier = if (compact) Modifier.fillMaxWidth().heightIn(min = 260.dp) else Modifier.weight(1f).fillMaxWidth(),
+        )
+        Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            BigButton("Save as point", onClick = { vm.saveHighlight("point", selection) }, filled = false)
+            BigButton("Must remember", onClick = { vm.saveHighlight("must", selection) }, filled = false)
+            BigButton("Make flashcard", onClick = { vm.saveHighlight("card", selection) }, filled = false)
+            BigButton("Explain simply", onClick = { if (vm.prepareAsk(selection)) nav.navigate(Routes.ASK) }, filled = false)
+        }
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.padding(end = if (compact) 0.dp else 96.dp)) {
+            BigButton("Save this page", onClick = vm::savePage, enabled = s.photoPath != null && !s.saving)
+            val docId = s.documentId
+            if (docId != null) {
+                BigButton("Finish and read", onClick = { nav.navigate(Routes.readDoc(docId)) }, filled = false)
+            } else {
+                BigButton("Back to the Library", onClick = { nav.navigate(Routes.LIBRARY) }, filled = false)
+            }
         }
     }
 }

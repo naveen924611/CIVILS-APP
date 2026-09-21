@@ -94,7 +94,7 @@ private fun MicMessage(ui: MicUi, onOpenAsk: () -> Unit) {
                     "Open Ask",
                     style = MaterialTheme.typography.labelLarge,
                     color = c.primary,
-                    modifier = Modifier.clickable(onClick = onOpenAsk).padding(vertical = 12.dp),
+                    modifier = Modifier.clickable(onClick = onOpenAsk).padding(vertical = 14.dp),
                 )
             }
         }

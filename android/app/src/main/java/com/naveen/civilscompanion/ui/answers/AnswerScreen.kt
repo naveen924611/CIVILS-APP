@@ -50,6 +50,7 @@ import com.naveen.civilscompanion.ui.common.BigButton
 import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.Pill
 import com.naveen.civilscompanion.ui.common.ScreenTitle
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.common.rememberCameraPermission
 import com.naveen.civilscompanion.ui.nav.Routes
 import com.naveen.civilscompanion.util.CaptureFiles
@@ -67,8 +68,9 @@ fun AnswerScreen(nav: NavHostController, answerId: String, vm: AnswerViewModel =
     val notice by vm.notice.collectAsStateWithLifecycle()
     LaunchedEffect(answerId) { vm.load(answerId) }
 
+    val compact = isCompact()
     Column(
-        Modifier.fillMaxSize().background(Cc.colors.background).verticalScroll(rememberScrollState()).padding(24.dp),
+        Modifier.fillMaxSize().background(Cc.colors.background).verticalScroll(rememberScrollState()).padding(if (compact) 16.dp else 24.dp).padding(bottom = if (compact) 80.dp else 0.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
         ScreenTitle(

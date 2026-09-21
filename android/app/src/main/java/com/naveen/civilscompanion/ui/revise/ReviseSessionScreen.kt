@@ -37,6 +37,7 @@ import com.naveen.civilscompanion.ui.common.BigButton
 import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.EmptyState
 import com.naveen.civilscompanion.ui.common.Pill
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.common.rememberMicPermission
 
 /** Revise: card session (spec 6.5). Card k of n, question, answer, Again / Hard / Good / Easy with the next interval. */
@@ -48,8 +49,10 @@ fun ReviseSessionScreen(nav: NavHostController, vm: ReviseSessionViewModel = hil
         onDenied = { micMessage = "The microphone is off, so hands-free cannot listen. You can allow it in the tablet settings." },
     ) { vm.setHandsFree(true) }
 
+    val compact = isCompact()
     Column(
-        modifier = Modifier.fillMaxSize().background(Cc.colors.background).padding(horizontal = 32.dp, vertical = 24.dp),
+        modifier = Modifier.fillMaxSize().background(Cc.colors.background)
+            .padding(horizontal = if (compact) 20.dp else 32.dp, vertical = 24.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         when {

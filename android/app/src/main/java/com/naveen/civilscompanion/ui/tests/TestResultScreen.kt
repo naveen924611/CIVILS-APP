@@ -1,6 +1,8 @@
 package com.naveen.civilscompanion.ui.tests
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -27,6 +29,7 @@ import com.naveen.civilscompanion.ui.common.EmptyState
 import com.naveen.civilscompanion.ui.common.Pill
 import com.naveen.civilscompanion.ui.common.ScreenTitle
 import com.naveen.civilscompanion.ui.common.SectionLabel
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.nav.Routes
 
 /** Result of a test: score, subject bars, mistake types, guessing analysis, and every question reviewed. Route test/{testId}/result. */
@@ -35,6 +38,7 @@ fun TestResultScreen(nav: NavHostController, testId: String, vm: TestResultViewM
     LaunchedEffect(testId) { vm.load(testId) }
     val state by vm.state.collectAsStateWithLifecycle()
     val analysis = state.analysis
+    val compact = isCompact()
     Column(Modifier.fillMaxSize().background(Cc.colors.background)) {
         when {
             state.loading -> Text("Working out your result...", modifier = Modifier.padding(24.dp), color = Cc.colors.muted)
@@ -43,17 +47,27 @@ fun TestResultScreen(nav: NavHostController, testId: String, vm: TestResultViewM
                 BigButton("Back to tests", onClick = { nav.navigate(Routes.TESTS) }, modifier = Modifier.padding(24.dp))
             }
             else -> LazyColumn(
-                Modifier.fillMaxSize(), contentPadding = androidx.compose.foundation.layout.PaddingValues(24.dp),
+                Modifier.fillMaxSize(), contentPadding = androidx.compose.foundation.layout.PaddingValues(start = if (compact) 16.dp else 24.dp, top = if (compact) 16.dp else 24.dp, end = if (compact) 16.dp else 24.dp, bottom = if (compact) 88.dp else 24.dp),
                 verticalArrangement = Arrangement.spacedBy(14.dp),
             ) {
                 item {
-                    ScreenTitle(
-                        state.title, subtitle = "Your result",
-                        actions = {
-                            if (analysis.wrong > 0) BigButton("Retest my mistakes", onClick = { nav.navigate(Routes.testRun(RETEST_ID)) })
-                            BigButton("All tests", onClick = { nav.navigate(Routes.TESTS) }, filled = false)
-                        },
-                    )
+                    if (compact) {
+                        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                            ScreenTitle(state.title, subtitle = "Your result")
+                            Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+                                if (analysis.wrong > 0) BigButton("Retest my mistakes", onClick = { nav.navigate(Routes.testRun(RETEST_ID)) })
+                                BigButton("All tests", onClick = { nav.navigate(Routes.TESTS) }, filled = false)
+                            }
+                        }
+                    } else {
+                        ScreenTitle(
+                            state.title, subtitle = "Your result",
+                            actions = {
+                                if (analysis.wrong > 0) BigButton("Retest my mistakes", onClick = { nav.navigate(Routes.testRun(RETEST_ID)) })
+                                BigButton("All tests", onClick = { nav.navigate(Routes.TESTS) }, filled = false)
+                            },
+                        )
+                    }
                 }
                 item { ScoreCard(analysis) }
                 item { SubjectsCard(analysis) }
@@ -107,7 +121,7 @@ private fun MistakesCard(a: Analysis) {
     if (a.wrong == 0) return
     CcCard(Modifier.fillMaxWidth()) {
         Text("Your mistakes", style = MaterialTheme.typography.titleMedium, color = Cc.colors.ink)
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             TestLogic.MISTAKE_TYPES.forEach { t ->
                 Pill("${TestLogic.mistakeLabel(t)}: ${a.mistakes[t] ?: 0}", tone = if (t == TestLogic.SILLY) 2 else if (t == TestLogic.DIDNT_KNOW) 3 else 0)
             }
@@ -128,7 +142,7 @@ private fun GuessCard(a: Analysis) {
     CcCard(Modifier.fillMaxWidth()) {
         Text("Guessing", style = MaterialTheme.typography.titleMedium, color = Cc.colors.ink)
         Text(a.guessMessage, style = MaterialTheme.typography.bodyMedium, color = Cc.colors.ink)
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             TestLogic.CONFIDENCES.forEach { c ->
                 val b = a.confidence[c]
                 if (b != null && b.answered > 0) Pill("${TestLogic.confidenceLabel(c)}: ${b.correct} of ${b.answered} right")
@@ -168,7 +182,7 @@ private fun ReviewCard(number: Int, a: Answered, onType: (String) -> Unit) {
         if (a.mcq.explanation.isNotBlank()) Text(a.mcq.explanation, style = MaterialTheme.typography.bodySmall, color = Cc.colors.muted)
         if (a.wrong) {
             Text("What kind of mistake was this?", style = MaterialTheme.typography.labelLarge, color = Cc.colors.muted)
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 TestLogic.MISTAKE_TYPES.forEach { t -> TChip(TestLogic.mistakeLabel(t), selected = a.mistakeType == t, onClick = { onType(t) }) }
             }
         }

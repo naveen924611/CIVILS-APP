@@ -26,6 +26,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
@@ -42,6 +45,7 @@ import com.naveen.civilscompanion.ui.common.BigButton
 import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.EmptyState
 import com.naveen.civilscompanion.ui.common.SectionLabel
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.library.Notice
 import com.naveen.civilscompanion.ui.nav.Routes
 
@@ -54,6 +58,10 @@ fun ReadScreen(nav: NavHostController, docId: String, vm: ReadViewModel = hiltVi
     val doc = s.doc
     if (doc == null || !s.loaded) {
         EmptyState("Opening...", "If this stays here, the document may have been removed. Go back to the Library.")
+        return
+    }
+    if (isCompact()) {
+        CompactReader(s, vm, nav)
         return
     }
     Row(Modifier.fillMaxSize().background(Cc.colors.background)) {
@@ -76,8 +84,33 @@ fun ReadScreen(nav: NavHostController, docId: String, vm: ReadViewModel = hiltVi
     }
 }
 
+/** Upright tablet: the page fills the width; the page list opens on its own (button "Pages") instead of sitting on the left. */
 @Composable
-private fun Outline(s: ReadUiState, vm: ReadViewModel, nav: NavHostController, modifier: Modifier) {
+private fun CompactReader(s: ReadUiState, vm: ReadViewModel, nav: NavHostController) {
+    var showPages by remember { mutableStateOf(false) }
+    Column(Modifier.fillMaxSize().background(Cc.colors.background)) {
+        Toolbar(s, vm, nav, onPages = { showPages = !showPages }, pagesOpen = showPages)
+        s.message?.let { Box(Modifier.padding(horizontal = 16.dp, vertical = 4.dp)) { Notice(it, onDismiss = vm::dismissMessage) } }
+        if (showPages) {
+            Outline(s, vm, nav, Modifier.weight(1f).fillMaxWidth(), onPicked = { showPages = false })
+        } else {
+            Box(Modifier.weight(1f).fillMaxWidth()) {
+                when {
+                    s.showOriginal -> OriginalPage(s)
+                    s.text.isBlank() -> BlankPage(s, vm)
+                    else -> PageText(s, onTap = vm::tapSentence, modifier = Modifier.fillMaxSize())
+                }
+            }
+            if (!s.showOriginal) {
+                SelectionBar(s, vm, onAsk = { if (vm.prepareAsk(true)) nav.navigate(Routes.ASK) })
+            }
+        }
+        ReadPlayer(s, vm)
+    }
+}
+
+@Composable
+private fun Outline(s: ReadUiState, vm: ReadViewModel, nav: NavHostController, modifier: Modifier, onPicked: () -> Unit = {}) {
     val doc = s.doc ?: return
     val listState = rememberLazyListState()
     LaunchedEffect(s.index, s.pages.size) {
@@ -120,7 +153,7 @@ private fun Outline(s: ReadUiState, vm: ReadViewModel, nav: NavHostController, m
                         .fillMaxWidth()
                         .heightIn(min = 48.dp)
                         .background(if (selected) Cc.colors.primaryTint else Cc.colors.rail)
-                        .clickable { vm.openPage(i) }
+                        .clickable { vm.openPage(i); onPicked() }
                         .padding(horizontal = 10.dp, vertical = 6.dp),
                     verticalArrangement = Arrangement.Center,
                 ) {
@@ -136,8 +169,27 @@ private fun Outline(s: ReadUiState, vm: ReadViewModel, nav: NavHostController, m
 }
 
 @Composable
-private fun Toolbar(s: ReadUiState, vm: ReadViewModel, nav: NavHostController) {
+private fun Toolbar(s: ReadUiState, vm: ReadViewModel, nav: NavHostController, onPages: (() -> Unit)? = null, pagesOpen: Boolean = false) {
     val total = maxOf(s.doc?.pages ?: 0, s.pages.size)
+    if (onPages != null) {
+        // Upright tablet: two short rows so every button is visible without sideways scrolling.
+        Column(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+                BigButton(if (pagesOpen) "Close pages" else "Pages", onClick = onPages, filled = false)
+                BigButton("Previous", onClick = vm::previousPage, filled = false, enabled = s.index > 0)
+                Text("Page ${s.pageNumber} of $total", style = MaterialTheme.typography.labelLarge, color = Cc.colors.ink)
+                BigButton("Next", onClick = vm::nextPage, filled = false, enabled = s.index < s.pages.lastIndex)
+                BigButton(if (s.speaking) "Pause" else "Read aloud", onClick = vm::toggleReading, enabled = s.sentences.isNotEmpty())
+            }
+            Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+                BigButton("Ask about this page", onClick = { if (vm.prepareAsk(false)) nav.navigate(Routes.ASK) }, filled = false)
+                BigButton("Highlight", onClick = { vm.highlight("point") }, filled = false)
+                BigButton("Make notes", onClick = vm::makeNotes, filled = false)
+                BigButton("Add to revision", onClick = { vm.highlight("card") }, filled = false)
+            }
+        }
+        return
+    }
     Row(
         Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal = 16.dp, vertical = 10.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),

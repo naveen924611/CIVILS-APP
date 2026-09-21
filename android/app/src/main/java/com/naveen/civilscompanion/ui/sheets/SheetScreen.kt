@@ -32,6 +32,7 @@ import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.EmptyState
 import com.naveen.civilscompanion.ui.common.MarkdownText
 import com.naveen.civilscompanion.ui.common.Pill
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.nav.Routes
 import com.naveen.civilscompanion.ui.tests.TAction
 import com.naveen.civilscompanion.ui.tests.TNotice
@@ -72,36 +73,66 @@ fun SheetScreen(nav: NavHostController, topicId: String, vm: SheetViewModel = hi
                 }
                 page.message?.let { TNotice(it, Modifier.padding(horizontal = 24.dp)) }
             }
-            else -> Row(Modifier.fillMaxSize().padding(24.dp), horizontalArrangement = Arrangement.spacedBy(24.dp)) {
-                Column(Modifier.weight(1f).fillMaxHeight().verticalScroll(rememberScrollState())) {
-                    MarkdownText(sheet.contentMd)
-                }
-                Column(Modifier.width(300.dp).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                    CcCard(Modifier.fillMaxWidth()) {
+            else -> {
+                val listenCard: @Composable (Modifier) -> Unit = { m ->
+                    CcCard(m) {
                         Pill("Listen: " + SheetLogic.audioLabel(sheet.audioSeconds))
                         if (page.listening) BigButton("Stop", onClick = vm::stopListening, modifier = Modifier.fillMaxWidth())
                         else BigButton("Listen", onClick = vm::listen, modifier = Modifier.fillMaxWidth())
                         Text("Read aloud by the tablet's own voice. It works without internet.", style = MaterialTheme.typography.bodySmall, color = Cc.colors.muted)
                     }
-                    CcCard(Modifier.fillMaxWidth()) {
+                }
+                val pdfCard: @Composable (Modifier) -> Unit = { m ->
+                    CcCard(m) {
                         BigButton(if (page.busy) "Getting the PDF..." else "Save as PDF, share or print", onClick = vm::preparePdf, enabled = !page.busy, modifier = Modifier.fillMaxWidth())
                         Text(
                             "The share list has Save to Drive, Print and your other apps. Needs the internet once.",
                             style = MaterialTheme.typography.bodySmall, color = Cc.colors.muted,
                         )
                     }
-                    CcCard(Modifier.fillMaxWidth()) {
+                }
+                val moreCard: @Composable (Modifier) -> Unit = { m ->
+                    CcCard(m) {
                         BigButton("Open my notes", onClick = { nav.navigate(Routes.noteTopic(topicId)) }, filled = false, modifier = Modifier.fillMaxWidth())
                         BigButton("Update this sheet", onClick = vm::remake, filled = false, modifier = Modifier.fillMaxWidth())
                         Text("Sheets also update by themselves every night when your notes change.", style = MaterialTheme.typography.bodySmall, color = Cc.colors.muted)
                     }
+                }
+                val messageRow: @Composable () -> Unit = {
                     page.message?.let { msg ->
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             TNotice(msg, Modifier.weight(1f))
                             TAction("OK", onClick = vm::clearMessage)
                         }
                     }
-                    BigButton("Back to sheets", onClick = { nav.popBackStack() }, filled = false, modifier = Modifier.fillMaxWidth())
+                }
+                if (isCompact()) {
+                    Column(
+                        Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp).padding(bottom = 80.dp),
+                        verticalArrangement = Arrangement.spacedBy(12.dp),
+                    ) {
+                        messageRow()
+                        Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.Top) {
+                            listenCard(Modifier.weight(1f))
+                            pdfCard(Modifier.weight(1f))
+                        }
+                        MarkdownText(sheet.contentMd)
+                        moreCard(Modifier.fillMaxWidth())
+                        BigButton("Back to sheets", onClick = { nav.popBackStack() }, filled = false, modifier = Modifier.fillMaxWidth())
+                    }
+                } else {
+                    Row(Modifier.fillMaxSize().padding(24.dp), horizontalArrangement = Arrangement.spacedBy(24.dp)) {
+                        Column(Modifier.weight(1f).fillMaxHeight().verticalScroll(rememberScrollState())) {
+                            MarkdownText(sheet.contentMd)
+                        }
+                        Column(Modifier.width(300.dp).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                            listenCard(Modifier.fillMaxWidth())
+                            pdfCard(Modifier.fillMaxWidth())
+                            moreCard(Modifier.fillMaxWidth())
+                            messageRow()
+                            BigButton("Back to sheets", onClick = { nav.popBackStack() }, filled = false, modifier = Modifier.fillMaxWidth())
+                        }
+                    }
                 }
             }
         }

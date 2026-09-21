@@ -27,6 +27,7 @@ import com.naveen.civilscompanion.data.model.Mcq
 import com.naveen.civilscompanion.theme.Cc
 import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.SectionLabel
+import com.naveen.civilscompanion.ui.common.isCompact
 
 private const val LETTERS = "ABCD"
 
@@ -102,7 +103,7 @@ fun RunSidePanel(
         )
         Text("$answered of ${questions.size} answered", style = MaterialTheme.typography.bodyMedium, color = Cc.colors.muted)
         LazyVerticalGrid(
-            columns = GridCells.Fixed(5),
+            columns = GridCells.Fixed(if (isCompact()) 10 else 5),
             modifier = Modifier.fillMaxWidth().heightIn(max = 360.dp),
             horizontalArrangement = Arrangement.spacedBy(6.dp),
             verticalArrangement = Arrangement.spacedBy(6.dp),
@@ -143,7 +144,7 @@ fun RunIntro(
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit,
 ) {
-    Column(modifier.fillMaxSize().padding(24.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+    Column(modifier.fillMaxSize().padding(if (isCompact()) 16.dp else 24.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         Text(title, style = MaterialTheme.typography.displaySmall, color = Cc.colors.ink)
         CcCard(Modifier.fillMaxWidth()) {
             Text("$questions questions, $minutes minutes.", style = MaterialTheme.typography.titleMedium, color = Cc.colors.ink)

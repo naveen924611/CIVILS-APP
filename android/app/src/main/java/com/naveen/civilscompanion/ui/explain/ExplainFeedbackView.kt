@@ -15,6 +15,7 @@ import com.naveen.civilscompanion.theme.Cc
 import com.naveen.civilscompanion.ui.common.BigButton
 import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.Pill
+import com.naveen.civilscompanion.ui.common.isCompact
 
 /** The feedback of one explanation: what was covered, missed and wrong, with the follow-up buttons. */
 @Composable
@@ -27,6 +28,7 @@ fun ExplainFeedbackView(
     onHearModel: () -> Unit,
 ) {
     val c = Cc.colors
+    val compact = isCompact()
     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
         CcCard(Modifier.fillMaxWidth()) {
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -53,13 +55,28 @@ fun ExplainFeedbackView(
                 Text(feedback.model, style = MaterialTheme.typography.bodyLarge, color = c.ink)
             }
         }
-        Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            if (feedback.missed.isNotEmpty()) {
-                BigButton(if (cardsMade > 0) "Cards made ($cardsMade)" else "Make cards from missed points", onClick = onMakeCards, enabled = cardsMade == 0)
+        if (compact) {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                if (feedback.missed.isNotEmpty()) {
+                    BigButton(
+                        if (cardsMade > 0) "Cards made ($cardsMade)" else "Make cards from missed points",
+                        onClick = onMakeCards, enabled = cardsMade == 0, modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+                BigButton("Try again", onClick = onTryAgain, filled = false, modifier = Modifier.fillMaxWidth())
+                if (feedback.model.isNotEmpty()) {
+                    BigButton(if (speakingModel) "Stop" else "Hear a model explanation", onClick = onHearModel, filled = false, modifier = Modifier.fillMaxWidth())
+                }
             }
-            BigButton("Try again", onClick = onTryAgain, filled = false)
-            if (feedback.model.isNotEmpty()) {
-                BigButton(if (speakingModel) "Stop" else "Hear a model explanation", onClick = onHearModel, filled = false)
+        } else {
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                if (feedback.missed.isNotEmpty()) {
+                    BigButton(if (cardsMade > 0) "Cards made ($cardsMade)" else "Make cards from missed points", onClick = onMakeCards, enabled = cardsMade == 0)
+                }
+                BigButton("Try again", onClick = onTryAgain, filled = false)
+                if (feedback.model.isNotEmpty()) {
+                    BigButton(if (speakingModel) "Stop" else "Hear a model explanation", onClick = onHearModel, filled = false)
+                }
             }
         }
     }

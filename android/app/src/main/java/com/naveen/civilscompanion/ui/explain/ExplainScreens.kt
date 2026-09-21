@@ -45,6 +45,7 @@ import com.naveen.civilscompanion.ui.common.BigButton
 import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.Pill
 import com.naveen.civilscompanion.ui.common.ScreenTitle
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.common.rememberMicPermission
 import com.naveen.civilscompanion.ui.nav.Routes
 import com.naveen.civilscompanion.ui.voice.CcPaths
@@ -64,32 +65,50 @@ fun ExplainPickerScreen(nav: NavHostController, vm: ExplainViewModel = hiltViewM
         val q = query.trim().lowercase()
         (if (q.isEmpty()) topics else topics.filter { it.title.lowercase().contains(q) }).take(80)
     }
-    Column(Modifier.fillMaxSize().background(Cc.colors.background).padding(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+    val compact = isCompact()
+    Column(Modifier.fillMaxSize().background(Cc.colors.background).padding(if (compact) 16.dp else 24.dp).padding(bottom = if (compact) 80.dp else 0.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         ScreenTitle("Explain it back", subtitle = "Teach a topic out loud, as if to a friend. The tablet checks what you covered.")
-        Row(Modifier.weight(1f).fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(20.dp)) {
-            Column(Modifier.weight(1f).fillMaxHeight(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text("Choose a topic", style = MaterialTheme.typography.titleMedium, color = Cc.colors.ink)
-                OutlinedTextField(
-                    value = query, onValueChange = { query = it }, modifier = Modifier.fillMaxWidth(),
-                    placeholder = { Text("Search topics") }, singleLine = true,
-                )
-                if (shown.isEmpty()) {
-                    Text("No topics yet. Add your syllabus in Notes first.", style = MaterialTheme.typography.bodyMedium, color = Cc.colors.muted)
-                }
-                LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    items(shown, key = { it.id }) { t -> TopicRow(t) { nav.navigate(Routes.explainTopic(t.id)) } }
-                }
+        if (compact) {
+            Column(Modifier.weight(1f).fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                ExplainTopicsPane(nav, shown, query, { query = it }, Modifier.weight(1f).fillMaxWidth())
+                ExplainHistoryPane(nav, history, titles, Modifier.weight(1f).fillMaxWidth())
             }
-            Column(Modifier.weight(1f).fillMaxHeight(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text("Your earlier explanations", style = MaterialTheme.typography.titleMedium, color = Cc.colors.ink)
-                if (history.isEmpty()) {
-                    Text("Nothing yet. Pick a topic and explain it.", style = MaterialTheme.typography.bodyMedium, color = Cc.colors.muted)
-                }
-                LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    items(history, key = { it.id }) { s ->
-                        HistoryRow(s, titles[s.topicId.orEmpty()] ?: "A topic") { nav.navigate(Routes.explainTopic(EXPLAIN_SESSION_PREFIX + s.id)) }
-                    }
-                }
+        } else {
+            Row(Modifier.weight(1f).fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(20.dp)) {
+                ExplainTopicsPane(nav, shown, query, { query = it }, Modifier.weight(1f).fillMaxHeight())
+                ExplainHistoryPane(nav, history, titles, Modifier.weight(1f).fillMaxHeight())
+            }
+        }
+    }
+}
+
+@Composable
+private fun ExplainTopicsPane(nav: NavHostController, shown: List<Topic>, query: String, onQuery: (String) -> Unit, modifier: Modifier) {
+    Column(modifier, verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Text("Choose a topic", style = MaterialTheme.typography.titleMedium, color = Cc.colors.ink)
+        OutlinedTextField(
+            value = query, onValueChange = onQuery, modifier = Modifier.fillMaxWidth(),
+            placeholder = { Text("Search topics") }, singleLine = true,
+        )
+        if (shown.isEmpty()) {
+            Text("No topics yet. Add your syllabus in Notes first.", style = MaterialTheme.typography.bodyMedium, color = Cc.colors.muted)
+        }
+        LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            items(shown, key = { it.id }) { t -> TopicRow(t) { nav.navigate(Routes.explainTopic(t.id)) } }
+        }
+    }
+}
+
+@Composable
+private fun ExplainHistoryPane(nav: NavHostController, history: List<ExplainSession>, titles: Map<String, String>, modifier: Modifier) {
+    Column(modifier, verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Text("Your earlier explanations", style = MaterialTheme.typography.titleMedium, color = Cc.colors.ink)
+        if (history.isEmpty()) {
+            Text("Nothing yet. Pick a topic and explain it.", style = MaterialTheme.typography.bodyMedium, color = Cc.colors.muted)
+        }
+        LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            items(history, key = { it.id }) { s ->
+                HistoryRow(s, titles[s.topicId.orEmpty()] ?: "A topic") { nav.navigate(Routes.explainTopic(EXPLAIN_SESSION_PREFIX + s.id)) }
             }
         }
     }
@@ -132,8 +151,9 @@ fun ExplainScreen(nav: NavHostController, arg: String, vm: ExplainViewModel = hi
         if (arg.startsWith(EXPLAIN_SESSION_PREFIX)) vm.open(arg.removePrefix(EXPLAIN_SESSION_PREFIX)) else vm.start(arg)
     }
 
+    val compact = isCompact()
     Column(
-        Modifier.fillMaxSize().background(Cc.colors.background).verticalScroll(rememberScrollState()).padding(24.dp),
+        Modifier.fillMaxSize().background(Cc.colors.background).verticalScroll(rememberScrollState()).padding(if (compact) 16.dp else 24.dp).padding(bottom = if (compact) 80.dp else 0.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
         ScreenTitle(

@@ -25,6 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.naveen.civilscompanion.theme.Cc
+import com.naveen.civilscompanion.ui.common.isCompact
 
 // The same dark player look as the Briefs player.
 private val BarText = Color(0xFFF6F3EC)
@@ -36,10 +37,11 @@ private val BarDark = Color(0xFF1C1B19)
 @Composable
 internal fun ReadPlayer(s: ReadUiState, vm: ReadViewModel) {
     val total = s.sentences.size
+    val compact = isCompact()
     Row(
-        Modifier.fillMaxWidth().background(Cc.colors.playerBar).padding(start = 32.dp, end = 104.dp, top = 12.dp, bottom = 12.dp),
+        Modifier.fillMaxWidth().background(Cc.colors.playerBar).padding(start = if (compact) 16.dp else 32.dp, end = 104.dp, top = 12.dp, bottom = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(if (compact) 10.dp else 16.dp),
     ) {
         Round("Back", 52.dp, filled = false, description = "Previous sentence", enabled = total > 0) { vm.stepSentence(-1) }
         Round(

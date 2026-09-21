@@ -31,6 +31,7 @@ import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.Pill
 import com.naveen.civilscompanion.ui.common.ScreenTitle
 import com.naveen.civilscompanion.ui.common.SectionLabel
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.nav.Routes
 
 /** Mock tests: weekly mock, topic tests, past papers, the mistakes retest and the history of scores. */
@@ -47,8 +48,48 @@ fun TestsScreen(nav: NavHostController, vm: TestsViewModel = hiltViewModel()) {
     val ready = tests.filter { it.status == "ready" || it.status == "in_progress" }
     val taken = tests.filter { it.status == "done" || it.status == "analysed" }
 
+    val readyPane: @Composable (Modifier) -> Unit = { m ->
+        Column(m, verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            SectionLabel("Ready to take")
+            if (ready.isEmpty()) {
+                Text(
+                    "No test is ready. The weekly mock arrives on Sunday morning. You can also make one below.",
+                    style = MaterialTheme.typography.bodyMedium, color = Cc.colors.muted,
+                )
+            }
+            ready.forEach { t -> TestCard(t, onOpen = { nav.navigate(Routes.testRun(t.id)) }) }
+            pending.forEach { j -> JobCard(j, onDismiss = { vm.dismiss(j) }) }
+            SectionLabel("Taken")
+            if (taken.isEmpty()) Text("Your finished tests will be listed here.", style = MaterialTheme.typography.bodyMedium, color = Cc.colors.muted)
+            taken.forEach { t -> TestCard(t, onOpen = { nav.navigate(Routes.testResult(t.id)) }) }
+        }
+    }
+    val makePane: @Composable (Modifier) -> Unit = { m ->
+        Column(m, verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            CcCard(Modifier.fillMaxWidth()) {
+                Text("Retest my mistakes", style = MaterialTheme.typography.titleMedium, color = Cc.colors.ink)
+                Text(
+                    if (counts.open == 0) "Your mistake book is empty. Wrong answers from tests are collected there."
+                    else "${counts.open} in your book, ${counts.due} due now. Answer correctly twice, days apart, and a question leaves the book.",
+                    style = MaterialTheme.typography.bodyMedium, color = Cc.colors.muted,
+                )
+                BigButton("Start mistakes retest", onClick = { nav.navigate(Routes.testRun(RETEST_ID)) }, enabled = counts.open > 0)
+            }
+            CcCard(Modifier.fillMaxWidth()) {
+                Text("Make a test", style = MaterialTheme.typography.titleMedium, color = Cc.colors.ink)
+                Text("Tests are made on the server, so they need the internet once. After that they work offline.", style = MaterialTheme.typography.bodySmall, color = Cc.colors.muted)
+                BigButton("Weekly mock now (25 questions)", onClick = vm::makeWeekly, filled = false, modifier = Modifier.fillMaxWidth())
+                BigButton("Topic test", onClick = { dialog = "topic" }, filled = false, modifier = Modifier.fillMaxWidth())
+                BigButton("Full past paper", onClick = { dialog = "paper" }, filled = false, modifier = Modifier.fillMaxWidth())
+                BigButton("Read a past paper from my library", onClick = { dialog = "import" }, filled = false, modifier = Modifier.fillMaxWidth())
+            }
+        }
+    }
+
+    val compact = isCompact()
+
     Column(
-        Modifier.fillMaxSize().background(Cc.colors.background).verticalScroll(rememberScrollState()).padding(24.dp),
+        Modifier.fillMaxSize().background(Cc.colors.background).verticalScroll(rememberScrollState()).padding(if (compact) 16.dp else 24.dp).padding(bottom = if (compact) 80.dp else 0.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
         ScreenTitle(
@@ -62,39 +103,15 @@ fun TestsScreen(nav: NavHostController, vm: TestsViewModel = hiltViewModel()) {
                 TAction("OK", onClick = vm::clearMessage)
             }
         }
-        Row(horizontalArrangement = Arrangement.spacedBy(16.dp), verticalAlignment = Alignment.Top) {
-            Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                SectionLabel("Ready to take")
-                if (ready.isEmpty()) {
-                    Text(
-                        "No test is ready. The weekly mock arrives on Sunday morning. You can also make one below.",
-                        style = MaterialTheme.typography.bodyMedium, color = Cc.colors.muted,
-                    )
-                }
-                ready.forEach { t -> TestCard(t, onOpen = { nav.navigate(Routes.testRun(t.id)) }) }
-                pending.forEach { j -> JobCard(j, onDismiss = { vm.dismiss(j) }) }
-                SectionLabel("Taken")
-                if (taken.isEmpty()) Text("Your finished tests will be listed here.", style = MaterialTheme.typography.bodyMedium, color = Cc.colors.muted)
-                taken.forEach { t -> TestCard(t, onOpen = { nav.navigate(Routes.testResult(t.id)) }) }
+        if (compact) {
+            Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                readyPane(Modifier.fillMaxWidth())
+                makePane(Modifier.fillMaxWidth())
             }
-            Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                CcCard(Modifier.fillMaxWidth()) {
-                    Text("Retest my mistakes", style = MaterialTheme.typography.titleMedium, color = Cc.colors.ink)
-                    Text(
-                        if (counts.open == 0) "Your mistake book is empty. Wrong answers from tests are collected there."
-                        else "${counts.open} in your book, ${counts.due} due now. Answer correctly twice, days apart, and a question leaves the book.",
-                        style = MaterialTheme.typography.bodyMedium, color = Cc.colors.muted,
-                    )
-                    BigButton("Start mistakes retest", onClick = { nav.navigate(Routes.testRun(RETEST_ID)) }, enabled = counts.open > 0)
-                }
-                CcCard(Modifier.fillMaxWidth()) {
-                    Text("Make a test", style = MaterialTheme.typography.titleMedium, color = Cc.colors.ink)
-                    Text("Tests are made on the server, so they need the internet once. After that they work offline.", style = MaterialTheme.typography.bodySmall, color = Cc.colors.muted)
-                    BigButton("Weekly mock now (25 questions)", onClick = vm::makeWeekly, filled = false, modifier = Modifier.fillMaxWidth())
-                    BigButton("Topic test", onClick = { dialog = "topic" }, filled = false, modifier = Modifier.fillMaxWidth())
-                    BigButton("Full past paper", onClick = { dialog = "paper" }, filled = false, modifier = Modifier.fillMaxWidth())
-                    BigButton("Read a past paper from my library", onClick = { dialog = "import" }, filled = false, modifier = Modifier.fillMaxWidth())
-                }
+        } else {
+            Row(horizontalArrangement = Arrangement.spacedBy(16.dp), verticalAlignment = Alignment.Top) {
+                readyPane(Modifier.weight(1f))
+                makePane(Modifier.weight(1f))
             }
         }
     }

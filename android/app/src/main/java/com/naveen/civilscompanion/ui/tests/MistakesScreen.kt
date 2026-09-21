@@ -26,6 +26,7 @@ import com.naveen.civilscompanion.ui.common.BigButton
 import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.Pill
 import com.naveen.civilscompanion.ui.common.ScreenTitle
+import com.naveen.civilscompanion.ui.common.isCompact
 import com.naveen.civilscompanion.ui.nav.Routes
 
 /** The mistake book: every wrong answer with the right answer and the reason. Route mistakes. */
@@ -34,20 +35,31 @@ fun MistakesScreen(nav: NavHostController, vm: MistakesViewModel = hiltViewModel
     val state by vm.state.collectAsStateWithLifecycle()
     val subject by vm.subject.collectAsStateWithLifecycle()
     val type by vm.type.collectAsStateWithLifecycle()
+    val compact = isCompact()
 
     LazyColumn(
         Modifier.fillMaxSize().background(Cc.colors.background),
-        contentPadding = androidx.compose.foundation.layout.PaddingValues(24.dp),
+        contentPadding = androidx.compose.foundation.layout.PaddingValues(start = if (compact) 16.dp else 24.dp, top = if (compact) 16.dp else 24.dp, end = if (compact) 16.dp else 24.dp, bottom = if (compact) 88.dp else 24.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         item {
-            ScreenTitle(
-                "Mistake book",
-                subtitle = "A question leaves the book after you answer it correctly twice, on different days. ${state.cleared} cleared so far.",
-                actions = {
+            if (compact) {
+                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    ScreenTitle(
+                        "Mistake book",
+                        subtitle = "A question leaves the book after you answer it correctly twice, on different days. ${state.cleared} cleared so far.",
+                    )
                     BigButton("Retest mistakes (${state.due} due)", onClick = { nav.navigate(Routes.testRun(RETEST_ID)) }, enabled = state.total > 0)
-                },
-            )
+                }
+            } else {
+                ScreenTitle(
+                    "Mistake book",
+                    subtitle = "A question leaves the book after you answer it correctly twice, on different days. ${state.cleared} cleared so far.",
+                    actions = {
+                        BigButton("Retest mistakes (${state.due} due)", onClick = { nav.navigate(Routes.testRun(RETEST_ID)) }, enabled = state.total > 0)
+                    },
+                )
+            }
         }
         item {
             Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
