@@ -197,3 +197,37 @@ def test_rate_limit_window():
     assert 55 <= wait <= 60
     assert check_rate("k", 2, 60, now=161.5) == 0  # the first call left the window
     assert check_rate("other", 2, 60, now=102.0) == 0
+
+
+def test_usage_reports_the_owners_limit(client, auth_header):
+    assert client.get("/storage/usage", headers=auth_header).json()["limit_bytes"] == 20 * 1024**3
+    client.put("/kv/storage.limit_gb", json={"value": 5}, headers=auth_header)
+    assert client.get("/storage/usage", headers=auth_header).json()["limit_bytes"] == 5 * 1024**3
+    client.put("/kv/storage.limit_gb", json={"value": "lots"}, headers=auth_header)  # nonsense falls back to 20 GB
+    assert client.get("/storage/usage", headers=auth_header).json()["limit_bytes"] == 20 * 1024**3
+
+
+def test_backup_can_be_restored_into_a_fresh_folder(env, tmp_path):
+    """The tested restore of milestone M7: back up, then restore into an empty folder and read the data back."""
+    import sqlite3
+
+    from app.tools.backup import restore_backup
+
+    settings, factory = env
+    with factory() as db:
+        db.add(Card(front="Restore me", back="A"))
+        db.commit()
+    (tmp_path / "data" / "audio").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "data" / "audio" / "a.mp3").write_bytes(b"sound")
+    path = run_backup(settings)
+    assert path is not None and path.is_file()
+    target = tmp_path / "restored"
+    restore_backup(path, target)
+    con = sqlite3.connect(target / "civils.db")
+    try:
+        assert con.execute("select front from cards").fetchall() == [("Restore me",)]
+    finally:
+        con.close()
+    assert (target / "audio" / "a.mp3").read_bytes() == b"sound"
+    with pytest.raises(SystemExit):  # never overwrites without --force
+        restore_backup(path, target)

@@ -1,0 +1,32 @@
+# TELUGU PRACTICE: TRANSLATION SENTENCES (18 short sentences)
+#
+# IMPORTANT: the official 2026 APPSC Group-I Telugu qualifying paper syllabus was NOT available when this file was
+# written. These sentences are GENERAL practice, written for this app, and marked `source: general`. The Telugu
+# reference answers were written by an AI assistant and have NOT been checked by a Telugu teacher (unverified). A
+# translation can usually be said in more than one correct way; the tutor feedback accepts other good wordings.
+#
+# Layout:  key (unique, never changes) | level 1-3 | source general|syllabus|pyq | direction en_to_te or te_to_en
+#          en   the English sentence          te   the Telugu sentence
+#          reference   the model answer (Telugu when direction is en_to_te, English when te_to_en)
+#          hint_words  a few helpful words: [{te, en}]
+# Add your own items later in this file or in a new *.yaml file in this folder (see vocab.yaml for details).
+version: 1
+items:
+  - {kind: translation, key: t001, level: 1, source: general, direction: en_to_te, en: "Education is the key to progress.", reference: "విద్య ప్రగతికి కీలకం.", hint_words: [{te: "విద్య", en: "education"}, {te: "ప్రగతి", en: "progress"}, {te: "కీలకం", en: "key"}]}
+  - {kind: translation, key: t002, level: 1, source: general, direction: en_to_te, en: "The government has started a new scheme for farmers.", reference: "ప్రభుత్వం రైతుల కోసం కొత్త పథకాన్ని ప్రారంభించింది.", hint_words: [{te: "ప్రభుత్వం", en: "government"}, {te: "పథకం", en: "scheme"}, {te: "ప్రారంభించింది", en: "started"}]}
+  - {kind: translation, key: t003, level: 1, source: general, direction: en_to_te, en: "Please send your application before the last date.", reference: "దయచేసి చివరి తేదీలోగా మీ దరఖాస్తును పంపండి.", hint_words: [{te: "దరఖాస్తు", en: "application"}, {te: "చివరి తేదీ", en: "last date"}, {te: "పంపండి", en: "send (polite)"}]}
+  - {kind: translation, key: t004, level: 1, source: general, direction: en_to_te, en: "The meeting will be held tomorrow at ten in the morning.", reference: "సమావేశం రేపు ఉదయం పది గంటలకు జరుగుతుంది.", hint_words: [{te: "సమావేశం", en: "meeting"}, {te: "రేపు", en: "tomorrow"}, {te: "జరుగుతుంది", en: "will be held"}]}
+  - {kind: translation, key: t005, level: 1, source: general, direction: en_to_te, en: "Every citizen has the right to vote.", reference: "ప్రతి పౌరుడికి ఓటు హక్కు ఉంది.", hint_words: [{te: "పౌరుడు", en: "citizen"}, {te: "ఓటు", en: "vote"}, {te: "హక్కు", en: "right"}]}
+  - {kind: translation, key: t006, level: 2, source: general, direction: en_to_te, en: "Heavy rains caused floods in many villages.", reference: "భారీ వర్షాల వల్ల అనేక గ్రామాల్లో వరదలు వచ్చాయి.", hint_words: [{te: "భారీ వర్షాలు", en: "heavy rains"}, {te: "వరద", en: "flood"}, {te: "అనేక", en: "many"}]}
+  - {kind: translation, key: t007, level: 2, source: general, direction: en_to_te, en: "Officers should work honestly and on time.", reference: "అధికారులు నిజాయితీగా, సమయానికి పనిచేయాలి.", hint_words: [{te: "అధికారి", en: "officer"}, {te: "నిజాయితీ", en: "honesty"}, {te: "సమయానికి", en: "on time"}]}
+  - {kind: translation, key: t008, level: 2, source: general, direction: en_to_te, en: "We must protect the environment for future generations.", reference: "భవిష్యత్తు తరాల కోసం మనం పర్యావరణాన్ని కాపాడాలి.", hint_words: [{te: "పర్యావరణం", en: "environment"}, {te: "కాపాడాలి", en: "must protect"}, {te: "తరాలు", en: "generations"}]}
+  - {kind: translation, key: t009, level: 2, source: general, direction: en_to_te, en: "The village secretariat provides many services to the people.", reference: "గ్రామ సచివాలయం ప్రజలకు అనేక సేవలు అందిస్తుంది.", hint_words: [{te: "గ్రామ సచివాలయం", en: "village secretariat"}, {te: "సేవలు", en: "services"}, {te: "అందిస్తుంది", en: "provides"}]}
+  - {kind: translation, key: t010, level: 3, source: general, direction: en_to_te, en: "Digital technology has made government services easier.", reference: "డిజిటల్ సాంకేతికత ప్రభుత్వ సేవలను సులభతరం చేసింది.", hint_words: [{te: "సాంకేతికత", en: "technology"}, {te: "సులభతరం", en: "easier"}, {te: "సేవలు", en: "services"}]}
+  - {kind: translation, key: t011, level: 2, source: general, direction: en_to_te, en: "The results of the examination will be announced next week.", reference: "పరీక్ష ఫలితాలు వచ్చే వారం ప్రకటిస్తారు.", hint_words: [{te: "ఫలితాలు", en: "results"}, {te: "వచ్చే వారం", en: "next week"}, {te: "ప్రకటిస్తారు", en: "will announce"}]}
+  - {kind: translation, key: t012, level: 3, source: general, direction: en_to_te, en: "Women's empowerment is essential for the development of the country.", reference: "దేశ అభివృద్ధికి మహిళా సాధికారత అవసరం.", hint_words: [{te: "సాధికారత", en: "empowerment"}, {te: "అభివృద్ధి", en: "development"}, {te: "అవసరం", en: "essential, needed"}]}
+  - {kind: translation, key: t013, level: 2, source: general, direction: en_to_te, en: "The Collector inspected the school and spoke to the students.", reference: "కలెక్టర్ పాఠశాలను పరిశీలించి విద్యార్థులతో మాట్లాడారు.", hint_words: [{te: "పరిశీలించి", en: "inspected"}, {te: "పాఠశాల", en: "school"}, {te: "విద్యార్థులు", en: "students"}]}
+  - {kind: translation, key: t014, level: 1, source: general, direction: en_to_te, en: "Water is precious. Do not waste it.", reference: "నీరు విలువైనది. దానిని వృథా చేయకండి.", hint_words: [{te: "విలువైనది", en: "precious"}, {te: "వృథా", en: "waste"}]}
+  - {kind: translation, key: t015, level: 1, source: general, direction: te_to_en, te: "గ్రామంలో కొత్త పాఠశాల నిర్మించారు.", reference: "A new school was built in the village.", hint_words: [{te: "నిర్మించారు", en: "built"}, {te: "గ్రామం", en: "village"}]}
+  - {kind: translation, key: t016, level: 2, source: general, direction: te_to_en, te: "ప్రజల సమస్యలను ప్రభుత్వం వినాలి.", reference: "The government must listen to the people's problems.", hint_words: [{te: "సమస్యలు", en: "problems"}, {te: "వినాలి", en: "must listen"}]}
+  - {kind: translation, key: t017, level: 2, source: general, direction: te_to_en, te: "రైతులు బ్యాంకు నుంచి అప్పు తీసుకున్నారు.", reference: "The farmers took a loan from the bank.", hint_words: [{te: "అప్పు", en: "loan"}, {te: "తీసుకున్నారు", en: "took"}]}
+  - {kind: translation, key: t018, level: 3, source: general, direction: te_to_en, te: "పాలనలో పారదర్శకత ఉంటే ప్రజలకు ప్రభుత్వంపై నమ్మకం పెరుగుతుంది.", reference: "If there is transparency in administration, the people's trust in the government grows.", hint_words: [{te: "పారదర్శకత", en: "transparency"}, {te: "నమ్మకం", en: "trust"}, {te: "పెరుగుతుంది", en: "grows"}]}

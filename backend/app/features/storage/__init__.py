@@ -1,7 +1,7 @@
 """Storage (M7): usage by type, old-audio cleanup, export of the owner's data, nightly backups.
 
 Routes (login required, added by the app):
-  GET  /storage/usage                 bytes by type on the server
+  GET  /storage/usage                 bytes by type on the server, plus limit_bytes (setting storage.limit_gb, default 20)
   POST /storage/cleanup               {"audio_older_than_days": 60} deletes old audio and clears the references
   GET  /storage/export                zip of every synced table, notes as markdown, list of documents
   GET  /storage/backups               list of nightly backups (newest first)
@@ -18,6 +18,7 @@ from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 from starlette.background import BackgroundTask
 
+from app.api.kv import get_kv
 from app.config import Settings, get_settings
 from app.db.session import get_db
 from app.services import Services
@@ -37,7 +38,11 @@ class CleanupIn(BaseModel):
 
 @router.get("/usage")
 def usage(db: Session = Depends(get_db), settings: Settings = Depends(get_settings)):
-    return compute_usage(settings, db)
+    out = compute_usage(settings, db)
+    limit_gb = get_kv(db, "storage.limit_gb", 20)  # the owner's own limit (Settings), default 20 GB
+    limit_gb = limit_gb if isinstance(limit_gb, (int, float)) and not isinstance(limit_gb, bool) and limit_gb > 0 else 20
+    out["limit_bytes"] = int(limit_gb * 1024**3)
+    return out
 
 
 @router.post("/cleanup", dependencies=[Depends(rate_limit(6, 60, "storage-cleanup"))])

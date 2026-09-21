@@ -3,6 +3,9 @@
 Routes (login required):
   POST /videos/resolve   {"url_or_id": "...", "topic_id": null}  ->  creates or finds the Video row
   GET  /videos/search?q=&topic_id=   uses the YouTube Data API only when YOUTUBE_API_KEY is set on the server
+  GET  /videos/{id}/summary          the saved "what to listen for" text (made by the job `video_summary`)
+
+Job `video_summary` {video_id} -> {video_id, text, note}: see summaries.py. Nothing here stores a video file.
 """
 from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel
@@ -14,7 +17,7 @@ from app.db.session import get_db
 from app.features.storage.ratelimit import rate_limit
 from app.services import Services, get_services
 
-from . import youtube
+from . import summaries, youtube
 from .ids import parse_youtube_id, watch_url
 
 router = APIRouter(prefix="/videos", tags=["videos"])
@@ -81,3 +84,17 @@ def search(q: str = Query(default="", max_length=200), topic_id: str | None = No
         "search_failed": "YouTube search did not answer just now (the free daily limit may be used up). Paste a link instead.",
     }.get(reason, "")
     return {"query": query, "results": results, "reason": reason, "message": message, "cached": cached}
+
+
+@router.get("/{video_id}/summary")
+def summary(video_id: str, db: Session = Depends(get_db)):
+    row = db.get(Video, video_id)
+    if row is None or row.deleted:
+        raise HTTPException(404, "No such video")
+    value = summaries.read_summary(db, video_id)
+    return {"video_id": video_id, "summary": value["text"] if value else "", "note": value["note"] if value else ""}
+
+
+def setup(services: Services) -> None:
+    """Nothing to schedule: search and lookups run when the owner asks. Kept so every feature has the same shape."""
+    return None

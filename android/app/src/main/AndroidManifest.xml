@@ -90,6 +90,29 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <!-- V5: home-screen widget (today's plan and revise count) -->
+        <receiver
+            android:name=".widget.CivilsWidgetReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/civils_widget_info" />
+        </receiver>
+
+        <!-- V5: revision, day summary and weekly report alarms, focus timer end, and the buttons on those notifications -->
+        <receiver
+            android:name=".notify.DayNotifierReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="general" />

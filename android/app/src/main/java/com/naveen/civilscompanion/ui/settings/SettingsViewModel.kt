@@ -7,14 +7,20 @@ import com.naveen.civilscompanion.data.BriefTimes
 import com.naveen.civilscompanion.data.Prefs
 import com.naveen.civilscompanion.data.remote.dto.BriefSettingsDto
 import com.naveen.civilscompanion.data.remote.dto.BriefSlotDto
+import com.naveen.civilscompanion.data.repo.KvRepository
 import com.naveen.civilscompanion.data.repo.SyncRepository
+import com.naveen.civilscompanion.notify.DayNotifier
+import com.naveen.civilscompanion.notify.DayNotifyLogic
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.io.IOException
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.floatOrNull
 import retrofit2.HttpException
 
 data class SettingsUi(
@@ -24,6 +30,12 @@ data class SettingsUi(
     val message: String? = null,
     val wifiOnly: Boolean = false,
     val exactAlarms: Boolean = true,
+    val theme: String = "system",
+    val textScale: Float = 1f,
+    val notifyRevision: Boolean = true,
+    val notifyWeekly: Boolean = true,
+    val summary: DayNotifyLogic.DaySummary = DayNotifyLogic.DaySummary(),
+    val quiet: DayNotifyLogic.Quiet = DayNotifyLogic.Quiet(),
 )
 
 @HiltViewModel
@@ -31,6 +43,8 @@ class SettingsViewModel @Inject constructor(
     private val sync: SyncRepository,
     private val prefs: Prefs,
     private val alarms: BriefAlarmScheduler,
+    private val kv: KvRepository,
+    private val dayNotifier: DayNotifier,
 ) : ViewModel() {
 
     private var saved: List<BriefSlotDto> = prefs.briefSettings.briefs
@@ -40,6 +54,13 @@ class SettingsViewModel @Inject constructor(
     val state: StateFlow<SettingsUi> = _state.asStateFlow()
 
     init {
+        watch(UI_THEME) { e -> copy(theme = (e as? JsonPrimitive)?.content?.takeIf { it in THEMES } ?: "system") }
+        watch(UI_SCALE) { e -> copy(textScale = ((e as? JsonPrimitive)?.floatOrNull ?: 1f).coerceIn(0.8f, 1.6f)) }
+        watch(DayNotifyLogic.KEY_REVISION) { e -> copy(notifyRevision = DayNotifyLogic.parseBool(e, true)) }
+        watch(DayNotifyLogic.KEY_WEEKLY) { e -> copy(notifyWeekly = DayNotifyLogic.parseBool(e, true)) }
+        watch(DayNotifyLogic.KEY_SUMMARY) { e -> copy(summary = DayNotifyLogic.parseSummary(e)) }
+        watch(DayNotifyLogic.KEY_QUIET) { e -> copy(quiet = DayNotifyLogic.parseQuiet(e)) }
+        runCatching { dayNotifier.rescheduleAll() } // makes sure the day alarms exist (first launch after an update)
         viewModelScope.launch {
             runCatching { sync.refreshBriefSettings() }.onSuccess { fresh ->
                 if (!_state.value.dirty) {
@@ -49,6 +70,31 @@ class SettingsViewModel @Inject constructor(
             }
         }
     }
+
+    private fun watch(key: String, change: SettingsUi.(kotlinx.serialization.json.JsonElement?) -> SettingsUi) {
+        viewModelScope.launch {
+            kv.observe(key).collect { e -> _state.update { it.change(e) } }
+        }
+    }
+
+    private fun put(key: String, value: kotlinx.serialization.json.JsonElement, reschedule: Boolean = false) {
+        viewModelScope.launch {
+            kv.put(key, value)
+            if (reschedule) runCatching { dayNotifier.rescheduleAll() }
+        }
+    }
+
+    fun setTheme(theme: String) = put(UI_THEME, JsonPrimitive(theme))
+
+    fun setTextScale(scale: Float) = put(UI_SCALE, JsonPrimitive(scale.coerceIn(0.8f, 1.6f)))
+
+    fun setNotifyRevision(on: Boolean) = put(DayNotifyLogic.KEY_REVISION, JsonPrimitive(on), reschedule = true)
+
+    fun setNotifyWeekly(on: Boolean) = put(DayNotifyLogic.KEY_WEEKLY, JsonPrimitive(on), reschedule = true)
+
+    fun setSummary(next: DayNotifyLogic.DaySummary) = put(DayNotifyLogic.KEY_SUMMARY, DayNotifyLogic.summaryJson(next), reschedule = true)
+
+    fun setQuiet(next: DayNotifyLogic.Quiet) = put(DayNotifyLogic.KEY_QUIET, DayNotifyLogic.quietJson(next))
 
     fun setEnabled(id: String, on: Boolean) = edit(id) { it.copy(enabled = on) }
 
@@ -102,5 +148,11 @@ class SettingsViewModel @Inject constructor(
 
     private fun update(slots: List<BriefSlotDto>) {
         _state.value = _state.value.copy(slots = slots, dirty = slots != saved, message = null)
+    }
+
+    private companion object {
+        const val UI_THEME = "ui.theme"
+        const val UI_SCALE = "ui.text_scale"
+        val THEMES = setOf("system", "light", "dark")
     }
 }

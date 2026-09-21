@@ -1,0 +1,140 @@
+# TELUGU PRACTICE: LETTER, APPLICATION AND ESSAY TEMPLATES (6 writing tasks)
+#
+# IMPORTANT: the official 2026 APPSC Group-I Telugu qualifying paper syllabus was NOT available when this file was
+# written, so the exact letter formats and essay types the paper asks for are UNVERIFIED. These templates show common,
+# widely used Telugu formats. Items are marked `source: general`. The Telugu was written by an AI assistant and has not
+# been checked by a Telugu teacher. When the notification PDF is available, compare the formats and fix anything that
+# differs (keep the `key` the same).
+#
+# Layout:  key | level | source | form (letter|application|essay|notice)
+#          title_en, title_te     name of the task
+#          task_en                what the student must write (English, so it is clear)
+#          structure              list of {te, en}: the parts, in order
+#          phrases                list of {te, en}: useful phrases
+#          sample_te              a short model answer in Telugu (the student writes their own first); may be empty
+#          min_words              a sensible length to aim for
+version: 1
+items:
+  - kind: template
+    key: w001
+    level: 2
+    source: general
+    form: letter
+    title_en: "Formal letter to the District Collector (drinking water problem)"
+    title_te: "జిల్లా కలెక్టర్‌కు లేఖ (తాగునీటి సమస్య)"
+    task_en: "Your village has had no drinking water for a week. Write a letter to the District Collector asking for quick action."
+    min_words: 100
+    structure:
+      - {te: "చిరునామా, తేదీ (కుడివైపు పైన)", en: "Your address and the date (top right)"}
+      - {te: "స్వీకర్త: జిల్లా కలెక్టర్ గారు", en: "To: the District Collector"}
+      - {te: "విషయం: ...", en: "Subject: one line"}
+      - {te: "సంబోధన: గౌరవనీయులైన అయ్యా,", en: "Salutation: Respected Sir,"}
+      - {te: "మొదటి పేరా: సమస్య ఏమిటి", en: "Paragraph 1: what the problem is"}
+      - {te: "రెండో పేరా: ఇబ్బందులు, కోరిక", en: "Paragraph 2: the difficulties and your request"}
+      - {te: "ముగింపు: ఇట్లు, మీ విధేయుడు, పేరు, సంతకం", en: "Closing: Yours faithfully, name, signature"}
+    phrases:
+      - {te: "వినయపూర్వకంగా తెలియజేయునది ఏమనగా", en: "I humbly submit that"}
+      - {te: "తగిన చర్యలు తీసుకోవలసిందిగా కోరుతున్నాను", en: "I request you to take suitable action"}
+      - {te: "మీ సహకారానికి కృతజ్ఞతలు", en: "Thank you for your help"}
+      - {te: "గ్రామస్థులందరూ ఇబ్బంది పడుతున్నారు", en: "All the villagers are suffering"}
+    sample_te: "గౌరవనీయులైన అయ్యా, వినయపూర్వకంగా తెలియజేయునది ఏమనగా, మా గ్రామంలో వారం రోజులుగా తాగునీరు రావడం లేదు. దీనివల్ల గ్రామస్థులందరూ ఇబ్బంది పడుతున్నారు. కాబట్టి తగిన చర్యలు తీసుకుని త్వరగా నీటి సరఫరాను పునరుద్ధరించవలసిందిగా కోరుతున్నాను. ఇట్లు, మీ విధేయుడు."
+  - kind: template
+    key: w002
+    level: 2
+    source: general
+    form: application
+    title_en: "Leave application to the head of your office"
+    title_te: "సెలవు కోసం దరఖాస్తు"
+    task_en: "You need three days of leave because of a family function. Write a leave application to your officer."
+    min_words: 80
+    structure:
+      - {te: "స్వీకర్త: కార్యాలయ అధిపతి గారు", en: "To: the head of the office"}
+      - {te: "విషయం: సెలవు మంజూరు కోసం విజ్ఞప్తి", en: "Subject: request for leave"}
+      - {te: "సంబోధన: అయ్యా,", en: "Salutation: Sir,"}
+      - {te: "కారణం, ఏ తేదీల నుంచి ఏ తేదీల వరకు", en: "Reason, and the dates from and to"}
+      - {te: "మంజూరు చేయమని విన్నపం", en: "A polite request to grant it"}
+      - {te: "ఇట్లు, మీ విధేయుడు, పేరు, తేదీ", en: "Closing with name and date"}
+    phrases:
+      - {te: "కుటుంబ కార్యక్రమం ఉన్నందున", en: "because of a family function"}
+      - {te: "మూడు రోజులు సెలవు మంజూరు చేయవలసిందిగా కోరుతున్నాను", en: "I request you to grant three days' leave"}
+      - {te: "దయచేసి పరిశీలించగలరు", en: "Kindly consider"}
+    sample_te: "అయ్యా, మా ఇంట్లో కుటుంబ కార్యక్రమం ఉన్నందున ఈ నెల 10వ తేదీ నుంచి 12వ తేదీ వరకు మూడు రోజులు సెలవు మంజూరు చేయవలసిందిగా కోరుతున్నాను. దయచేసి పరిశీలించగలరు. ఇట్లు, మీ విధేయుడు."
+  - kind: template
+    key: w003
+    level: 2
+    source: general
+    form: letter
+    title_en: "Letter to the editor (cleanliness in your town)"
+    title_te: "సంపాదకునికి లేఖ (పట్టణ పారిశుద్ధ్యం)"
+    task_en: "Rubbish is not being collected in your town. Write a letter to the editor of a newspaper."
+    min_words: 100
+    structure:
+      - {te: "స్వీకర్త: సంపాదకులు గారు, పత్రిక పేరు", en: "To: the Editor, name of the newspaper"}
+      - {te: "విషయం: ...", en: "Subject"}
+      - {te: "సంబోధన: అయ్యా,", en: "Salutation"}
+      - {te: "సమస్య మరియు దాని ప్రభావం", en: "The problem and its effect"}
+      - {te: "అధికారులకు సూచన", en: "A suggestion to the authorities"}
+      - {te: "ఇట్లు, పేరు, ఊరు", en: "Closing with name and town"}
+    phrases:
+      - {te: "మీ పత్రిక ద్వారా అధికారుల దృష్టికి తీసుకురావాలని", en: "to bring it to the officials' attention through your paper"}
+      - {te: "చెత్త పేరుకుపోయింది", en: "rubbish has piled up"}
+      - {te: "వ్యాధులు వ్యాపించే అవకాశం ఉంది", en: "diseases may spread"}
+    sample_te: ""
+  - kind: template
+    key: w004
+    level: 2
+    source: general
+    form: notice
+    title_en: "Notice for a meeting"
+    title_te: "సమావేశ ప్రకటన"
+    task_en: "As the secretary of a youth association, write a short notice about a meeting on Sunday."
+    min_words: 50
+    structure:
+      - {te: "పైన సంస్థ పేరు", en: "Name of the association at the top"}
+      - {te: "శీర్షిక: ప్రకటన", en: "Heading: Notice"}
+      - {te: "తేదీ", en: "Date"}
+      - {te: "సమావేశ వివరాలు: తేదీ, సమయం, స్థలం, అంశం", en: "Details: date, time, place, topic"}
+      - {te: "కింద కార్యదర్శి పేరు, సంతకం", en: "Below: the secretary's name and signature"}
+    phrases:
+      - {te: "సభ్యులందరికీ తెలియజేయునది ఏమనగా", en: "All members are informed that"}
+      - {te: "తప్పకుండా హాజరు కావాలి", en: "everyone must attend"}
+    sample_te: ""
+  - kind: template
+    key: w005
+    level: 3
+    source: general
+    form: essay
+    title_en: "Essay: The importance of education"
+    title_te: "వ్యాసం: విద్య ప్రాముఖ్యత"
+    task_en: "Write an essay of about 150 words on the importance of education."
+    min_words: 150
+    structure:
+      - {te: "ప్రారంభం: విద్య అంటే ఏమిటి", en: "Introduction: what education is"}
+      - {te: "వ్యక్తికి విద్య వల్ల లాభాలు", en: "Benefits to the person"}
+      - {te: "సమాజానికి, దేశానికి లాభాలు", en: "Benefits to society and the country"}
+      - {te: "ప్రభుత్వ కృషి మరియు మన బాధ్యత", en: "The government's efforts and our duty"}
+      - {te: "ముగింపు", en: "Conclusion"}
+    phrases:
+      - {te: "విద్య వల్లే వ్యక్తి వికాసం సాధ్యమవుతుంది", en: "only through education can a person grow"}
+      - {te: "చదువు మనిషిని ఆలోచనాపరుడిని చేస్తుంది", en: "study makes a person a thinker"}
+      - {te: "కాబట్టి ప్రతి ఒక్కరూ చదువుకోవాలి", en: "therefore everyone should study"}
+    sample_te: ""
+  - kind: template
+    key: w006
+    level: 3
+    source: general
+    form: essay
+    title_en: "Essay: Technology in governance"
+    title_te: "వ్యాసం: పాలనలో సాంకేతికత"
+    task_en: "Write an essay of about 150 words on how technology helps government services reach people."
+    min_words: 150
+    structure:
+      - {te: "ప్రారంభం: సాంకేతికత అంటే ఏమిటి", en: "Introduction"}
+      - {te: "ఉదాహరణలు: ఆన్‌లైన్ సేవలు, గ్రామ సచివాలయం", en: "Examples: online services, village secretariat"}
+      - {te: "లాభాలు: సమయం ఆదా, పారదర్శకత", en: "Benefits: saves time, transparency"}
+      - {te: "సవాళ్లు: డిజిటల్ అక్షరాస్యత", en: "Challenges: digital literacy"}
+      - {te: "ముగింపు", en: "Conclusion"}
+    phrases:
+      - {te: "పారదర్శకత పెరుగుతుంది", en: "transparency increases"}
+      - {te: "ప్రజలకు సేవలు త్వరగా అందుతాయి", en: "services reach people faster"}
+    sample_te: ""

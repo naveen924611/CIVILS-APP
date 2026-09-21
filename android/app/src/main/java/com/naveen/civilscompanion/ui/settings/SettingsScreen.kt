@@ -35,17 +35,28 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.naveen.civilscompanion.data.BriefTimes
 import com.naveen.civilscompanion.data.remote.dto.BriefSlotDto
 import com.naveen.civilscompanion.theme.Cc
+import com.naveen.civilscompanion.ui.ask.AskSettingsSection
+import com.naveen.civilscompanion.ui.library.LibrarySettingsSection
+import com.naveen.civilscompanion.ui.nav.Routes
+import com.naveen.civilscompanion.ui.revise.ReviseSettingsSection
+import com.naveen.civilscompanion.ui.telugu.TeluguSettingsSection
+import com.naveen.civilscompanion.ui.tests.TestSettingsSection
+import com.naveen.civilscompanion.ui.today.PlannerSettingsSection
 
 private val DAY_LETTERS = listOf("M", "T", "W", "T", "F", "S", "S")
 private val DAY_NAMES = listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 
-/** Settings. Milestone M2 adds "Daily briefs", downloads and phone setup; the rest arrives in M7. */
+/**
+ * Settings (spec 6.8): colours and text size, daily briefs, downloads, voice, study plan (every feature's own section),
+ * notifications, storage, AI usage, tablet setup and log out.
+ */
 @Composable
 fun SettingsScreen(
     onLogout: () -> Unit,
     onRunSetup: () -> Unit,
     nav: androidx.navigation.NavHostController,
     vm: SettingsViewModel = hiltViewModel(),
+    storageVm: StorageViewModel = hiltViewModel(),
 ) {
     val s by vm.state.collectAsStateWithLifecycle()
     val colors = Cc.colors
@@ -56,6 +67,9 @@ fun SettingsScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             Text("Settings", style = MaterialTheme.typography.displaySmall, color = colors.ink)
+
+            SettingsHeading("Colours and text size")
+            AppearanceSection(s, vm)
 
             Text("Daily briefs", style = MaterialTheme.typography.headlineSmall, color = colors.ink)
             Text(
@@ -108,6 +122,30 @@ fun SettingsScreen(
                 Switch(checked = s.wifiOnly, onCheckedChange = vm::setWifiOnly)
             }
 
+            SettingsHeading("Voice and reading")
+            AskSettingsSection(nav)
+
+            SettingsHeading("Study plan")
+            PlannerSettingsSection(nav)
+            ReviseSettingsSection(nav)
+            LibrarySettingsSection(nav)
+            TestSettingsSection(nav)
+            TeluguSettingsSection(nav)
+
+            SettingsHeading("Notifications")
+            NotificationsSection(s, vm)
+
+            SettingsHeading("Storage")
+            StorageSection(storageVm, showBackups = false)
+            OutlinedButton(
+                onClick = { runCatching { nav.navigate(Routes.STORAGE) } },
+                shape = MaterialTheme.shapes.small,
+                modifier = Modifier.heightIn(min = 48.dp),
+            ) { Text("Backups and more storage details") }
+
+            SettingsHeading("AI usage")
+            AiUsageSection(storageVm)
+
             Text("Tablet setup", style = MaterialTheme.typography.headlineSmall, color = colors.ink)
             if (!s.exactAlarms) {
                 Text(
@@ -128,11 +166,6 @@ fun SettingsScreen(
                 shape = MaterialTheme.shapes.small,
                 modifier = Modifier.heightIn(min = 48.dp),
             ) { Text("Log out") }
-            Text(
-                "More settings (voice, study plan, quiet hours) arrive in later milestones.",
-                style = MaterialTheme.typography.bodySmall,
-                color = colors.muted,
-            )
         }
     }
 }

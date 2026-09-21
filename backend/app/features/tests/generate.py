@@ -15,12 +15,13 @@ from datetime import date, datetime, timedelta, timezone
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from app.api.kv import get_kv
 from app.db.models_v2 import DailyPlan, FocusSession, Mcq, Mistake, Note, Pyq, Test, Topic
 from app.db.util import as_utc
 from app.jobs.registry import AiUnavailable, JobFailed
 from app.llm.promptlib import load, render
 
-from .common import IST, ist_to_utc, monday_of, norm_text, parse_day, to_ist_date, today_ist
+from .common import IST, ist_to_utc, norm_text, parse_day, to_ist_date, today_ist
 from .schemas import GenMcq, McqBatch
 
 log = logging.getLogger(__name__)
@@ -282,8 +283,9 @@ def _mcq_rows(db: Session, generated: list[tuple[GenMcq, str]], source_type: str
 
 def _finish_test(db: Session, test_id: str, kind: str, title: str, mcq_ids: list[str], duration: int,
                  scheduled_for: datetime | None) -> Test:
+    negative = get_kv(db, "test.negative_marking", False) is True  # the owner's default from Settings
     test = Test(id=test_id, kind=kind, title=title, scheduled_for=scheduled_for, mcq_ids=mcq_ids,
-                duration_min=duration, negative_marking=False, status="ready")
+                duration_min=duration, negative_marking=negative, status="ready")
     db.add(test)
     db.flush()
     return test
@@ -305,7 +307,7 @@ def generate_weekly(db: Session, gateway, *, target: date | None = None, week_st
     """The weekly mock: `count` questions about the topics studied that week, in past-paper style."""
     if target is None:
         target = week_start + timedelta(days=6) if week_start else next_sunday(today_ist())
-    week_start = week_start or monday_of(target)
+    week_start = week_start or target - timedelta(days=6)  # the 7 days up to the mock day
     existing = find_weekly(db, target)
     if existing is not None:
         return existing

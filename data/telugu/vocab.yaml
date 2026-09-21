@@ -156,7 +156,7 @@ items:
   - {kind: vocab, key: v134, level: 2, source: general, te: "శాస్త్రవేత్త", roman: "saastravetta", en: "scientist", ex_te: "శాస్త్రవేత్తలు కొత్త ఉపగ్రహాన్ని ప్రయోగించారు.", ex_en: "The scientists launched a new satellite."}
   - {kind: vocab, key: v135, level: 3, source: general, te: "సాంకేతికత", roman: "saankethikata", en: "technology", ex_te: "సాంకేతికత పాలనను సులభం చేసింది.", ex_en: "Technology has made administration easier."}
   - {kind: vocab, key: v136, level: 3, source: general, te: "ఆవిష్కరణ", roman: "aavishkarana", en: "invention, innovation", ex_te: "కొత్త ఆవిష్కరణలు సమాజానికి ఉపయోగపడతాయి.", ex_en: "New innovations are useful to society."}
-  - {kind: vocab, key: v137, level: 2, source: general, te: "రవాణా", roman: "ravaanaa", en: "transport", ex_te: "మంచి రవాణా సౌకర్యాలు అభివృద్ధికి తోడ్పడతాయి.", ex_en: "Good transport facilities help development."}
+  - {kind: vocab, key: v137, level: 2, source: general, te: "రవాణా", roman: "ravaana", en: "transport", ex_te: "మంచి రవాణా సౌకర్యాలు అభివృద్ధికి తోడ్పడతాయి.", ex_en: "Good transport facilities help development."}
   - {kind: vocab, key: v138, level: 1, source: general, te: "రహదారి", roman: "rahadaari", en: "road, highway", ex_te: "కొత్త రహదారి నిర్మాణం పూర్తయింది.", ex_en: "Construction of the new road is complete."}
   - {kind: vocab, key: v139, level: 1, source: general, te: "రైలు", roman: "railu", en: "train", ex_te: "రైలు సమయానికి చేరుకుంది.", ex_en: "The train arrived on time."}
   - {kind: vocab, key: v140, level: 2, source: general, te: "విద్యుత్తు", roman: "vidyuttu", en: "electricity", ex_te: "గ్రామాలకు విద్యుత్తు సరఫరా పెరిగింది.", ex_en: "Electricity supply to the villages has increased."}
