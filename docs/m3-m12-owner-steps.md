@@ -7,7 +7,11 @@ Do these in PowerShell, in `D:\Mine\UPSC And CIVILS\civils-companion`. Never pas
 ## 1. Clean the stuck git lock (only if git complains)
 If `git status` says `index.lock: File exists`, run:
 ```powershell
-Remove-Item .git\index.lock -Force
+Remove-Item .git\*.lock -Force
+```
+If it also lists files like `index.lock.stale-...` or `HEAD.lock.stale-...` in `.git`, delete those too (harmless leftovers):
+```powershell
+Remove-Item .git\*.lock* -Force
 ```
 (A file named `.git\index.lock.stale-0155` may also be there. It is harmless: you can delete it.)
 
