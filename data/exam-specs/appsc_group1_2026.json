@@ -1,0 +1,38 @@
+{
+  "key": "appsc-group1-2026",
+  "exam": "APPSC Group-I",
+  "official_name": "Group-I Services, Brief Notification No. 07/2026 dated 15-09-2026",
+  "source": "Group_I_072026.pdf (24 pages), apply at https://psc.ap.gov.in",
+  "verified": true,
+  "verified_note": "Read from the brief notification by Claude on 2026-09-21. Age limits, physical standards and vacancies per post come in the DETAILED notification, due on or before 2026-10-06. Nothing about them is verified yet.",
+  "application_window": {"opens": "2026-10-06", "closes": "2026-10-27T23:59:00+05:30"},
+  "detailed_notification_due": "2026-10-06",
+  "posts_total": 163,
+  "posts": {
+    "01": ["Deputy Collector", 11], "02": ["Assistant Commissioner (State Tax)", 14], "03": ["DSP (Civil) Cat-II", 36],
+    "04": ["DSP Communications", 3], "05": ["Divisional Employment Officer", 14], "06": ["Regional Transport Officer", 3],
+    "07": ["District Tribal Welfare Officer", 1], "08": ["Deputy Registrar", 15], "09": ["Municipal Commissioner Gr-II", 12],
+    "10": ["ATO / AAO", 2], "11": ["District Employment Officer", 3], "12": ["Assistant Audit Officer", 14], "13": ["DDO Panchayat Raj", 35]
+  },
+  "pay_pc_01_to_03": "61960-151370",
+  "screening_test": {
+    "mode": "Offline OMR, objective", "negative_marking": "1/3 per wrong answer",
+    "papers": [
+      {"name": "Paper I - General Studies", "questions": 120, "marks": 120, "minutes": 120, "sections": ["History and Culture (30)", "Constitution, Polity, Social Justice and International Relations (30)", "Indian and AP Economy and Planning (30)", "Geography (30)"]},
+      {"name": "Paper II - General Aptitude", "questions": 120, "marks": 120, "minutes": 120, "sections": ["Part A: General Mental Ability, Administrative and Psychological Abilities (60)", "Part B(i): Science and Technology (30)", "Part B(ii): Current Events (30)"]}
+    ]
+  },
+  "mains": {
+    "qualifying": [{"name": "Telugu", "marks": 150, "standard": "SSC", "minutes": 180}, {"name": "English", "marks": 150, "standard": "SSC", "minutes": 180}],
+    "papers": [
+      {"name": "Paper I - General Essay", "marks": 150, "minutes": 180},
+      {"name": "Paper II - History, Culture and Geography of India and Andhra Pradesh", "marks": 150, "minutes": 180},
+      {"name": "Paper III - Polity, Constitution, Governance, Law and Ethics", "marks": 150, "minutes": 180},
+      {"name": "Paper IV - Economy and Development of India and Andhra Pradesh", "marks": 150, "minutes": 180},
+      {"name": "Paper V - Science and Technology", "marks": 150, "minutes": 180}
+    ],
+    "interview_marks": 75, "total_marks": 825
+  },
+  "english_paper_types": ["Essay 20", "Letter 10", "Press release / appeal 10", "Report 15", "Visual information 15", "Formal speech 15", "Precis 15", "Reading comprehension 15", "Grammar MCQs 20", "Translation 15"],
+  "telugu_paper_types": ["Essay 20 (200-250 words, one of three topics)", "Elaborate meaning of a poem/verse 20 (any two of three; Vemana and Sumathi Satakam)", "Precis 10 (one third)", "Comprehension 10 (250-word passage, five questions)", "Formal speech 10", "Press note 10", "Letter 10", "Application 10", "Report 10", "Translation English to Telugu 10", "Translation Telugu to English 10", "Word meanings 10", "Synonyms and antonyms 10"]
+}

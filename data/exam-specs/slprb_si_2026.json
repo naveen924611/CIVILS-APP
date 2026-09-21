@@ -1,0 +1,78 @@
+{
+  "key": "slprb-si-2026",
+  "exam": "SLPRB SI (Civil)",
+  "official_name": "Sub-Inspector of Police (Civil) - Men and Women (Posts Code 11, SCT SI Civil), Andhra Pradesh",
+  "source": "SLPRB_AP_SI_Notification_2026.pdf, Rc.No.81/SLPRB/Rect.1/2026 dated 16-09-2026 (42 pages), apply at https://slprb.ap.gov.in",
+  "verified": true,
+  "verified_note": "Every number below was read from the notification PDF by Claude on 2026-09-21. The application dates are NOT in the PDF: they will come in a press release.",
+  "posts": {
+    "11": {"name": "SCT SI (Civil) Men and Women", "vacancies": 253, "zones_I_to_VI": [42, 39, 39, 48, 43, 42]},
+    "12": {"name": "SCT RSI (AR)", "vacancies": 116},
+    "31": {"name": "SI (SPF), men only", "vacancies": 9},
+    "total": 378
+  },
+  "application": {"dates": "not announced (press release)", "fee_general": 600, "fee_sc_st": 300, "fee_non_local": 600, "currency": "INR"},
+  "eligibility": {
+    "age_reference_date": "2026-07-01",
+    "age_min": 21,
+    "age_max": 27,
+    "born_between": ["1999-07-02", "2005-07-01"],
+    "age_relaxation_years": {"EWS": 5, "BC": 5, "SC": 5, "ST": 5, "govt_employee": 5, "ex_serviceman": 3, "ncc_instructor": 3},
+    "age_relaxation_note": "Ex-servicemen get 3 years plus their service; government employees up to 5 years of service. Read Section on age in the PDF before applying.",
+    "qualification": "Any degree as on 2026-07-01. SC/ST: Intermediate plus studying a degree is also accepted.",
+    "certificate_issue_on_or_after": "2026-04-01",
+    "certificates": ["Community certificate", "Non-creamy-layer certificate (BC)", "EWS certificate"],
+    "local_rule": "5% open competition, 95% local candidates",
+    "women_reservation": "33 1/3 percent in Post Code 11",
+    "medical": {
+      "vision": "6/6 in each eye (distant) and 0/5 Snellen (near)",
+      "disqualifying": ["Colour blindness", "Squint", "Knock-knees", "Pigeon chest", "Flat feet", "Varicose veins", "Hammer toes", "Stammering", "Hard hearing"]
+    }
+  },
+  "stages_pc11": [
+    {
+      "stage": "Prelim Written Test",
+      "mode": "OMR, objective (no negative marking is mentioned)",
+      "papers": [
+        {"name": "Paper 1 - Arithmetic and Test of Reasoning", "questions": 100, "marks": 100, "hours": 3, "standard": "SSC"},
+        {"name": "Paper 2 - General Studies", "questions": 100, "marks": 100, "hours": 3, "standard": "Degree"}
+      ],
+      "qualifying_percent": {"OC": 40, "EWS": 40, "BC": 35, "SC": 30, "ST": 30},
+      "qualifying_note": "The percentage must be reached in EACH paper. Prelim marks do not count in the final merit."
+    },
+    {
+      "stage": "PMT (Physical Measurement Test)",
+      "men": {"height_cm": 167.6, "chest_cm": 86.3, "chest_expansion_cm": 5},
+      "women": {"height_cm": 152.5, "weight_kg": 40},
+      "abo_st_agency_area": {"men": {"height_cm": 160, "chest_cm": 80, "chest_expansion_cm": 3}, "women": {"height_cm": 150, "weight_kg": 38}}
+    },
+    {
+      "stage": "PET (Physical Efficiency Test)",
+      "qualifying": true,
+      "rule": "1600 m plus ONE of 100 m or long jump. Electronic timing, no spike shoes, no re-test.",
+      "standards": {
+        "run_1600_m_seconds": {"general": 480, "ex_serviceman": 570, "women": 630},
+        "run_100_m_seconds": {"general": 15.0, "ex_serviceman": 16.5, "women": 18.0},
+        "long_jump_m": {"general": 3.80, "ex_serviceman": 3.65, "women": 2.75}
+      }
+    },
+    {
+      "stage": "Final Written Exam",
+      "papers": [
+        {"name": "Paper I - English", "type": "descriptive", "marks": 100, "hours": 3, "standard": "Degree", "qualifying": true},
+        {"name": "Paper II - Telugu or Urdu", "type": "descriptive", "marks": 100, "hours": 3, "standard": "Degree", "qualifying": true},
+        {"name": "Paper III - Arithmetic and Test of Reasoning", "type": "objective", "questions": 200, "marks": 200, "hours": 3, "standard": "SSC"},
+        {"name": "Paper IV - General Studies", "type": "objective", "questions": 200, "marks": 200, "hours": 3, "standard": "Degree"}
+      ],
+      "merit": "Paper III + Paper IV = 400 marks. Papers I and II are qualifying only (failing either disqualifies). Ties: older candidate first."
+    }
+  ],
+  "pay": {"scale": "44570-127480 (RPS 2022)", "note": "Stipend during training."},
+  "syllabus_annexure_II": {
+    "paper_I_english": ["Short essay", "Comprehension", "Precis", "Letter writing", "Paragraph or report writing", "Translation English to Telugu"],
+    "paper_II_telugu_urdu": ["Short essay", "Comprehension", "Precis", "Letter writing", "Paragraph or report writing", "Translation Telugu/Urdu to English"],
+    "arithmetic": ["Number system", "Simple and compound interest", "Ratio and proportion", "Average", "Percentage", "Profit and loss", "Time and work", "Work and wages", "Time and distance", "Clocks and calendars", "Partnership", "Mensuration"],
+    "reasoning": ["Analogies", "Similarities and differences", "Spatial visualisation", "Spatial orientation", "Problem solving", "Analysis", "Judgment", "Decision making", "Visual memory"],
+    "general_studies": ["General Science (contemporary developments, environment)", "Current events of national and international importance", "History of India (social, economic, cultural, political aspects and the Indian National Movement)", "Geography of India", "Indian Polity and Economy (political system, rural development, planning, economic reforms)"]
+  }
+}
