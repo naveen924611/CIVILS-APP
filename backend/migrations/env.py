@@ -2,8 +2,8 @@ from alembic import context
 
 from app.db import models  # noqa: F401  (registers tables)
 from app.db.base import Base
-from app.features import load_features
 from app.db.session import get_engine
+from app.features import load_features
 
 load_features()  # feature packages may define their own tables
 target_metadata = Base.metadata

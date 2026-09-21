@@ -118,7 +118,7 @@ private fun Section(title: String, rows: List<AnswerSubmission>, emptyText: Stri
 /** A row of little bars: the last scores, oldest first, so improvement is easy to see. */
 @Composable
 private fun ScoreTrend(done: List<AnswerSubmission>) {
-    val scores = done.mapNotNull { it.score }.take(12).reversed()
+    val scores = done.mapNotNull { it.score }.take(12).asReversed()
     if (scores.size < 2) return
     val heights = AnswerLogic.trend(scores)
     CcCard(Modifier.fillMaxWidth()) {

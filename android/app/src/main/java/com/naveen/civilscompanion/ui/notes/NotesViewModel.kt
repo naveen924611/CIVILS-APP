@@ -66,7 +66,7 @@ class NotesViewModel @Inject constructor(
     private val versions = MutableStateFlow<VersionsUi?>(null)
 
     private val noteHits: Flow<List<Note>> = query.flatMapLatest { q ->
-        if (q.trim().length < 2) flowOf(emptyList()) else store.observe(Tables.Notes, RecordQuery(contains = q.trim(), limit = 40))
+        if (q.trim().length < 2) flowOf(emptyList<Note>()) else store.observe(Tables.Notes, RecordQuery(contains = q.trim(), limit = 40))
     }
 
     private val base = combine(store.observe(Tables.Topics), exam, query, noteHits) { topics, examNow, q, notes ->

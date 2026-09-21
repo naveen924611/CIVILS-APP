@@ -12,6 +12,7 @@ import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import com.naveen.civilscompanion.appEntryPoint
+import com.naveen.civilscompanion.widget.WidgetUpdater
 import java.io.IOException
 import java.util.concurrent.TimeUnit
 import retrofit2.HttpException
@@ -30,6 +31,7 @@ class SyncWorker(context: Context, params: WorkerParameters) : CoroutineWorker(c
             }
             val saved = app.downloads().downloadRecent()
             app.notifier().notifyRecent(saved)
+            WidgetUpdater.refresh(applicationContext)
             Result.success()
         } catch (e: HttpException) {
             if (e.code() == 401) Result.success() else retryOrGiveUp()

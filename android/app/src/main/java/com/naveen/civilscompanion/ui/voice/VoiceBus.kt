@@ -32,7 +32,7 @@ class VoiceBus @Inject constructor() {
 
     /** True when a screen handled the command. Call on the main thread. */
     fun dispatch(command: VoiceCommand): Boolean {
-        for (handler in handlers.reversed()) {
+        for (handler in handlers.toList().asReversed()) { // asReversed: List.reversed() is a JDK 21 method that older tablets lack
             if (handler(command)) return true
         }
         return false

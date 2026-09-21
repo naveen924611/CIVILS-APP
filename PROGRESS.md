@@ -1,6 +1,6 @@
 # Progress
-Current shoot: 1 | Current milestone: M2 (Briefs, audio, notifications) | Status: M2a server + M2b Android code written; waiting for owner to update laptop server, build APK and test on the tablet
-Last updated: 2026-09-20
+Current shoot: 2 done (code) | Current milestone: M3-M12 all WRITTEN | Status: every milestone's code is written; server tests pass; Android code has NEVER been compiled. Next: owner pushes, reads the first GitHub Actions build, sends me the red lines, then tablet testing (docs/m3-m12-owner-steps.md)
+Last updated: 2026-09-21
 
 ## Done
 - M1 repo skeleton: CLAUDE.md (copy of FINAL-SPEC), PROGRESS.md, README, .gitignore, .env.example, gitleaks pre-commit config (2026-09-20)
@@ -20,6 +20,34 @@ Last updated: 2026-09-20
 - Settings: brief times, days, extra briefs, Wi-Fi-only downloads. First-run permissions setup (6.19 part): notifications, exact alarms, battery, offline voice.
 - Not done on purpose (later milestones): line-by-line highlight while audio plays (needs timestamps), "Say next / repeat" voice hint and mic button (M6), linked syllabus topic (M4), end-of-brief quiz (M5).
 - 3 JVM unit-test files (times, formats, server JSON parsing). Versions Room 2.8.0, Media3 1.8.0, WorkManager 2.10.3 are UNVERIFIED (no Maven access here); the first CI run is the check.
+
+## M3-M12 (2026-09-21) - written unattended, server tested, Android NOT YET COMPILED
+Foundation: generic Room `records` store (31 tables) + generic `/sync/pull` and `/sync/push`, a job queue (tablet writes a job, server answers, one combined push), RAG (BM25 + embeddings), feature loader. Builder rulebook: docs/build-guide.md. Each builder's assumptions and manual test steps: docs/agent-notes/*.md. Job contracts: docs/job-types.md. Verified facts and unverified data: docs/decisions.md.
+- **M3 Library, Reader, Capture** - done (code). Upload PDF, search inside, Reader with read-aloud and highlight, resume, camera scan with on-device OCR + AI reading of Telugu pages, offline photo queue. Sources list unverified.
+- **M4 Syllabus, Notes** - done (code). Syllabus import + review, 4 starter outlines (unverified), one note per topic, AI note merge (your edits always win), in-the-news matching, syllabus map.
+- **M5 Revision, Planner, Today, Exams** - done (code). FSRS-6 in Python and Kotlin (shared test vectors), hands-free revision, daily plan, exam setup.
+- **M6 Ask, voice, tutor** - done (code). Ask screen (typed/voice, offline queue, sources, read-aloud), floating mic with 14 offline commands.
+- **M7 Settings, Storage, Widget, Setup** - done (code). Settings, storage usage/limit/cleanup/backups/export, setup wizard, Glance widget, day notifications.
+- **M8 Tests, mistakes** - done (code). Mock/topic/past-paper tests, negative marking, mistake book feeding revision.
+- **M9 Explain-back, Answer writing** - done (code).
+- **M10 Sheets, weekly report, last-month mode** - done (code). Revision sheets (PDF), weekly report (Sunday), last-month mode.
+- **M11 Focus, Videos** - done (code). Focus timer with Do Not Disturb, video links + notes (nothing downloaded).
+- **M12 Telugu, monthly compilation** - done (code). Telugu practice (192 unverified items), monthly digest (markdown + PDF; Telugu letters not in the PDF, shown on the tablet).
+- Server tests: all pass (about 400), ruff clean, migrations 0001-0003 match the models. Kotlin JVM tests written, never run.
+- Reviewed by "human compiler" agents (no Android SDK here): a handful of likely compile errors fixed.
+- Integration edits: `CivilsMessagingService` shows `weekly_report` and `mock_ready` pushes; `CivilsApp` schedules day notifications after login; `SyncWorker` refreshes the widget after each sync.
+
+## Waiting on owner now
+1. `git push` and read the first `android-apk` run; send me the red lines (docs/m3-m12-owner-steps.md).
+2. Update the laptop server (same file, step 3).
+3. Install the APK and go through the M3-M12 checklist.
+
+## Known gaps (small, by design)
+- Voice: tap-to-talk instead of hold-to-talk; headphone button map and wake phrase are stored but not applied (V3 notes).
+- Brief quizzes/note questions do not yet feed the mistake book (`TestsRepository.recordAnswer` not called from Briefs/Notes).
+- Videos tab inside a topic (`TopicVideosPanel`) is built but not yet placed in Notes/Library.
+- Telugu letters missing in server PDFs; Telugu practice sound needs a te-IN voice on the tablet.
+- Voice-note option from spec 6.11 not built.
 
 ## In progress
 - Task: M2 acceptance on the real tablet (see docs/tablet-test-checklist.md, M2 additions)

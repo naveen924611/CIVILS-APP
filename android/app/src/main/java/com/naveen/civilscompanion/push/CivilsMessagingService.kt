@@ -43,6 +43,14 @@ class CivilsMessagingService : FirebaseMessagingService() {
                 title.ifBlank { "Civils Companion" }, body.ifBlank { "Your answers are ready" },
                 CivilsApp.ANSWERS_CHANNEL, Routes.ASK,
             )
+            "weekly_report" -> showPlain(
+                title.ifBlank { "Your weekly report is ready" }, body.ifBlank { "See how your week went" },
+                CivilsApp.SUMMARY_CHANNEL, Routes.REPORT,
+            )
+            "mock_ready" -> showPlain(
+                title.ifBlank { "Your test is ready" }, body.ifBlank { "Open Tests to start" },
+                CivilsApp.ANSWERS_CHANNEL, Routes.TESTS,
+            )
         }
         if (data["type"] != null) SyncScheduler.syncNow(applicationContext)
     }

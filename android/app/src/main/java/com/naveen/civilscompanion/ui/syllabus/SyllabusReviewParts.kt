@@ -160,8 +160,12 @@ fun ReviewActionDialog(
                 onClick = {
                     when (action.kind) {
                         "add" -> onAdd(key, text)
-                        "split" -> if (key != null) onSplit(key, SyllabusTree.splitTitles(text))
-                        else -> if (key != null) onRename(key, text)
+                        "split" -> {
+                            if (key != null) onSplit(key, SyllabusTree.splitTitles(text))
+                        }
+                        else -> {
+                            if (key != null) onRename(key, text)
+                        }
                     }
                     onDismiss()
                 },

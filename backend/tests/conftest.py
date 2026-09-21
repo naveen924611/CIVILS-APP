@@ -43,6 +43,7 @@ def auth_header(tokens):
 @pytest.fixture
 def env(tmp_path, monkeypatch):
     """Settings + session factory on a fresh database, for tests that do not need the web app."""
+    from app.db import models  # noqa: F401  (registers tables)
     from app.db.base import Base
     from app.db.session import get_engine, get_session_factory
 

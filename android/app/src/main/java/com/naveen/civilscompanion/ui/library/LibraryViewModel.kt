@@ -88,7 +88,7 @@ class LibraryViewModel @Inject constructor(
 
     private val hitPages: Flow<List<DocPage>> = local.map { it.query.trim() }.distinctUntilChanged().debounce(250)
         .flatMapLatest { q ->
-            if (q.length < 2) flowOf(emptyList()) else store.observe(Tables.DocPages, RecordQuery(contains = q, limit = 40))
+            if (q.length < 2) flowOf(emptyList<DocPage>()) else store.observe(Tables.DocPages, RecordQuery(contains = q, limit = 40))
         }
 
     private val libraryDay: Flow<LibraryDay> = kv.observe(LIBRARY_DAY_KEY, LibraryDay.serializer(), LibraryDay())

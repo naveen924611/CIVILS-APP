@@ -26,8 +26,10 @@ object SheetLogic {
 
     /** Days from [today] (YYYY-MM-DD, India) to an exam given as an ISO time (UTC). Null when there is no date or it has passed. */
     fun daysLeft(examIso: String?, today: String): Int? {
-        val millis = TimeUtil.parse(examIso) ?: return null
-        val exam = LocalDate.parse(TimeUtil.dateOf(millis))
+        if (examIso == null) return null
+        val millis = TimeUtil.parse(examIso)
+        val day = if (millis != null) TimeUtil.dateOf(millis) else if (examIso.length >= 10) examIso.substring(0, 10) else return null
+        val exam = runCatching { LocalDate.parse(day) }.getOrNull() ?: return null
         val days = ChronoUnit.DAYS.between(LocalDate.parse(today), exam).toInt()
         return if (days >= 0) days else null
     }

@@ -7,6 +7,7 @@ import com.naveen.civilscompanion.alarms.BriefAlarmScheduler
 import com.naveen.civilscompanion.data.Prefs
 import com.naveen.civilscompanion.data.auth.TokenStore
 import com.naveen.civilscompanion.data.local.DB_SCHEMA_VERSION
+import com.naveen.civilscompanion.notify.DayNotifier
 import com.naveen.civilscompanion.sync.SyncScheduler
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
@@ -21,6 +22,7 @@ class CivilsApp : Application() {
     @Inject lateinit var tokens: TokenStore
     @Inject lateinit var alarms: BriefAlarmScheduler
     @Inject lateinit var prefs: Prefs
+    @Inject lateinit var dayNotifier: DayNotifier
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
     override fun onCreate() {
@@ -37,6 +39,7 @@ class CivilsApp : Application() {
                     SyncScheduler.schedulePeriodic(this@CivilsApp)
                     SyncScheduler.syncNow(this@CivilsApp)
                     alarms.rescheduleAll()
+                    runCatching { dayNotifier.rescheduleAll() }
                 } else {
                     SyncScheduler.cancelAll(this@CivilsApp)
                     alarms.cancelAll()

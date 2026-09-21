@@ -125,7 +125,7 @@ class ReviseDataTest {
         assertEquals("29 d", ReviseData.intervalLabel(29))
         assertEquals("2 mo", ReviseData.intervalLabel(60))
         assertEquals("1.5 y", ReviseData.intervalLabel(548))
-        assertEquals("Article 21 protects , blank ,", ReviseData.speechText("**Article 21** protects ..."))
+        assertEquals("Article 21 protects , blank,", ReviseData.speechText("**Article 21** protects ..."))
         assertTrue(ReviseData.isValidTime("18:00"))
         assertTrue(ReviseData.isValidTime("7:30"))
         assertFalse(ReviseData.isValidTime("25:00"))

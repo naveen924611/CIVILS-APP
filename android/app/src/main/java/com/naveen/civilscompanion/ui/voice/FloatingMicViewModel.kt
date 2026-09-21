@@ -86,7 +86,7 @@ class FloatingMicViewModel @Inject constructor(
         _ui.value = MicUi(message = message, canOpenAsk = canOpenAsk)
         clearJob?.cancel()
         clearJob = viewModelScope.launch {
-            delay(if (canOpenAsk) 9_000 else 5_000)
+            delay(if (canOpenAsk) 9_000L else 5_000L)
             _ui.value = MicUi()
         }
     }
