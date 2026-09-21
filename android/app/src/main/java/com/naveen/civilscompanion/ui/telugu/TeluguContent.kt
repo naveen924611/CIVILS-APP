@@ -51,7 +51,7 @@ data class TeluguFeedback(
     val modelAnswer: String,
 )
 
-/** Reads the `content_json` of a TeluguItem (see data/telugu/*.yaml) and a `telugu_feedback` job result. Forgiving: missing = empty. */
+/** Reads the `content_json` of a TeluguItem (see the yaml files in data/telugu) and a `telugu_feedback` job result. Forgiving: missing = empty. */
 object TeluguContent {
     private fun JsonObject.s(key: String): String =
         (this[key] as? JsonPrimitive)?.takeIf { it !is JsonNull }?.content.orEmpty()
