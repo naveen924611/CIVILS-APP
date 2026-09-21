@@ -21,6 +21,7 @@ FEATURES = [
     "tutor",        # M6  Ask: tutor_question jobs, answers with sources
     "tests",        # M8  MCQs, mock tests, PYQs, mistake book
     "answers",      # M9  explain-back and answer-writing feedback
+    "si",           # SI  SI (Civil) goal: exam facts route, plan blocks (physical training, aptitude drill)
     "reports",      # M10 revision sheets, weekly report, last-month mode
     "videos",       # M11 YouTube search and video notes
     "telugu",       # M12 Telugu module

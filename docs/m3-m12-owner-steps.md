@@ -45,3 +45,11 @@ The log should show the database upgrade (`0003`) and no red errors. Then check
 
 ## 6. Test on the tablet
 Follow the new sections at the bottom of `docs/tablet-test-checklist.md` (M3 to M12). Tick what works, write down what does not.
+
+
+## SI (Civil) goal: what you do (added 2026-09-21)
+1. Pull and restart the laptop server as in step 3 (so the new outlines and the aptitude drills are available). Push, and read the next `android-apk` run: send me the red lines if any.
+2. On the tablet: sync, open Syllabus review and APPROVE the three new outlines (SI written, Group-I Prelims, Group-I Mains). If you had not yet approved the old Group-I outlines they vanish by themselves.
+3. Open Goals (Exams > "SI (Civil) goal and checklist"): fill your profile and tick the documents you already have. Certificates must be issued on or after 01-04-2026.
+4. Watch https://slprb.ap.gov.in (SI application press release) and https://psc.ap.gov.in (Group-I Detailed Notification, due by 06-10-2026; application closes 27-10-2026 at 11:59 PM). Paste the new PDFs here and I will update the age, physical and date fields. You apply and pay yourself; never give passwords or payment details to me.
+5. Copy your SCERT Telugu textbook verses (Vemana, Sumathi Satakam) into Notes to practise "explain the verse".

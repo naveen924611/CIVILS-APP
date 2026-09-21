@@ -99,7 +99,7 @@ class PlanBlocksTest {
     @Test
     fun priorityAndTeluguSettings() {
         assertEquals(0, StudyPrefs.priorityMode(StudyPrefs.parsePriority(null)))
-        for (mode in 0..2) {
+        for (mode in 0..3) {
             assertEquals(mode, StudyPrefs.priorityMode(StudyPrefs.parsePriority(StudyPrefs.priorityJson(StudyPrefs.priorityFor(mode)))))
         }
         assertEquals(15, StudyPrefs.parseTelugu(null))

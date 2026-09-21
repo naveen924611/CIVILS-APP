@@ -1,7 +1,8 @@
 """Routes of the tests feature (login is already required). Most work goes through jobs (works offline); these are the
 "do it now" versions and a few helpers.
 
-POST /tests/generate         {kind, topic_id?, exam?, year?, paper?, count?, date?}  -> the new test row
+POST /tests/generate         {kind, topic_id?, exam?, year?, paper?, count?, date?, area?}  -> the new test row
+                             kind "aptitude" (SI drill, no AI): {area? (else a mix of four areas), count? (20), date?}
 GET  /tests/{id}/analysis    -> the analysis of a finished test (made now when the answers are all here)
 POST /tests/pyq/map          -> {questions, mapped, unmapped, importance}  maps past-paper questions to topics
 GET  /tests/pyq/stats        -> {total, with_answer, mapped, papers: [{exam, year, paper, count}]}
@@ -31,6 +32,7 @@ class GenerateIn(BaseModel):
     paper: str | None = None
     count: int | None = None
     date: str | None = None
+    area: str | None = None
 
 
 @router.post("/generate")

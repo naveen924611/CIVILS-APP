@@ -13,7 +13,7 @@ import kotlinx.serialization.json.intOrNull
  * The study settings shared with the server (KV keys, see docs/build-guide.md section 9):
  *   study.hours          {"mon":4,...,"sun":3}
  *   study.telugu_minutes 15
- *   exam.priority        {"UPSC":1,"APPSC":1}
+ *   exam.priority        {"UPSC":1,"APPSC":1,"SI":1}
  * Reading is forgiving: anything missing or odd falls back to the default. Plain Kotlin, unit tested.
  */
 object StudyPrefs {
@@ -56,28 +56,37 @@ object StudyPrefs {
         return mapOf(
             "UPSC" to (num(o?.get("UPSC")) ?: 1.0).coerceAtLeast(0.0),
             "APPSC" to (num(o?.get("APPSC")) ?: 1.0).coerceAtLeast(0.0),
+            "SI" to (num(o?.get("SI")) ?: 1.0).coerceAtLeast(0.0),
         )
     }
 
     fun priorityJson(p: Map<String, Double>): JsonObject =
-        JsonObject(mapOf("UPSC" to JsonPrimitive(p["UPSC"] ?: 1.0), "APPSC" to JsonPrimitive(p["APPSC"] ?: 1.0)))
+        JsonObject(
+            mapOf(
+                "UPSC" to JsonPrimitive(p["UPSC"] ?: 1.0),
+                "APPSC" to JsonPrimitive(p["APPSC"] ?: 1.0),
+                "SI" to JsonPrimitive(p["SI"] ?: 1.0),
+            ),
+        )
 
-    /** 0 = both equal, 1 = more on UPSC, 2 = more on APPSC. */
+    /** 0 = all equal, 1 = more on UPSC, 2 = more on APPSC, 3 = more on SI (the single strictly largest weight). */
     fun priorityMode(p: Map<String, Double>): Int {
         val u = p["UPSC"] ?: 1.0
         val a = p["APPSC"] ?: 1.0
+        val s = p["SI"] ?: 1.0
         return when {
-            u > a -> 1
-            a > u -> 2
+            u > a && u > s -> 1
+            a > u && a > s -> 2
+            s > u && s > a -> 3
             else -> 0
         }
     }
 
-    fun priorityFor(mode: Int): Map<String, Double> = when (mode) {
-        1 -> mapOf("UPSC" to 2.0, "APPSC" to 1.0)
-        2 -> mapOf("UPSC" to 1.0, "APPSC" to 2.0)
-        else -> mapOf("UPSC" to 1.0, "APPSC" to 1.0)
-    }
+    fun priorityFor(mode: Int): Map<String, Double> = mapOf(
+        "UPSC" to (if (mode == 1) 2.0 else 1.0),
+        "APPSC" to (if (mode == 2) 2.0 else 1.0),
+        "SI" to (if (mode == 3) 2.0 else 1.0),
+    )
 }
 
 /** Exam dates are stored as ISO text ("2027-02-14T00:00:00Z"); only the first ten characters (the day) matter. */

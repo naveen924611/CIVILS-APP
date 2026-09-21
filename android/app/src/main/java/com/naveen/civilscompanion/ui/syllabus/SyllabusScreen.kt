@@ -132,7 +132,7 @@ fun SyllabusScreen(nav: NavHostController, vm: SyllabusViewModel = hiltViewModel
 @Composable
 private fun ExamChips(current: String?, onPick: (String?) -> Unit) {
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-        listOf<Pair<String?, String>>(null to "Both exams", "APPSC" to "APPSC", "UPSC" to "UPSC").forEach { (value, label) ->
+        listOf<Pair<String?, String>>(null to "All exams", "APPSC" to "APPSC", "UPSC" to "UPSC", "SI" to "SI").forEach { (value, label) ->
             val chosen = value == current
             Text(
                 label,

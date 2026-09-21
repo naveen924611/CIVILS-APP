@@ -16,6 +16,7 @@ from app.api.kv import get_kv
 from app.db.models import Card
 from app.db.models_v2 import Exam, Review, RevisionOrder, RevisionRule, Topic
 from app.db.util import as_utc
+from app.features.examnames import has_word
 from app.srs import fsrs6
 from app.srs.strength import status_for, topic_memory
 
@@ -111,7 +112,7 @@ def exam_proximity(topic: Topic, exams: list[Exam], today: date) -> float:
     for e in exams:
         if e.date is None:
             continue
-        if tags and not any(t in e.name.lower() for t in tags):
+        if tags and not any(has_word(e.name, t) for t in tags):
             continue
         left = (as_utc(e.date).astimezone(IST).date() - today).days
         if left < 0:

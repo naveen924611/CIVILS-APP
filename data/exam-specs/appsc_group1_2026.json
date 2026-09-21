@@ -4,35 +4,209 @@
   "official_name": "Group-I Services, Brief Notification No. 07/2026 dated 15-09-2026",
   "source": "Group_I_072026.pdf (24 pages), apply at https://psc.ap.gov.in",
   "verified": true,
-  "verified_note": "Read from the brief notification by Claude on 2026-09-21. Age limits, physical standards and vacancies per post come in the DETAILED notification, due on or before 2026-10-06. Nothing about them is verified yet.",
-  "application_window": {"opens": "2026-10-06", "closes": "2026-10-27T23:59:00+05:30"},
+  "verified_note": "Read page by page from the brief notification (24-page scan) by Claude on 2026-09-21 and re-checked by an independent verifier the same day. The brief notification gives NO age limit, NO physical standard and NO PET/PMT detail. It only says (page 2) 'For P.C.No.03,04 please see the physical requirements in Detailed Notification' and that Age, Community, Qualifications and other information come in the Detailed Notification on or before 2026-10-06. Nothing about them is verified yet.",
+  "application_window": {
+    "opens": "2026-10-06",
+    "closes": "2026-10-27T23:59:00+05:30"
+  },
   "detailed_notification_due": "2026-10-06",
   "posts_total": 163,
   "posts": {
-    "01": ["Deputy Collector", 11], "02": ["Assistant Commissioner (State Tax)", 14], "03": ["DSP (Civil) Cat-II", 36],
-    "04": ["DSP Communications", 3], "05": ["Divisional Employment Officer", 14], "06": ["Regional Transport Officer", 3],
-    "07": ["District Tribal Welfare Officer", 1], "08": ["Deputy Registrar", 15], "09": ["Municipal Commissioner Gr-II", 12],
-    "10": ["ATO / AAO", 2], "11": ["District Employment Officer", 3], "12": ["Assistant Audit Officer", 14], "13": ["DDO Panchayat Raj", 35]
-  },
-  "pay_pc_01_to_03": "61960-151370",
-  "screening_test": {
-    "mode": "Offline OMR, objective", "negative_marking": "1/3 per wrong answer",
-    "papers": [
-      {"name": "Paper I - General Studies", "questions": 120, "marks": 120, "minutes": 120, "sections": ["History and Culture (30)", "Constitution, Polity, Social Justice and International Relations (30)", "Indian and AP Economy and Planning (30)", "Geography (30)"]},
-      {"name": "Paper II - General Aptitude", "questions": 120, "marks": 120, "minutes": 120, "sections": ["Part A: General Mental Ability, Administrative and Psychological Abilities (60)", "Part B(i): Science and Technology (30)", "Part B(ii): Current Events (30)"]}
+    "01": [
+      "Deputy Collectors in A.P. Civil Service (Executive Branch)",
+      11
+    ],
+    "02": [
+      "Asst. Commissioner of State Tax in A.P. State Tax Service",
+      14
+    ],
+    "03": [
+      "Deputy Superintendent of Police (Civil) Category-II in A.P. Police Service",
+      36
+    ],
+    "04": [
+      "DSP (Communications) in A.P. Police Service",
+      3
+    ],
+    "05": [
+      "District Educational Officer in A.P. Educational Service",
+      14
+    ],
+    "06": [
+      "Regional Transport Officers in A.P. Transport Service",
+      3
+    ],
+    "07": [
+      "District Tribal Welfare Officer in A.P. Tribal Welfare Service",
+      1
+    ],
+    "08": [
+      "Deputy Registrar in A.P. Cooperative Service",
+      15
+    ],
+    "09": [
+      "Municipal Commissioner Grade-II in A.P. Municipal Administration Service",
+      12
+    ],
+    "10": [
+      "Asst. Treasury Officer / Asst. Accounts Officer in A.P. Treasury & Accounts Service",
+      2
+    ],
+    "11": [
+      "District Employment Officer in A.P. Employment Exchange Service",
+      3
+    ],
+    "12": [
+      "Assistant Audit Officer in A.P. State Audit Service",
+      14
+    ],
+    "13": [
+      "Divisional Development Officer in A.P. Panchayat Raj Service",
+      35
     ]
   },
-  "mains": {
-    "qualifying": [{"name": "Telugu", "marks": 150, "standard": "SSC", "minutes": 180}, {"name": "English", "marks": 150, "standard": "SSC", "minutes": 180}],
+  "screening_test": {
+    "mode": "Offline OMR, objective",
+    "negative_marking": "1/3 per wrong answer",
     "papers": [
-      {"name": "Paper I - General Essay", "marks": 150, "minutes": 180},
-      {"name": "Paper II - History, Culture and Geography of India and Andhra Pradesh", "marks": 150, "minutes": 180},
-      {"name": "Paper III - Polity, Constitution, Governance, Law and Ethics", "marks": 150, "minutes": 180},
-      {"name": "Paper IV - Economy and Development of India and Andhra Pradesh", "marks": 150, "minutes": 180},
-      {"name": "Paper V - Science and Technology", "marks": 150, "minutes": 180}
+      {
+        "name": "Paper I - General Studies",
+        "questions": 120,
+        "marks": 120,
+        "minutes": 120,
+        "sections": [
+          "History and Culture (30)",
+          "Constitution, Polity, Social Justice and International Relations (30)",
+          "Indian and AP Economy and Planning (30)",
+          "Geography (30)"
+        ]
+      },
+      {
+        "name": "Paper II - General Aptitude",
+        "questions": 120,
+        "marks": 120,
+        "minutes": 120,
+        "sections": [
+          "Part A: General Mental Ability, Administrative and Psychological Abilities (60)",
+          "Part B(i): Science and Technology (30)",
+          "Part B(ii): Current Events (30)"
+        ]
+      }
     ],
-    "interview_marks": 75, "total_marks": 825
+    "standard": "Degree standard",
+    "date": "To be announced in the Detailed Notification"
   },
-  "english_paper_types": ["Essay 20", "Letter 10", "Press release / appeal 10", "Report 15", "Visual information 15", "Formal speech 15", "Precis 15", "Reading comprehension 15", "Grammar MCQs 20", "Translation 15"],
-  "telugu_paper_types": ["Essay 20 (200-250 words, one of three topics)", "Elaborate meaning of a poem/verse 20 (any two of three; Vemana and Sumathi Satakam)", "Precis 10 (one third)", "Comprehension 10 (250-word passage, five questions)", "Formal speech 10", "Press note 10", "Letter 10", "Application 10", "Report 10", "Translation English to Telugu 10", "Translation Telugu to English 10", "Word meanings 10", "Synonyms and antonyms 10"]
+  "mains": {
+    "qualifying": [
+      {
+        "name": "Telugu",
+        "marks": 150,
+        "standard": "SSC",
+        "minutes": 180,
+        "qualifying": true
+      },
+      {
+        "name": "English",
+        "marks": 150,
+        "standard": "SSC",
+        "minutes": 180,
+        "qualifying": true
+      }
+    ],
+    "papers": [
+      {
+        "name": "Paper I - General Essay (three essays, one from each of three sections, about 800 words each)",
+        "marks": 150,
+        "minutes": 180,
+        "standard": "Degree",
+        "medium": "English/Telugu"
+      },
+      {
+        "name": "Paper II - History, Culture and Geography of India and Andhra Pradesh",
+        "marks": 150,
+        "minutes": 180,
+        "standard": "Degree",
+        "medium": "English/Telugu"
+      },
+      {
+        "name": "Paper III - Polity, Constitution, Governance, Law and Ethics",
+        "marks": 150,
+        "minutes": 180,
+        "standard": "Degree",
+        "medium": "English/Telugu"
+      },
+      {
+        "name": "Paper IV - Economy and Development of India and Andhra Pradesh",
+        "marks": 150,
+        "minutes": 180,
+        "standard": "Degree",
+        "medium": "English/Telugu"
+      },
+      {
+        "name": "Paper V - Science, Technology and Environmental Issues (syllabus page heading: Science and Technology)",
+        "marks": 150,
+        "minutes": 180,
+        "standard": "Degree",
+        "medium": "English/Telugu"
+      }
+    ],
+    "interview_marks": 75,
+    "total_marks": 825,
+    "total_marks_note": "825 = five papers x 150 (750) + interview 75; the qualifying Telugu and English papers (150 each) are not counted in the 825."
+  },
+  "english_paper_types": [
+    "Essay 20",
+    "Letter 10",
+    "Press release / appeal 10",
+    "Report 15",
+    "Visual information 15",
+    "Formal speech 15",
+    "Precis 15",
+    "Reading comprehension 15",
+    "Grammar MCQs 20",
+    "Translation 15"
+  ],
+  "telugu_paper_types": [
+    "Essay 20 (200-250 words, one of three topics)",
+    "Elaborate meaning of a poem/verse 20 (any two of three; Vemana and Sumathi Satakam)",
+    "Precis 10 (one third)",
+    "Comprehension 10 (250-word passage, five questions)",
+    "Formal speech 10",
+    "Press note 10",
+    "Letter 10",
+    "Application 10",
+    "Report 10",
+    "Translation English to Telugu 10",
+    "Translation Telugu to English 10",
+    "Word meanings 10",
+    "Synonyms and antonyms 10"
+  ],
+  "pay_scales": {
+    "61960-151370": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "05"
+    ],
+    "57100-147760": [
+      "06",
+      "07",
+      "08"
+    ],
+    "54060-140540": [
+      "09",
+      "10",
+      "11",
+      "12"
+    ],
+    "65360-154980": [
+      "13"
+    ]
+  },
+  "educational_qualification": {
+    "01-03,05-13": "Bachelor's degree from any recognised university (or equivalent) - as on the date of the Detailed Notification",
+    "04": "B.E./B.Tech in Electronics and Communication Engineering, Electronics and Telecommunication Engineering or Radio Engineering (or equivalent)"
+  },
+  "physical_requirements": "Not in the brief notification. Page 2 only says: For P.C.No.03,04 please see the physical requirements in Detailed Notification."
 }

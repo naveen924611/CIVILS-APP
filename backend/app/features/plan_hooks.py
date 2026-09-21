@@ -22,6 +22,16 @@ from typing import Any
 
 from sqlalchemy.orm import Session
 
+# Blocks whose id starts with one of these are outside the study hours: the planner does not count their minutes when it
+# fits the day to the owner's hours, and the summary, plan totals and weekly report leave them out. ("phys-" is the SI
+# physical-training block.)
+UNCOUNTED_ID_PREFIXES = ("phys-",)
+
+
+def counts_toward_hours(block: dict) -> bool:
+    return not str(block.get("id", "")).startswith(UNCOUNTED_ID_PREFIXES)
+
+
 PlanPost = Callable[[Session, str, list[dict], dict[str, Any]], list[dict]]
 PLAN_POSTPROCESSORS: list[PlanPost] = []
 

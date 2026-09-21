@@ -20,6 +20,7 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -37,6 +38,7 @@ import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.ScreenTitle
 import com.naveen.civilscompanion.ui.common.SectionLabel
 import com.naveen.civilscompanion.ui.common.isCompact
+import com.naveen.civilscompanion.ui.nav.Routes
 import com.naveen.civilscompanion.ui.today.ExamDates
 import com.naveen.civilscompanion.ui.today.PlanBlocks
 import com.naveen.civilscompanion.ui.today.StudyPrefs
@@ -47,6 +49,7 @@ import java.time.LocalDate
 fun ExamsScreen(nav: NavHostController, vm: ExamsViewModel = hiltViewModel()) {
     val ui by vm.ui.collectAsStateWithLifecycle()
     val compact = isCompact()
+    LaunchedEffect(Unit) { vm.seedSiOnce() }
     Column(
         modifier = Modifier.fillMaxSize().background(Cc.colors.background).verticalScroll(rememberScrollState())
             .padding(horizontal = if (compact) 20.dp else 32.dp, vertical = 24.dp).widthIn(max = 900.dp),
@@ -63,6 +66,7 @@ fun ExamsScreen(nav: NavHostController, vm: ExamsViewModel = hiltViewModel()) {
         )
         ExamListCard(ui.exams, vm)
         PriorityCard(ui.priorityMode, vm::setPriorityMode)
+        SiGoalCard(nav)
         HoursCard(ui, vm)
     }
 }
@@ -75,7 +79,7 @@ fun ExamListCard(exams: List<Exam>, vm: ExamsViewModel) {
         SectionLabel("Exams")
         if (exams.isEmpty()) {
             Text("No exams yet.", style = MaterialTheme.typography.bodyMedium, color = Cc.colors.muted)
-            BigButton("Add UPSC and APPSC exams", onClick = vm::seedDefaults, filled = false)
+            BigButton("Add my exams", onClick = vm::seedDefaults, filled = false)
         }
         exams.forEach { ExamRow(it, vm) }
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
@@ -154,18 +158,35 @@ private fun ExamRow(exam: Exam, vm: ExamsViewModel) {
 
 private fun parseDay(text: String): LocalDate? = runCatching { LocalDate.parse(text.trim()) }.getOrNull()
 
-/** Both equal / more on UPSC / more on APPSC. */
+/** All equal / more on UPSC / more on APPSC / more on SI (Civil). */
 @Composable
 fun PriorityCard(mode: Int, onMode: (Int) -> Unit) {
     CcCard(Modifier.fillMaxWidth()) {
         SectionLabel("Which exam gets more time?")
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            FilterChip(selected = mode == 0, onClick = { onMode(0) }, label = { Text("Both equal") })
+            FilterChip(selected = mode == 0, onClick = { onMode(0) }, label = { Text("Equal") })
             FilterChip(selected = mode == 1, onClick = { onMode(1) }, label = { Text("More on UPSC") })
+        }
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             FilterChip(selected = mode == 2, onClick = { onMode(2) }, label = { Text("More on APPSC") })
+            FilterChip(selected = mode == 3, onClick = { onMode(3) }, label = { Text("More on SI (Civil)") })
         }
         Text(
             "In the last 8 weeks before the nearer Prelims, the planner gives that exam about 70 percent of the time.",
+            style = MaterialTheme.typography.bodySmall,
+            color = Cc.colors.muted,
+        )
+    }
+}
+
+/** Link to the SI (Civil) goal screen: dates, eligibility, checklist, body check, running log. */
+@Composable
+fun SiGoalCard(nav: NavHostController) {
+    CcCard(Modifier.fillMaxWidth(), onClick = { nav.navigate(Routes.GOALS) }) {
+        SectionLabel("SI (Civil) goal")
+        Text("SI (Civil) goal and checklist", style = MaterialTheme.typography.titleMedium, color = Cc.colors.ink)
+        Text(
+            "Your eligibility, certificates, body check, running log and cut-offs in one place.",
             style = MaterialTheme.typography.bodySmall,
             color = Cc.colors.muted,
         )

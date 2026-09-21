@@ -55,7 +55,7 @@ fun NotesTreePane(s: NotesListState, vm: NotesViewModel, onOpenSyllabus: () -> U
             modifier = Modifier.fillMaxWidth(),
         )
         Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-            listOf<Pair<String?, String>>(null to "Both", "APPSC" to "APPSC", "UPSC" to "UPSC").forEach { (value, label) ->
+            listOf<Pair<String?, String>>(null to "All", "APPSC" to "APPSC", "UPSC" to "UPSC", "SI" to "SI").forEach { (value, label) ->
                 val chosen = value == s.exam
                 Text(
                     label,

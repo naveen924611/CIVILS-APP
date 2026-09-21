@@ -1,0 +1,2349 @@
+{
+ "key": "appsc-g1-prelims-2026",
+ "exam": "APPSC Group-I",
+ "title": "APPSC Group-I Screening Test (Prelims) 2026 - official syllabus",
+ "verified": true,
+ "supersedes": "appsc-group1-prelims",
+ "source_note": "Built from APPSC Brief Notification 07/2026 dated 15-09-2026, pages 4-11.",
+ "tree": [
+  {
+   "title": "Paper I - General Studies (120 marks)",
+   "level": 0,
+   "exam_tags": [
+    "APPSC"
+   ],
+   "est_hours": 230.0,
+   "importance": 9,
+   "children": [
+    {
+     "title": "A. History and Culture",
+     "level": 1,
+     "exam_tags": [
+      "APPSC"
+     ],
+     "est_hours": 67.0,
+     "importance": 8,
+     "children": [
+      {
+       "title": "1. Indus Valley Civilization to the Gupta Empire",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 17.0,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Indus Valley Civilization: Features, Sites, Society, Cultural History, Art and Religion",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 3,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Vedic Age",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Mahajanapadas",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Religions-Jainism and Buddhism",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "The Maghadas, the Mauryan",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Foreign invasions on India and their impact",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "the Kushans",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "The Sathavahanas the Sangam Age, the Sungas",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "the Gupta Empire -their Administration- Social, Religious and Economic conditions-Art, Architecture, Literature, Science and Technology",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 3,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "2. Kanauj and the South Indian Dynasties",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 10.0,
+       "importance": 8,
+       "children": [
+        {
+         "title": "The Kanauj and their Contributions",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "South Indian Dynasties - The Badami Chalukyas, the Eastern Chalukyas",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "the Rastrakutas, the Kalyani Chalukyas",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "the Cholas",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "the Hoyasalas, the Yedavas",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "the Kakatiyas and the Reddis",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "3. Delhi Sultanate, Vijaynagar, Mughals and the Bhakti Movement",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 11.0,
+       "importance": 8,
+       "children": [
+        {
+         "title": "The Delhi Sultanate",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "the Vijaynagar Empire",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "the Mughal Empire",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "the Bhakti Movement and Sufism",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Administration, Economy, Society, Religion, Literature, Arts and Architecture",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "4. European Trading Companies and British expansion",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 7.0,
+       "importance": 8,
+       "children": [
+        {
+         "title": "The European Trading companies in India- their struggle for supremacy",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "with special reference to Bengal, Bombay, Madras, Mysore, Andhra and Nizam",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Governor-Generals and Viceroys",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "5. 1857, Reform Movements and the Freedom Movement",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 11,
+       "importance": 9,
+       "children": [
+        {
+         "title": "Indian War of Independence of 1857 - Origin, Nature, causes, consequences and significance with special reference to Concerned State",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 3,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Religious and Social Reform Movements in 19th century in India and Concerned State",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 3,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "India's Freedom Movement",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 3,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Revolutionaries in India and Abroad",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "6. Gandhi, Patel, Bose, Ambedkar and Independent India",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 11.0,
+       "importance": 9,
+       "children": [
+        {
+         "title": "Mahatma Gandhi, his thoughts, Principles and Philosophy",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Important Satyagrahas",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "the Role of Sardar Patel, Subash Chandrabose in Freedom Movement and Post independence consolidation",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Dr. B.R. Ambedkar, his life and contribution to making of Indian Constitution",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "India after Independence - Reorganization of the States in India",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "B. Constitution, Polity, Social Justice and International Relations",
+     "level": 1,
+     "exam_tags": [
+      "APPSC"
+     ],
+     "est_hours": 43.0,
+     "importance": 9,
+     "children": [
+      {
+       "title": "1. Indian Constitution",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 10.5,
+       "importance": 10,
+       "children": [
+        {
+         "title": "Indian Constitution: Evolution, features, Preamble",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 10,
+         "children": []
+        },
+        {
+         "title": "Fundamental Rights, Fundamental Duties",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 3,
+         "importance": 10,
+         "children": []
+        },
+        {
+         "title": "Directive Principles of State Policy",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 10,
+         "children": []
+        },
+        {
+         "title": "Amendments, Significant Provisions and Basic Structure",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 3,
+         "importance": 10,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "2. Union and States, Parliament and State Legislatures",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 8.5,
+       "importance": 10,
+       "children": [
+        {
+         "title": "Functions and Responsibilities of the Union and the States",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 10,
+         "children": []
+        },
+        {
+         "title": "Parliament and State Legislatures: Structure, Function, Power and Privileges",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 3,
+         "importance": 10,
+         "children": []
+        },
+        {
+         "title": "Issues and challenges pertaining to Federal Structure: Devolution of Power and Finances up to local levels and Challenges therein",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 3,
+         "importance": 10,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "3. Constitutional Authorities, Panchayati Raj, Public Policy and Governance",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 7,
+       "importance": 9,
+       "children": [
+        {
+         "title": "Constitutional Authorities: Powers, Functions and Responsibilities",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 3,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Panchayati Raj",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Public Policy and Governance",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "4. Liberalization, Privatization, Globalization and Regulatory Bodies",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 4,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Impact of Liberalization, Privatization and Globalization on Governance",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Statutory, Regulatory and Quasi-judicial bodies",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "5. Rights Issues",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 3,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Rights Issues (Human rights, Women rights, SC/ST rights, Child rights) etc.",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 3,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "6. India's Foreign Policy and International Relations",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 10,
+       "importance": 8,
+       "children": [
+        {
+         "title": "India's Foreign Policy",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "International Relations",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Important Institutions, Agencies and Fora, their structure and mandate",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 3,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Important Policies and Programmes of Central and State Governments",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 3,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "C. Indian and Andhra Pradesh Economy and Planning",
+     "level": 1,
+     "exam_tags": [
+      "APPSC"
+     ],
+     "est_hours": 80.0,
+     "importance": 9,
+     "children": [
+      {
+       "title": "1. Basic characteristics of Indian Economy",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 10.5,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Basic characteristics of Indian Economy as a developing economy",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Economic development since independence objectives and achievements of planning",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "NITI Ayog and its approach to economic development",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Growth and distributive justice",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Economic development Human Development Index - India's rank in the world",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Environmental degradation and challenges - Sustainable Development - Environmental Policy",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "2. National Income, Poverty and Employment",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 12.0,
+       "importance": 9,
+       "children": [
+        {
+         "title": "National Income and its concepts and components - India's National Accounts",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Demographic issues",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Poverty and Inequalities",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Occupational Structure and Unemployment",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Various Schemes of employment and poverty eradication",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Issues of Rural Development and Urban Development",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "3. Indian Agriculture, Industry and Economic Reforms",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 17.0,
+       "importance": 9,
+       "children": [
+        {
+         "title": "Indian Agriculture - Irrigation and water - Inputs of agriculture",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Agricultural Strategy and Agricultural Policy",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Agrarian Crisis and land reforms - Agricultural credit",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Minimum Support Prices - Malnutrition and Food Security",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Indian Industry - Industrial Policy - Make-in India",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Start-up and Stand-up programmes - SEZs and Industrial Corridors",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Energy and Power policies",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Economic Reforms - Liberalisaion, Privatisation and Globalization",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "International Trade and Balance of Payments - India and WTO",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 9,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "4. Financial Institutions, Taxation and Public Finance",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 14.5,
+       "importance": 9,
+       "children": [
+        {
+         "title": "Financial Institutions - RBI and Monetary Policy",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Banking and Financial Sector Reforms - Commercial Banks and NPAs",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Financial Markets - Instabilities - Stock Exchanges and SEBI",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Indian Tax System and Recent changes - GST and its impact on Commerce and Industry",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Centre, States financial relations - Financial Commissions - Sharing of resources and devolution",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Public Debt and Public Expenditure - Fiscal Policy and Budget",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 9,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "5. Andhra Pradesh Economy after bifurcation",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 26.0,
+       "importance": 10,
+       "children": [
+        {
+         "title": "The characteristics/ basic features of Andhra Pradesh economy after bifurcation in 2014",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 10,
+         "children": []
+        },
+        {
+         "title": "Impact of bifurcation on the endowment of natural resources and state revenue",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 10,
+         "children": []
+        },
+        {
+         "title": "disputes of river water sharing and their impact on irrigation",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 10,
+         "children": []
+        },
+        {
+         "title": "new challenges to industry and commerce",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 10,
+         "children": []
+        },
+        {
+         "title": "the new initiatives to develop infrastructure - power and transport - information technology and e-governance",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 10,
+         "children": []
+        },
+        {
+         "title": "Approaches to development and initiatives in agriculture, industry and social sector",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 10,
+         "children": []
+        },
+        {
+         "title": "Urbanisation and smart cities - Skill development and employment - social welfare programmes",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 10,
+         "children": []
+        },
+        {
+         "title": "ii) A.P. Reorganisation Act, 2014 - Economic Issues arising out of bifurcation",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 10,
+         "children": []
+        },
+        {
+         "title": "Central government's assistance for building a new capital, compensation for loss of revenue, development of backward districts",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 10,
+         "children": []
+        },
+        {
+         "title": "Issues such as Vizag railway zone, Kadapa steel factory, Dugarajapatnam airport, Express ways and industrial corridors etc.",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 10,
+         "children": []
+        },
+        {
+         "title": "Special Status and Special Assistance- Controversy - Government's stand and measure",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 3,
+         "importance": 10,
+         "children": []
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "D. Geography",
+     "level": 1,
+     "exam_tags": [
+      "APPSC"
+     ],
+     "est_hours": 40.0,
+     "importance": 8,
+     "children": [
+      {
+       "title": "1. General Geography",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 14.0,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Earth in Solar system, Motion of the Earth, Concept of time, Season",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Internal Structure of the Earth, Major landforms and their features",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Atmosphere-structure and composition, elements and factors of Climate",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Airmasses and Fronts, atmospheric disturbances, climate change",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Oceans: Physical, chemical and biological characteristics",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Hydrological Disasters, Marine and Continental resources",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "2. Physical Geography of World, India and the State",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 12.0,
+       "importance": 9,
+       "children": [
+        {
+         "title": "Major physical divisions",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Earthquakes, landslides",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Natural drainage",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "climatic changes and regions, Monsoon",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Natural Vegetation, Parks and Sanctuaries",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Major Soil types, Rocks and Minerals",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "3. Social Geography of World, India and the State",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 7.0,
+       "importance": 8,
+       "children": [
+        {
+         "title": "distribution, density, growth, Sex-ratio, Literacy",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Occupational Structure, SC and ST Population, Rural-Urban components",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Racial, tribal, religious and linguistic groups",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "urbanization, migration and metropolitan regions",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "4. Economic Geography of World, India and the State",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 7.0,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Major sectors of economy, Agriculture, Industry and Services, their salient features",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Basic Industries-Agro, mineral, forest, fuel and manpower based Industries",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Transport and Trade, Pattern and Issues",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Paper II - General Aptitude (120 marks)",
+   "level": 0,
+   "exam_tags": [
+    "APPSC"
+   ],
+   "est_hours": 127.5,
+   "importance": 8,
+   "children": [
+    {
+     "title": "A. General Mental Ability, Administrative and Psychological Abilities",
+     "level": 1,
+     "exam_tags": [
+      "APPSC"
+     ],
+     "est_hours": 69.0,
+     "importance": 7,
+     "children": [
+      {
+       "title": "Logical Reasoning and Analytical Ability",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 3,
+       "importance": 8,
+       "children": []
+      },
+      {
+       "title": "Number Series, Coding-Decoding",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 3.0,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Number Series",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Coding-Decoding",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Problems Related to Relations",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 1.5,
+       "importance": 7,
+       "children": []
+      },
+      {
+       "title": "Shapes and their Sub-sections, Venn Diagram",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 3.0,
+       "importance": 7,
+       "children": [
+        {
+         "title": "Shapes and their Sub-sections",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Venn Diagram",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Problems based on Clocks, Calendar and Age",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 4.5,
+       "importance": 7,
+       "children": [
+        {
+         "title": "Clocks",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Calendar",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Age",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Number system and order of Magnitude",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 2.5,
+       "importance": 7,
+       "children": [
+        {
+         "title": "Number system",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "order of Magnitude",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1,
+         "importance": 7,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Ratio, proportion and variation",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 2,
+       "importance": 7,
+       "children": []
+      },
+      {
+       "title": "Central Tendencies - mean, median, mode - including weighted mean",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 3,
+       "importance": 7,
+       "children": [
+        {
+         "title": "Central Tendencies - mean, median, mode",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "including weighted mean",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1,
+         "importance": 7,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Power and exponent, Square, Square Root, Cube Root, H.C.F. and L.C.M.",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 4.0,
+       "importance": 7,
+       "children": [
+        {
+         "title": "Power and exponent",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Square, Square Root, Cube Root",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "H.C.F. and L.C.M.",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Percentage, Simple and Compound Interest, Profit and loss",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 5.5,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Percentage",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Simple and Compound Interest",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Profit and loss",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Time and Work, Time and Distance, Speed and Distance",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 6,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Time and Work",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Time and Distance",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Speed and Distance",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Area and Perimeter of Simple Geometrical Shapes, Volume and Surface Area",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 4.5,
+       "importance": 6,
+       "children": [
+        {
+         "title": "Area and Perimeter of Simple Geometrical Shapes",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 6,
+         "children": []
+        },
+        {
+         "title": "Volume and Surface Area of Sphere, Cone, Cylinder, cubes and Cuboids",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 6,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Lines, angles and common geometrical figures",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 5.0,
+       "importance": 6,
+       "children": [
+        {
+         "title": "Lines, angles and common geometrical figures",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 6,
+         "children": []
+        },
+        {
+         "title": "properties of transverse and parallel lines",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 6,
+         "children": []
+        },
+        {
+         "title": "properties of triangles, quadrilateral, rectangle, parallelogram and rhombus",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 6,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Introduction to algebra, BODMAS, simplification of weird symbols",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 3.5,
+       "importance": 6,
+       "children": [
+        {
+         "title": "Introduction to algebra",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 6,
+         "children": []
+        },
+        {
+         "title": "BODMAS",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1,
+         "importance": 6,
+         "children": []
+        },
+        {
+         "title": "simplification of weird symbols",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1,
+         "importance": 6,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Data interpretation, Data Analysis, Data sufficiency and Probability",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 9,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Data interpretation",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 3,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Data Analysis",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Data sufficiency",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "concepts of Probability",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Emotional Intelligence",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 4.0,
+       "importance": 6,
+       "children": [
+        {
+         "title": "Emotional Intelligence: Understanding and analyzing emotions",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 6,
+         "children": []
+        },
+        {
+         "title": "Dimensions of emotional intelligence",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1,
+         "importance": 6,
+         "children": []
+        },
+        {
+         "title": "coping with emotions, empathy and coping with stress",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 6,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Social Intelligence, interpersonal skills and decision making",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 5.0,
+       "importance": 6,
+       "children": [
+        {
+         "title": "Social Intelligence, interpersonal skills",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 6,
+         "children": []
+        },
+        {
+         "title": "Decision making",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1,
+         "importance": 6,
+         "children": []
+        },
+        {
+         "title": "Critical thinking, problem solving",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 6,
+         "children": []
+        },
+        {
+         "title": "Assessment of personality",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1,
+         "importance": 6,
+         "children": []
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "B(i). Science and Technology",
+     "level": 1,
+     "exam_tags": [
+      "APPSC"
+     ],
+     "est_hours": 46.5,
+     "importance": 8,
+     "children": [
+      {
+       "title": "18. Science and Technology: nature, scope and institutions",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 8.5,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Nature and Scope of Science & Technology",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Relevance of Science & Technology to the day to day life",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "National Policy on Science, Technology and Innovation",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Institutes and Organization in India promoting integration of Science, Technology and Innovation, their activities and contribution",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Contribution of Prominent Indian Scientists",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "19. Information and Communication Technology (ICT)",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 6.5,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Nature and Scope of ICT",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "ICT in day to day life; ICT and Industry",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "ICT and Governance - Various government schemes promoting use of ICT, E-Governance programmes and services",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Netiquettes",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 0.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Cyber Security Concerns - National Cyber Crime Policy",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "20. Technology in Space and Defence",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 8.0,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Evolution of Indian Space Programme",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Indian Space Research Organization (ISRO) — it's activities and achievements",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Various Satellite Programmes — Satellites for Telecommunication, Indian Regional Navigation Satellite System (IRNSS), Indian Remote Sensing (IRS) Satellites",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Satellites for defence, Eduset or Satellites for academic purposes",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Defence Research and Development Organization (DRDO)- vision, mission and activities",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "21. Energy Requirement and Efficiency",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 6.0,
+       "importance": 8,
+       "children": [
+        {
+         "title": "India's existing energy needs and deficit",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "India's Energy Resources and Dependence",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Energy policy of India Government Policies and Programmes",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Solar, Wind and Nuclear energy",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "22. Environmental Science and Biotechnology",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 17.5,
+       "importance": 9,
+       "children": [
+        {
+         "title": "Issues and concerns related to environment",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Its legal aspects, policies and treaties for the protection of environment at the national and the international level",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Biodiversity- its importance and concerns",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Climate Change, International Initiatives (Policies, Protocols) and India's commitment",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Forest and Wildlife - Legal framework for Forest and Wildlife Conservation in India",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Environmental Hazards, pollution, carbon emission, Global warming",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "National Action plans on Climate Change and Disaster management",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1.5,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Biotechnology and Nanotechnology; Nature, Scope and application, Ethical, Social, and Legal issues, Government Policies",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2.5,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Genetic Engineering; Issues related to it and its impact on human life",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 2,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Health & Environment",
+         "level": 3,
+         "exam_tags": [
+          "APPSC"
+         ],
+         "est_hours": 1,
+         "importance": 9,
+         "children": []
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "B(ii). Current Events of Regional, National and International Importance",
+     "level": 1,
+     "exam_tags": [
+      "APPSC"
+     ],
+     "est_hours": 12,
+     "importance": 10,
+     "children": [
+      {
+       "title": "Current events of Regional importance",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 4,
+       "importance": 10,
+       "children": []
+      },
+      {
+       "title": "Current events of National importance",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 4,
+       "importance": 10,
+       "children": []
+      },
+      {
+       "title": "Current events of International importance",
+       "level": 2,
+       "exam_tags": [
+        "APPSC"
+       ],
+       "est_hours": 4,
+       "importance": 10,
+       "children": []
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

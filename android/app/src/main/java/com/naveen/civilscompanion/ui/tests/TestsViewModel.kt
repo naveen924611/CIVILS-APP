@@ -70,6 +70,13 @@ class TestsViewModel @Inject constructor(
         "kind" to "topic", "topic_id" to topicId, "count" to count,
     )
 
+    /** Aptitude drill: exact sums and reasoning made by the server. area null = mixed. */
+    fun makeAptitude(area: String?, count: Int) {
+        val pairs = mutableListOf<Pair<String, Any?>>("kind" to "aptitude", "count" to count)
+        if (!area.isNullOrBlank()) pairs.add("area" to area)
+        enqueue("test_generate", "The drill will be made when you are online.", *pairs.toTypedArray())
+    }
+
     fun makePastPaper(exam: String, year: Int, paper: String) = enqueue(
         "test_generate", "The past paper will be made when you are online.",
         "kind" to "past_paper", "exam" to exam.trim(), "year" to year, "paper" to paper.trim(),

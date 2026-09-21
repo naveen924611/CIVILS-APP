@@ -37,6 +37,16 @@ Foundation: generic Room `records` store (31 tables) + generic `/sync/pull` and 
 - Reviewed by "human compiler" agents (no Android SDK here): a handful of likely compile errors fixed.
 - Integration edits: `CivilsMessagingService` shows `weekly_report` and `mock_ready` pushes; `CivilsApp` schedules day notifications after login; `SyncWorker` refreshes the widget after each sync.
 
+## SI (Civil) goal (2026-09-21) - written unattended, server tested, Android NOT YET COMPILED
+Plan, official facts and the full coverage matrix: `docs/si-civil-plan.md`. Verified facts: `data/exam-specs/`.
+- Third goal SLPRB SI (Civil): exam tag `SI`, priority "More on SI", three exam rows seeded (Prelims, Physical PMT/PET, Final Written).
+- Syllabus: `slprb_si_written.json` (Arithmetic and Reasoning, General Studies, English, Telugu) and the two Group-I outlines rebuilt from the official PDF. Coverage files + test prove every official line has a node; two independent re-reads of the PDFs found no omissions.
+- Plan: daily 06:00 physical block (outside study hours) and a daily 20-question aptitude drill (server-generated, exact answers).
+- Tablet: Goals screen (dates, SI profile and age check, checklist, PMT, PET log, cut-off calculator), aptitude drill dialog in Tests, practice-prompt picker in Answers (90 prompts, offline).
+- Server tests: 97 new/related pass; planner, syllabus, revision, reports still pass; ruff clean. Kotlin: reviewed by an independent "human compiler" pass, never compiled.
+- After you update the server: the three new outlines appear as pending imports in Syllabus review; approve them (the old unapproved Group-I ones disappear by themselves).
+- Not covered (honest): figure-based non-verbal reasoning, Urdu paper, Group-I English grammar MCQ drills. Group-I age and DSP physical rules wait for the Detailed Notification (by 06-10-2026); SI application dates wait for the press release.
+
 ## Fixes after first tablet test (2026-09-21)
 - Rail taps (Home etc.) no longer restore a previously opened screen (MainActivity.goTo).
 - Briefs without an audio file are now read aloud by the tablet's own voice (BriefsViewModel.readWithTablet); the server now downloads the Piper voice by itself the first time it builds a brief (before, it needed the manual voice-download step).
@@ -44,6 +54,7 @@ Foundation: generic Room `records` store (31 tables) + generic `/sync/pull` and 
 - Fixed a Kotlin build error (`/*` inside a KDoc comment in TeluguContent.kt).
 
 ## Waiting on owner now
+0. New (SI goal): approve the new syllabus outlines and fill the Goals profile (docs/si-civil-plan.md section 6).
 1. `git push` and read the first `android-apk` run; send me the red lines (docs/m3-m12-owner-steps.md).
 2. Update the laptop server (same file, step 3).
 3. Install the APK and go through the M3-M12 checklist.

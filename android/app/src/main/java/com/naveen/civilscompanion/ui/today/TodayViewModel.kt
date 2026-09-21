@@ -55,6 +55,8 @@ data class TodayUi(
     val offline: Boolean = false,
     val waiting: Int = 0,
     val exams: List<ExamCountdown> = emptyList(),
+    /** True when an SI (Civil) exam row exists: Today then shows a link to the Goals screen. */
+    val hasSi: Boolean = false,
     val cont: ContinueItem? = null,
     val week: WeekSummary = WeekSummary(),
     val message: String? = null,
@@ -183,6 +185,7 @@ class TodayViewModel @Inject constructor(
             offline = !b.online,
             waiting = b.waiting,
             exams = examCountdowns(b.exams, day),
+            hasSi = b.exams.any { it.name.contains("SI (Civil)") },
             cont = continueItem(b.docs),
             week = WeekSummary(done, planned, c.weekReviews, PlanBlocks.hoursText(Math.round(StudyPrefs.weekHours(hours) * 60).toInt())),
         )

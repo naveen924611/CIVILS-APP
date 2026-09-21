@@ -17,13 +17,16 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.booleanOrNull
 
 data class ExamsUi(
     val exams: List<Exam> = emptyList(),
     val hours: Map<String, Double> = StudyPrefs.DEFAULT_HOURS,
     val telugu: Int = StudyPrefs.DEFAULT_TELUGU,
-    /** 0 both equal, 1 more on UPSC, 2 more on APPSC. */
+    /** 0 all equal, 1 more on UPSC, 2 more on APPSC, 3 more on SI (Civil). */
     val priorityMode: Int = 0,
     val loaded: Boolean = false,
 )
@@ -50,15 +53,52 @@ class ExamsViewModel @Inject constructor(
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ExamsUi())
 
-    /** First run: the four exams the owner is preparing for, dates not announced. Does nothing when exams already exist. */
+    /**
+     * The four exams the owner started with (fresh install), plus the SLPRB SI (Civil) rows, added ONCE for everybody:
+     * the flag `goal.si_seeded` stops a deleted SI row from coming back. The lock makes two calls at the same time safe.
+     */
     fun seedDefaults() {
         viewModelScope.launch {
-            if (store.list(Tables.Exams).isNotEmpty()) return@launch
-            val defaults = listOf("UPSC CSE" to "Prelims", "UPSC CSE" to "Mains", "APPSC Group-I" to "Prelims", "APPSC Group-I" to "Mains")
-            defaults.forEach { (name, stage) ->
-                store.save(Tables.Exams, Exam(id = TimeUtil.newId(), name = name, stage = stage, date = null, isTentative = true))
+            seedLock.withLock {
+                val existing = store.list(Tables.Exams)
+                if (existing.isEmpty()) {
+                    val defaults = listOf("UPSC CSE" to "Prelims", "UPSC CSE" to "Mains", "APPSC Group-I" to "Prelims", "APPSC Group-I" to "Mains")
+                    defaults.forEach { (name, stage) ->
+                        store.save(Tables.Exams, Exam(id = TimeUtil.newId(), name = name, stage = stage, date = null, isTentative = true))
+                    }
+                }
+                addSiRowsOnce(existing)
             }
         }
+    }
+
+    /** For an existing install: adds the three SI rows once (never on an empty list, that is seedDefaults' job). */
+    fun seedSiOnce() {
+        viewModelScope.launch {
+            seedLock.withLock {
+                val existing = store.list(Tables.Exams)
+                if (existing.isNotEmpty()) addSiRowsOnce(existing)
+            }
+        }
+    }
+
+    /** Must run inside seedLock. Checks the flag first and sets it right after, so a deleted SI row is not added again. */
+    private suspend fun addSiRowsOnce(existing: List<Exam>) {
+        val seeded = (kv.get(KEY_SI_SEEDED) as? JsonPrimitive)?.booleanOrNull == true
+        if (seeded) return
+        if (existing.none { it.name == SI_EXAM_NAME }) {
+            SI_STAGES.forEach { stage ->
+                store.save(Tables.Exams, Exam(id = TimeUtil.newId(), name = SI_EXAM_NAME, stage = stage, date = null, isTentative = true))
+            }
+        }
+        kv.put(KEY_SI_SEEDED, JsonPrimitive(true))
+    }
+
+    private companion object {
+        const val KEY_SI_SEEDED = "goal.si_seeded"
+        const val SI_EXAM_NAME = "SLPRB SI (Civil)"
+        val SI_STAGES = listOf("Prelims", "Physical (PMT and PET)", "Final Written")
+        val seedLock = Mutex()
     }
 
     /** day null = "Date not announced". */

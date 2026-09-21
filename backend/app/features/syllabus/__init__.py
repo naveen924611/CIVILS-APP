@@ -4,7 +4,7 @@ Routes (all behind login):
   POST /syllabus/import                  {exam, title, text?, document_id?}  -> {import_id, job_id}
   POST /syllabus/seed                    (re)adds any starter outline that is missing (normally done at start-up)
   POST /syllabus/recompute-importance    -> {topics, with_pyq, changed}
-  GET  /syllabus/tree?exam=UPSC|APPSC    the approved topics as a nested tree with coverage % and importance
+  GET  /syllabus/tree?exam=UPSC|APPSC|SI   the approved topics as a nested tree with coverage % and importance
   GET  /syllabus/{id}                    the import row
   PUT  /syllabus/{id}/tree               {tree, title?}  save the owner's edits to a pending import
   POST /syllabus/{id}/approve            {exam_filter?, merge_into_existing?, tree?}  -> {created, merged, total, ...}

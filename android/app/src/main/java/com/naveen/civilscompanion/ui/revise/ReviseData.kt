@@ -73,7 +73,9 @@ object ReviseData {
         for (e in exams) {
             val left = ExamDates.daysLeft(e.date, today) ?: continue
             if (left < 0) continue
-            if (lower.isNotEmpty() && lower.none { e.name.lowercase().contains(it) }) continue
+            // Whole-word match, so the tag "SI" cannot match inside another word ("Civil services").
+            val words = e.name.lowercase().split(Regex("[^a-z0-9]+")).filter { it.isNotEmpty() }
+            if (lower.isNotEmpty() && lower.none { it in words }) continue
             best = Math.max(best, 1.0 - Math.min(left, 180) / 180.0)
         }
         return best

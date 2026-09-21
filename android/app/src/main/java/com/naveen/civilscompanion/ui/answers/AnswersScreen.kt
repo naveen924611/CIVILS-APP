@@ -50,7 +50,9 @@ fun AnswersScreen(nav: NavHostController, vm: AnswersViewModel = hiltViewModel()
     val answers by vm.answers.collectAsStateWithLifecycle()
     val busy by vm.busy.collectAsStateWithLifecycle()
     val message by vm.message.collectAsStateWithLifecycle()
+    val prompts by vm.prompts.collectAsStateWithLifecycle()
     var showOwn by remember { mutableStateOf(false) }
+    var showPrompts by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) { vm.opened.collect { id -> nav.navigate(Routes.answer(id)) } }
 
@@ -83,7 +85,11 @@ fun AnswersScreen(nav: NavHostController, vm: AnswersViewModel = hiltViewModel()
                 if (!compact) ActionText("Write my own question", onClick = { showOwn = true })
             }
             if (compact) ActionText("Write my own question", onClick = { showOwn = true })
-            Text("New questions need the internet. Your own questions work offline.", style = MaterialTheme.typography.bodySmall, color = Cc.colors.muted)
+            ActionText("Practice prompt (SI and Group-I English, Telugu)", onClick = {
+                vm.loadPrompts()
+                showPrompts = true
+            })
+            Text("New questions need the internet. Your own questions and practice prompts work offline.", style = MaterialTheme.typography.bodySmall, color = Cc.colors.muted)
         }
         ScoreTrend(done)
         Section("To write", toWrite, "No question waiting. Get one above.", nav)
@@ -92,6 +98,10 @@ fun AnswersScreen(nav: NavHostController, vm: AnswersViewModel = hiltViewModel()
         Section("Could not be checked", failed, "", nav)
     }
 
+    if (showPrompts) PromptPickerDialog(prompts, onDismiss = { showPrompts = false }, onPick = { p ->
+        showPrompts = false
+        vm.usePrompt(p)
+    })
     if (showOwn) OwnQuestionDialog(onDismiss = { showOwn = false }, onCreate = { q, limit ->
         showOwn = false
         vm.createOwn(q, limit)

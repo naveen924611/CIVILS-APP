@@ -49,11 +49,20 @@ def load_starters(settings: Settings) -> list[dict]:
 
 def seed_starters(db: Session, settings: Settings) -> int:
     """Adds each starter outline once, as a pending SyllabusImport with a stable id. Safe to run at every start-up.
-    Never touches an import that already exists (pending, approved, deleted or edited by the owner). Returns how many were added."""
+    Never touches an import that already exists (pending, approved, deleted or edited by the owner). Returns how many were added.
+
+    A starter with `"supersedes": "<old key>"` replaces an older outline: when the new one is added in this run, the old
+    seeded import is retired (deleted=True) if it is still pending. An approved old import is never touched, and nothing
+    is retired when the new outline was already there (so a second run changes nothing). An outline that another file in the
+    folder supersedes is not seeded at all."""
     added = 0
-    for doc in load_starters(settings):
+    docs = load_starters(settings)
+    replaced = {str(d.get("supersedes") or "").strip() for d in docs if str(d.get("supersedes") or "").strip() != str(d["key"])} - {""}
+    for doc in docs:
         row_id = seed_id(str(doc["key"]))
         if db.get(SyllabusImport, row_id) is not None:
+            continue
+        if str(doc["key"]) in replaced:  # an old outline that a newer file in the same folder replaces: not worth adding
             continue
         note = "Starter outline"
         if not doc.get("verified"):
@@ -63,6 +72,12 @@ def seed_starters(db: Session, settings: Settings) -> int:
             status="pending", tree_json=clean_tree(doc["tree"]), note=note[:300],
         ))
         added += 1
+        old_key = str(doc.get("supersedes") or "").strip()
+        if old_key and old_key != str(doc["key"]):
+            old = db.get(SyllabusImport, seed_id(old_key))
+            if old is not None and old.status == "pending" and not old.deleted:
+                old.deleted = True
+                log.info("starter outline %s retired (superseded by %s)", old_key, doc["key"])
     if added:
         db.commit()
     return added

@@ -105,3 +105,14 @@ First push the repo and install the APK built by GitHub Actions. If the build fa
 - [ ] Progress tab: streak, 14-day bars, per-kind numbers. My writing tab lists what you sent.
 - [ ] Settings > Telugu practice: change minutes with -5 / +5; the planner keeps that time (Today plan shows Telugu practice).
 - [ ] Settings > Monthly digests: "Make last month's digest", wait for the server, open it, Share text, Open PDF, Share PDF.
+
+### SI (Civil) goal
+- [ ] Sync, then open Exams: three "SLPRB SI (Civil)" rows (Prelims, Physical (PMT and PET), Final Written) with "Date not announced". The priority card has "More on SI (Civil)".
+- [ ] Syllabus review: three new pending outlines (SI written, Group-I Prelims, Group-I Mains). Approve each. The filter chips now include SI; Notes and Syllabus can filter by SI.
+- [ ] Exams > "SI (Civil) goal and checklist" opens Goals. Group-I application countdown shows days to 27 Oct 2026; tick "I applied".
+- [ ] Goals: fill the profile. Date of birth 02-07-1999 gives "eligible"; 01-07-1999 gives "too old" (BC gets +5 years). Category changes the prelim cut-off (40 / 35 / 30).
+- [ ] Body check: men 167.6 cm and chest 86.3 cm pass; 167.5 cm fails with the shortfall. Women weight 40 kg passes, 39.9 fails.
+- [ ] PET log: 1600 m 8:00 and 100 m 15 s passes for General; 8:01 fails. Saved entries stay after closing the app; delete works.
+- [ ] Today (next day's plan): a 06:00 "Run / Sprint / Mobility" block that opens Goals, and an evening "Aptitude drill" block (not on Sunday) that opens a 20-question test with correct answers.
+- [ ] Tests > Aptitude drill: pick Percentage, 10 questions; after the server answers the test appears. No negative marking.
+- [ ] Answers > Practice prompt: filter SI and Telugu; choosing a prompt creates a draft with the prompt and word limit; send it for feedback.

@@ -80,6 +80,7 @@ fun TestsScreen(nav: NavHostController, vm: TestsViewModel = hiltViewModel()) {
                 Text("Tests are made on the server, so they need the internet once. After that they work offline.", style = MaterialTheme.typography.bodySmall, color = Cc.colors.muted)
                 BigButton("Weekly mock now (25 questions)", onClick = vm::makeWeekly, filled = false, modifier = Modifier.fillMaxWidth())
                 BigButton("Topic test", onClick = { dialog = "topic" }, filled = false, modifier = Modifier.fillMaxWidth())
+                BigButton("Aptitude drill (arithmetic and reasoning)", onClick = { dialog = "aptitude" }, filled = false, modifier = Modifier.fillMaxWidth())
                 BigButton("Full past paper", onClick = { dialog = "paper" }, filled = false, modifier = Modifier.fillMaxWidth())
                 BigButton("Read a past paper from my library", onClick = { dialog = "import" }, filled = false, modifier = Modifier.fillMaxWidth())
             }
@@ -120,6 +121,10 @@ fun TestsScreen(nav: NavHostController, vm: TestsViewModel = hiltViewModel()) {
         "topic" -> TopicTestDialog(topics, onDismiss = { dialog = "" }, onMake = { id, n ->
             dialog = ""
             vm.makeTopicTest(id, n)
+        })
+        "aptitude" -> AptitudeDialog(onDismiss = { dialog = "" }, onMake = { area, n ->
+            dialog = ""
+            vm.makeAptitude(area, n)
         })
         "paper" -> PaperDialog(
             title = "Full past paper", help = "Only questions whose answers were printed in the paper are used.",
@@ -185,5 +190,6 @@ fun kindLabel(kind: String): String = when (kind) {
     "topic" -> "Topic test"
     "past_paper" -> "Past paper"
     "mistakes" -> "Mistakes"
+    "aptitude" -> "Aptitude drill"
     else -> "Test"
 }

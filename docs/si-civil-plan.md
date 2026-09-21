@@ -25,7 +25,7 @@ Final Paper III + IV (400 marks) decide the rank.
 | 2026-10-27, 11:59 PM | Group-I application closes | verified |
 | not announced | SLPRB SI application dates ("by press release") | verified that it is NOT in the PDF |
 | not announced | SI Prelims date, Group-I Screening date | not announced yet |
-| 2026-07-01 | SI age reference date (age 21 to 27 completed) and degree cut-off | verified |
+| 2026-07-01 | SI age reference date: at least 21 and not yet 27 on this day (born 02-07-1999 to 01-07-2005), degree cut-off | verified |
 | on or after 2026-04-01 | Issue date for community / NCL / EWS certificates (SI) | verified |
 
 ## 3. Exam structure we must cover (what will be written)
@@ -63,7 +63,7 @@ syllabus line with the exact outline node that covers it, and `backend/tests/tes
 | S11 | PMT | pass/fail | Goals screen: self-check of height, chest, weight against the right column (men, women, ABO-ST) | Done |
 | S12 | PET | pass/fail | Goals screen: log of 1600 m, 100 m, long jump against the standards; a daily physical block in the plan (see 5.4) | Done (tracking), **Manual** (training) |
 | S13 | Eligibility: age 21 to 27 on 01-07-2026 plus relaxations, degree, fee, certificates issued on/after 01-04-2026, medical | pass/fail | Goals screen: profile and checklist | Done |
-| S14 | Prelim cut-offs: 40/35/30 percent in EACH paper | pass/fail | Goals screen shows the cut-off for the chosen category; mock tests show a per-paper percent | Done |
+| S14 | Qualifying cut-offs: 40/35/30 percent in EACH paper (Prelims, and again in each Final paper, page 13) | pass/fail | Goals screen shows the cut-off for the chosen category and a two-paper calculator; mock tests show a per-paper percent | Done |
 
 ### 4.2 APPSC Group-I
 
@@ -91,7 +91,7 @@ The "God Mode" guide pasted by the student says many things. Checked against bot
 | Group-I has Screening (Prelims) + Mains + Interview, 825 marks in the merit stages | **Confirmed** (brief notification) |
 | Papers I to V topics | **Confirmed** (pages 13 to 24) |
 | DSP height 167.6 cm, chest 86.3 cm; women 45.5 kg | **Unverified for Group-I DSP.** The 167.6 / 86.3 numbers appear in the SI notification, so they are probably copied from SI. For SI women the notification says 40 kg, not 45.5 kg. Group-I physicals will be in the Detailed Notification |
-| "No PET for DSP" | **Unverified.** Do not rely on it |
+| "No PET for DSP" | **Unverified, and probably wrong.** Group-I brief notification page 2 says: for post codes 03 (DSP Civil) and 04 (DSP Communications) "see the physical requirements in the Detailed Notification", so DSP DOES have physical requirements. What they are is not known until 06/10/2026 |
 | Age limits and past-year cut-offs for Group-I | **Unverified** (Detailed Notification is not out) |
 | Coaching-site cut-off numbers | Not in any official document; ignored |
 
@@ -102,14 +102,13 @@ The "God Mode" guide pasted by the student says many things. Checked against bot
 - `data/syllabus/slprb_si_written.json` (new, verified): one outline for Arithmetic and Reasoning, General Studies, English, Telugu. The Prelims and Final papers share one syllabus (Annexure II), so it is studied once.
 - `data/syllabus/appsc_group1_prelims.json` and `appsc_group1_mains.json` rewritten from the notification (verified). The old starter files are moved to `data/syllabus/_superseded/` and the seeder retires their unapproved copies (`supersedes` field).
 - `data/exam-specs/coverage/*.json`: official line to outline node; checked by a test.
-- `data/writing/si_and_group1_prompts.yaml`: original practice prompts for the descriptive papers (English and Telugu forms).
+- `data/writing/si_and_group1_prompts.json` (90 prompts): original practice prompts for the descriptive papers (English and Telugu forms). The tablet reads a byte-identical copy in `android/app/src/main/assets/writing_prompts.json` (a test keeps them equal).
 
 ### 5.2 Server
 - Exam tag `SI` accepted everywhere (`trees.py`), exam name matching by whole word (so "SI" cannot match inside another word).
 - Priority KV `exam.priority` now has `SI`.
 - Planner hook: daily **physical training** block and a daily **aptitude drill** block, only while the SI exam exists.
 - Deterministic aptitude / reasoning generator (`features/tests/aptitude.py`), test kind `aptitude`.
-- `GET /answers/prompts` serves the writing prompt bank.
 - Seeder `supersedes` support.
 
 ### 5.3 Tablet
@@ -117,7 +116,7 @@ The "God Mode" guide pasted by the student says many things. Checked against bot
 - New **Goals** screen (reachable from Exams and Today): SI eligibility profile and checklist, PMT self-check, PET log with pass/fail, Group-I application countdown and "Applied" ticks, prelim cut-off table.
 - SI chip in every exam filter (Notes, Syllabus, Tests).
 - Aptitude drill entry in Tests; physical block Start opens the Goals screen.
-- Writing prompt picker in Answers.
+- Writing prompt picker in Answers (offline, from the bundled copy of the bank).
 
 ### 5.4 Daily rhythm added by the plan (SI on)
 06:00 physical block, 45 minutes, outside the study hours: Mon/Wed/Fri run (1600 m pace work), Tue/Thu sprint and long-jump drills,

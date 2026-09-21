@@ -5,7 +5,7 @@ The tablet writes a `jobs` row (`type`, `payload_json`); the server runs the han
 | type | handler owner | creator | payload | result |
 |---|---|---|---|---|
 | `ocr_page` | V1a `features/library/ocr.py` | V1a tablet (Reader "Read with AI"), and the server itself for scanned PDFs / photos without text | `{document_id, page, only_this_page?, force?, language?}` | `{document_id, page, chars, pages_done, remaining}` |
-| `mock_test` / `test_generate` | V4 `features/tests/jobs.py` | V4 tablet (Tests screen); server queues the weekly mock the night before the mock day | `{kind: weekly\|topic\|past_paper\|mistakes, topic_id?, exam?, year?, paper?, count?, date?}` | `{test_id}` (silent push `mock_ready`) |
+| `mock_test` / `test_generate` | V4 `features/tests/jobs.py` | V4 tablet (Tests screen); server queues the weekly mock the night before the mock day | `{kind: weekly\|topic\|past_paper\|mistakes\|aptitude, topic_id?, exam?, year?, paper?, count?, date?, area?}`; kind `aptitude` (SI drill, generated on the server without AI): `{kind: "aptitude", area?: one of the aptitude area keys (else a mix of four areas), count?: default 20, date?: India day YYYY-MM-DD, default today}` | `{test_id}` (silent push `mock_ready`) |
 | `pyq_import` | V4 `features/tests/jobs.py` | V4 tablet (Tests, Import past paper) | `{document_id, exam, year, paper?}` | `{added, skipped, no_answer, mapped, pages}` |
 | `revision_sheet` | V4 `features/reports/jobs.py` | V4 tablet (Sheets); server rebuilds changed sheets nightly | `{topic_id}` or `{topic_ids:[...]}` | `{sheet_id, sheet_ids}` |
 | `weekly_report` | V4 `features/reports/jobs.py` | V4 tablet (Report); server queues it Sunday 20:00 IST | `{week_start?, scheduled?}` | `{report_id}` (silent push `weekly_report`) |

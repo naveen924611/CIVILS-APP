@@ -20,6 +20,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,6 +34,7 @@ import com.naveen.civilscompanion.ui.common.CcCard
 import com.naveen.civilscompanion.ui.common.Pill
 import com.naveen.civilscompanion.ui.common.SectionLabel
 import com.naveen.civilscompanion.ui.common.isCompact
+import com.naveen.civilscompanion.ui.exams.ExamsViewModel
 import com.naveen.civilscompanion.ui.nav.Routes
 
 /** Opens the screen a plan block points to (its ref, or the topic's notes). Unknown screens are ignored. */
@@ -45,6 +47,8 @@ internal fun startBlock(nav: NavHostController, block: PlanBlock) {
 @Composable
 fun TodayScreen(nav: NavHostController, vm: TodayViewModel = hiltViewModel()) {
     val s by vm.ui.collectAsStateWithLifecycle()
+    val examsVm: ExamsViewModel = hiltViewModel()
+    LaunchedEffect(Unit) { examsVm.seedSiOnce() }
     if (isCompact()) {
         // Upright tablet: one scrolling page, plan first, then the countdown and week cards underneath.
         Column(
@@ -206,6 +210,13 @@ private fun RightColumn(s: TodayUi, nav: NavHostController, modifier: Modifier) 
                 modifier = Modifier.heightIn(min = 48.dp),
                 shape = MaterialTheme.shapes.small,
             ) { Text("Edit dates", color = Cc.colors.primary) }
+        }
+        if (s.hasSi) {
+            CcCard(Modifier.fillMaxWidth(), onClick = { runCatching { nav.navigate(Routes.GOALS) } }) {
+                SectionLabel("SI (Civil)")
+                Text("Goal and checklist", style = MaterialTheme.typography.titleMedium, color = Cc.colors.ink)
+                Text("Dates, eligibility, body check and running log.", style = MaterialTheme.typography.bodySmall, color = Cc.colors.muted)
+            }
         }
         CcCard(Modifier.fillMaxWidth(), onClick = { runCatching { nav.navigate(Routes.REPORT) } }) {
             SectionLabel("This week")

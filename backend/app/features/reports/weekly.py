@@ -23,6 +23,7 @@ from app.config import Settings
 from app.db.models import Card
 from app.db.models_v2 import Attempt, DailyPlan, Exam, FocusSession, Review, Test, Topic, WeeklyReport
 from app.db.util import as_utc
+from app.features.plan_hooks import counts_toward_hours
 from app.features.tests.common import DAY_NAMES, IST, ist_to_utc, monday_of, parse_day, subject_of, to_ist_date
 from app.llm.promptlib import load, render
 
@@ -72,7 +73,7 @@ def collect(db: Session, week_start: date, now: datetime | None = None) -> dict:
         if plan is not None:
             comp = plan.completion_json or {}
             for b in plan.blocks_json or []:
-                if not isinstance(b, dict):
+                if not isinstance(b, dict) or not counts_toward_hours(b):
                     continue
                 minutes = int(b.get("minutes") or 0)
                 planned += minutes

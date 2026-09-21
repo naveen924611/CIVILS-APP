@@ -56,7 +56,7 @@ def _hours(db: Session) -> dict:
 
 def _priority_for(name: str, priority: dict) -> float:
     for key, value in priority.items():
-        if str(key).lower() in name.lower():
+        if eng.has_word(name, str(key)):
             try:
                 return max(float(value), 0.0)
             except (TypeError, ValueError):
@@ -290,7 +290,7 @@ def plan_range(db: Session, settings, start: date, days: int = 7, now: datetime 
             notes.append(f"You missed {missed_days} days in a row, so this week is planned again from today. Start gently, one block at a time.")
         if last_month:
             notes.append("Last month before an exam: extra revision time is added.")
-        summary = eng.summary_text(int(d_in.hours * 60), sum(int(b.get("minutes", 0)) for b in blocks), studied_topics, n_cards, notes, d_in.hours)
+        summary = eng.summary_text(int(d_in.hours * 60), eng.counted_minutes(blocks), studied_topics, n_cards, notes, d_in.hours)
         if day in dates:
             saved.append(_save_plan(db, day, blocks, summary))
         for w in queue:
@@ -334,7 +334,7 @@ def set_completion(db: Session, day: date, block_id: str, status: str) -> DailyP
 def plan_dict(row: DailyPlan) -> dict:
     return {
         "id": row.id, "date": row.date, "blocks": row.blocks_json or [], "completion": row.completion_json or {},
-        "summary": row.summary or "", "minutes": sum(int(b.get("minutes", 0)) for b in (row.blocks_json or [])),
+        "summary": row.summary or "", "minutes": eng.counted_minutes(row.blocks_json or []),
     }
 
 

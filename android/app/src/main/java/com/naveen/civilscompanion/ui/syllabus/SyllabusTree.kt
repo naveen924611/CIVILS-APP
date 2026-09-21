@@ -50,7 +50,7 @@ object SyllabusTree {
             if (title.isEmpty()) continue
             val tags = (obj["exam_tags"] as? JsonArray)
                 ?.mapNotNull { (it as? JsonPrimitive)?.contentOrNull?.trim()?.uppercase() }
-                ?.filter { it == "UPSC" || it == "APPSC" }
+                ?.filter { it == "UPSC" || it == "APPSC" || it == "SI" }
                 ?.distinct()
                 .orEmpty()
             val key = keys.next()
@@ -188,7 +188,7 @@ object SyllabusTree {
         }
     }
 
-    /** "Tags": the owner chooses UPSC, APPSC or both for a node. */
+    /** "Tags": the owner chooses UPSC, APPSC, SI or a mix for a node. */
     fun setTags(nodes: List<SNode>, key: Int, tags: List<String>): List<SNode> = editSiblings(nodes, key) { list, i ->
         list.toMutableList().also { it[i] = it[i].copy(examTags = tags.distinct()) }
     }

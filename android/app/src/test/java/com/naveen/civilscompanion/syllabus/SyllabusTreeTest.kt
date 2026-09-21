@@ -131,4 +131,21 @@ class SyllabusTreeTest {
         assertEquals(listOf("Essay"), titles(appsc)) // the UPSC-only paper and its untagged children are left out
         assertEquals(tree, SyllabusTree.keepExam(tree, null))
     }
+
+    @Test
+    fun siTagIsKeptAndFiltered() {
+        val siSource = Json.parseToJsonElement(
+            """[
+              {"title":"Arithmetic","exam_tags":["si"],"children":[{"title":"Percentage"}]},
+              {"title":"Essay","exam_tags":["APPSC"]},
+              {"title":"Polity","exam_tags":["UPSC","SI","junk"]}
+            ]""",
+        )
+        val tree = SyllabusTree.parse(siSource)
+        assertEquals(listOf("SI"), tree[0].examTags)
+        assertEquals(listOf("UPSC", "SI"), tree[2].examTags)
+        assertEquals(listOf("Arithmetic", "Polity"), titles(SyllabusTree.keepExam(tree, "SI")))
+        assertEquals(listOf("Percentage"), titles(SyllabusTree.keepExam(tree, "SI")[0].children))
+        assertEquals(listOf("Essay"), titles(SyllabusTree.keepExam(tree, "APPSC")))
+    }
 }

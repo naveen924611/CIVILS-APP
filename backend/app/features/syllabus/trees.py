@@ -5,6 +5,8 @@
 import re
 from typing import Any
 
+from app.features.examnames import is_si_exam
+
 MAX_LEVEL = 3
 _NORM = re.compile(r"[^a-z0-9]+")
 
@@ -14,6 +16,9 @@ def norm(text: str) -> str:
     return _NORM.sub(" ", (text or "").lower()).strip()
 
 
+EXAM_TAGS = ("UPSC", "APPSC", "SI")  # SI = AP SLPRB Sub-Inspector (Civil)
+
+
 def exam_tags_for(exam: str) -> list[str]:
     low = (exam or "").lower()
     tags = []
@@ -21,6 +26,8 @@ def exam_tags_for(exam: str) -> list[str]:
         tags.append("UPSC")
     if "appsc" in low:
         tags.append("APPSC")
+    if is_si_exam(low):
+        tags.append("SI")
     if not tags and any(w in low for w in ("both", "combined", "common")):
         tags = ["APPSC", "UPSC"]
     return tags
@@ -45,7 +52,7 @@ def clean_tree(nodes: Any, depth: int = 0, inherit_tags: list[str] | None = None
         if not title:
             continue
         tags = [str(t).strip().upper() for t in (raw.get("exam_tags") or []) if str(t).strip()]
-        tags = [t for t in dict.fromkeys(tags) if t in ("UPSC", "APPSC")] or list(inherit_tags or [])
+        tags = [t for t in dict.fromkeys(tags) if t in EXAM_TAGS] or list(inherit_tags or [])
         hours = _num(raw.get("est_hours"), None)
         imp = _num(raw.get("importance"), None)
         node = {

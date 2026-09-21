@@ -110,6 +110,17 @@ class ReviseDataTest {
     }
 
     @Test
+    fun examProximityMatchesWholeWordsSoSiIsSafe() {
+        val today = LocalDate.of(2026, 9, 20)
+        val exams = listOf(
+            Exam(id = "e1", name = "SLPRB SI (Civil)", date = "2026-12-19T00:00:00Z"), // 90 days
+            Exam(id = "e2", name = "Civil Services Foundation", date = "2026-09-20T00:00:00Z"), // today
+        )
+        assertEquals(0.5, ReviseData.examProximity(listOf("SI"), exams, today), 1e-9)
+        assertEquals(0.0, ReviseData.examProximity(listOf("UPSC"), exams, today), 0.0)
+    }
+
+    @Test
     fun movingGroupsAndSnoozeTimes() {
         assertEquals(listOf("b", "a", "c"), ReviseData.move(listOf("a", "b", "c"), "b", -1))
         assertEquals(listOf("a", "c", "b"), ReviseData.move(listOf("a", "b", "c"), "b", 1))

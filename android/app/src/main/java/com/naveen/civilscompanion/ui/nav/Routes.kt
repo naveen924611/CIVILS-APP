@@ -66,6 +66,9 @@ object Routes {
     const val TELUGU = "telugu"
     const val COMPILATION = "compilation"
 
+    // SI (Civil) goal: dates, eligibility, checklist, body check, PET log
+    const val GOALS = "goals"
+
     /** Which rail item is highlighted while a screen is open. */
     fun railFor(route: String?): Destination {
         val base = route?.substringBefore('/') ?: return Destination.Today
@@ -78,7 +81,7 @@ object Routes {
             FOCUS, VIDEOS, "video" -> Destination.Focus
             BRIEFS, COMPILATION -> Destination.Briefs
             ALERTS -> Destination.Alerts
-            SETTINGS, EXAMS, STORAGE -> Destination.Settings
+            SETTINGS, EXAMS, STORAGE, GOALS -> Destination.Settings
             else -> Destination.entries.firstOrNull { it.route == base } ?: Destination.Today
         }
     }

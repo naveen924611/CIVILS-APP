@@ -4,6 +4,9 @@ Questions are never invented from nothing: generated ones come from the owner's 
 text), past-paper ones are the imported PYQ rows, and the mistakes retest reuses questions the owner already got wrong.
 Every generated question is checked (four different options, one correct position, answer stated in the explanation);
 bad ones are dropped and the batch is topped up once.
+
+The aptitude drill (kind "aptitude", SI Civil) is the exception: its questions come from `aptitude.py` (exact arithmetic and
+logic generators, no AI, no network), so it works offline and never fails for want of a gateway.
 """
 import logging
 import math
@@ -21,6 +24,7 @@ from app.db.util import as_utc
 from app.jobs.registry import AiUnavailable, JobFailed
 from app.llm.promptlib import load, render
 
+from . import aptitude
 from .common import IST, ist_to_utc, norm_text, parse_day, to_ist_date, today_ist
 from .schemas import GenMcq, McqBatch
 
@@ -282,8 +286,9 @@ def _mcq_rows(db: Session, generated: list[tuple[GenMcq, str]], source_type: str
 
 
 def _finish_test(db: Session, test_id: str, kind: str, title: str, mcq_ids: list[str], duration: int,
-                 scheduled_for: datetime | None) -> Test:
-    negative = get_kv(db, "test.negative_marking", False) is True  # the owner's default from Settings
+                 scheduled_for: datetime | None, negative: bool | None = None) -> Test:
+    if negative is None:  # the owner's default from Settings (the aptitude drill passes False: the SI notification has no negative marking)
+        negative = get_kv(db, "test.negative_marking", False) is True
     test = Test(id=test_id, kind=kind, title=title, scheduled_for=scheduled_for, mcq_ids=mcq_ids,
                 duration_min=duration, negative_marking=negative, status="ready")
     db.add(test)
@@ -383,9 +388,79 @@ def generate_mistakes_test(db: Session, limit: int = 20) -> Test:
     return _finish_test(db, str(uuid.uuid4()), "mistakes", "Mistakes retest", ids, max(5, len(ids)), None)
 
 
+# --------------------------------------------------------------------------- the aptitude drill (no AI)
+
+APTITUDE_QUESTIONS = 20
+APTITUDE_KIND = "aptitude"
+APTITUDE_MINUTES_PER_QUESTION = 1.25
+
+
+def _area_key(text) -> str | None:
+    """The area key for a key or a label ('percentage', 'Profit & loss', 'profit and loss'); None when it is not one."""
+    want = aptitude.label_key(str(text or ""))
+    for area in aptitude.AREAS:
+        if want in (aptitude.label_key(area), aptitude.label_key(aptitude.LABELS[area])):
+            return area
+    return None
+
+
+def aptitude_title(area: str | None) -> str:
+    return f"Aptitude drill: {aptitude.LABELS[area]}" if area else "Aptitude drill: mixed"
+
+
+def find_aptitude(db: Session, day: date, area: str | None = None, count: int = APTITUDE_QUESTIONS) -> Test | None:
+    """The drill already made for that India day (same area or mixed, same size), so asking twice never duplicates it."""
+    title = aptitude_title(area)
+    for t in db.scalars(select(Test).where(Test.kind == APTITUDE_KIND, Test.title == title, Test.deleted.is_(False))
+                        .order_by(Test.updated_at)):
+        if to_ist_date(t.scheduled_for) == day and len(t.mcq_ids or []) == count:
+            return t
+    return None
+
+
+def _si_topic_for(db: Session, area: str, cache: dict[str, str | None]) -> str | None:
+    """The approved syllabus topic tagged SI whose title is the area's label (e.g. 'Percentage'), or None."""
+    if area not in cache:
+        want = aptitude.label_key(aptitude.LABELS[area])
+        found = None
+        for t in db.scalars(select(Topic).where(Topic.deleted.is_(False), Topic.approved.is_(True)).order_by(Topic.level.desc(), Topic.position)):
+            if "SI" in [str(x).upper() for x in (t.exam_tags or [])] and aptitude.label_key(t.title) == want:
+                found = t.id
+                break
+        cache[area] = found
+    return cache[area]
+
+
+def generate_aptitude_test(db: Session, day: date | None = None, area: str | None = None, count: int | None = None) -> Test:
+    """The SI aptitude drill for an India day: `count` questions (default 20) of one area, or a mix of four areas when `area` is None.
+    Deterministic: the same day, area and count always give the same questions. Asking again returns the test already made."""
+    day = day or today_ist()
+    count = max(MIN_QUESTIONS, min(int(count or APTITUDE_QUESTIONS), 40))
+    if area:
+        key = _area_key(area)
+        if key is None:
+            raise JobFailed(f"Unknown aptitude area '{area}'.")
+        area = key
+    existing = find_aptitude(db, day, area, count)
+    if existing is not None:
+        return existing
+    items = aptitude.generate_questions(area, count, aptitude.area_seed(day, area)) if area else aptitude.mixed_questions(day, count)
+    cache: dict[str, str | None] = {}
+    test_id = str(uuid.uuid4())
+    generated = [(GenMcq(question=q["question"], options=q["options"], answer_index=q["answer_index"], explanation=q["explanation"]),
+                  _si_topic_for(db, q["area"], cache)) for q in items]
+    rows = _mcq_rows(db, generated, "mock", lambda _tid: test_id)
+    return _finish_test(db, test_id, APTITUDE_KIND, aptitude_title(area), [r.id for r in rows],
+                        math.ceil(count * APTITUDE_MINUTES_PER_QUESTION), ist_to_utc(day, 19, 30), negative=False)
+
+
 def generate_test(db: Session, gateway, payload: dict) -> Test:
-    """Entry point for the jobs and the API. payload: {kind, topic_id?, week_start?, date?, exam?, year?, paper?, count?}"""
+    """Entry point for the jobs and the API. payload: {kind, topic_id?, week_start?, date?, exam?, year?, paper?, count?, area?}
+    (kind "aptitude": {area? (one of aptitude.AREAS, else a mix), count? (default 20), date? (India day, default today)})"""
     kind = str(payload.get("kind") or "weekly")
+    if kind == APTITUDE_KIND:
+        return generate_aptitude_test(db, parse_day(payload.get("date")), payload.get("area") or None,
+                                      int(payload.get("count") or APTITUDE_QUESTIONS))
     if kind == "weekly":
         return generate_weekly(db, gateway, target=parse_day(payload.get("date")),
                                week_start=parse_day(payload.get("week_start")),

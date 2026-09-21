@@ -34,6 +34,7 @@ import com.naveen.civilscompanion.theme.CivilsTheme
 import com.naveen.civilscompanion.ui.alerts.AlertsScreen
 import com.naveen.civilscompanion.ui.ask.askRoutes
 import com.naveen.civilscompanion.ui.briefs.BriefsScreen
+import com.naveen.civilscompanion.ui.goals.goalsRoutes
 import com.naveen.civilscompanion.ui.library.libraryRoutes
 import com.naveen.civilscompanion.ui.login.LoginScreen
 import com.naveen.civilscompanion.ui.common.COMPACT_BELOW_DP
@@ -158,6 +159,7 @@ private fun AppRoot(vm: MainViewModel) {
                     sheetsRoutes(nav)
                     focusRoutes(nav)
                     teluguRoutes(nav)
+                    goalsRoutes(nav)
                 }
                 FloatingMic(nav, Modifier.align(Alignment.BottomEnd).padding(20.dp))
             }

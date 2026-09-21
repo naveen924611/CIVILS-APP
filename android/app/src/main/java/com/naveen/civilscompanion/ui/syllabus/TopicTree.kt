@@ -36,7 +36,7 @@ object TopicTree {
         else -> "Low"
     }
 
-    /** Approved, not deleted topics as a tree. `exam` = "UPSC" or "APPSC" keeps that exam's topics (untagged ones follow their parent). */
+    /** Approved, not deleted topics as a tree. `exam` = "UPSC", "APPSC" or "SI" keeps that exam's topics (untagged ones follow their parent). */
     fun build(topics: List<Topic>, exam: String? = null): List<TNode> {
         val live = topics.filter { !it.deleted && it.approved }
         val ids = live.map { it.id }.toSet()

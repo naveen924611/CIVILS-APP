@@ -14,6 +14,9 @@ import statistics
 from dataclasses import dataclass, field
 from datetime import date, datetime
 
+from app.features.examnames import has_word
+from app.features.plan_hooks import counts_toward_hours
+
 WEEKDAYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
 DEFAULT_HOURS = {"mon": 4, "tue": 4, "wed": 4, "thu": 4, "fri": 4, "sat": 4, "sun": 3}
 SHARES = {"brief_m": 0.12, "core": 0.50, "revision": 0.19, "practice": 0.13, "brief_e": 0.06}
@@ -140,8 +143,7 @@ def exam_weights(exams: list[ExamInfo], today: date) -> dict[str, float]:
 def matching_exams(topic: TopicInfo, exams: list[ExamInfo]) -> list[ExamInfo]:
     if not topic.exam_tags:
         return exams
-    tags = [t.lower() for t in topic.exam_tags]
-    hit = [e for e in exams if any(t in e.name.lower() for t in tags)]
+    hit = [e for e in exams if any(has_word(e.name, t) for t in topic.exam_tags)]
     return hit or exams
 
 
@@ -366,10 +368,16 @@ def plan_day(
     return blocks, [w.topic for w, _ in picks]
 
 
+def counted_minutes(blocks: list[dict]) -> int:
+    """Minutes of the blocks that count toward the day's study hours (physical training does not)."""
+    return sum(int(b.get("minutes", 0)) for b in blocks if counts_toward_hours(b))
+
+
 def fit_to_hours(blocks: list[dict], total_minutes: int, protected: set[str]) -> tuple[list[dict], int]:
     """After other features added blocks: if the day is over its hours, cut new study first, then practice.
-    Revision, briefs, the Telugu block and blocks of other features are never cut. Returns (blocks, minutes still over)."""
-    over = sum(int(b.get("minutes", 0)) for b in blocks) - total_minutes
+    Revision, briefs, the Telugu block and blocks of other features are never cut. Returns (blocks, minutes still over).
+    Blocks whose id starts with "phys-" (physical training) are not counted toward the hours."""
+    over = counted_minutes(blocks) - total_minutes
     if over <= 0:
         return blocks, 0
     for kind, floor in (("study", 15), ("practice", 10)):

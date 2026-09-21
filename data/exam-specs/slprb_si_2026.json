@@ -17,16 +17,16 @@
     "age_min": 21,
     "age_max": 27,
     "born_between": ["1999-07-02", "2005-07-01"],
-    "age_relaxation_years": {"EWS": 5, "BC": 5, "SC": 5, "ST": 5, "govt_employee": 5, "ex_serviceman": 3, "ncc_instructor": 3},
-    "age_relaxation_note": "Ex-servicemen get 3 years plus their service; government employees up to 5 years of service. Read Section on age in the PDF before applying.",
-    "qualification": "Any degree as on 2026-07-01. SC/ST: Intermediate plus studying a degree is also accepted.",
+    "age_relaxation_years": {"EWS": 5, "BC": 5, "SC": 5, "ST": 5, "govt_employee": 5, "ex_serviceman": 3, "ncc_instructor": 3, "retrenched_census_employee_1991": 3},
+    "age_relaxation_note": "EWS, BC (non-creamy layer), SC, ST: up to 5 years. Government employee of AP State Government: length of regular service, up to 5 years (APTRANSCO, DISCOMs, APGENCO, corporations, municipalities and local bodies are NOT entitled). Ex-servicemen: 3 years in addition to service rendered. NCC whole-time instructor: 3 years in addition to service (minimum 6 months of service). Retrenched temporary State Census employee (min 6 months in 1991): up to 3 years. No other relaxation (page 6). Age is taken from the SSC, Matriculation or equivalent certificate only (horoscopes, affidavits, birth extracts and service records are not accepted).",
+    "qualification": "Any degree as on 2026-07-01. SC/ST: a pass in Intermediate (or equivalent) is enough as on 2026-07-01, and the candidate should have studied a degree in a university in India.",
     "certificate_issue_on_or_after": "2026-04-01",
     "certificates": ["Community certificate", "Non-creamy-layer certificate (BC)", "EWS certificate"],
     "local_rule": "5% open competition, 95% local candidates",
     "women_reservation": "33 1/3 percent in Post Code 11",
     "medical": {
       "vision": "6/6 in each eye (distant) and 0/5 Snellen (near)",
-      "disqualifying": ["Colour blindness", "Squint", "Knock-knees", "Pigeon chest", "Flat feet", "Varicose veins", "Hammer toes", "Stammering", "Hard hearing"]
+      "disqualifying": ["Colour blindness", "Squint", "Physically handicapped", "Knock-knees", "Pigeon chest", "Flat feet", "Varicose veins", "Hammer toes", "Fractured limbs", "Decayed teeth", "Stammering", "Hard of hearing", "Abnormal psychological behaviour"]
     }
   },
   "stages_pc11": [
@@ -49,7 +49,7 @@
     {
       "stage": "PET (Physical Efficiency Test)",
       "qualifying": true,
-      "rule": "1600 m plus ONE of 100 m or long jump. Electronic timing, no spike shoes, no re-test.",
+      "rule": "Post Code 11: pass/fail only, no marks (the Annexure I gradation marks apply only to Post Codes 12 and 31). 1600 m plus ONE of 100 m or long jump. Electronic timing, no spike shoes, no re-test.",
       "standards": {
         "run_1600_m_seconds": {"general": 480, "ex_serviceman": 570, "women": 630},
         "run_100_m_seconds": {"general": 15.0, "ex_serviceman": 16.5, "women": 18.0},
@@ -64,7 +64,9 @@
         {"name": "Paper III - Arithmetic and Test of Reasoning", "type": "objective", "questions": 200, "marks": 200, "hours": 3, "standard": "SSC"},
         {"name": "Paper IV - General Studies", "type": "objective", "questions": 200, "marks": 200, "hours": 3, "standard": "Degree"}
       ],
-      "merit": "Paper III + Paper IV = 400 marks. Papers I and II are qualifying only (failing either disqualifies). Ties: older candidate first."
+      "merit": "Paper III + Paper IV = 400 marks. Papers I and II are qualifying only (failing either disqualifies). Ties: older candidate first.",
+      "qualifying_percent": {"OC": 40, "EWS": 40, "BC": 35, "SC": 30, "ST": 30},
+      "qualifying_note": "The percentage must be reached in EACH of the four final papers (page 13). Papers I and II are qualifying only and not counted in merit. Papers III and IV are set in English, Telugu and Urdu, and the language choice cannot be changed later."
     }
   ],
   "pay": {"scale": "44570-127480 (RPS 2022)", "note": "Stipend during training."},

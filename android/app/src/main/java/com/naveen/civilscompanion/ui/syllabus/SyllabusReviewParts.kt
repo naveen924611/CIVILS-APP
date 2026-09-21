@@ -100,6 +100,7 @@ fun ReviewRowView(row: SRow, tree: List<SNode>, collapsed: Boolean, actions: Rev
                 if (SyllabusTree.canMoveDown(tree, node.key)) MenuItem("Move down") { menu = false; actions.onMoveDown(node.key) }
                 MenuItem("Exam: UPSC only") { menu = false; actions.onTags(node.key, listOf("UPSC")) }
                 MenuItem("Exam: APPSC only") { menu = false; actions.onTags(node.key, listOf("APPSC")) }
+                MenuItem("Exam: SI only") { menu = false; actions.onTags(node.key, listOf("SI")) }
                 MenuItem("Exam: both") { menu = false; actions.onTags(node.key, listOf("APPSC", "UPSC")) }
                 MenuItem("Delete") { menu = false; actions.onAsk(ReviewAction("delete", node.key)) }
             }

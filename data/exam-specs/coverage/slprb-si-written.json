@@ -1,0 +1,466 @@
+{
+ "key": "slprb-si-written",
+ "outline_file": "slprb_si_written.json",
+ "source": "SLPRB SI Notification Annexure II, pages 29-30 (page 9 says the Prelims use Paper III and IV of Annexure II)",
+ "items": [
+  {
+   "official": "Arithmetic (SSC standard)",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Arithmetic"
+   ]
+  },
+  {
+   "official": "number system",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Arithmetic",
+    "Number system"
+   ]
+  },
+  {
+   "official": "simple interest",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Arithmetic",
+    "Simple interest"
+   ]
+  },
+  {
+   "official": "compound interest",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Arithmetic",
+    "Compound interest"
+   ]
+  },
+  {
+   "official": "ratio & proportion",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Arithmetic",
+    "Ratio & proportion"
+   ]
+  },
+  {
+   "official": "average",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Arithmetic",
+    "Average"
+   ]
+  },
+  {
+   "official": "percentage",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Arithmetic",
+    "Percentage"
+   ]
+  },
+  {
+   "official": "profit & loss",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Arithmetic",
+    "Profit & loss"
+   ]
+  },
+  {
+   "official": "time & work",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Arithmetic",
+    "Time & work"
+   ]
+  },
+  {
+   "official": "work & wages",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Arithmetic",
+    "Work & wages"
+   ]
+  },
+  {
+   "official": "time & distance",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Arithmetic",
+    "Time & distance"
+   ]
+  },
+  {
+   "official": "clocks & calendars",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Arithmetic",
+    "Clocks & calendars"
+   ]
+  },
+  {
+   "official": "partnership",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Arithmetic",
+    "Partnership"
+   ]
+  },
+  {
+   "official": "mensuration",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Arithmetic",
+    "Mensuration"
+   ]
+  },
+  {
+   "official": "Test of Reasoning: questions of both verbal & non-verbal type",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Test of Reasoning"
+   ]
+  },
+  {
+   "official": "analogies",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Test of Reasoning",
+    "Analogies"
+   ]
+  },
+  {
+   "official": "similarities and differences",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Test of Reasoning",
+    "Similarities and differences"
+   ]
+  },
+  {
+   "official": "spatial visualisation",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Test of Reasoning",
+    "Spatial visualisation"
+   ]
+  },
+  {
+   "official": "spatial orientation",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Test of Reasoning",
+    "Spatial orientation"
+   ]
+  },
+  {
+   "official": "problem solving",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Test of Reasoning",
+    "Problem solving"
+   ]
+  },
+  {
+   "official": "analysis",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Test of Reasoning",
+    "Analysis"
+   ]
+  },
+  {
+   "official": "judgment",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Test of Reasoning",
+    "Judgment"
+   ]
+  },
+  {
+   "official": "decision making",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Test of Reasoning",
+    "Decision making"
+   ]
+  },
+  {
+   "official": "visual memory",
+   "page": 29,
+   "path": [
+    "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+    "Test of Reasoning",
+    "Visual memory"
+   ]
+  },
+  {
+   "official": "General Science - contemporary developments in science and technology and their implications including matters of everyday observation and experience, contemporary issues relating to protection of environment",
+   "page": 30,
+   "path": [
+    "General Studies (Prelims Paper 2, Final Paper IV)",
+    "General Science"
+   ]
+  },
+  {
+   "official": "contemporary developments in science and technology and their implications",
+   "page": 30,
+   "path": [
+    "General Studies (Prelims Paper 2, Final Paper IV)",
+    "General Science",
+    "Contemporary developments in science and technology and their implications"
+   ]
+  },
+  {
+   "official": "matters of everyday observation and experience",
+   "page": 30,
+   "path": [
+    "General Studies (Prelims Paper 2, Final Paper IV)",
+    "General Science",
+    "Matters of everyday observation and experience"
+   ]
+  },
+  {
+   "official": "contemporary issues relating to protection of environment",
+   "page": 30,
+   "path": [
+    "General Studies (Prelims Paper 2, Final Paper IV)",
+    "General Science",
+    "Contemporary issues relating to protection of environment"
+   ]
+  },
+  {
+   "official": "Current events of national and international importance",
+   "page": 30,
+   "path": [
+    "General Studies (Prelims Paper 2, Final Paper IV)",
+    "Current events of national and international importance"
+   ]
+  },
+  {
+   "official": "History of India - emphasis will be on broad general understanding of the subject in its social, economic, cultural and political aspects. Indian National Movement.",
+   "page": 30,
+   "path": [
+    "General Studies (Prelims Paper 2, Final Paper IV)",
+    "History of India"
+   ]
+  },
+  {
+   "official": "social, economic, cultural and political aspects",
+   "page": 30,
+   "path": [
+    "General Studies (Prelims Paper 2, Final Paper IV)",
+    "History of India",
+    "Social, economic, cultural and political aspects"
+   ]
+  },
+  {
+   "official": "Indian National Movement",
+   "page": 30,
+   "path": [
+    "General Studies (Prelims Paper 2, Final Paper IV)",
+    "History of India",
+    "Indian National Movement"
+   ]
+  },
+  {
+   "official": "Geography of India",
+   "page": 30,
+   "path": [
+    "General Studies (Prelims Paper 2, Final Paper IV)",
+    "Geography of India"
+   ]
+  },
+  {
+   "official": "Indian Polity and Economy - including the Country's political system, rural development, planning and economic reforms in India.",
+   "page": 30,
+   "path": [
+    "General Studies (Prelims Paper 2, Final Paper IV)",
+    "Indian Polity and Economy"
+   ]
+  },
+  {
+   "official": "the Country's political system",
+   "page": 30,
+   "path": [
+    "General Studies (Prelims Paper 2, Final Paper IV)",
+    "Indian Polity and Economy",
+    "The Country's political system"
+   ]
+  },
+  {
+   "official": "rural development",
+   "page": 30,
+   "path": [
+    "General Studies (Prelims Paper 2, Final Paper IV)",
+    "Indian Polity and Economy",
+    "Rural development"
+   ]
+  },
+  {
+   "official": "planning",
+   "page": 30,
+   "path": [
+    "General Studies (Prelims Paper 2, Final Paper IV)",
+    "Indian Polity and Economy",
+    "Planning"
+   ]
+  },
+  {
+   "official": "economic reforms in India",
+   "page": 30,
+   "path": [
+    "General Studies (Prelims Paper 2, Final Paper IV)",
+    "Indian Polity and Economy",
+    "Economic reforms in India"
+   ]
+  },
+  {
+   "official": "The candidate's understanding of the English language, its correct usage and his/her writing ability would be tested",
+   "page": 29,
+   "path": [
+    "English (Final Paper I, qualifying, degree standard)",
+    "Supporting skills (the app's own addition, not a listed question form)"
+   ]
+  },
+  {
+   "official": "short essay",
+   "page": 29,
+   "path": [
+    "English (Final Paper I, qualifying, degree standard)",
+    "Question forms named in the syllabus",
+    "Short essay"
+   ]
+  },
+  {
+   "official": "comprehension",
+   "page": 29,
+   "path": [
+    "English (Final Paper I, qualifying, degree standard)",
+    "Question forms named in the syllabus",
+    "Comprehension"
+   ]
+  },
+  {
+   "official": "précis",
+   "page": 29,
+   "path": [
+    "English (Final Paper I, qualifying, degree standard)",
+    "Question forms named in the syllabus",
+    "Précis"
+   ]
+  },
+  {
+   "official": "letter writing",
+   "page": 29,
+   "path": [
+    "English (Final Paper I, qualifying, degree standard)",
+    "Question forms named in the syllabus",
+    "Letter writing"
+   ]
+  },
+  {
+   "official": "paragraph writing / report writing",
+   "page": 29,
+   "path": [
+    "English (Final Paper I, qualifying, degree standard)",
+    "Question forms named in the syllabus",
+    "Paragraph writing / report writing"
+   ]
+  },
+  {
+   "official": "translation from English to Telugu",
+   "page": 29,
+   "path": [
+    "English (Final Paper I, qualifying, degree standard)",
+    "Question forms named in the syllabus",
+    "Translation from English to Telugu"
+   ]
+  },
+  {
+   "official": "The candidate's understanding of the Telugu language, its correct usage and his/her writing ability would be tested",
+   "page": 29,
+   "path": [
+    "Telugu or Urdu (Final Paper II, qualifying, degree standard)",
+    "Supporting skills (the app's own addition, not a listed question form)"
+   ]
+  },
+  {
+   "official": "short essay",
+   "page": 29,
+   "path": [
+    "Telugu or Urdu (Final Paper II, qualifying, degree standard)",
+    "Question forms named in the syllabus",
+    "Short essay"
+   ]
+  },
+  {
+   "official": "comprehension",
+   "page": 29,
+   "path": [
+    "Telugu or Urdu (Final Paper II, qualifying, degree standard)",
+    "Question forms named in the syllabus",
+    "Comprehension"
+   ]
+  },
+  {
+   "official": "précis",
+   "page": 29,
+   "path": [
+    "Telugu or Urdu (Final Paper II, qualifying, degree standard)",
+    "Question forms named in the syllabus",
+    "Précis"
+   ]
+  },
+  {
+   "official": "letter writing",
+   "page": 29,
+   "path": [
+    "Telugu or Urdu (Final Paper II, qualifying, degree standard)",
+    "Question forms named in the syllabus",
+    "Letter writing"
+   ]
+  },
+  {
+   "official": "paragraph writing / report writing",
+   "page": 29,
+   "path": [
+    "Telugu or Urdu (Final Paper II, qualifying, degree standard)",
+    "Question forms named in the syllabus",
+    "Paragraph writing / report writing"
+   ]
+  },
+  {
+   "official": "translation from Telugu to English",
+   "page": 29,
+   "path": [
+    "Telugu or Urdu (Final Paper II, qualifying, degree standard)",
+    "Question forms named in the syllabus",
+    "Translation from Telugu to English"
+   ]
+  }
+ ]
+}

@@ -117,7 +117,7 @@ class SyllabusReviewViewModel @Inject constructor(
         val imp = st.imp ?: return
         if (st.busy) return
         if (st.approveCount == 0) {
-            _state.update { it.copy(message = "There is nothing to approve. Add topics or choose both exams.") }
+            _state.update { it.copy(message = "There is nothing to approve. Add topics or choose all exams.") }
             return
         }
         viewModelScope.launch {

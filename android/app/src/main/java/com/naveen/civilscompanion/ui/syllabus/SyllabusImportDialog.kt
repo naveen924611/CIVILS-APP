@@ -60,6 +60,7 @@ fun ImportSyllabusDialog(
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     OutlinedButton(onClick = { exam = "UPSC CSE" }) { Text("UPSC CSE") }
                     OutlinedButton(onClick = { exam = "APPSC Group-I" }) { Text("APPSC Group-I") }
+                    OutlinedButton(onClick = { exam = "SLPRB SI (Civil)" }) { Text("SI (Civil)") }
                 }
                 OutlinedTextField(value = exam, onValueChange = { exam = it.take(80) }, label = { Text("Exam") }, singleLine = true, modifier = Modifier.fillMaxWidth())
                 OutlinedTextField(

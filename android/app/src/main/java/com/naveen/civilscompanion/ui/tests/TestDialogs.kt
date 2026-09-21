@@ -100,6 +100,7 @@ fun PaperDialog(
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     TChip("UPSC", selected = exam == "UPSC", onClick = { exam = "UPSC" })
                     TChip("APPSC", selected = exam == "APPSC", onClick = { exam = "APPSC" })
+                    TChip("SI", selected = exam == "SI", onClick = { exam = "SI" })
                 }
                 OutlinedTextField(value = year, onValueChange = { year = it.filter { c -> c.isDigit() }.take(4) }, singleLine = true, label = { Text("Year, for example 2023") })
                 OutlinedTextField(value = paper, onValueChange = { paper = it }, singleLine = true, label = { Text("Paper (optional), for example GS 1") })

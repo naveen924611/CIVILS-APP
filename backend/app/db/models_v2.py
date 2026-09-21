@@ -276,7 +276,7 @@ class Test(SyncMixin, Base):
     sync_name = "tests"
     push_fields = frozenset({"status", "score", "started_at", "finished_at", "negative_marking"})
     id: Mapped[str] = pk()
-    kind: Mapped[str] = mapped_column(String(20), default="weekly")  # weekly|topic|past_paper|mistakes
+    kind: Mapped[str] = mapped_column(String(20), default="weekly")  # weekly|topic|past_paper|mistakes|aptitude
     title: Mapped[str] = mapped_column(String(200), default="")
     scheduled_for: Mapped[datetime | None] = opt_dt()
     mcq_ids: Mapped[list] = mapped_column(JSON, default=list)

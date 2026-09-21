@@ -155,7 +155,7 @@ private fun BottomBar(s: ReviewState, vm: SyllabusReviewViewModel) {
         ) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text("Use:", style = MaterialTheme.typography.labelLarge, color = colors.muted)
-                listOf<Pair<String?, String>>(null to "Both exams", "APPSC" to "APPSC only", "UPSC" to "UPSC only").forEach { (value, label) ->
+                listOf<Pair<String?, String>>(null to "All exams", "APPSC" to "APPSC only", "UPSC" to "UPSC only", "SI" to "SI only").forEach { (value, label) ->
                     val chosen = value == s.examFilter
                     Text(
                         label,
@@ -187,7 +187,7 @@ private fun BottomBar(s: ReviewState, vm: SyllabusReviewViewModel) {
         horizontalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         Text("Use:", style = MaterialTheme.typography.labelLarge, color = colors.muted)
-        listOf<Pair<String?, String>>(null to "Both exams", "APPSC" to "APPSC only", "UPSC" to "UPSC only").forEach { (value, label) ->
+        listOf<Pair<String?, String>>(null to "All exams", "APPSC" to "APPSC only", "UPSC" to "UPSC only", "SI" to "SI only").forEach { (value, label) ->
             val chosen = value == s.examFilter
             Text(
                 label,

@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 data class MapState(
     val topics: List<Topic> = emptyList(),
     val tree: List<TNode> = emptyList(),
-    val exam: String? = null, // null = both exams, otherwise "UPSC" or "APPSC"
+    val exam: String? = null, // null = both exams, otherwise "UPSC", "APPSC" or "SI"
     val overall: Int = 0,
     val imports: List<SyllabusImport> = emptyList(), // not approved yet
     val importJobs: List<Job> = emptyList(), // syllabus_import jobs still waiting or failed

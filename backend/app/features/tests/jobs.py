@@ -20,7 +20,7 @@ KV_WEEKLY_DAY = "test.weekly_day"  # "mon" .. "sun", default "sun" (written by T
 
 def _announce(ctx: JobContext, test: Test) -> None:
     """A test is ready: a silent push (the tablet builds the notification). type mock_ready -> opens Tests."""
-    kind = "Weekly mock test" if test.kind == "weekly" else "Your test"
+    kind = {"weekly": "Weekly mock test", "aptitude": "Aptitude drill"}.get(test.kind, "Your test")
     ctx.services.push("Test ready", f"{kind} is ready: {len(test.mcq_ids or [])} questions, {test.duration_min} minutes.",
                       {"type": "mock_ready", "test_id": test.id})
 
@@ -42,7 +42,8 @@ def mock_test(ctx: JobContext) -> dict:
 
 @job_handler("test_generate", feature="test_generate")
 def test_generate(ctx: JobContext) -> dict:
-    """payload {kind: "topic"|"past_paper"|"mistakes"|"weekly", topic_id?, exam?, year?, paper?, count?}; result {test_id}."""
+    """payload {kind: "topic"|"past_paper"|"mistakes"|"weekly"|"aptitude", topic_id?, exam?, year?, paper?, count?, area?, date?}; result {test_id}.
+    kind "aptitude" (SI drill): {area? (one of the aptitude areas, else a mix), count? (20), date? (India day)}; needs no AI."""
     return _make(ctx, "topic")
 
 

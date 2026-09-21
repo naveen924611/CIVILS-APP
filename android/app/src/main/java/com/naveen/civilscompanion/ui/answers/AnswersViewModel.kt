@@ -1,5 +1,6 @@
 package com.naveen.civilscompanion.ui.answers
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.naveen.civilscompanion.data.model.AnswerSubmission
@@ -10,8 +11,10 @@ import com.naveen.civilscompanion.data.records.RecordStore
 import com.naveen.civilscompanion.data.records.Tables
 import com.naveen.civilscompanion.data.records.TimeUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.IOException
 import javax.inject.Inject
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -22,6 +25,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
@@ -31,7 +35,21 @@ import retrofit2.HttpException
 class AnswersViewModel @Inject constructor(
     private val store: RecordStore,
     private val api: AnswersApi,
+    @ApplicationContext private val appContext: Context,
 ) : ViewModel() {
+
+    private val _prompts = MutableStateFlow<List<WritingPrompt>>(emptyList())
+
+    /** The bundled practice prompts (loaded once, from the app assets, when the picker is first opened). */
+    val prompts: StateFlow<List<WritingPrompt>> = _prompts.asStateFlow()
+
+    fun loadPrompts() {
+        if (_prompts.value.isNotEmpty()) return
+        viewModelScope.launch { _prompts.value = withContext(Dispatchers.IO) { WritingPromptLoader.load(appContext) } }
+    }
+
+    /** Starts a draft from a practice prompt, the same way as a question the owner typed. */
+    fun usePrompt(p: WritingPrompt) = createOwn(p.prompt, p.wordLimit)
 
     val answers: StateFlow<List<AnswerSubmission>> =
         store.observe(Tables.Answers, RecordQuery(order = Order.NewestFirst, limit = 300))

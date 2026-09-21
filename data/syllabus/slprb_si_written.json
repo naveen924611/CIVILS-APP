@@ -1,0 +1,1981 @@
+{
+ "key": "slprb-si-written",
+ "exam": "SLPRB SI (Civil)",
+ "title": "SLPRB SI (Civil) written syllabus (Prelims and Final)",
+ "verified": true,
+ "source_note": "Built from SLPRB SI Notification Rc.No.81/SLPRB/Rect.1/2026 dated 16-09-2026, Annexure II",
+ "tree": [
+  {
+   "title": "Arithmetic and Test of Reasoning (Prelims Paper 1, Final Paper III)",
+   "level": 0,
+   "exam_tags": [
+    "SI"
+   ],
+   "est_hours": 97.5,
+   "importance": 9,
+   "children": [
+    {
+     "title": "Arithmetic",
+     "level": 1,
+     "exam_tags": [
+      "SI"
+     ],
+     "est_hours": 64.5,
+     "importance": 9,
+     "children": [
+      {
+       "title": "Number system",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 8.5,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Types of numbers, place value and face value",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.0,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Divisibility rules, HCF and LCM",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Fractions, decimals, BODMAS and simplification",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Squares, cubes, roots, surds and indices",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Remainders and unit digit",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 6,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Simple interest",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 3.0,
+       "importance": 7,
+       "children": [
+        {
+         "title": "Simple interest: principal, rate, time and amount",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Two rates, part investments and instalments",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 6,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Compound interest",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 3.0,
+       "importance": 7,
+       "children": [
+        {
+         "title": "Compound interest and amount (yearly, half-yearly, quarterly)",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Difference between compound and simple interest",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.0,
+         "importance": 7,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Ratio & proportion",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 6.5,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Ratio, comparison and sharing a quantity",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Proportion: direct, inverse and fourth proportion",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Mixtures and alligation",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Problems on ages",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Average",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 4.0,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Average of numbers and groups",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Change in average: adding, removing and replacing items",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Weighted average",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.0,
+         "importance": 6,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Percentage",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 7.0,
+       "importance": 9,
+       "children": [
+        {
+         "title": "Basics: percentage, fractions and decimals",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Percentage change: increase and decrease",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Successive percentage",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Population and depreciation",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Percentage applications: income, expenditure, results and votes",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Profit & loss",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 4.5,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Cost price, selling price, profit and loss percent",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Discount, marked price and successive discounts",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "False weights and dishonest dealings",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.0,
+         "importance": 5,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Time & work",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 5.5,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Individual and combined work rates",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Efficiency, man-days and alternate-day work",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Pipes and cisterns",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Work & wages",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 3.0,
+       "importance": 6,
+       "children": [
+        {
+         "title": "Sharing wages in the ratio of work done",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Wages with days, efficiency and men, women, children",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 6,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Time & distance",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 6.5,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Speed, distance, time and average speed",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Relative speed and trains",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Boats and streams",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Races and circular tracks",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.0,
+         "importance": 5,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Clocks & calendars",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 3.0,
+       "importance": 6,
+       "children": [
+        {
+         "title": "Clocks: angle between the hands, gaining and losing clocks",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Calendars: odd days and finding the day of the week",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Partnership",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 3.0,
+       "importance": 6,
+       "children": [
+        {
+         "title": "Simple partnership: capital multiplied by time",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Working and sleeping partners, change of capital",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 6,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Mensuration",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 7.0,
+       "importance": 9,
+       "children": [
+        {
+         "title": "Area and perimeter of triangles, quadrilaterals and circles",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Volume and surface area of solids: cube, cuboid, cylinder, cone, sphere",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 3.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Combined and recast solids",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 6,
+         "children": []
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Test of Reasoning",
+     "level": 1,
+     "exam_tags": [
+      "SI"
+     ],
+     "est_hours": 33.0,
+     "importance": 9,
+     "children": [
+      {
+       "title": "Analogies",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 3.0,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Verbal analogies: word, letter and number pairs",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Non-verbal analogies: figure pairs",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 6,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Similarities and differences",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 3.0,
+       "importance": 7,
+       "children": [
+        {
+         "title": "Odd one out and classification (words, letters, numbers)",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Figure similarities, differences and classification",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 6,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Spatial visualisation",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 3.5,
+       "importance": 7,
+       "children": [
+        {
+         "title": "Paper folding, cutting and unfolding",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.0,
+         "importance": 6,
+         "children": []
+        },
+        {
+         "title": "Cubes, dice and counting of figures",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Mirror images, water images and embedded figures",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.0,
+         "importance": 6,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Spatial orientation",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 2.5,
+       "importance": 7,
+       "children": [
+        {
+         "title": "Direction sense and distance",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Rotation and orientation of figures",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.0,
+         "importance": 6,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Problem solving",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 7.0,
+       "importance": 9,
+       "children": [
+        {
+         "title": "Number and letter series",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Coding-decoding",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Mathematical operations and symbols",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Puzzles and seating arrangements",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Analysis",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 5.0,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Syllogisms and Venn diagrams",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Statements and conclusions, assumptions, arguments",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Data sufficiency and figure matrices",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.0,
+         "importance": 5,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Judgment",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 4.0,
+       "importance": 7,
+       "children": [
+        {
+         "title": "Blood relations and family trees",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Ranking, ordering and comparison",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Logical inference: cause and effect",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.0,
+         "importance": 5,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Decision making",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 3.0,
+       "importance": 6,
+       "children": [
+        {
+         "title": "Statement and course of action",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 6,
+         "children": []
+        },
+        {
+         "title": "Situation-based decisions using given rules",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 6,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Visual memory",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 2.0,
+       "importance": 5,
+       "children": [
+        {
+         "title": "Remembering figures, patterns and positions",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.0,
+         "importance": 5,
+         "children": []
+        },
+        {
+         "title": "Recall of numbers, words and data tables",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.0,
+         "importance": 5,
+         "children": []
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "General Studies (Prelims Paper 2, Final Paper IV)",
+   "level": 0,
+   "exam_tags": [
+    "SI"
+   ],
+   "est_hours": 132.0,
+   "importance": 9,
+   "children": [
+    {
+     "title": "General Science",
+     "level": 1,
+     "exam_tags": [
+      "SI"
+     ],
+     "est_hours": 33.0,
+     "importance": 9,
+     "children": [
+      {
+       "title": "Contemporary developments in science and technology and their implications",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 7.5,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Space, defence and nuclear technology",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Information technology, communication and artificial intelligence",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Biotechnology, health science and nanotechnology",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Renewable energy and new technologies in the news",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Matters of everyday observation and experience",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 18.0,
+       "importance": 9,
+       "children": [
+        {
+         "title": "Physics: motion, force, work, energy and heat",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 3.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Physics: light, sound, electricity and magnetism",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 3.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Chemistry: matter, atoms, acids, bases, salts and metals",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 3.0,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Chemistry in daily life: carbon compounds, fuels, plastics, fertilisers",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 6,
+         "children": []
+        },
+        {
+         "title": "Biology: cell, plants, animals and genetics basics",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 3.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Human body, nutrition and vitamins",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Health: diseases, vaccines and public health",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Contemporary issues relating to protection of environment",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 7.5,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Ecology, ecosystems and food chains",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Biodiversity, protected areas and conservation",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Pollution, waste and climate change",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Environmental laws, conventions and agreements",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Current events of national and international importance",
+     "level": 1,
+     "exam_tags": [
+      "SI"
+     ],
+     "est_hours": 14.5,
+     "importance": 9,
+     "children": [
+      {
+       "title": "National affairs",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 7.0,
+       "importance": 9,
+       "children": [
+        {
+         "title": "Government schemes, policies and new laws",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 3.0,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Appointments, awards, committees and reports",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Economy, budget and defence in the news",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "International affairs",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 4.0,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Summits, organisations and treaties",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "India and the world: bilateral relations and conflicts",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 7,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Science, sports and culture in the news",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 3.5,
+       "importance": 7,
+       "children": [
+        {
+         "title": "Science, technology and environment news",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Sports events, books, persons and places in the news",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 7,
+         "children": []
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "History of India",
+     "level": 1,
+     "exam_tags": [
+      "SI"
+     ],
+     "est_hours": 27.0,
+     "importance": 9,
+     "children": [
+      {
+       "title": "Social, economic, cultural and political aspects",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 15.0,
+       "importance": 9,
+       "children": [
+        {
+         "title": "Ancient India: Indus, Vedic, Mauryan and Gupta periods",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 3.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Ancient South India: Sangam, Satavahana, Pallava, Chola",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 6,
+         "children": []
+        },
+        {
+         "title": "Medieval India: Delhi Sultanate, Vijayanagara and Mughals",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 3.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Bhakti, Sufi movements, art, architecture and culture",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Modern India: British expansion, revolt of 1857, economic impact",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 3.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Social and religious reform movements",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Indian National Movement",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 9.0,
+       "importance": 10,
+       "children": [
+        {
+         "title": "Early nationalism, Moderates and the Swadeshi movement",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Gandhian phase: Non-Cooperation, Civil Disobedience, Quit India",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 3.0,
+         "importance": 10,
+         "children": []
+        },
+        {
+         "title": "Revolutionaries, Subhas Bose, INA and left movements",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Constitutional developments, Cripps, Cabinet Mission, Partition",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Andhra Pradesh basics (helpful, not named in the notification)",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 3.0,
+       "importance": 6,
+       "children": []
+      }
+     ]
+    },
+    {
+     "title": "Geography of India",
+     "level": 1,
+     "exam_tags": [
+      "SI"
+     ],
+     "est_hours": 20.0,
+     "importance": 8,
+     "children": [
+      {
+       "title": "Physical geography of India",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 7.0,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Location, relief and physiographic divisions",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Drainage: rivers, lakes and water resources",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Climate, monsoon, soils and natural vegetation",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 3.0,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Economic geography of India",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 7.0,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Agriculture: crops, irrigation and green revolution",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Minerals, power and energy resources",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Industries, transport, ports and trade",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.5,
+         "importance": 7,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Population and human geography",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 2.0,
+       "importance": 6,
+       "children": [
+        {
+         "title": "Population, census, urbanisation and tribes",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 7,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Map-based facts: states, capitals, national parks and important places",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 2.0,
+       "importance": 7,
+       "children": []
+      },
+      {
+       "title": "Andhra Pradesh basics (helpful, not named in the notification)",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 2.0,
+       "importance": 6,
+       "children": []
+      }
+     ]
+    },
+    {
+     "title": "Indian Polity and Economy",
+     "level": 1,
+     "exam_tags": [
+      "SI"
+     ],
+     "est_hours": 37.5,
+     "importance": 9,
+     "children": [
+      {
+       "title": "The Country's political system",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 14.0,
+       "importance": 9,
+       "children": [
+        {
+         "title": "Making of the Constitution, Preamble and salient features",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Fundamental rights, directive principles and duties",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.5,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Union executive, Parliament and legislative process",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 3.0,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Judiciary, federal system and Centre-State relations",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "State government and constitutional bodies",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Elections, political parties and amendments",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 7,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Rural development",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 7.0,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Panchayati Raj and local self-government",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.5,
+         "importance": 9,
+         "children": []
+        },
+        {
+         "title": "Rural development and poverty alleviation programmes",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Agriculture, cooperatives and rural credit",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 7,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Planning",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 8.5,
+       "importance": 8,
+       "children": [
+        {
+         "title": "Five Year Plans, NITI Aayog and development goals",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "National income, growth and basic economic concepts",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 7,
+         "children": []
+        },
+        {
+         "title": "Poverty, unemployment and inflation",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Union budget, taxes and public finance",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.5,
+         "importance": 8,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Economic reforms in India",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 6.0,
+       "importance": 8,
+       "children": [
+        {
+         "title": "1991 reforms: liberalisation, privatisation, globalisation",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.0,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Money, banking, RBI and financial sector reforms",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 2.5,
+         "importance": 8,
+         "children": []
+        },
+        {
+         "title": "Foreign trade, WTO and external sector",
+         "level": 3,
+         "exam_tags": [
+          "SI"
+         ],
+         "est_hours": 1.5,
+         "importance": 6,
+         "children": []
+        }
+       ]
+      },
+      {
+       "title": "Andhra Pradesh basics (helpful, not named in the notification)",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 2.0,
+       "importance": 6,
+       "children": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "English (Final Paper I, qualifying, degree standard)",
+   "level": 0,
+   "exam_tags": [
+    "SI"
+   ],
+   "est_hours": 23.0,
+   "importance": 7,
+   "children": [
+    {
+     "title": "Question forms named in the syllabus",
+     "level": 1,
+     "exam_tags": [
+      "SI"
+     ],
+     "est_hours": 17.0,
+     "importance": 8,
+     "children": [
+      {
+       "title": "Short essay",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 3.0,
+       "importance": 9,
+       "children": []
+      },
+      {
+       "title": "Comprehension",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 2.5,
+       "importance": 8,
+       "children": []
+      },
+      {
+       "title": "Précis",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 3.0,
+       "importance": 8,
+       "children": []
+      },
+      {
+       "title": "Letter writing",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 2.5,
+       "importance": 8,
+       "children": []
+      },
+      {
+       "title": "Paragraph writing / report writing",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 3.0,
+       "importance": 8,
+       "children": []
+      },
+      {
+       "title": "Translation from English to Telugu",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 3.0,
+       "importance": 8,
+       "children": []
+      }
+     ]
+    },
+    {
+     "title": "Supporting skills (the app's own addition, not a listed question form)",
+     "level": 1,
+     "exam_tags": [
+      "SI"
+     ],
+     "est_hours": 6.0,
+     "importance": 6,
+     "children": [
+      {
+       "title": "Supporting: English grammar and correct usage",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 3.0,
+       "importance": 7,
+       "children": []
+      },
+      {
+       "title": "Supporting: vocabulary, idioms and phrases",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 2.0,
+       "importance": 6,
+       "children": []
+      },
+      {
+       "title": "Supporting: formal and informal letter formats",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 1.0,
+       "importance": 6,
+       "children": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Telugu or Urdu (Final Paper II, qualifying, degree standard)",
+   "level": 0,
+   "exam_tags": [
+    "SI"
+   ],
+   "est_hours": 23.0,
+   "importance": 7,
+   "children": [
+    {
+     "title": "Question forms named in the syllabus",
+     "level": 1,
+     "exam_tags": [
+      "SI"
+     ],
+     "est_hours": 17.0,
+     "importance": 8,
+     "children": [
+      {
+       "title": "Short essay",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 3.0,
+       "importance": 9,
+       "children": []
+      },
+      {
+       "title": "Comprehension",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 2.5,
+       "importance": 8,
+       "children": []
+      },
+      {
+       "title": "Précis",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 3.0,
+       "importance": 8,
+       "children": []
+      },
+      {
+       "title": "Letter writing",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 2.5,
+       "importance": 8,
+       "children": []
+      },
+      {
+       "title": "Paragraph writing / report writing",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 3.0,
+       "importance": 8,
+       "children": []
+      },
+      {
+       "title": "Translation from Telugu to English",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 3.0,
+       "importance": 8,
+       "children": []
+      }
+     ]
+    },
+    {
+     "title": "Supporting skills (the app's own addition, not a listed question form)",
+     "level": 1,
+     "exam_tags": [
+      "SI"
+     ],
+     "est_hours": 6.0,
+     "importance": 6,
+     "children": [
+      {
+       "title": "Supporting: Telugu grammar and correct usage",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 3.0,
+       "importance": 7,
+       "children": []
+      },
+      {
+       "title": "Supporting: Telugu vocabulary, proverbs and idioms",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 2.0,
+       "importance": 6,
+       "children": []
+      },
+      {
+       "title": "Supporting: Telugu letter formats",
+       "level": 2,
+       "exam_tags": [
+        "SI"
+       ],
+       "est_hours": 1.0,
+       "importance": 6,
+       "children": []
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
