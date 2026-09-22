@@ -113,6 +113,19 @@ def test_run_now_starts_background_brief_or_reports_busy(client, auth_header, mo
         service._lock.release()
 
 
+def test_run_now_dates_the_brief_today_not_the_next_midnight(client, auth_header, monkeypatch):
+    """Regression: /briefs/run used to date the new brief at the NEXT occurrence of 00:00 India time, which is
+    almost always tomorrow, so a brief made now looked like it belonged to the wrong day (spec bug found 2026-09-22)."""
+    service = client.app.state.brief_service
+    monkeypatch.setattr(service, "run", lambda brief_id: None)
+    before = datetime.now(timezone.utc)
+    r = client.post("/briefs/run", json={"kind": "extra1"}, headers=auth_header)
+    assert r.status_code == 202
+    with get_session_factory()() as db:
+        scheduled_for = db.get(Brief, r.json()["brief_id"]).scheduled_for
+    assert abs((scheduled_for.replace(tzinfo=timezone.utc) - before).total_seconds()) < 5
+
+
 def test_usage_endpoint(client, auth_header, monkeypatch):
     monkeypatch.setenv("GEMINI_API_KEY", "g")
     data = client.get("/usage", headers=auth_header).json()

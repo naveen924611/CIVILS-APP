@@ -1,4 +1,5 @@
 import threading
+from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, Request
 from pydantic import BaseModel
@@ -7,7 +8,6 @@ from sqlalchemy.orm import Session
 
 from app.api import serializers as ser
 from app.auth.deps import current_user
-from app.briefs.builder import next_occurrence
 from app.db.models import Brief, NewsItem
 from app.db.session import get_db
 from app.settings_store import BriefSettings, get_brief_settings, set_brief_settings
@@ -44,7 +44,10 @@ def run_now(body: RunIn, request: Request, _: str = Depends(current_user)):
     if service.busy:
         raise HTTPException(409, "A brief is already being prepared")
     kind = body.kind if body.kind in {"morning", "evening", "extra1", "extra2"} else "extra1"
-    brief_id = service.create_row(kind, next_occurrence("00:00", service.settings.timezone))
+    # "now", not the next scheduled slot: next_occurrence("00:00", ...) used to be called here by mistake,
+    # which is the next midnight and so almost always dated TOMORROW - a brief made now would show under
+    # tomorrow's date with no items visible yet, and a brief made yesterday would show under today's date.
+    brief_id = service.create_row(kind, datetime.now(timezone.utc))
     threading.Thread(target=service.run, args=(brief_id,), daemon=True).start()
     return {"brief_id": brief_id}
 
