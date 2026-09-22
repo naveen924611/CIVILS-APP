@@ -1,0 +1,172 @@
+{
+ "key": "upsc-cse-prelims-2026",
+ "exam": "UPSC CSE",
+ "title": "UPSC Civil Services Prelims 2026 - official syllabus",
+ "verified": true,
+ "source_note": "UPSC Examination Notice No. 05/2026-CSE (dated 04.02.2026), Appendix I, Section III Part A. Every node title is the official bullet verbatim (or the paper heading). Paper II (CSAT) is qualifying only (33% minimum) and its marks do not count for the merit list.",
+ "tree": [
+  {
+   "title": "Paper I - General Studies (200 marks)",
+   "level": 0,
+   "exam_tags": [
+    "UPSC"
+   ],
+   "est_hours": 84,
+   "importance": 9,
+   "children": [
+    {
+     "title": "Current events of national and international importance",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 12,
+     "importance": 9,
+     "children": []
+    },
+    {
+     "title": "History of India and Indian National Movement",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 14,
+     "importance": 9,
+     "children": []
+    },
+    {
+     "title": "Indian and World Geography - Physical, Social, Economic Geography of India and the World",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 12,
+     "importance": 9,
+     "children": []
+    },
+    {
+     "title": "Indian Polity and Governance - Constitution, Political System, Panchayati Raj, Public Policy, Rights Issues, etc.",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 14,
+     "importance": 9,
+     "children": []
+    },
+    {
+     "title": "Economic and Social Development - Sustainable Development, Poverty, Inclusion, Demographics, Social Sector Initiatives, etc.",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 12,
+     "importance": 9,
+     "children": []
+    },
+    {
+     "title": "General issues on Environmental ecology, Bio-diversity and Climate Change - that do not require subject specialization",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 10,
+     "importance": 9,
+     "children": []
+    },
+    {
+     "title": "General Science",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 10,
+     "importance": 9,
+     "children": []
+    }
+   ]
+  },
+  {
+   "title": "Paper II - CSAT (200 marks, qualifying, minimum 33%)",
+   "level": 0,
+   "exam_tags": [
+    "UPSC"
+   ],
+   "est_hours": 42,
+   "importance": 6,
+   "children": [
+    {
+     "title": "Comprehension",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 6,
+     "importance": 6,
+     "children": []
+    },
+    {
+     "title": "Interpersonal skills including communication skills",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 4,
+     "importance": 6,
+     "children": []
+    },
+    {
+     "title": "Logical reasoning and analytical ability",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 8,
+     "importance": 6,
+     "children": []
+    },
+    {
+     "title": "Decision making and problem solving",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 6,
+     "importance": 6,
+     "children": []
+    },
+    {
+     "title": "General mental ability",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 6,
+     "importance": 6,
+     "children": []
+    },
+    {
+     "title": "Basic numeracy (numbers and their relations, orders of magnitude, etc.) (Class X level)",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 6,
+     "importance": 6,
+     "children": []
+    },
+    {
+     "title": "Data interpretation (charts, graphs, tables, data sufficiency etc. - Class X level)",
+     "level": 1,
+     "exam_tags": [
+      "UPSC"
+     ],
+     "est_hours": 6,
+     "importance": 6,
+     "children": []
+    }
+   ]
+  }
+ ],
+ "supersedes": "upsc-cse-prelims"
+}

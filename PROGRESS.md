@@ -53,8 +53,17 @@ Plan, official facts and the full coverage matrix: `docs/si-civil-plan.md`. Veri
 - Screen orientation is no longer locked to landscape. Upright (narrow, under 900 dp) layout: bottom navigation bar instead of the left rail, and panes stack or show one at a time (`isCompact()` in ui/common/Adaptive.kt). Not seen on a real tablet yet.
 - Fixed a Kotlin build error (`/*` inside a KDoc comment in TeluguContent.kt).
 
+## Cross-checked against 7 more official PDFs; brief-date and mic fixes (2026-09-22)
+- Brief date bug: "Prepare a brief now" was dating new briefs at the next midnight instead of now (app/api/briefs.py); fixed with a regression test, and the 3 already-mis-dated rows in the running database were corrected (including a follow-up fix so the correction actually reached the tablet via sync). Morning/evening briefs were never affected. Details: docs/decisions.md.
+- Mic "could not understand (code 13)": the tablet's offline voice pack was missing for the default language; VoiceInput.kt now retries online automatically. Not compiled locally yet.
+- docs/video-channels.md: curated daily current-affairs YouTube channels (Unacademy, Hareesh Academy, StudyIQ, etc.) - links only, nothing downloaded.
+- UPSC syllabus verified: the owner supplied the real UPSC Examination Notice No. 05/2026-CSE. `upsc_cse_prelims_2026.json` and `upsc_cse_mains_2026.json` (both `verified: true`, with coverage proof files) replace the old unverified starter outlines. Optional Subject papers are still not built (owner hasn't chosen one yet).
+- Cross-checked 5 more Group-I / SI PDFs the owner supplied. All confirmed the app's existing verified outlines are correct as built from the 2026 notification; one apparent conflict (Group-I Telugu paper wording, an older 2018 syllabus doc vs. the 2026 notification) was resolved in favour of the 2026 notification, which the app already matches exactly. No syllabus content changed for Group-I or SI. Full findings: docs/decisions.md.
+- Server tests: 71 syllabus/SI-related tests pass (coverage proof, seeding, idempotency); ruff not re-run this pass (no Python logic changed, only data files).
+
 ## Waiting on owner now
 0. New (SI goal): approve the new syllabus outlines and fill the Goals profile (docs/si-civil-plan.md section 6).
+0b. New (2026-09-22): approve the new UPSC Prelims/Mains syllabus outlines in Syllabus review too (the old unverified ones retire themselves).
 1. `git push` and read the first `android-apk` run; send me the red lines (docs/m3-m12-owner-steps.md).
 2. Update the laptop server (same file, step 3).
 3. Install the APK and go through the M3-M12 checklist.
